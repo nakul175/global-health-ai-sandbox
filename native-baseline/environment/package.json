@@ -1,0 +1,23 @@
+{
+  "name": "health-ai-sandbox-contract-checks",
+  "private": true,
+  "version": "1.1.0",
+  "type": "module",
+  "engines": {
+    "node": "24.19.0",
+    "npm": "11.9.0"
+  },
+  "scripts": {
+    "test:database": "node ../tests/database_checks.mjs"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@electric-sql/pglite": "0.5.8",
+    "@playwright/test": "1.63.0",
+    "typescript": "7.0.2",
+    "vite": "8.3.1",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "pg": "8.23.0"
+  }
+}

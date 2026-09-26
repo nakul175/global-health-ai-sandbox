@@ -1,0 +1,100 @@
+[
+  {
+    "group": "Identity profile",
+    "visible_to": [
+      "self",
+      "verified identity operator for assigned case"
+    ],
+    "never_expose": [
+      "factor secrets",
+      "recovery tokens",
+      "raw credential secrets"
+    ],
+    "editable_by": [
+      "self preferences only"
+    ],
+    "gates": [
+      "verified changes for legal identity"
+    ]
+  },
+  {
+    "group": "Patient and study data",
+    "visible_to": [
+      "exact active grant recipients"
+    ],
+    "never_expose": [
+      "ungranted fields",
+      "quarantined records",
+      "unneeded direct identifiers"
+    ],
+    "editable_by": [
+      "assigned source/custodian process"
+    ],
+    "gates": [
+      "study",
+      "purpose",
+      "release",
+      "cohort",
+      "fields",
+      "region",
+      "time"
+    ]
+  },
+  {
+    "group": "Sealed benchmark labels",
+    "visible_to": [
+      "admitted trusted scorer"
+    ],
+    "never_expose": [
+      "labels to developer/evaluator/support/operator/assistant"
+    ],
+    "editable_by": [
+      "custodian successor-release workflow"
+    ],
+    "gates": [
+      "query budgets",
+      "independent release",
+      "no model-visible mount"
+    ]
+  },
+  {
+    "group": "Audit and incident data",
+    "visible_to": [
+      "assigned assurance or safety owner",
+      "bounded investigator"
+    ],
+    "never_expose": [
+      "secrets",
+      "reporter details outside case",
+      "unrelated tenants"
+    ],
+    "editable_by": [
+      "append-only events; case workflow fields only"
+    ],
+    "gates": [
+      "need to know",
+      "scope",
+      "retention",
+      "hold"
+    ]
+  },
+  {
+    "group": "Public evidence",
+    "visible_to": [
+      "anonymous"
+    ],
+    "never_expose": [
+      "restricted dossier",
+      "unapproved attachments",
+      "suppressed subgroups"
+    ],
+    "editable_by": [
+      "approved successor publication"
+    ],
+    "gates": [
+      "current rights",
+      "exact bytes",
+      "disclosure review"
+    ]
+  }
+]

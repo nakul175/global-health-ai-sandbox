@@ -1,0 +1,66 @@
+[
+  {
+    "id": "S00",
+    "title": "Repository and secure infrastructure",
+    "depends": [],
+    "exit": "Pinned lockfiles, migrations, synthetic fixtures, contract checks, RLS tests, audit/outbox and CI all pass in an isolated environment."
+  },
+  {
+    "id": "S01",
+    "title": "Institution identity and delegated access",
+    "depends": [
+      "S00"
+    ],
+    "exit": "Unverified applicant can submit only own application; independent verification and scoped membership work; no cross-tenant read/write or self-elevation."
+  },
+  {
+    "id": "S02",
+    "title": "Programme and study review",
+    "depends": [
+      "S01"
+    ],
+    "exit": "Programme and study drafts, exact snapshot review, independent people, conflicts and version races pass source acceptance cases."
+  },
+  {
+    "id": "S03",
+    "title": "Governed data and resumable ingestion",
+    "depends": [
+      "S02"
+    ],
+    "exit": "Purpose-bound grants, verified chunks, resume, expiry, cancellation, quarantine and count reconciliation pass; no premature output exposure."
+  },
+  {
+    "id": "S04",
+    "title": "Retrospective evaluation execution",
+    "depends": [
+      "S03"
+    ],
+    "exit": "Pinned protocol/configuration, approved methods, isolated execution, budget admission and complete failure accounting pass."
+  },
+  {
+    "id": "S05",
+    "title": "Independent evidence and institutional services",
+    "depends": [
+      "S04"
+    ],
+    "exit": "Immutable evidence, separate public release, report correction, scoped analytics and commercial independence pass."
+  },
+  {
+    "id": "S06",
+    "title": "First release operations and closure",
+    "depends": [
+      "S01",
+      "S03",
+      "S05"
+    ],
+    "exit": "Safety intake and containment remain available; recovery, retention, support, audit and full R1 nonfunctional gates pass."
+  },
+  {
+    "id": "S07",
+    "title": "Later release capability expansion",
+    "depends": [
+      "S06"
+    ],
+    "exit": "Only source R2/R3 requirements; local prospective/deployment/GenAI/monitoring gates and additional contracts validated before activation."
+  }
+]

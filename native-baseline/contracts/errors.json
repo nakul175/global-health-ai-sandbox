@@ -1,0 +1,188 @@
+[
+  {
+    "code": "E_AUTH_REQUIRED",
+    "http_status": 401,
+    "retryable": false,
+    "disclosure": "Use E_UNAVAILABLE/404 instead when object existence is not discoverable"
+  },
+  {
+    "code": "E_ASSURANCE_REQUIRED",
+    "http_status": 403,
+    "retryable": false,
+    "disclosure": "Use E_UNAVAILABLE/404 instead when object existence is not discoverable"
+  },
+  {
+    "code": "E_UNAVAILABLE",
+    "http_status": 404,
+    "retryable": false,
+    "disclosure": "Use E_UNAVAILABLE/404 instead when object existence is not discoverable"
+  },
+  {
+    "code": "E_ACCESS_DENIED",
+    "http_status": 403,
+    "retryable": false,
+    "disclosure": "Use E_UNAVAILABLE/404 instead when object existence is not discoverable"
+  },
+  {
+    "code": "E_VERSION_CONFLICT",
+    "http_status": 409,
+    "retryable": false,
+    "disclosure": "Use E_UNAVAILABLE/404 instead when object existence is not discoverable"
+  },
+  {
+    "code": "E_IDEMPOTENCY_CONFLICT",
+    "http_status": 409,
+    "retryable": false,
+    "disclosure": "Use E_UNAVAILABLE/404 instead when object existence is not discoverable"
+  },
+  {
+    "code": "E_VALIDATION",
+    "http_status": 422,
+    "retryable": false,
+    "disclosure": "Use E_UNAVAILABLE/404 instead when object existence is not discoverable"
+  },
+  {
+    "code": "E_SEMANTIC",
+    "http_status": 422,
+    "retryable": false,
+    "disclosure": "Use E_UNAVAILABLE/404 instead when object existence is not discoverable"
+  },
+  {
+    "code": "E_GATE_BLOCKED",
+    "http_status": 409,
+    "retryable": false,
+    "disclosure": "Use E_UNAVAILABLE/404 instead when object existence is not discoverable"
+  },
+  {
+    "code": "E_RIGHTS_EXPIRED",
+    "http_status": 403,
+    "retryable": false,
+    "disclosure": "Use E_UNAVAILABLE/404 instead when object existence is not discoverable"
+  },
+  {
+    "code": "E_PURPOSE_MISMATCH",
+    "http_status": 403,
+    "retryable": false,
+    "disclosure": "Use E_UNAVAILABLE/404 instead when object existence is not discoverable"
+  },
+  {
+    "code": "E_REGION_FORBIDDEN",
+    "http_status": 403,
+    "retryable": false,
+    "disclosure": "Use E_UNAVAILABLE/404 instead when object existence is not discoverable"
+  },
+  {
+    "code": "E_CONFLICT_OF_INTEREST",
+    "http_status": 403,
+    "retryable": false,
+    "disclosure": "Use E_UNAVAILABLE/404 instead when object existence is not discoverable"
+  },
+  {
+    "code": "E_CREDENTIAL_EXPIRED",
+    "http_status": 403,
+    "retryable": false,
+    "disclosure": "Use E_UNAVAILABLE/404 instead when object existence is not discoverable"
+  },
+  {
+    "code": "E_HOLD_ACTIVE",
+    "http_status": 409,
+    "retryable": false,
+    "disclosure": "Use E_UNAVAILABLE/404 instead when object existence is not discoverable"
+  },
+  {
+    "code": "E_QUARANTINED",
+    "http_status": 409,
+    "retryable": false,
+    "disclosure": "Use E_UNAVAILABLE/404 instead when object existence is not discoverable"
+  },
+  {
+    "code": "E_INTEGRITY",
+    "http_status": 422,
+    "retryable": false,
+    "disclosure": "Use E_UNAVAILABLE/404 instead when object existence is not discoverable"
+  },
+  {
+    "code": "E_QUOTA",
+    "http_status": 409,
+    "retryable": false,
+    "disclosure": "Use E_UNAVAILABLE/404 instead when object existence is not discoverable"
+  },
+  {
+    "code": "E_RATE_LIMIT",
+    "http_status": 429,
+    "retryable": true,
+    "disclosure": "Use E_UNAVAILABLE/404 instead when object existence is not discoverable"
+  },
+  {
+    "code": "E_DEPENDENCY",
+    "http_status": 503,
+    "retryable": true,
+    "disclosure": "Use E_UNAVAILABLE/404 instead when object existence is not discoverable"
+  },
+  {
+    "code": "E_CAPABILITY_DISABLED",
+    "http_status": 409,
+    "retryable": false,
+    "disclosure": "Use E_UNAVAILABLE/404 instead when object existence is not discoverable"
+  },
+  {
+    "code": "E_DISCLOSURE",
+    "http_status": 403,
+    "retryable": false,
+    "disclosure": "Use E_UNAVAILABLE/404 instead when object existence is not discoverable"
+  },
+  {
+    "code": "E_REMOTE_UNCONFIRMED",
+    "http_status": 409,
+    "retryable": false,
+    "disclosure": "Use E_UNAVAILABLE/404 instead when object existence is not discoverable"
+  },
+  {
+    "code": "E_RETENTION_CONFLICT",
+    "http_status": 409,
+    "retryable": false,
+    "disclosure": "Use E_UNAVAILABLE/404 instead when object existence is not discoverable"
+  },
+  {
+    "code": "E_UPLOAD_EXPIRED",
+    "http_status": 410,
+    "retryable": false,
+    "disclosure": "Use E_UNAVAILABLE/404 instead when object existence is not discoverable"
+  },
+  {
+    "code": "E_PART_CONFLICT",
+    "http_status": 409,
+    "retryable": false,
+    "disclosure": "Use E_UNAVAILABLE/404 instead when object existence is not discoverable"
+  },
+  {
+    "code": "E_UPLOAD_INCOMPLETE",
+    "http_status": 409,
+    "retryable": false,
+    "disclosure": "Use E_UNAVAILABLE/404 instead when object existence is not discoverable"
+  },
+  {
+    "code": "E_BODY_TOO_LARGE",
+    "http_status": 413,
+    "retryable": false,
+    "disclosure": "Use E_UNAVAILABLE/404 instead when object existence is not discoverable"
+  },
+  {
+    "code": "E_PRECONDITION_REQUIRED",
+    "http_status": 428,
+    "retryable": false,
+    "disclosure": "Use E_UNAVAILABLE/404 instead when object existence is not discoverable"
+  },
+  {
+    "code": "E_BAD_REQUEST",
+    "http_status": 400,
+    "retryable": false,
+    "disclosure": "Use E_UNAVAILABLE/404 instead when object existence is not discoverable"
+  },
+  {
+    "code": "E_UNSUPPORTED_MEDIA",
+    "http_status": 415,
+    "retryable": false,
+    "disclosure": "Use E_UNAVAILABLE/404 instead when object existence is not discoverable"
+  }
+]

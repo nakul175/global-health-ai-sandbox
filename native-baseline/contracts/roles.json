@@ -1,0 +1,102 @@
+{
+  "OP": {
+    "title": "OP Operator administrator",
+    "routine": "Verify institutions and manage platform configuration",
+    "conditions": "No routine patient, model or sealed benchmark access"
+  },
+  "OA": {
+    "title": "OA Organisation administrator",
+    "routine": "Invite members and delegate approved institutional roles",
+    "conditions": "Cannot self-elevate, grant beyond delegation or impersonate a signer"
+  },
+  "PM": {
+    "title": "PM Programme manager",
+    "routine": "Manage calls, pipeline, scope, budget requests and study tasks",
+    "conditions": "Scientific, data and clinical approvals remain separate"
+  },
+  "CO": {
+    "title": "CO Country owner",
+    "routine": "Maintain applicability and local activation records",
+    "conditions": "Qualified local authority for each decision class must be recorded"
+  },
+  "DV": {
+    "title": "DV Developer",
+    "routine": "Maintain own product versions and respond to reviews",
+    "conditions": "Cannot view sealed labels or be sole final scientific approver"
+  },
+  "DC": {
+    "title": "DC Data custodian",
+    "routine": "Catalogue assets, approve grants and manage releases",
+    "conditions": "Rights and country restrictions apply even to asset owners"
+  },
+  "DE": {
+    "title": "DE Data engineer",
+    "routine": "Import, transform and reconcile assigned assets",
+    "conditions": "Cannot grant own access or declare clinical reference truth"
+  },
+  "AN": {
+    "title": "AN Annotator",
+    "routine": "Label assigned cases using approved guidance",
+    "conditions": "Blinding and professional qualification must be current"
+  },
+  "EV": {
+    "title": "EV Evaluator",
+    "routine": "Prepare protocols, execute allowed runs and analyse results",
+    "conditions": "Assigned study, purpose, training and competence required"
+  },
+  "SR": {
+    "title": "SR Independent reviewer",
+    "routine": "Review frozen evidence and sign eligible findings",
+    "conditions": "Independence, conflicts, credentials and recent authentication checked"
+  },
+  "PI": {
+    "title": "PI Site investigator",
+    "routine": "Manage authorised local study conduct and participants",
+    "conditions": "Site activation and local clinical authority required"
+  },
+  "CS": {
+    "title": "CS Clinical safety owner",
+    "routine": "Triage hazards, contain unsafe activity and coordinate reporting",
+    "conditions": "Resumption requires independent eligible review where applicable"
+  },
+  "ER": {
+    "title": "ER Ethics or authority reviewer",
+    "routine": "Review explicitly shared evidence and record issuer decisions",
+    "conditions": "Platform membership alone does not establish issuing authority"
+  },
+  "BY": {
+    "title": "BY Buyer or implementation owner",
+    "routine": "Assess costs, readiness and deployment acceptance",
+    "conditions": "Patient access separately authorised"
+  },
+  "FN": {
+    "title": "FN Funder or finance owner",
+    "routine": "Manage agreed funding records and financial reporting",
+    "conditions": "No scientific editorial power or default clinical access"
+  },
+  "SO": {
+    "title": "SO Security and operations",
+    "routine": "Operate service, respond to incidents and manage credentials",
+    "conditions": "Sensitive content only through approved exceptional access"
+  },
+  "SU": {
+    "title": "SU Support agent",
+    "routine": "Resolve assigned redacted cases",
+    "conditions": "Time limited case scope; no blanket tenant access"
+  },
+  "AU": {
+    "title": "AU Independent auditor",
+    "routine": "Read bounded audit and control evidence",
+    "conditions": "Cannot modify or approve the records being audited"
+  },
+  "CR": {
+    "title": "CR Community representative",
+    "routine": "Submit concerns and review approved consultation material",
+    "conditions": "Cannot inspect other participants or restricted studies"
+  },
+  "SV": {
+    "title": "SV Service identity",
+    "routine": "Execute approved connector or scheduled function",
+    "conditions": "Named owner, nonhuman credentials and explicit scopes"
+  }
+}

@@ -1,0 +1,6051 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Sandbox integration events",
+  "oneOf": [
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "type": "integer"
+        },
+        "event_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "event_type": {
+          "const": "CreateInstitutionApplicationCommitted",
+          "type": "string"
+        },
+        "tenant_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "occurred_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "correlation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "causation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "actor_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "receipt_id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "state": {
+              "type": "string",
+              "enum": [
+                "draft",
+                "submitted",
+                "in_review",
+                "returned",
+                "approved",
+                "rejected",
+                "active",
+                "suspended",
+                "revoked",
+                "expired",
+                "frozen",
+                "issued",
+                "published",
+                "superseded",
+                "withdrawn",
+                "queued",
+                "running",
+                "cancel_requested",
+                "cancelled",
+                "succeeded",
+                "failed",
+                "quarantined",
+                "closed",
+                "disposed",
+                "open",
+                "verifying",
+                "complete",
+                "aborted",
+                "pending",
+                "verified",
+                "released",
+                "feasibility_review",
+                "contracted",
+                "protocol_review",
+                "approved_for_setup",
+                "ready",
+                "analysis",
+                "independent_review",
+                "decision_issued",
+                "stopped",
+                "remote_unconfirmed",
+                "transmitted",
+                "acknowledged",
+                "processed"
+              ]
+            },
+            "job_id": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "receipt_id",
+            "state",
+            "job_id"
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "event_id",
+        "event_type",
+        "tenant_id",
+        "aggregate_id",
+        "aggregate_version",
+        "sequence",
+        "occurred_at",
+        "correlation_id",
+        "causation_id",
+        "actor_id",
+        "payload"
+      ]
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "type": "integer"
+        },
+        "event_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "event_type": {
+          "const": "InviteMemberCommitted",
+          "type": "string"
+        },
+        "tenant_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "occurred_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "correlation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "causation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "actor_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "receipt_id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "state": {
+              "type": "string",
+              "enum": [
+                "draft",
+                "submitted",
+                "in_review",
+                "returned",
+                "approved",
+                "rejected",
+                "active",
+                "suspended",
+                "revoked",
+                "expired",
+                "frozen",
+                "issued",
+                "published",
+                "superseded",
+                "withdrawn",
+                "queued",
+                "running",
+                "cancel_requested",
+                "cancelled",
+                "succeeded",
+                "failed",
+                "quarantined",
+                "closed",
+                "disposed",
+                "open",
+                "verifying",
+                "complete",
+                "aborted",
+                "pending",
+                "verified",
+                "released",
+                "feasibility_review",
+                "contracted",
+                "protocol_review",
+                "approved_for_setup",
+                "ready",
+                "analysis",
+                "independent_review",
+                "decision_issued",
+                "stopped",
+                "remote_unconfirmed",
+                "transmitted",
+                "acknowledged",
+                "processed"
+              ]
+            },
+            "job_id": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "receipt_id",
+            "state",
+            "job_id"
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "event_id",
+        "event_type",
+        "tenant_id",
+        "aggregate_id",
+        "aggregate_version",
+        "sequence",
+        "occurred_at",
+        "correlation_id",
+        "causation_id",
+        "actor_id",
+        "payload"
+      ]
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "type": "integer"
+        },
+        "event_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "event_type": {
+          "const": "RevokeMembershipCommitted",
+          "type": "string"
+        },
+        "tenant_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "occurred_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "correlation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "causation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "actor_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "receipt_id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "state": {
+              "type": "string",
+              "enum": [
+                "draft",
+                "submitted",
+                "in_review",
+                "returned",
+                "approved",
+                "rejected",
+                "active",
+                "suspended",
+                "revoked",
+                "expired",
+                "frozen",
+                "issued",
+                "published",
+                "superseded",
+                "withdrawn",
+                "queued",
+                "running",
+                "cancel_requested",
+                "cancelled",
+                "succeeded",
+                "failed",
+                "quarantined",
+                "closed",
+                "disposed",
+                "open",
+                "verifying",
+                "complete",
+                "aborted",
+                "pending",
+                "verified",
+                "released",
+                "feasibility_review",
+                "contracted",
+                "protocol_review",
+                "approved_for_setup",
+                "ready",
+                "analysis",
+                "independent_review",
+                "decision_issued",
+                "stopped",
+                "remote_unconfirmed",
+                "transmitted",
+                "acknowledged",
+                "processed"
+              ]
+            },
+            "job_id": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "receipt_id",
+            "state",
+            "job_id"
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "event_id",
+        "event_type",
+        "tenant_id",
+        "aggregate_id",
+        "aggregate_version",
+        "sequence",
+        "occurred_at",
+        "correlation_id",
+        "causation_id",
+        "actor_id",
+        "payload"
+      ]
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "type": "integer"
+        },
+        "event_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "event_type": {
+          "const": "SubmitSolutionConfigurationCommitted",
+          "type": "string"
+        },
+        "tenant_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "occurred_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "correlation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "causation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "actor_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "receipt_id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "state": {
+              "type": "string",
+              "enum": [
+                "draft",
+                "submitted",
+                "in_review",
+                "returned",
+                "approved",
+                "rejected",
+                "active",
+                "suspended",
+                "revoked",
+                "expired",
+                "frozen",
+                "issued",
+                "published",
+                "superseded",
+                "withdrawn",
+                "queued",
+                "running",
+                "cancel_requested",
+                "cancelled",
+                "succeeded",
+                "failed",
+                "quarantined",
+                "closed",
+                "disposed",
+                "open",
+                "verifying",
+                "complete",
+                "aborted",
+                "pending",
+                "verified",
+                "released",
+                "feasibility_review",
+                "contracted",
+                "protocol_review",
+                "approved_for_setup",
+                "ready",
+                "analysis",
+                "independent_review",
+                "decision_issued",
+                "stopped",
+                "remote_unconfirmed",
+                "transmitted",
+                "acknowledged",
+                "processed"
+              ]
+            },
+            "job_id": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "receipt_id",
+            "state",
+            "job_id"
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "event_id",
+        "event_type",
+        "tenant_id",
+        "aggregate_id",
+        "aggregate_version",
+        "sequence",
+        "occurred_at",
+        "correlation_id",
+        "causation_id",
+        "actor_id",
+        "payload"
+      ]
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "type": "integer"
+        },
+        "event_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "event_type": {
+          "const": "SubmitAccessRequestCommitted",
+          "type": "string"
+        },
+        "tenant_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "occurred_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "correlation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "causation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "actor_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "receipt_id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "state": {
+              "type": "string",
+              "enum": [
+                "draft",
+                "submitted",
+                "in_review",
+                "returned",
+                "approved",
+                "rejected",
+                "active",
+                "suspended",
+                "revoked",
+                "expired",
+                "frozen",
+                "issued",
+                "published",
+                "superseded",
+                "withdrawn",
+                "queued",
+                "running",
+                "cancel_requested",
+                "cancelled",
+                "succeeded",
+                "failed",
+                "quarantined",
+                "closed",
+                "disposed",
+                "open",
+                "verifying",
+                "complete",
+                "aborted",
+                "pending",
+                "verified",
+                "released",
+                "feasibility_review",
+                "contracted",
+                "protocol_review",
+                "approved_for_setup",
+                "ready",
+                "analysis",
+                "independent_review",
+                "decision_issued",
+                "stopped",
+                "remote_unconfirmed",
+                "transmitted",
+                "acknowledged",
+                "processed"
+              ]
+            },
+            "job_id": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "receipt_id",
+            "state",
+            "job_id"
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "event_id",
+        "event_type",
+        "tenant_id",
+        "aggregate_id",
+        "aggregate_version",
+        "sequence",
+        "occurred_at",
+        "correlation_id",
+        "causation_id",
+        "actor_id",
+        "payload"
+      ]
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "type": "integer"
+        },
+        "event_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "event_type": {
+          "const": "DecideAccessRequestCommitted",
+          "type": "string"
+        },
+        "tenant_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "occurred_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "correlation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "causation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "actor_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "receipt_id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "state": {
+              "type": "string",
+              "enum": [
+                "draft",
+                "submitted",
+                "in_review",
+                "returned",
+                "approved",
+                "rejected",
+                "active",
+                "suspended",
+                "revoked",
+                "expired",
+                "frozen",
+                "issued",
+                "published",
+                "superseded",
+                "withdrawn",
+                "queued",
+                "running",
+                "cancel_requested",
+                "cancelled",
+                "succeeded",
+                "failed",
+                "quarantined",
+                "closed",
+                "disposed",
+                "open",
+                "verifying",
+                "complete",
+                "aborted",
+                "pending",
+                "verified",
+                "released",
+                "feasibility_review",
+                "contracted",
+                "protocol_review",
+                "approved_for_setup",
+                "ready",
+                "analysis",
+                "independent_review",
+                "decision_issued",
+                "stopped",
+                "remote_unconfirmed",
+                "transmitted",
+                "acknowledged",
+                "processed"
+              ]
+            },
+            "job_id": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "receipt_id",
+            "state",
+            "job_id"
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "event_id",
+        "event_type",
+        "tenant_id",
+        "aggregate_id",
+        "aggregate_version",
+        "sequence",
+        "occurred_at",
+        "correlation_id",
+        "causation_id",
+        "actor_id",
+        "payload"
+      ]
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "type": "integer"
+        },
+        "event_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "event_type": {
+          "const": "RegisterImportCommitted",
+          "type": "string"
+        },
+        "tenant_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "occurred_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "correlation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "causation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "actor_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "receipt_id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "state": {
+              "type": "string",
+              "enum": [
+                "draft",
+                "submitted",
+                "in_review",
+                "returned",
+                "approved",
+                "rejected",
+                "active",
+                "suspended",
+                "revoked",
+                "expired",
+                "frozen",
+                "issued",
+                "published",
+                "superseded",
+                "withdrawn",
+                "queued",
+                "running",
+                "cancel_requested",
+                "cancelled",
+                "succeeded",
+                "failed",
+                "quarantined",
+                "closed",
+                "disposed",
+                "open",
+                "verifying",
+                "complete",
+                "aborted",
+                "pending",
+                "verified",
+                "released",
+                "feasibility_review",
+                "contracted",
+                "protocol_review",
+                "approved_for_setup",
+                "ready",
+                "analysis",
+                "independent_review",
+                "decision_issued",
+                "stopped",
+                "remote_unconfirmed",
+                "transmitted",
+                "acknowledged",
+                "processed"
+              ]
+            },
+            "job_id": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "receipt_id",
+            "state",
+            "job_id"
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "event_id",
+        "event_type",
+        "tenant_id",
+        "aggregate_id",
+        "aggregate_version",
+        "sequence",
+        "occurred_at",
+        "correlation_id",
+        "causation_id",
+        "actor_id",
+        "payload"
+      ]
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "type": "integer"
+        },
+        "event_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "event_type": {
+          "const": "FinaliseImportCommitted",
+          "type": "string"
+        },
+        "tenant_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "occurred_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "correlation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "causation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "actor_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "receipt_id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "state": {
+              "type": "string",
+              "enum": [
+                "draft",
+                "submitted",
+                "in_review",
+                "returned",
+                "approved",
+                "rejected",
+                "active",
+                "suspended",
+                "revoked",
+                "expired",
+                "frozen",
+                "issued",
+                "published",
+                "superseded",
+                "withdrawn",
+                "queued",
+                "running",
+                "cancel_requested",
+                "cancelled",
+                "succeeded",
+                "failed",
+                "quarantined",
+                "closed",
+                "disposed",
+                "open",
+                "verifying",
+                "complete",
+                "aborted",
+                "pending",
+                "verified",
+                "released",
+                "feasibility_review",
+                "contracted",
+                "protocol_review",
+                "approved_for_setup",
+                "ready",
+                "analysis",
+                "independent_review",
+                "decision_issued",
+                "stopped",
+                "remote_unconfirmed",
+                "transmitted",
+                "acknowledged",
+                "processed"
+              ]
+            },
+            "job_id": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "receipt_id",
+            "state",
+            "job_id"
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "event_id",
+        "event_type",
+        "tenant_id",
+        "aggregate_id",
+        "aggregate_version",
+        "sequence",
+        "occurred_at",
+        "correlation_id",
+        "causation_id",
+        "actor_id",
+        "payload"
+      ]
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "type": "integer"
+        },
+        "event_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "event_type": {
+          "const": "ReleaseDatasetCommitted",
+          "type": "string"
+        },
+        "tenant_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "occurred_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "correlation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "causation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "actor_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "receipt_id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "state": {
+              "type": "string",
+              "enum": [
+                "draft",
+                "submitted",
+                "in_review",
+                "returned",
+                "approved",
+                "rejected",
+                "active",
+                "suspended",
+                "revoked",
+                "expired",
+                "frozen",
+                "issued",
+                "published",
+                "superseded",
+                "withdrawn",
+                "queued",
+                "running",
+                "cancel_requested",
+                "cancelled",
+                "succeeded",
+                "failed",
+                "quarantined",
+                "closed",
+                "disposed",
+                "open",
+                "verifying",
+                "complete",
+                "aborted",
+                "pending",
+                "verified",
+                "released",
+                "feasibility_review",
+                "contracted",
+                "protocol_review",
+                "approved_for_setup",
+                "ready",
+                "analysis",
+                "independent_review",
+                "decision_issued",
+                "stopped",
+                "remote_unconfirmed",
+                "transmitted",
+                "acknowledged",
+                "processed"
+              ]
+            },
+            "job_id": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "receipt_id",
+            "state",
+            "job_id"
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "event_id",
+        "event_type",
+        "tenant_id",
+        "aggregate_id",
+        "aggregate_version",
+        "sequence",
+        "occurred_at",
+        "correlation_id",
+        "causation_id",
+        "actor_id",
+        "payload"
+      ]
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "type": "integer"
+        },
+        "event_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "event_type": {
+          "const": "FreezeProtocolCommitted",
+          "type": "string"
+        },
+        "tenant_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "occurred_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "correlation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "causation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "actor_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "receipt_id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "state": {
+              "type": "string",
+              "enum": [
+                "draft",
+                "submitted",
+                "in_review",
+                "returned",
+                "approved",
+                "rejected",
+                "active",
+                "suspended",
+                "revoked",
+                "expired",
+                "frozen",
+                "issued",
+                "published",
+                "superseded",
+                "withdrawn",
+                "queued",
+                "running",
+                "cancel_requested",
+                "cancelled",
+                "succeeded",
+                "failed",
+                "quarantined",
+                "closed",
+                "disposed",
+                "open",
+                "verifying",
+                "complete",
+                "aborted",
+                "pending",
+                "verified",
+                "released",
+                "feasibility_review",
+                "contracted",
+                "protocol_review",
+                "approved_for_setup",
+                "ready",
+                "analysis",
+                "independent_review",
+                "decision_issued",
+                "stopped",
+                "remote_unconfirmed",
+                "transmitted",
+                "acknowledged",
+                "processed"
+              ]
+            },
+            "job_id": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "receipt_id",
+            "state",
+            "job_id"
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "event_id",
+        "event_type",
+        "tenant_id",
+        "aggregate_id",
+        "aggregate_version",
+        "sequence",
+        "occurred_at",
+        "correlation_id",
+        "causation_id",
+        "actor_id",
+        "payload"
+      ]
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "type": "integer"
+        },
+        "event_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "event_type": {
+          "const": "ActivateStudyCommitted",
+          "type": "string"
+        },
+        "tenant_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "occurred_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "correlation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "causation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "actor_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "receipt_id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "state": {
+              "type": "string",
+              "enum": [
+                "draft",
+                "submitted",
+                "in_review",
+                "returned",
+                "approved",
+                "rejected",
+                "active",
+                "suspended",
+                "revoked",
+                "expired",
+                "frozen",
+                "issued",
+                "published",
+                "superseded",
+                "withdrawn",
+                "queued",
+                "running",
+                "cancel_requested",
+                "cancelled",
+                "succeeded",
+                "failed",
+                "quarantined",
+                "closed",
+                "disposed",
+                "open",
+                "verifying",
+                "complete",
+                "aborted",
+                "pending",
+                "verified",
+                "released",
+                "feasibility_review",
+                "contracted",
+                "protocol_review",
+                "approved_for_setup",
+                "ready",
+                "analysis",
+                "independent_review",
+                "decision_issued",
+                "stopped",
+                "remote_unconfirmed",
+                "transmitted",
+                "acknowledged",
+                "processed"
+              ]
+            },
+            "job_id": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "receipt_id",
+            "state",
+            "job_id"
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "event_id",
+        "event_type",
+        "tenant_id",
+        "aggregate_id",
+        "aggregate_version",
+        "sequence",
+        "occurred_at",
+        "correlation_id",
+        "causation_id",
+        "actor_id",
+        "payload"
+      ]
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "type": "integer"
+        },
+        "event_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "event_type": {
+          "const": "SubmitRunCommitted",
+          "type": "string"
+        },
+        "tenant_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "occurred_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "correlation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "causation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "actor_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "receipt_id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "state": {
+              "type": "string",
+              "enum": [
+                "draft",
+                "submitted",
+                "in_review",
+                "returned",
+                "approved",
+                "rejected",
+                "active",
+                "suspended",
+                "revoked",
+                "expired",
+                "frozen",
+                "issued",
+                "published",
+                "superseded",
+                "withdrawn",
+                "queued",
+                "running",
+                "cancel_requested",
+                "cancelled",
+                "succeeded",
+                "failed",
+                "quarantined",
+                "closed",
+                "disposed",
+                "open",
+                "verifying",
+                "complete",
+                "aborted",
+                "pending",
+                "verified",
+                "released",
+                "feasibility_review",
+                "contracted",
+                "protocol_review",
+                "approved_for_setup",
+                "ready",
+                "analysis",
+                "independent_review",
+                "decision_issued",
+                "stopped",
+                "remote_unconfirmed",
+                "transmitted",
+                "acknowledged",
+                "processed"
+              ]
+            },
+            "job_id": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "receipt_id",
+            "state",
+            "job_id"
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "event_id",
+        "event_type",
+        "tenant_id",
+        "aggregate_id",
+        "aggregate_version",
+        "sequence",
+        "occurred_at",
+        "correlation_id",
+        "causation_id",
+        "actor_id",
+        "payload"
+      ]
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "type": "integer"
+        },
+        "event_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "event_type": {
+          "const": "CancelRunCommitted",
+          "type": "string"
+        },
+        "tenant_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "occurred_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "correlation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "causation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "actor_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "receipt_id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "state": {
+              "type": "string",
+              "enum": [
+                "draft",
+                "submitted",
+                "in_review",
+                "returned",
+                "approved",
+                "rejected",
+                "active",
+                "suspended",
+                "revoked",
+                "expired",
+                "frozen",
+                "issued",
+                "published",
+                "superseded",
+                "withdrawn",
+                "queued",
+                "running",
+                "cancel_requested",
+                "cancelled",
+                "succeeded",
+                "failed",
+                "quarantined",
+                "closed",
+                "disposed",
+                "open",
+                "verifying",
+                "complete",
+                "aborted",
+                "pending",
+                "verified",
+                "released",
+                "feasibility_review",
+                "contracted",
+                "protocol_review",
+                "approved_for_setup",
+                "ready",
+                "analysis",
+                "independent_review",
+                "decision_issued",
+                "stopped",
+                "remote_unconfirmed",
+                "transmitted",
+                "acknowledged",
+                "processed"
+              ]
+            },
+            "job_id": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "receipt_id",
+            "state",
+            "job_id"
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "event_id",
+        "event_type",
+        "tenant_id",
+        "aggregate_id",
+        "aggregate_version",
+        "sequence",
+        "occurred_at",
+        "correlation_id",
+        "causation_id",
+        "actor_id",
+        "payload"
+      ]
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "type": "integer"
+        },
+        "event_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "event_type": {
+          "const": "RequestOutputExportCommitted",
+          "type": "string"
+        },
+        "tenant_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "occurred_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "correlation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "causation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "actor_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "receipt_id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "state": {
+              "type": "string",
+              "enum": [
+                "draft",
+                "submitted",
+                "in_review",
+                "returned",
+                "approved",
+                "rejected",
+                "active",
+                "suspended",
+                "revoked",
+                "expired",
+                "frozen",
+                "issued",
+                "published",
+                "superseded",
+                "withdrawn",
+                "queued",
+                "running",
+                "cancel_requested",
+                "cancelled",
+                "succeeded",
+                "failed",
+                "quarantined",
+                "closed",
+                "disposed",
+                "open",
+                "verifying",
+                "complete",
+                "aborted",
+                "pending",
+                "verified",
+                "released",
+                "feasibility_review",
+                "contracted",
+                "protocol_review",
+                "approved_for_setup",
+                "ready",
+                "analysis",
+                "independent_review",
+                "decision_issued",
+                "stopped",
+                "remote_unconfirmed",
+                "transmitted",
+                "acknowledged",
+                "processed"
+              ]
+            },
+            "job_id": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "receipt_id",
+            "state",
+            "job_id"
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "event_id",
+        "event_type",
+        "tenant_id",
+        "aggregate_id",
+        "aggregate_version",
+        "sequence",
+        "occurred_at",
+        "correlation_id",
+        "causation_id",
+        "actor_id",
+        "payload"
+      ]
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "type": "integer"
+        },
+        "event_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "event_type": {
+          "const": "IssueEvidenceCommitted",
+          "type": "string"
+        },
+        "tenant_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "occurred_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "correlation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "causation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "actor_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "receipt_id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "state": {
+              "type": "string",
+              "enum": [
+                "draft",
+                "submitted",
+                "in_review",
+                "returned",
+                "approved",
+                "rejected",
+                "active",
+                "suspended",
+                "revoked",
+                "expired",
+                "frozen",
+                "issued",
+                "published",
+                "superseded",
+                "withdrawn",
+                "queued",
+                "running",
+                "cancel_requested",
+                "cancelled",
+                "succeeded",
+                "failed",
+                "quarantined",
+                "closed",
+                "disposed",
+                "open",
+                "verifying",
+                "complete",
+                "aborted",
+                "pending",
+                "verified",
+                "released",
+                "feasibility_review",
+                "contracted",
+                "protocol_review",
+                "approved_for_setup",
+                "ready",
+                "analysis",
+                "independent_review",
+                "decision_issued",
+                "stopped",
+                "remote_unconfirmed",
+                "transmitted",
+                "acknowledged",
+                "processed"
+              ]
+            },
+            "job_id": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "receipt_id",
+            "state",
+            "job_id"
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "event_id",
+        "event_type",
+        "tenant_id",
+        "aggregate_id",
+        "aggregate_version",
+        "sequence",
+        "occurred_at",
+        "correlation_id",
+        "causation_id",
+        "actor_id",
+        "payload"
+      ]
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "type": "integer"
+        },
+        "event_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "event_type": {
+          "const": "PublishEvidenceViewCommitted",
+          "type": "string"
+        },
+        "tenant_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "occurred_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "correlation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "causation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "actor_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "receipt_id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "state": {
+              "type": "string",
+              "enum": [
+                "draft",
+                "submitted",
+                "in_review",
+                "returned",
+                "approved",
+                "rejected",
+                "active",
+                "suspended",
+                "revoked",
+                "expired",
+                "frozen",
+                "issued",
+                "published",
+                "superseded",
+                "withdrawn",
+                "queued",
+                "running",
+                "cancel_requested",
+                "cancelled",
+                "succeeded",
+                "failed",
+                "quarantined",
+                "closed",
+                "disposed",
+                "open",
+                "verifying",
+                "complete",
+                "aborted",
+                "pending",
+                "verified",
+                "released",
+                "feasibility_review",
+                "contracted",
+                "protocol_review",
+                "approved_for_setup",
+                "ready",
+                "analysis",
+                "independent_review",
+                "decision_issued",
+                "stopped",
+                "remote_unconfirmed",
+                "transmitted",
+                "acknowledged",
+                "processed"
+              ]
+            },
+            "job_id": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "receipt_id",
+            "state",
+            "job_id"
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "event_id",
+        "event_type",
+        "tenant_id",
+        "aggregate_id",
+        "aggregate_version",
+        "sequence",
+        "occurred_at",
+        "correlation_id",
+        "causation_id",
+        "actor_id",
+        "payload"
+      ]
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "type": "integer"
+        },
+        "event_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "event_type": {
+          "const": "SubmitExternalPackageCommitted",
+          "type": "string"
+        },
+        "tenant_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "occurred_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "correlation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "causation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "actor_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "receipt_id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "state": {
+              "type": "string",
+              "enum": [
+                "draft",
+                "submitted",
+                "in_review",
+                "returned",
+                "approved",
+                "rejected",
+                "active",
+                "suspended",
+                "revoked",
+                "expired",
+                "frozen",
+                "issued",
+                "published",
+                "superseded",
+                "withdrawn",
+                "queued",
+                "running",
+                "cancel_requested",
+                "cancelled",
+                "succeeded",
+                "failed",
+                "quarantined",
+                "closed",
+                "disposed",
+                "open",
+                "verifying",
+                "complete",
+                "aborted",
+                "pending",
+                "verified",
+                "released",
+                "feasibility_review",
+                "contracted",
+                "protocol_review",
+                "approved_for_setup",
+                "ready",
+                "analysis",
+                "independent_review",
+                "decision_issued",
+                "stopped",
+                "remote_unconfirmed",
+                "transmitted",
+                "acknowledged",
+                "processed"
+              ]
+            },
+            "job_id": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "receipt_id",
+            "state",
+            "job_id"
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "event_id",
+        "event_type",
+        "tenant_id",
+        "aggregate_id",
+        "aggregate_version",
+        "sequence",
+        "occurred_at",
+        "correlation_id",
+        "causation_id",
+        "actor_id",
+        "payload"
+      ]
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "type": "integer"
+        },
+        "event_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "event_type": {
+          "const": "RecordSafetyConcernCommitted",
+          "type": "string"
+        },
+        "tenant_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "occurred_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "correlation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "causation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "actor_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "receipt_id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "state": {
+              "type": "string",
+              "enum": [
+                "draft",
+                "submitted",
+                "in_review",
+                "returned",
+                "approved",
+                "rejected",
+                "active",
+                "suspended",
+                "revoked",
+                "expired",
+                "frozen",
+                "issued",
+                "published",
+                "superseded",
+                "withdrawn",
+                "queued",
+                "running",
+                "cancel_requested",
+                "cancelled",
+                "succeeded",
+                "failed",
+                "quarantined",
+                "closed",
+                "disposed",
+                "open",
+                "verifying",
+                "complete",
+                "aborted",
+                "pending",
+                "verified",
+                "released",
+                "feasibility_review",
+                "contracted",
+                "protocol_review",
+                "approved_for_setup",
+                "ready",
+                "analysis",
+                "independent_review",
+                "decision_issued",
+                "stopped",
+                "remote_unconfirmed",
+                "transmitted",
+                "acknowledged",
+                "processed"
+              ]
+            },
+            "job_id": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "receipt_id",
+            "state",
+            "job_id"
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "event_id",
+        "event_type",
+        "tenant_id",
+        "aggregate_id",
+        "aggregate_version",
+        "sequence",
+        "occurred_at",
+        "correlation_id",
+        "causation_id",
+        "actor_id",
+        "payload"
+      ]
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "type": "integer"
+        },
+        "event_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "event_type": {
+          "const": "ApplyHoldCommitted",
+          "type": "string"
+        },
+        "tenant_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "occurred_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "correlation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "causation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "actor_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "receipt_id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "state": {
+              "type": "string",
+              "enum": [
+                "draft",
+                "submitted",
+                "in_review",
+                "returned",
+                "approved",
+                "rejected",
+                "active",
+                "suspended",
+                "revoked",
+                "expired",
+                "frozen",
+                "issued",
+                "published",
+                "superseded",
+                "withdrawn",
+                "queued",
+                "running",
+                "cancel_requested",
+                "cancelled",
+                "succeeded",
+                "failed",
+                "quarantined",
+                "closed",
+                "disposed",
+                "open",
+                "verifying",
+                "complete",
+                "aborted",
+                "pending",
+                "verified",
+                "released",
+                "feasibility_review",
+                "contracted",
+                "protocol_review",
+                "approved_for_setup",
+                "ready",
+                "analysis",
+                "independent_review",
+                "decision_issued",
+                "stopped",
+                "remote_unconfirmed",
+                "transmitted",
+                "acknowledged",
+                "processed"
+              ]
+            },
+            "job_id": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "receipt_id",
+            "state",
+            "job_id"
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "event_id",
+        "event_type",
+        "tenant_id",
+        "aggregate_id",
+        "aggregate_version",
+        "sequence",
+        "occurred_at",
+        "correlation_id",
+        "causation_id",
+        "actor_id",
+        "payload"
+      ]
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "type": "integer"
+        },
+        "event_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "event_type": {
+          "const": "RequestResumptionCommitted",
+          "type": "string"
+        },
+        "tenant_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "occurred_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "correlation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "causation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "actor_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "receipt_id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "state": {
+              "type": "string",
+              "enum": [
+                "draft",
+                "submitted",
+                "in_review",
+                "returned",
+                "approved",
+                "rejected",
+                "active",
+                "suspended",
+                "revoked",
+                "expired",
+                "frozen",
+                "issued",
+                "published",
+                "superseded",
+                "withdrawn",
+                "queued",
+                "running",
+                "cancel_requested",
+                "cancelled",
+                "succeeded",
+                "failed",
+                "quarantined",
+                "closed",
+                "disposed",
+                "open",
+                "verifying",
+                "complete",
+                "aborted",
+                "pending",
+                "verified",
+                "released",
+                "feasibility_review",
+                "contracted",
+                "protocol_review",
+                "approved_for_setup",
+                "ready",
+                "analysis",
+                "independent_review",
+                "decision_issued",
+                "stopped",
+                "remote_unconfirmed",
+                "transmitted",
+                "acknowledged",
+                "processed"
+              ]
+            },
+            "job_id": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "receipt_id",
+            "state",
+            "job_id"
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "event_id",
+        "event_type",
+        "tenant_id",
+        "aggregate_id",
+        "aggregate_version",
+        "sequence",
+        "occurred_at",
+        "correlation_id",
+        "causation_id",
+        "actor_id",
+        "payload"
+      ]
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "type": "integer"
+        },
+        "event_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "event_type": {
+          "const": "AuthoriseDeploymentCommitted",
+          "type": "string"
+        },
+        "tenant_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "occurred_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "correlation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "causation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "actor_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "receipt_id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "state": {
+              "type": "string",
+              "enum": [
+                "draft",
+                "submitted",
+                "in_review",
+                "returned",
+                "approved",
+                "rejected",
+                "active",
+                "suspended",
+                "revoked",
+                "expired",
+                "frozen",
+                "issued",
+                "published",
+                "superseded",
+                "withdrawn",
+                "queued",
+                "running",
+                "cancel_requested",
+                "cancelled",
+                "succeeded",
+                "failed",
+                "quarantined",
+                "closed",
+                "disposed",
+                "open",
+                "verifying",
+                "complete",
+                "aborted",
+                "pending",
+                "verified",
+                "released",
+                "feasibility_review",
+                "contracted",
+                "protocol_review",
+                "approved_for_setup",
+                "ready",
+                "analysis",
+                "independent_review",
+                "decision_issued",
+                "stopped",
+                "remote_unconfirmed",
+                "transmitted",
+                "acknowledged",
+                "processed"
+              ]
+            },
+            "job_id": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "receipt_id",
+            "state",
+            "job_id"
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "event_id",
+        "event_type",
+        "tenant_id",
+        "aggregate_id",
+        "aggregate_version",
+        "sequence",
+        "occurred_at",
+        "correlation_id",
+        "causation_id",
+        "actor_id",
+        "payload"
+      ]
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "type": "integer"
+        },
+        "event_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "event_type": {
+          "const": "RecordInstalledVersionCommitted",
+          "type": "string"
+        },
+        "tenant_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "occurred_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "correlation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "causation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "actor_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "receipt_id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "state": {
+              "type": "string",
+              "enum": [
+                "draft",
+                "submitted",
+                "in_review",
+                "returned",
+                "approved",
+                "rejected",
+                "active",
+                "suspended",
+                "revoked",
+                "expired",
+                "frozen",
+                "issued",
+                "published",
+                "superseded",
+                "withdrawn",
+                "queued",
+                "running",
+                "cancel_requested",
+                "cancelled",
+                "succeeded",
+                "failed",
+                "quarantined",
+                "closed",
+                "disposed",
+                "open",
+                "verifying",
+                "complete",
+                "aborted",
+                "pending",
+                "verified",
+                "released",
+                "feasibility_review",
+                "contracted",
+                "protocol_review",
+                "approved_for_setup",
+                "ready",
+                "analysis",
+                "independent_review",
+                "decision_issued",
+                "stopped",
+                "remote_unconfirmed",
+                "transmitted",
+                "acknowledged",
+                "processed"
+              ]
+            },
+            "job_id": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "receipt_id",
+            "state",
+            "job_id"
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "event_id",
+        "event_type",
+        "tenant_id",
+        "aggregate_id",
+        "aggregate_version",
+        "sequence",
+        "occurred_at",
+        "correlation_id",
+        "causation_id",
+        "actor_id",
+        "payload"
+      ]
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "type": "integer"
+        },
+        "event_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "event_type": {
+          "const": "SubmitMonitoringObservationCommitted",
+          "type": "string"
+        },
+        "tenant_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "occurred_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "correlation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "causation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "actor_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "receipt_id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "state": {
+              "type": "string",
+              "enum": [
+                "draft",
+                "submitted",
+                "in_review",
+                "returned",
+                "approved",
+                "rejected",
+                "active",
+                "suspended",
+                "revoked",
+                "expired",
+                "frozen",
+                "issued",
+                "published",
+                "superseded",
+                "withdrawn",
+                "queued",
+                "running",
+                "cancel_requested",
+                "cancelled",
+                "succeeded",
+                "failed",
+                "quarantined",
+                "closed",
+                "disposed",
+                "open",
+                "verifying",
+                "complete",
+                "aborted",
+                "pending",
+                "verified",
+                "released",
+                "feasibility_review",
+                "contracted",
+                "protocol_review",
+                "approved_for_setup",
+                "ready",
+                "analysis",
+                "independent_review",
+                "decision_issued",
+                "stopped",
+                "remote_unconfirmed",
+                "transmitted",
+                "acknowledged",
+                "processed"
+              ]
+            },
+            "job_id": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "receipt_id",
+            "state",
+            "job_id"
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "event_id",
+        "event_type",
+        "tenant_id",
+        "aggregate_id",
+        "aggregate_version",
+        "sequence",
+        "occurred_at",
+        "correlation_id",
+        "causation_id",
+        "actor_id",
+        "payload"
+      ]
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "type": "integer"
+        },
+        "event_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "event_type": {
+          "const": "RecordExternalDecisionCommitted",
+          "type": "string"
+        },
+        "tenant_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "occurred_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "correlation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "causation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "actor_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "receipt_id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "state": {
+              "type": "string",
+              "enum": [
+                "draft",
+                "submitted",
+                "in_review",
+                "returned",
+                "approved",
+                "rejected",
+                "active",
+                "suspended",
+                "revoked",
+                "expired",
+                "frozen",
+                "issued",
+                "published",
+                "superseded",
+                "withdrawn",
+                "queued",
+                "running",
+                "cancel_requested",
+                "cancelled",
+                "succeeded",
+                "failed",
+                "quarantined",
+                "closed",
+                "disposed",
+                "open",
+                "verifying",
+                "complete",
+                "aborted",
+                "pending",
+                "verified",
+                "released",
+                "feasibility_review",
+                "contracted",
+                "protocol_review",
+                "approved_for_setup",
+                "ready",
+                "analysis",
+                "independent_review",
+                "decision_issued",
+                "stopped",
+                "remote_unconfirmed",
+                "transmitted",
+                "acknowledged",
+                "processed"
+              ]
+            },
+            "job_id": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "receipt_id",
+            "state",
+            "job_id"
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "event_id",
+        "event_type",
+        "tenant_id",
+        "aggregate_id",
+        "aggregate_version",
+        "sequence",
+        "occurred_at",
+        "correlation_id",
+        "causation_id",
+        "actor_id",
+        "payload"
+      ]
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "type": "integer"
+        },
+        "event_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "event_type": {
+          "const": "RequestDisposalCommitted",
+          "type": "string"
+        },
+        "tenant_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "occurred_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "correlation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "causation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "actor_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "receipt_id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "state": {
+              "type": "string",
+              "enum": [
+                "draft",
+                "submitted",
+                "in_review",
+                "returned",
+                "approved",
+                "rejected",
+                "active",
+                "suspended",
+                "revoked",
+                "expired",
+                "frozen",
+                "issued",
+                "published",
+                "superseded",
+                "withdrawn",
+                "queued",
+                "running",
+                "cancel_requested",
+                "cancelled",
+                "succeeded",
+                "failed",
+                "quarantined",
+                "closed",
+                "disposed",
+                "open",
+                "verifying",
+                "complete",
+                "aborted",
+                "pending",
+                "verified",
+                "released",
+                "feasibility_review",
+                "contracted",
+                "protocol_review",
+                "approved_for_setup",
+                "ready",
+                "analysis",
+                "independent_review",
+                "decision_issued",
+                "stopped",
+                "remote_unconfirmed",
+                "transmitted",
+                "acknowledged",
+                "processed"
+              ]
+            },
+            "job_id": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "receipt_id",
+            "state",
+            "job_id"
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "event_id",
+        "event_type",
+        "tenant_id",
+        "aggregate_id",
+        "aggregate_version",
+        "sequence",
+        "occurred_at",
+        "correlation_id",
+        "causation_id",
+        "actor_id",
+        "payload"
+      ]
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "type": "integer"
+        },
+        "event_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "event_type": {
+          "const": "CloseInstitutionCommitted",
+          "type": "string"
+        },
+        "tenant_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "occurred_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "correlation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "causation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "actor_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "receipt_id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "state": {
+              "type": "string",
+              "enum": [
+                "draft",
+                "submitted",
+                "in_review",
+                "returned",
+                "approved",
+                "rejected",
+                "active",
+                "suspended",
+                "revoked",
+                "expired",
+                "frozen",
+                "issued",
+                "published",
+                "superseded",
+                "withdrawn",
+                "queued",
+                "running",
+                "cancel_requested",
+                "cancelled",
+                "succeeded",
+                "failed",
+                "quarantined",
+                "closed",
+                "disposed",
+                "open",
+                "verifying",
+                "complete",
+                "aborted",
+                "pending",
+                "verified",
+                "released",
+                "feasibility_review",
+                "contracted",
+                "protocol_review",
+                "approved_for_setup",
+                "ready",
+                "analysis",
+                "independent_review",
+                "decision_issued",
+                "stopped",
+                "remote_unconfirmed",
+                "transmitted",
+                "acknowledged",
+                "processed"
+              ]
+            },
+            "job_id": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "receipt_id",
+            "state",
+            "job_id"
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "event_id",
+        "event_type",
+        "tenant_id",
+        "aggregate_id",
+        "aggregate_version",
+        "sequence",
+        "occurred_at",
+        "correlation_id",
+        "causation_id",
+        "actor_id",
+        "payload"
+      ]
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "type": "integer"
+        },
+        "event_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "event_type": {
+          "const": "SubmitResourceCommitted",
+          "type": "string"
+        },
+        "tenant_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "occurred_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "correlation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "causation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "actor_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "receipt_id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "state": {
+              "type": "string",
+              "enum": [
+                "draft",
+                "submitted",
+                "in_review",
+                "returned",
+                "approved",
+                "rejected",
+                "active",
+                "suspended",
+                "revoked",
+                "expired",
+                "frozen",
+                "issued",
+                "published",
+                "superseded",
+                "withdrawn",
+                "queued",
+                "running",
+                "cancel_requested",
+                "cancelled",
+                "succeeded",
+                "failed",
+                "quarantined",
+                "closed",
+                "disposed",
+                "open",
+                "verifying",
+                "complete",
+                "aborted",
+                "pending",
+                "verified",
+                "released",
+                "feasibility_review",
+                "contracted",
+                "protocol_review",
+                "approved_for_setup",
+                "ready",
+                "analysis",
+                "independent_review",
+                "decision_issued",
+                "stopped",
+                "remote_unconfirmed",
+                "transmitted",
+                "acknowledged",
+                "processed"
+              ]
+            },
+            "job_id": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "receipt_id",
+            "state",
+            "job_id"
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "event_id",
+        "event_type",
+        "tenant_id",
+        "aggregate_id",
+        "aggregate_version",
+        "sequence",
+        "occurred_at",
+        "correlation_id",
+        "causation_id",
+        "actor_id",
+        "payload"
+      ]
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "type": "integer"
+        },
+        "event_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "event_type": {
+          "const": "RecordReviewDecisionCommitted",
+          "type": "string"
+        },
+        "tenant_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "occurred_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "correlation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "causation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "actor_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "receipt_id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "state": {
+              "type": "string",
+              "enum": [
+                "draft",
+                "submitted",
+                "in_review",
+                "returned",
+                "approved",
+                "rejected",
+                "active",
+                "suspended",
+                "revoked",
+                "expired",
+                "frozen",
+                "issued",
+                "published",
+                "superseded",
+                "withdrawn",
+                "queued",
+                "running",
+                "cancel_requested",
+                "cancelled",
+                "succeeded",
+                "failed",
+                "quarantined",
+                "closed",
+                "disposed",
+                "open",
+                "verifying",
+                "complete",
+                "aborted",
+                "pending",
+                "verified",
+                "released",
+                "feasibility_review",
+                "contracted",
+                "protocol_review",
+                "approved_for_setup",
+                "ready",
+                "analysis",
+                "independent_review",
+                "decision_issued",
+                "stopped",
+                "remote_unconfirmed",
+                "transmitted",
+                "acknowledged",
+                "processed"
+              ]
+            },
+            "job_id": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "receipt_id",
+            "state",
+            "job_id"
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "event_id",
+        "event_type",
+        "tenant_id",
+        "aggregate_id",
+        "aggregate_version",
+        "sequence",
+        "occurred_at",
+        "correlation_id",
+        "causation_id",
+        "actor_id",
+        "payload"
+      ]
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "type": "integer"
+        },
+        "event_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "event_type": {
+          "const": "TransitionResourceCommitted",
+          "type": "string"
+        },
+        "tenant_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "occurred_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "correlation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "causation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "actor_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "receipt_id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "state": {
+              "type": "string",
+              "enum": [
+                "draft",
+                "submitted",
+                "in_review",
+                "returned",
+                "approved",
+                "rejected",
+                "active",
+                "suspended",
+                "revoked",
+                "expired",
+                "frozen",
+                "issued",
+                "published",
+                "superseded",
+                "withdrawn",
+                "queued",
+                "running",
+                "cancel_requested",
+                "cancelled",
+                "succeeded",
+                "failed",
+                "quarantined",
+                "closed",
+                "disposed",
+                "open",
+                "verifying",
+                "complete",
+                "aborted",
+                "pending",
+                "verified",
+                "released",
+                "feasibility_review",
+                "contracted",
+                "protocol_review",
+                "approved_for_setup",
+                "ready",
+                "analysis",
+                "independent_review",
+                "decision_issued",
+                "stopped",
+                "remote_unconfirmed",
+                "transmitted",
+                "acknowledged",
+                "processed"
+              ]
+            },
+            "job_id": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "receipt_id",
+            "state",
+            "job_id"
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "event_id",
+        "event_type",
+        "tenant_id",
+        "aggregate_id",
+        "aggregate_version",
+        "sequence",
+        "occurred_at",
+        "correlation_id",
+        "causation_id",
+        "actor_id",
+        "payload"
+      ]
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "type": "integer"
+        },
+        "event_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "event_type": {
+          "const": "GrantMembershipCommitted",
+          "type": "string"
+        },
+        "tenant_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "occurred_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "correlation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "causation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "actor_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "receipt_id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "state": {
+              "type": "string",
+              "enum": [
+                "draft",
+                "submitted",
+                "in_review",
+                "returned",
+                "approved",
+                "rejected",
+                "active",
+                "suspended",
+                "revoked",
+                "expired",
+                "frozen",
+                "issued",
+                "published",
+                "superseded",
+                "withdrawn",
+                "queued",
+                "running",
+                "cancel_requested",
+                "cancelled",
+                "succeeded",
+                "failed",
+                "quarantined",
+                "closed",
+                "disposed",
+                "open",
+                "verifying",
+                "complete",
+                "aborted",
+                "pending",
+                "verified",
+                "released",
+                "feasibility_review",
+                "contracted",
+                "protocol_review",
+                "approved_for_setup",
+                "ready",
+                "analysis",
+                "independent_review",
+                "decision_issued",
+                "stopped",
+                "remote_unconfirmed",
+                "transmitted",
+                "acknowledged",
+                "processed"
+              ]
+            },
+            "job_id": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "receipt_id",
+            "state",
+            "job_id"
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "event_id",
+        "event_type",
+        "tenant_id",
+        "aggregate_id",
+        "aggregate_version",
+        "sequence",
+        "occurred_at",
+        "correlation_id",
+        "causation_id",
+        "actor_id",
+        "payload"
+      ]
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "type": "integer"
+        },
+        "event_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "event_type": {
+          "const": "RevokeAccessGrantCommitted",
+          "type": "string"
+        },
+        "tenant_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "occurred_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "correlation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "causation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "actor_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "receipt_id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "state": {
+              "type": "string",
+              "enum": [
+                "draft",
+                "submitted",
+                "in_review",
+                "returned",
+                "approved",
+                "rejected",
+                "active",
+                "suspended",
+                "revoked",
+                "expired",
+                "frozen",
+                "issued",
+                "published",
+                "superseded",
+                "withdrawn",
+                "queued",
+                "running",
+                "cancel_requested",
+                "cancelled",
+                "succeeded",
+                "failed",
+                "quarantined",
+                "closed",
+                "disposed",
+                "open",
+                "verifying",
+                "complete",
+                "aborted",
+                "pending",
+                "verified",
+                "released",
+                "feasibility_review",
+                "contracted",
+                "protocol_review",
+                "approved_for_setup",
+                "ready",
+                "analysis",
+                "independent_review",
+                "decision_issued",
+                "stopped",
+                "remote_unconfirmed",
+                "transmitted",
+                "acknowledged",
+                "processed"
+              ]
+            },
+            "job_id": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "receipt_id",
+            "state",
+            "job_id"
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "event_id",
+        "event_type",
+        "tenant_id",
+        "aggregate_id",
+        "aggregate_version",
+        "sequence",
+        "occurred_at",
+        "correlation_id",
+        "causation_id",
+        "actor_id",
+        "payload"
+      ]
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "type": "integer"
+        },
+        "event_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "event_type": {
+          "const": "VerifyExternalDecisionCommitted",
+          "type": "string"
+        },
+        "tenant_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "occurred_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "correlation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "causation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "actor_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "receipt_id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "state": {
+              "type": "string",
+              "enum": [
+                "draft",
+                "submitted",
+                "in_review",
+                "returned",
+                "approved",
+                "rejected",
+                "active",
+                "suspended",
+                "revoked",
+                "expired",
+                "frozen",
+                "issued",
+                "published",
+                "superseded",
+                "withdrawn",
+                "queued",
+                "running",
+                "cancel_requested",
+                "cancelled",
+                "succeeded",
+                "failed",
+                "quarantined",
+                "closed",
+                "disposed",
+                "open",
+                "verifying",
+                "complete",
+                "aborted",
+                "pending",
+                "verified",
+                "released",
+                "feasibility_review",
+                "contracted",
+                "protocol_review",
+                "approved_for_setup",
+                "ready",
+                "analysis",
+                "independent_review",
+                "decision_issued",
+                "stopped",
+                "remote_unconfirmed",
+                "transmitted",
+                "acknowledged",
+                "processed"
+              ]
+            },
+            "job_id": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "receipt_id",
+            "state",
+            "job_id"
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "event_id",
+        "event_type",
+        "tenant_id",
+        "aggregate_id",
+        "aggregate_version",
+        "sequence",
+        "occurred_at",
+        "correlation_id",
+        "causation_id",
+        "actor_id",
+        "payload"
+      ]
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "type": "integer"
+        },
+        "event_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "event_type": {
+          "const": "ReleaseOutputExportCommitted",
+          "type": "string"
+        },
+        "tenant_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "occurred_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "correlation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "causation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "actor_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "receipt_id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "state": {
+              "type": "string",
+              "enum": [
+                "draft",
+                "submitted",
+                "in_review",
+                "returned",
+                "approved",
+                "rejected",
+                "active",
+                "suspended",
+                "revoked",
+                "expired",
+                "frozen",
+                "issued",
+                "published",
+                "superseded",
+                "withdrawn",
+                "queued",
+                "running",
+                "cancel_requested",
+                "cancelled",
+                "succeeded",
+                "failed",
+                "quarantined",
+                "closed",
+                "disposed",
+                "open",
+                "verifying",
+                "complete",
+                "aborted",
+                "pending",
+                "verified",
+                "released",
+                "feasibility_review",
+                "contracted",
+                "protocol_review",
+                "approved_for_setup",
+                "ready",
+                "analysis",
+                "independent_review",
+                "decision_issued",
+                "stopped",
+                "remote_unconfirmed",
+                "transmitted",
+                "acknowledged",
+                "processed"
+              ]
+            },
+            "job_id": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "receipt_id",
+            "state",
+            "job_id"
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "event_id",
+        "event_type",
+        "tenant_id",
+        "aggregate_id",
+        "aggregate_version",
+        "sequence",
+        "occurred_at",
+        "correlation_id",
+        "causation_id",
+        "actor_id",
+        "payload"
+      ]
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "type": "integer"
+        },
+        "event_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "event_type": {
+          "const": "RetryJobCommitted",
+          "type": "string"
+        },
+        "tenant_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "occurred_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "correlation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "causation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "actor_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "receipt_id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "state": {
+              "type": "string",
+              "enum": [
+                "draft",
+                "submitted",
+                "in_review",
+                "returned",
+                "approved",
+                "rejected",
+                "active",
+                "suspended",
+                "revoked",
+                "expired",
+                "frozen",
+                "issued",
+                "published",
+                "superseded",
+                "withdrawn",
+                "queued",
+                "running",
+                "cancel_requested",
+                "cancelled",
+                "succeeded",
+                "failed",
+                "quarantined",
+                "closed",
+                "disposed",
+                "open",
+                "verifying",
+                "complete",
+                "aborted",
+                "pending",
+                "verified",
+                "released",
+                "feasibility_review",
+                "contracted",
+                "protocol_review",
+                "approved_for_setup",
+                "ready",
+                "analysis",
+                "independent_review",
+                "decision_issued",
+                "stopped",
+                "remote_unconfirmed",
+                "transmitted",
+                "acknowledged",
+                "processed"
+              ]
+            },
+            "job_id": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "receipt_id",
+            "state",
+            "job_id"
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "event_id",
+        "event_type",
+        "tenant_id",
+        "aggregate_id",
+        "aggregate_version",
+        "sequence",
+        "occurred_at",
+        "correlation_id",
+        "causation_id",
+        "actor_id",
+        "payload"
+      ]
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "type": "integer"
+        },
+        "event_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "event_type": {
+          "const": "CompleteNodeInstructionCommitted",
+          "type": "string"
+        },
+        "tenant_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "occurred_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "correlation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "causation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "actor_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "receipt_id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "state": {
+              "type": "string",
+              "enum": [
+                "draft",
+                "submitted",
+                "in_review",
+                "returned",
+                "approved",
+                "rejected",
+                "active",
+                "suspended",
+                "revoked",
+                "expired",
+                "frozen",
+                "issued",
+                "published",
+                "superseded",
+                "withdrawn",
+                "queued",
+                "running",
+                "cancel_requested",
+                "cancelled",
+                "succeeded",
+                "failed",
+                "quarantined",
+                "closed",
+                "disposed",
+                "open",
+                "verifying",
+                "complete",
+                "aborted",
+                "pending",
+                "verified",
+                "released",
+                "feasibility_review",
+                "contracted",
+                "protocol_review",
+                "approved_for_setup",
+                "ready",
+                "analysis",
+                "independent_review",
+                "decision_issued",
+                "stopped",
+                "remote_unconfirmed",
+                "transmitted",
+                "acknowledged",
+                "processed"
+              ]
+            },
+            "job_id": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "receipt_id",
+            "state",
+            "job_id"
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "event_id",
+        "event_type",
+        "tenant_id",
+        "aggregate_id",
+        "aggregate_version",
+        "sequence",
+        "occurred_at",
+        "correlation_id",
+        "causation_id",
+        "actor_id",
+        "payload"
+      ]
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "type": "integer"
+        },
+        "event_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "event_type": {
+          "const": "IssueCorrectionCommitted",
+          "type": "string"
+        },
+        "tenant_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "occurred_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "correlation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "causation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "actor_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "receipt_id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "state": {
+              "type": "string",
+              "enum": [
+                "draft",
+                "submitted",
+                "in_review",
+                "returned",
+                "approved",
+                "rejected",
+                "active",
+                "suspended",
+                "revoked",
+                "expired",
+                "frozen",
+                "issued",
+                "published",
+                "superseded",
+                "withdrawn",
+                "queued",
+                "running",
+                "cancel_requested",
+                "cancelled",
+                "succeeded",
+                "failed",
+                "quarantined",
+                "closed",
+                "disposed",
+                "open",
+                "verifying",
+                "complete",
+                "aborted",
+                "pending",
+                "verified",
+                "released",
+                "feasibility_review",
+                "contracted",
+                "protocol_review",
+                "approved_for_setup",
+                "ready",
+                "analysis",
+                "independent_review",
+                "decision_issued",
+                "stopped",
+                "remote_unconfirmed",
+                "transmitted",
+                "acknowledged",
+                "processed"
+              ]
+            },
+            "job_id": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "receipt_id",
+            "state",
+            "job_id"
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "event_id",
+        "event_type",
+        "tenant_id",
+        "aggregate_id",
+        "aggregate_version",
+        "sequence",
+        "occurred_at",
+        "correlation_id",
+        "causation_id",
+        "actor_id",
+        "payload"
+      ]
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "type": "integer"
+        },
+        "event_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "event_type": {
+          "const": "ApproveConfigurationCommitted",
+          "type": "string"
+        },
+        "tenant_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "occurred_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "correlation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "causation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "actor_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "receipt_id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "state": {
+              "type": "string",
+              "enum": [
+                "draft",
+                "submitted",
+                "in_review",
+                "returned",
+                "approved",
+                "rejected",
+                "active",
+                "suspended",
+                "revoked",
+                "expired",
+                "frozen",
+                "issued",
+                "published",
+                "superseded",
+                "withdrawn",
+                "queued",
+                "running",
+                "cancel_requested",
+                "cancelled",
+                "succeeded",
+                "failed",
+                "quarantined",
+                "closed",
+                "disposed",
+                "open",
+                "verifying",
+                "complete",
+                "aborted",
+                "pending",
+                "verified",
+                "released",
+                "feasibility_review",
+                "contracted",
+                "protocol_review",
+                "approved_for_setup",
+                "ready",
+                "analysis",
+                "independent_review",
+                "decision_issued",
+                "stopped",
+                "remote_unconfirmed",
+                "transmitted",
+                "acknowledged",
+                "processed"
+              ]
+            },
+            "job_id": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "receipt_id",
+            "state",
+            "job_id"
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "event_id",
+        "event_type",
+        "tenant_id",
+        "aggregate_id",
+        "aggregate_version",
+        "sequence",
+        "occurred_at",
+        "correlation_id",
+        "causation_id",
+        "actor_id",
+        "payload"
+      ]
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "type": "integer"
+        },
+        "event_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "event_type": {
+          "const": "RecordBudgetAdjustmentCommitted",
+          "type": "string"
+        },
+        "tenant_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "occurred_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "correlation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "causation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "actor_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "receipt_id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "state": {
+              "type": "string",
+              "enum": [
+                "draft",
+                "submitted",
+                "in_review",
+                "returned",
+                "approved",
+                "rejected",
+                "active",
+                "suspended",
+                "revoked",
+                "expired",
+                "frozen",
+                "issued",
+                "published",
+                "superseded",
+                "withdrawn",
+                "queued",
+                "running",
+                "cancel_requested",
+                "cancelled",
+                "succeeded",
+                "failed",
+                "quarantined",
+                "closed",
+                "disposed",
+                "open",
+                "verifying",
+                "complete",
+                "aborted",
+                "pending",
+                "verified",
+                "released",
+                "feasibility_review",
+                "contracted",
+                "protocol_review",
+                "approved_for_setup",
+                "ready",
+                "analysis",
+                "independent_review",
+                "decision_issued",
+                "stopped",
+                "remote_unconfirmed",
+                "transmitted",
+                "acknowledged",
+                "processed"
+              ]
+            },
+            "job_id": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "receipt_id",
+            "state",
+            "job_id"
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "event_id",
+        "event_type",
+        "tenant_id",
+        "aggregate_id",
+        "aggregate_version",
+        "sequence",
+        "occurred_at",
+        "correlation_id",
+        "causation_id",
+        "actor_id",
+        "payload"
+      ]
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "type": "integer"
+        },
+        "event_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "event_type": {
+          "const": "AcceptOwnershipCommitted",
+          "type": "string"
+        },
+        "tenant_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "occurred_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "correlation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "causation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "actor_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "receipt_id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "state": {
+              "type": "string",
+              "enum": [
+                "draft",
+                "submitted",
+                "in_review",
+                "returned",
+                "approved",
+                "rejected",
+                "active",
+                "suspended",
+                "revoked",
+                "expired",
+                "frozen",
+                "issued",
+                "published",
+                "superseded",
+                "withdrawn",
+                "queued",
+                "running",
+                "cancel_requested",
+                "cancelled",
+                "succeeded",
+                "failed",
+                "quarantined",
+                "closed",
+                "disposed",
+                "open",
+                "verifying",
+                "complete",
+                "aborted",
+                "pending",
+                "verified",
+                "released",
+                "feasibility_review",
+                "contracted",
+                "protocol_review",
+                "approved_for_setup",
+                "ready",
+                "analysis",
+                "independent_review",
+                "decision_issued",
+                "stopped",
+                "remote_unconfirmed",
+                "transmitted",
+                "acknowledged",
+                "processed"
+              ]
+            },
+            "job_id": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "receipt_id",
+            "state",
+            "job_id"
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "event_id",
+        "event_type",
+        "tenant_id",
+        "aggregate_id",
+        "aggregate_version",
+        "sequence",
+        "occurred_at",
+        "correlation_id",
+        "causation_id",
+        "actor_id",
+        "payload"
+      ]
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "type": "integer"
+        },
+        "event_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "event_type": {
+          "const": "RecordConnectorReceiptCommitted",
+          "type": "string"
+        },
+        "tenant_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "occurred_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "correlation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "causation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "actor_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "receipt_id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "state": {
+              "type": "string",
+              "enum": [
+                "draft",
+                "submitted",
+                "in_review",
+                "returned",
+                "approved",
+                "rejected",
+                "active",
+                "suspended",
+                "revoked",
+                "expired",
+                "frozen",
+                "issued",
+                "published",
+                "superseded",
+                "withdrawn",
+                "queued",
+                "running",
+                "cancel_requested",
+                "cancelled",
+                "succeeded",
+                "failed",
+                "quarantined",
+                "closed",
+                "disposed",
+                "open",
+                "verifying",
+                "complete",
+                "aborted",
+                "pending",
+                "verified",
+                "released",
+                "feasibility_review",
+                "contracted",
+                "protocol_review",
+                "approved_for_setup",
+                "ready",
+                "analysis",
+                "independent_review",
+                "decision_issued",
+                "stopped",
+                "remote_unconfirmed",
+                "transmitted",
+                "acknowledged",
+                "processed"
+              ]
+            },
+            "job_id": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "receipt_id",
+            "state",
+            "job_id"
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "event_id",
+        "event_type",
+        "tenant_id",
+        "aggregate_id",
+        "aggregate_version",
+        "sequence",
+        "occurred_at",
+        "correlation_id",
+        "causation_id",
+        "actor_id",
+        "payload"
+      ]
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "type": "integer"
+        },
+        "event_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "event_type": {
+          "const": "UploadPartStored",
+          "type": "string"
+        },
+        "tenant_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "occurred_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "correlation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "causation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "actor_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "result": {
+              "const": "stored",
+              "type": "string"
+            },
+            "artifact_ref": {
+              "type": "null"
+            },
+            "part_index": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 1279
+            }
+          },
+          "required": [
+            "result",
+            "artifact_ref",
+            "part_index"
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "event_id",
+        "event_type",
+        "tenant_id",
+        "aggregate_id",
+        "aggregate_version",
+        "sequence",
+        "occurred_at",
+        "correlation_id",
+        "causation_id",
+        "actor_id",
+        "payload"
+      ]
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "type": "integer"
+        },
+        "event_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "event_type": {
+          "const": "UploadVerificationCompleted",
+          "type": "string"
+        },
+        "tenant_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "occurred_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "correlation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "causation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "actor_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "result": {
+              "type": "string",
+              "enum": [
+                "quarantined",
+                "integrity_failed"
+              ]
+            },
+            "artifact_ref": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "uuid"
+            },
+            "part_index": {
+              "type": "null"
+            }
+          },
+          "required": [
+            "result",
+            "artifact_ref",
+            "part_index"
+          ],
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "result": {
+                    "const": "quarantined"
+                  }
+                }
+              },
+              "then": {
+                "properties": {
+                  "artifact_ref": {
+                    "type": "string",
+                    "format": "uuid"
+                  }
+                }
+              },
+              "else": {
+                "properties": {
+                  "artifact_ref": {
+                    "type": "null"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "event_id",
+        "event_type",
+        "tenant_id",
+        "aggregate_id",
+        "aggregate_version",
+        "sequence",
+        "occurred_at",
+        "correlation_id",
+        "causation_id",
+        "actor_id",
+        "payload"
+      ]
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "type": "integer"
+        },
+        "event_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "event_type": {
+          "const": "UploadAborted",
+          "type": "string"
+        },
+        "tenant_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "occurred_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "correlation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "causation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "actor_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "result": {
+              "const": "aborted",
+              "type": "string"
+            },
+            "artifact_ref": {
+              "type": "null"
+            },
+            "part_index": {
+              "type": "null"
+            }
+          },
+          "required": [
+            "result",
+            "artifact_ref",
+            "part_index"
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "event_id",
+        "event_type",
+        "tenant_id",
+        "aggregate_id",
+        "aggregate_version",
+        "sequence",
+        "occurred_at",
+        "correlation_id",
+        "causation_id",
+        "actor_id",
+        "payload"
+      ]
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "type": "integer"
+        },
+        "event_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "event_type": {
+          "const": "SupportAccessExpired",
+          "type": "string"
+        },
+        "tenant_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "occurred_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "correlation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "causation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "actor_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "result": {
+              "const": "expired",
+              "type": "string"
+            },
+            "artifact_ref": {
+              "type": "null"
+            },
+            "part_index": {
+              "type": "null"
+            }
+          },
+          "required": [
+            "result",
+            "artifact_ref",
+            "part_index"
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "event_id",
+        "event_type",
+        "tenant_id",
+        "aggregate_id",
+        "aggregate_version",
+        "sequence",
+        "occurred_at",
+        "correlation_id",
+        "causation_id",
+        "actor_id",
+        "payload"
+      ]
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "type": "integer"
+        },
+        "event_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "event_type": {
+          "const": "CreateDraftCommitted",
+          "type": "string"
+        },
+        "tenant_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "occurred_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "correlation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "causation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "actor_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "receipt_id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "state": {
+              "type": "string",
+              "enum": [
+                "draft",
+                "submitted",
+                "in_review",
+                "returned",
+                "approved",
+                "rejected",
+                "active",
+                "suspended",
+                "revoked",
+                "expired",
+                "frozen",
+                "issued",
+                "published",
+                "superseded",
+                "withdrawn",
+                "queued",
+                "running",
+                "cancel_requested",
+                "cancelled",
+                "succeeded",
+                "failed",
+                "quarantined",
+                "closed",
+                "disposed",
+                "open",
+                "verifying",
+                "complete",
+                "aborted",
+                "pending",
+                "verified",
+                "released",
+                "feasibility_review",
+                "contracted",
+                "protocol_review",
+                "approved_for_setup",
+                "ready",
+                "analysis",
+                "independent_review",
+                "decision_issued",
+                "stopped",
+                "remote_unconfirmed",
+                "transmitted",
+                "acknowledged",
+                "processed"
+              ]
+            },
+            "job_id": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "receipt_id",
+            "state",
+            "job_id"
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "event_id",
+        "event_type",
+        "tenant_id",
+        "aggregate_id",
+        "aggregate_version",
+        "sequence",
+        "occurred_at",
+        "correlation_id",
+        "causation_id",
+        "actor_id",
+        "payload"
+      ]
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "type": "integer"
+        },
+        "event_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "event_type": {
+          "const": "UpdateDraftCommitted",
+          "type": "string"
+        },
+        "tenant_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "aggregate_version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "occurred_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "correlation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "causation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "actor_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "receipt_id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "state": {
+              "type": "string",
+              "enum": [
+                "draft",
+                "submitted",
+                "in_review",
+                "returned",
+                "approved",
+                "rejected",
+                "active",
+                "suspended",
+                "revoked",
+                "expired",
+                "frozen",
+                "issued",
+                "published",
+                "superseded",
+                "withdrawn",
+                "queued",
+                "running",
+                "cancel_requested",
+                "cancelled",
+                "succeeded",
+                "failed",
+                "quarantined",
+                "closed",
+                "disposed",
+                "open",
+                "verifying",
+                "complete",
+                "aborted",
+                "pending",
+                "verified",
+                "released",
+                "feasibility_review",
+                "contracted",
+                "protocol_review",
+                "approved_for_setup",
+                "ready",
+                "analysis",
+                "independent_review",
+                "decision_issued",
+                "stopped",
+                "remote_unconfirmed",
+                "transmitted",
+                "acknowledged",
+                "processed"
+              ]
+            },
+            "job_id": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "receipt_id",
+            "state",
+            "job_id"
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "event_id",
+        "event_type",
+        "tenant_id",
+        "aggregate_id",
+        "aggregate_version",
+        "sequence",
+        "occurred_at",
+        "correlation_id",
+        "causation_id",
+        "actor_id",
+        "payload"
+      ]
+    }
+  ]
+}

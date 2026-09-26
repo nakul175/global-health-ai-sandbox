@@ -1,0 +1,38 @@
+[
+  {
+    "id": "SEM01",
+    "rule": "All times are RFC3339 UTC with Z, microsecond precision maximum; enforce valid_from < valid_until, starts_at < ends_at and no future observed_at beyond 5 minutes."
+  },
+  {
+    "id": "SEM02",
+    "rule": "All UUID references resolve in current tenant to specified kind and permissible version. Cross-tenant study uses verified local external_reference. No caller-controlled storage keys or tenant IDs."
+  },
+  {
+    "id": "SEM03",
+    "rule": "Approved grant scope is a subset of requested scope and currently delegable rights, including cohort, fields, purpose, region, recipients and time. Null is not wildcard."
+  },
+  {
+    "id": "SEM04",
+    "rule": "Import accepted + rejected + quarantined = source count; manifest source_count agrees; duplicate source row IDs cannot inflate accepted count."
+  },
+  {
+    "id": "SEM05",
+    "rule": "Each immutable snapshot has its author verified person and digest; signer has assigned role and a distinct verified person. Same person through another login is still disallowed."
+  },
+  {
+    "id": "SEM06",
+    "rule": "Observed ratio requires numerator >= 0, denominator > 0, numerator <= denominator and value = numerator/denominator within 1e-9. Missing/suppressed/invalid value must be null and reason present. Observed zero is valid."
+  },
+  {
+    "id": "SEM07",
+    "rule": "Each schema kind must match endpoint domain. Resource PATCH replaces entire supplied payload; omission preserves it; prohibited keys reject, never silently drop."
+  },
+  {
+    "id": "SEM08",
+    "rule": "A command context object/version pair is both null for a create, both non-null for an existing target. Command registry specifies which; target payload reference must equal context object where applicable."
+  },
+  {
+    "id": "SEM09",
+    "rule": "Revocation, hold, retention and quarantine override positive grants. Recheck before replay, enqueue, execution, download and publication."
+  }
+]

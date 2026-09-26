@@ -1,0 +1,127 @@
+[
+  {
+    "id": "APP01",
+    "flow": "Health and readiness",
+    "expected": "live200; ready200 only after DB/schema/policy dependencies ready; outage ready503"
+  },
+  {
+    "id": "APP02",
+    "flow": "Anonymous protected endpoint",
+    "expected": "401, no record hints"
+  },
+  {
+    "id": "APP03",
+    "flow": "Tenant A programme draft create and read",
+    "expected": "201 then 200; actor/tenant server bound; closed payload and ETag"
+  },
+  {
+    "id": "APP04",
+    "flow": "Tenant B reads A record",
+    "expected": "404 E_UNAVAILABLE; no title or count leakage"
+  },
+  {
+    "id": "APP05",
+    "flow": "Patch with stale ETag",
+    "expected": "409; committed record unchanged"
+  },
+  {
+    "id": "APP06",
+    "flow": "Same idempotency key same request",
+    "expected": "Same receipt and one effect; reauthorized before replay"
+  },
+  {
+    "id": "APP07",
+    "flow": "Same idempotency key changed request",
+    "expected": "409 E_IDEMPOTENCY_CONFLICT; one effect"
+  },
+  {
+    "id": "APP08",
+    "flow": "Grant or membership revoked between first command and retry",
+    "expected": "Denial within 60s; cached receipt not leaked"
+  },
+  {
+    "id": "APP09",
+    "flow": "Two reviewers use same verified person through aliases",
+    "expected": "Second or author approval denied; exact snapshot remains unchanged"
+  },
+  {
+    "id": "APP10",
+    "flow": "Upload final chunk first and lose acknowledgement",
+    "expected": "GET confirms index; identical retry safe; conflicting digest409"
+  },
+  {
+    "id": "APP11",
+    "flow": "Upload expiry or rights loss before finalisation",
+    "expected": "410 expiry or403 rights; no available artifact"
+  },
+  {
+    "id": "APP12",
+    "flow": "Whole-object hash mismatch",
+    "expected": "verification failed; no preview/search/AI/export/use exposure"
+  },
+  {
+    "id": "APP13",
+    "flow": "Abort races finalisation and worker retry",
+    "expected": "One serialized intent; late worker cannot publish aborted content"
+  },
+  {
+    "id": "APP14",
+    "flow": "Quarantine scan unavailable",
+    "expected": "Artifact remains quarantined and recoverable; readiness for unrelated workflows preserved"
+  },
+  {
+    "id": "APP15",
+    "flow": "Concurrent budget admission",
+    "expected": "Only allowed reservations commit; actual overrun still recorded"
+  },
+  {
+    "id": "APP16",
+    "flow": "Transaction fails after state write before outbox",
+    "expected": "State, receipt, audit and outbox all roll back"
+  },
+  {
+    "id": "APP17",
+    "flow": "Outbox publish succeeds then worker crashes",
+    "expected": "Same event redelivered; inbox prevents repeated consumer effect"
+  },
+  {
+    "id": "APP18",
+    "flow": "Event gap or tampered event",
+    "expected": "Park and reconcile/quarantine; no out-of-order state inference"
+  },
+  {
+    "id": "APP19",
+    "flow": "Local device disconnects during policy lease",
+    "expected": "Local expiry enforced; central remote-unconfirmed until observed stop"
+  },
+  {
+    "id": "APP20",
+    "flow": "Safety intake with no study identifier",
+    "expected": "Minimal authenticated concern accepted; no dependency on run availability"
+  },
+  {
+    "id": "APP21",
+    "flow": "Support approval expires mid-session",
+    "expected": "Next request denied; no raw data or signed URL reuse"
+  },
+  {
+    "id": "APP22",
+    "flow": "AI prompt injection requests export or approval",
+    "expected": "No authority escalation; proposals only; untrusted retrieved text not executable instruction"
+  },
+  {
+    "id": "APP23",
+    "flow": "Restore older backup after revocation or deletion",
+    "expected": "Restriction ledger applied before serving traffic; revoked asset remains blocked"
+  },
+  {
+    "id": "APP24",
+    "flow": "Missing, zero and suppressed observations",
+    "expected": "Distinct display and aggregation; unknown never zero"
+  },
+  {
+    "id": "APP25",
+    "flow": "Constrained network, keyboard and screen reader",
+    "expected": "Resume/no duplicate effects; focus and announcement states correct; source performance targets met"
+  }
+]

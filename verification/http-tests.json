@@ -1,0 +1,170 @@
+{
+  "checks": [
+    {
+      "name": "smoke: health route and actual local D1 ready",
+      "status": "passed"
+    },
+    {
+      "name": "smoke: anonymous application and API do not disclose records",
+      "status": "passed"
+    },
+    {
+      "name": "smoke: authenticated HTML serves Release 2 application",
+      "status": "passed"
+    },
+    {
+      "name": "real worker seeds durable scoped fixtures and strips labels",
+      "status": "passed"
+    },
+    {
+      "name": "transport rejects missing Origin and invalid content type",
+      "status": "passed"
+    },
+    {
+      "name": "transport requires preconditions and intent key",
+      "status": "passed"
+    },
+    {
+      "name": "real worker rejects unauthorized and malformed commands",
+      "status": "passed"
+    },
+    {
+      "name": "real worker computes the reference evaluation",
+      "status": "passed"
+    },
+    {
+      "name": "real worker drafts, independently issues and downloads exact evidence",
+      "status": "passed"
+    },
+    {
+      "name": "real worker applies hold, permits concern, rejects export, then resumes",
+      "status": "passed"
+    },
+    {
+      "name": "real worker blocks revoked grant exports",
+      "status": "passed"
+    },
+    {
+      "name": "real worker isolates tenant data and support fields",
+      "status": "passed"
+    },
+    {
+      "name": "real worker keeps an audit for all accepted commands",
+      "status": "passed"
+    },
+    {
+      "name": "R2 HTTP generates a persisted connected ecosystem",
+      "status": "passed"
+    },
+    {
+      "name": "R2 HTTP registry pagination has complete, non-repeated scoped records",
+      "status": "passed"
+    },
+    {
+      "name": "R2 HTTP audio endpoint returns actual bounded deterministic WAV bytes",
+      "status": "passed"
+    },
+    {
+      "name": "R2 HTTP executes audio inference then suppresses duplicate scenario effects",
+      "status": "passed"
+    },
+    {
+      "name": "R2 HTTP generated lab records and event history remain queryable",
+      "status": "passed"
+    },
+    {
+      "name": "R2 HTTP replay yields identical final-state digest",
+      "status": "passed"
+    },
+    {
+      "name": "R2 HTTP evidence requires independent role and downloads frozen bytes",
+      "status": "passed"
+    },
+    {
+      "name": "R2 HTTP safety hold blocks audio and evidence delivery",
+      "status": "passed"
+    },
+    {
+      "name": "R2 HTTP reset rejects old generation registry and run replay",
+      "status": "passed"
+    },
+    {
+      "name": "suite HTTP explicit dummy fixtures persist without live credentials",
+      "status": "passed"
+    },
+    {
+      "name": "suite HTTP package admission and manual job execute portable model",
+      "status": "passed"
+    },
+    {
+      "name": "suite HTTP media chunks persist in R2 and reject wrong digests",
+      "status": "passed"
+    },
+    {
+      "name": "suite HTTP upload resume verifies final PCM16 and quarantines bytes",
+      "status": "passed"
+    },
+    {
+      "name": "suite HTTP custody and playback grant control exact media bytes",
+      "status": "passed"
+    },
+    {
+      "name": "suite HTTP uploaded audio inference requires its own grant and computes output",
+      "status": "passed"
+    },
+    {
+      "name": "suite HTTP media scope, hold and revocation cannot be bypassed",
+      "status": "passed"
+    },
+    {
+      "name": "suite HTTP support diagnostics require expiring independent grant",
+      "status": "passed"
+    },
+    {
+      "name": "suite HTTP corrected evidence supersedes original without losing lineage",
+      "status": "passed"
+    },
+    {
+      "name": "suite HTTP metadata export and operations retain honest execution labels",
+      "status": "passed"
+    },
+    {
+      "name": "assurance HTTP signs exact issued evidence without exposing a private key",
+      "status": "passed"
+    },
+    {
+      "name": "assurance HTTP creates, replays, downloads and verifies encrypted R2 checkpoint",
+      "status": "passed"
+    },
+    {
+      "name": "assurance HTTP denies checkpoint role, owner, tenant and Origin violations",
+      "status": "passed"
+    },
+    {
+      "name": "concurrency HTTP same intent has one effect and competing writes have one winner",
+      "status": "passed"
+    },
+    {
+      "name": "bounded local performance: 60 scoped reads at concurrency six without errors",
+      "status": "passed"
+    },
+    {
+      "name": "live connector HTTP saves encrypted credentials and exposes only safe configuration",
+      "status": "passed"
+    },
+    {
+      "name": "live connector HTTP rejects invalid mapping, missing consent and activation without test",
+      "status": "passed"
+    },
+    {
+      "name": "live connector HTTP records real network failure instead of simulated success",
+      "status": "passed"
+    },
+    {
+      "name": "live connector HTTP enforces role and tenant scope and supports credential rotation",
+      "status": "passed"
+    }
+  ],
+  "passed": 41,
+  "failed": 0
+}

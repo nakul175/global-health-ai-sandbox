@@ -1,0 +1,1214 @@
+[
+  {
+    "id": "WP-ORG-R1",
+    "domain": "ORG",
+    "release": "R1",
+    "slice": "S01",
+    "requirements": [
+      "FR-ORG-001",
+      "FR-ORG-002",
+      "FR-ORG-003",
+      "FR-ORG-004",
+      "FR-ORG-005",
+      "FR-ORG-006",
+      "FR-ORG-007",
+      "FR-ORG-009",
+      "FR-ORG-010"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-ORG-R2",
+    "domain": "ORG",
+    "release": "R2",
+    "slice": "S07",
+    "requirements": [
+      "FR-ORG-008"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-IAM-R1",
+    "domain": "IAM",
+    "release": "R1",
+    "slice": "S01",
+    "requirements": [
+      "FR-IAM-001",
+      "FR-IAM-002",
+      "FR-IAM-003",
+      "FR-IAM-004",
+      "FR-IAM-006",
+      "FR-IAM-007",
+      "FR-IAM-008",
+      "FR-IAM-009",
+      "FR-IAM-010",
+      "FR-IAM-011",
+      "FR-IAM-012",
+      "FR-IAM-013",
+      "FR-IAM-014"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-IAM-R2",
+    "domain": "IAM",
+    "release": "R2",
+    "slice": "S07",
+    "requirements": [
+      "FR-IAM-005"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-ACC-R1",
+    "domain": "ACC",
+    "release": "R1",
+    "slice": "S01",
+    "requirements": [
+      "FR-ACC-001",
+      "FR-ACC-002",
+      "FR-ACC-003",
+      "FR-ACC-004",
+      "FR-ACC-005",
+      "FR-ACC-006",
+      "FR-ACC-007",
+      "FR-ACC-008",
+      "FR-ACC-009",
+      "FR-ACC-010",
+      "FR-ACC-011",
+      "FR-ACC-012"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-CTR-R1",
+    "domain": "CTR",
+    "release": "R1",
+    "slice": "S02",
+    "requirements": [
+      "FR-CTR-001",
+      "FR-CTR-002",
+      "FR-CTR-003",
+      "FR-CTR-004",
+      "FR-CTR-005",
+      "FR-CTR-006",
+      "FR-CTR-007",
+      "FR-CTR-008",
+      "FR-CTR-010"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-CTR-R2",
+    "domain": "CTR",
+    "release": "R2",
+    "slice": "S07",
+    "requirements": [
+      "FR-CTR-009"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-DEM-R1",
+    "domain": "DEM",
+    "release": "R1",
+    "slice": "S02",
+    "requirements": [
+      "FR-DEM-001",
+      "FR-DEM-002",
+      "FR-DEM-003",
+      "FR-DEM-004",
+      "FR-DEM-005",
+      "FR-DEM-006",
+      "FR-DEM-008"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-DEM-R2",
+    "domain": "DEM",
+    "release": "R2",
+    "slice": "S07",
+    "requirements": [
+      "FR-DEM-007"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-NET-R1",
+    "domain": "NET",
+    "release": "R1",
+    "slice": "S02",
+    "requirements": [
+      "FR-NET-001",
+      "FR-NET-002",
+      "FR-NET-003",
+      "FR-NET-004",
+      "FR-NET-005",
+      "FR-NET-007",
+      "FR-NET-008"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-NET-R2",
+    "domain": "NET",
+    "release": "R2",
+    "slice": "S07",
+    "requirements": [
+      "FR-NET-006",
+      "FR-NET-009"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-SOL-R1",
+    "domain": "SOL",
+    "release": "R1",
+    "slice": "S04",
+    "requirements": [
+      "FR-SOL-001",
+      "FR-SOL-002",
+      "FR-SOL-003",
+      "FR-SOL-004",
+      "FR-SOL-005",
+      "FR-SOL-006",
+      "FR-SOL-007",
+      "FR-SOL-008",
+      "FR-SOL-009",
+      "FR-SOL-010",
+      "FR-SOL-012"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-SOL-R2",
+    "domain": "SOL",
+    "release": "R2",
+    "slice": "S07",
+    "requirements": [
+      "FR-SOL-011"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-AGR-R1",
+    "domain": "AGR",
+    "release": "R1",
+    "slice": "S02",
+    "requirements": [
+      "FR-AGR-001",
+      "FR-AGR-002",
+      "FR-AGR-003",
+      "FR-AGR-004",
+      "FR-AGR-005",
+      "FR-AGR-006",
+      "FR-AGR-007",
+      "FR-AGR-008",
+      "FR-AGR-010"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-AGR-R2",
+    "domain": "AGR",
+    "release": "R2",
+    "slice": "S07",
+    "requirements": [
+      "FR-AGR-009"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-WFL-R1",
+    "domain": "WFL",
+    "release": "R1",
+    "slice": "S02",
+    "requirements": [
+      "FR-WFL-001",
+      "FR-WFL-002",
+      "FR-WFL-003",
+      "FR-WFL-004",
+      "FR-WFL-005",
+      "FR-WFL-006",
+      "FR-WFL-007",
+      "FR-WFL-008",
+      "FR-WFL-009",
+      "FR-WFL-010"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-ETH-R1",
+    "domain": "ETH",
+    "release": "R1",
+    "slice": "S02",
+    "requirements": [
+      "FR-ETH-001",
+      "FR-ETH-002",
+      "FR-ETH-005",
+      "FR-ETH-008",
+      "FR-ETH-010"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-ETH-R2",
+    "domain": "ETH",
+    "release": "R2",
+    "slice": "S07",
+    "requirements": [
+      "FR-ETH-003",
+      "FR-ETH-004",
+      "FR-ETH-006",
+      "FR-ETH-007",
+      "FR-ETH-009"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-DAC-R1",
+    "domain": "DAC",
+    "release": "R1",
+    "slice": "S03",
+    "requirements": [
+      "FR-DAC-001",
+      "FR-DAC-002",
+      "FR-DAC-003",
+      "FR-DAC-004",
+      "FR-DAC-005",
+      "FR-DAC-006",
+      "FR-DAC-007",
+      "FR-DAC-008",
+      "FR-DAC-009",
+      "FR-DAC-011",
+      "FR-DAC-012"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-DAC-R2",
+    "domain": "DAC",
+    "release": "R2",
+    "slice": "S07",
+    "requirements": [
+      "FR-DAC-010"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-ING-R1",
+    "domain": "ING",
+    "release": "R1",
+    "slice": "S03",
+    "requirements": [
+      "FR-ING-001",
+      "FR-ING-002",
+      "FR-ING-003",
+      "FR-ING-004",
+      "FR-ING-005",
+      "FR-ING-006",
+      "FR-ING-007",
+      "FR-ING-008",
+      "FR-ING-009"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-ING-R2",
+    "domain": "ING",
+    "release": "R2",
+    "slice": "S07",
+    "requirements": [
+      "FR-ING-010"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-CUR-R1",
+    "domain": "CUR",
+    "release": "R1",
+    "slice": "S03",
+    "requirements": [
+      "FR-CUR-001",
+      "FR-CUR-002",
+      "FR-CUR-003",
+      "FR-CUR-004",
+      "FR-CUR-005",
+      "FR-CUR-006",
+      "FR-CUR-007",
+      "FR-CUR-008",
+      "FR-CUR-009"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-CUR-R2",
+    "domain": "CUR",
+    "release": "R2",
+    "slice": "S07",
+    "requirements": [
+      "FR-CUR-010"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-RUN-R1",
+    "domain": "RUN",
+    "release": "R1",
+    "slice": "S04",
+    "requirements": [
+      "FR-RUN-001",
+      "FR-RUN-002",
+      "FR-RUN-003",
+      "FR-RUN-004",
+      "FR-RUN-005",
+      "FR-RUN-006",
+      "FR-RUN-007",
+      "FR-RUN-008",
+      "FR-RUN-009",
+      "FR-RUN-010",
+      "FR-RUN-012"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-RUN-R2",
+    "domain": "RUN",
+    "release": "R2",
+    "slice": "S07",
+    "requirements": [
+      "FR-RUN-011"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-PRO-R1",
+    "domain": "PRO",
+    "release": "R1",
+    "slice": "S04",
+    "requirements": [
+      "FR-PRO-001",
+      "FR-PRO-002",
+      "FR-PRO-003",
+      "FR-PRO-004",
+      "FR-PRO-005",
+      "FR-PRO-006",
+      "FR-PRO-007",
+      "FR-PRO-008",
+      "FR-PRO-009",
+      "FR-PRO-010",
+      "FR-PRO-011"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-PRO-R2",
+    "domain": "PRO",
+    "release": "R2",
+    "slice": "S07",
+    "requirements": [
+      "FR-PRO-012"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-VAL-R1",
+    "domain": "VAL",
+    "release": "R1",
+    "slice": "S04",
+    "requirements": [
+      "FR-VAL-001",
+      "FR-VAL-002",
+      "FR-VAL-003",
+      "FR-VAL-004",
+      "FR-VAL-005",
+      "FR-VAL-006",
+      "FR-VAL-007",
+      "FR-VAL-008",
+      "FR-VAL-009",
+      "FR-VAL-010",
+      "FR-VAL-012"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-VAL-R2",
+    "domain": "VAL",
+    "release": "R2",
+    "slice": "S07",
+    "requirements": [
+      "FR-VAL-011"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-GEN-R2",
+    "domain": "GEN",
+    "release": "R2",
+    "slice": "S07",
+    "requirements": [
+      "FR-GEN-001",
+      "FR-GEN-002",
+      "FR-GEN-003",
+      "FR-GEN-004",
+      "FR-GEN-005",
+      "FR-GEN-006",
+      "FR-GEN-007",
+      "FR-GEN-008",
+      "FR-GEN-009",
+      "FR-GEN-010",
+      "FR-GEN-011",
+      "FR-GEN-012"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-MOD-R1",
+    "domain": "MOD",
+    "release": "R1",
+    "slice": "S04",
+    "requirements": [
+      "FR-MOD-001",
+      "FR-MOD-002",
+      "FR-MOD-008"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-MOD-R2",
+    "domain": "MOD",
+    "release": "R2",
+    "slice": "S07",
+    "requirements": [
+      "FR-MOD-003",
+      "FR-MOD-004",
+      "FR-MOD-006",
+      "FR-MOD-007"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-MOD-R3",
+    "domain": "MOD",
+    "release": "R3",
+    "slice": "S07",
+    "requirements": [
+      "FR-MOD-005"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-HUM-R1",
+    "domain": "HUM",
+    "release": "R1",
+    "slice": "S04",
+    "requirements": [
+      "FR-HUM-001",
+      "FR-HUM-007"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-HUM-R2",
+    "domain": "HUM",
+    "release": "R2",
+    "slice": "S07",
+    "requirements": [
+      "FR-HUM-002",
+      "FR-HUM-003",
+      "FR-HUM-004",
+      "FR-HUM-005",
+      "FR-HUM-006",
+      "FR-HUM-008",
+      "FR-HUM-009"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-STU-R2",
+    "domain": "STU",
+    "release": "R2",
+    "slice": "S07",
+    "requirements": [
+      "FR-STU-001",
+      "FR-STU-002",
+      "FR-STU-003",
+      "FR-STU-004",
+      "FR-STU-005",
+      "FR-STU-006",
+      "FR-STU-007",
+      "FR-STU-008",
+      "FR-STU-009",
+      "FR-STU-010",
+      "FR-STU-011",
+      "FR-STU-012"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-SAF-R1",
+    "domain": "SAF",
+    "release": "R1",
+    "slice": "S06",
+    "requirements": [
+      "FR-SAF-001",
+      "FR-SAF-002",
+      "FR-SAF-003",
+      "FR-SAF-004",
+      "FR-SAF-006",
+      "FR-SAF-007",
+      "FR-SAF-008",
+      "FR-SAF-009",
+      "FR-SAF-010",
+      "FR-SAF-012"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-SAF-R2",
+    "domain": "SAF",
+    "release": "R2",
+    "slice": "S07",
+    "requirements": [
+      "FR-SAF-005",
+      "FR-SAF-011"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-EVD-R1",
+    "domain": "EVD",
+    "release": "R1",
+    "slice": "S05",
+    "requirements": [
+      "FR-EVD-001",
+      "FR-EVD-002",
+      "FR-EVD-003",
+      "FR-EVD-004",
+      "FR-EVD-005",
+      "FR-EVD-006",
+      "FR-EVD-007",
+      "FR-EVD-008",
+      "FR-EVD-009",
+      "FR-EVD-011"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-EVD-R2",
+    "domain": "EVD",
+    "release": "R2",
+    "slice": "S07",
+    "requirements": [
+      "FR-EVD-010",
+      "FR-EVD-012"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-REG-R1",
+    "domain": "REG",
+    "release": "R1",
+    "slice": "S05",
+    "requirements": [
+      "FR-REG-001",
+      "FR-REG-003",
+      "FR-REG-005",
+      "FR-REG-007"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-REG-R2",
+    "domain": "REG",
+    "release": "R2",
+    "slice": "S07",
+    "requirements": [
+      "FR-REG-002",
+      "FR-REG-004",
+      "FR-REG-006",
+      "FR-REG-008"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-TRN-R2",
+    "domain": "TRN",
+    "release": "R2",
+    "slice": "S07",
+    "requirements": [
+      "FR-TRN-001",
+      "FR-TRN-002",
+      "FR-TRN-003",
+      "FR-TRN-004",
+      "FR-TRN-005",
+      "FR-TRN-006",
+      "FR-TRN-007",
+      "FR-TRN-008"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-DEP-R1",
+    "domain": "DEP",
+    "release": "R1",
+    "slice": "S05",
+    "requirements": [
+      "FR-DEP-001"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-DEP-R2",
+    "domain": "DEP",
+    "release": "R2",
+    "slice": "S07",
+    "requirements": [
+      "FR-DEP-002",
+      "FR-DEP-003",
+      "FR-DEP-004",
+      "FR-DEP-005",
+      "FR-DEP-006",
+      "FR-DEP-007",
+      "FR-DEP-008",
+      "FR-DEP-009",
+      "FR-DEP-010",
+      "FR-DEP-011",
+      "FR-DEP-012"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-MON-R2",
+    "domain": "MON",
+    "release": "R2",
+    "slice": "S07",
+    "requirements": [
+      "FR-MON-001",
+      "FR-MON-002",
+      "FR-MON-003",
+      "FR-MON-004",
+      "FR-MON-005",
+      "FR-MON-006",
+      "FR-MON-007",
+      "FR-MON-008",
+      "FR-MON-009",
+      "FR-MON-010",
+      "FR-MON-011",
+      "FR-MON-012"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-ANA-R1",
+    "domain": "ANA",
+    "release": "R1",
+    "slice": "S05",
+    "requirements": [
+      "FR-ANA-001",
+      "FR-ANA-002",
+      "FR-ANA-003",
+      "FR-ANA-004",
+      "FR-ANA-006",
+      "FR-ANA-007",
+      "FR-ANA-008",
+      "FR-ANA-009"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-ANA-R2",
+    "domain": "ANA",
+    "release": "R2",
+    "slice": "S07",
+    "requirements": [
+      "FR-ANA-005",
+      "FR-ANA-010"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-COL-R1",
+    "domain": "COL",
+    "release": "R1",
+    "slice": "S05",
+    "requirements": [
+      "FR-COL-001",
+      "FR-COL-002",
+      "FR-COL-003",
+      "FR-COL-004",
+      "FR-COL-005",
+      "FR-COL-006",
+      "FR-COL-008"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-COL-R2",
+    "domain": "COL",
+    "release": "R2",
+    "slice": "S07",
+    "requirements": [
+      "FR-COL-007"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-LRN-R1",
+    "domain": "LRN",
+    "release": "R1",
+    "slice": "S05",
+    "requirements": [
+      "FR-LRN-001",
+      "FR-LRN-003"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-LRN-R2",
+    "domain": "LRN",
+    "release": "R2",
+    "slice": "S07",
+    "requirements": [
+      "FR-LRN-002",
+      "FR-LRN-004",
+      "FR-LRN-005",
+      "FR-LRN-006"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-LRN-R3",
+    "domain": "LRN",
+    "release": "R3",
+    "slice": "S07",
+    "requirements": [
+      "FR-LRN-007"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-COP-R2",
+    "domain": "COP",
+    "release": "R2",
+    "slice": "S07",
+    "requirements": [
+      "FR-COP-001",
+      "FR-COP-002",
+      "FR-COP-003",
+      "FR-COP-004",
+      "FR-COP-005",
+      "FR-COP-006",
+      "FR-COP-007",
+      "FR-COP-008",
+      "FR-COP-009",
+      "FR-COP-010"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-API-R1",
+    "domain": "API",
+    "release": "R1",
+    "slice": "S06",
+    "requirements": [
+      "FR-API-001",
+      "FR-API-002",
+      "FR-API-004",
+      "FR-API-006",
+      "FR-API-007",
+      "FR-API-008",
+      "FR-API-009",
+      "FR-API-011"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-API-R2",
+    "domain": "API",
+    "release": "R2",
+    "slice": "S07",
+    "requirements": [
+      "FR-API-003",
+      "FR-API-005",
+      "FR-API-010"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-API-R3",
+    "domain": "API",
+    "release": "R3",
+    "slice": "S07",
+    "requirements": [
+      "FR-API-012"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-BIL-R1",
+    "domain": "BIL",
+    "release": "R1",
+    "slice": "S05",
+    "requirements": [
+      "FR-BIL-001",
+      "FR-BIL-002",
+      "FR-BIL-003",
+      "FR-BIL-004",
+      "FR-BIL-005",
+      "FR-BIL-007",
+      "FR-BIL-008"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-BIL-R2",
+    "domain": "BIL",
+    "release": "R2",
+    "slice": "S07",
+    "requirements": [
+      "FR-BIL-006",
+      "FR-BIL-009",
+      "FR-BIL-010"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-AUD-R1",
+    "domain": "AUD",
+    "release": "R1",
+    "slice": "S06",
+    "requirements": [
+      "FR-AUD-001",
+      "FR-AUD-002",
+      "FR-AUD-003",
+      "FR-AUD-004",
+      "FR-AUD-005",
+      "FR-AUD-006",
+      "FR-AUD-007",
+      "FR-AUD-008",
+      "FR-AUD-009",
+      "FR-AUD-010",
+      "FR-AUD-011",
+      "FR-AUD-012"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-OPS-R1",
+    "domain": "OPS",
+    "release": "R1",
+    "slice": "S06",
+    "requirements": [
+      "FR-OPS-001",
+      "FR-OPS-002",
+      "FR-OPS-003",
+      "FR-OPS-004",
+      "FR-OPS-005",
+      "FR-OPS-006",
+      "FR-OPS-007",
+      "FR-OPS-008",
+      "FR-OPS-009",
+      "FR-OPS-010",
+      "FR-OPS-011"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-OPS-R2",
+    "domain": "OPS",
+    "release": "R2",
+    "slice": "S07",
+    "requirements": [
+      "FR-OPS-012"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-EXT-R1",
+    "domain": "EXT",
+    "release": "R1",
+    "slice": "S06",
+    "requirements": [
+      "FR-EXT-001",
+      "FR-EXT-002",
+      "FR-EXT-003",
+      "FR-EXT-004",
+      "FR-EXT-005",
+      "FR-EXT-006",
+      "FR-EXT-007",
+      "FR-EXT-009",
+      "FR-EXT-010"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-EXT-R2",
+    "domain": "EXT",
+    "release": "R2",
+    "slice": "S07",
+    "requirements": [
+      "FR-EXT-008"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-SEC-R1-NFR",
+    "domain": "SEC",
+    "release": "R1",
+    "slice": "S00–S06",
+    "requirements": [
+      "NFR-SEC-001",
+      "NFR-SEC-002",
+      "NFR-SEC-003",
+      "NFR-SEC-004",
+      "NFR-SEC-005",
+      "NFR-SEC-006",
+      "NFR-SEC-007",
+      "NFR-SEC-008",
+      "NFR-SEC-009",
+      "NFR-SEC-010",
+      "NFR-SEC-011",
+      "NFR-SEC-012"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-PRI-R1-NFR",
+    "domain": "PRI",
+    "release": "R1",
+    "slice": "S00–S06",
+    "requirements": [
+      "NFR-PRI-001",
+      "NFR-PRI-002",
+      "NFR-PRI-003",
+      "NFR-PRI-004",
+      "NFR-PRI-005",
+      "NFR-PRI-006",
+      "NFR-PRI-007",
+      "NFR-PRI-008"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-AVL-R1-NFR",
+    "domain": "AVL",
+    "release": "R1",
+    "slice": "S00–S06",
+    "requirements": [
+      "NFR-AVL-001",
+      "NFR-AVL-002",
+      "NFR-AVL-003",
+      "NFR-AVL-004",
+      "NFR-AVL-005",
+      "NFR-AVL-006",
+      "NFR-AVL-007",
+      "NFR-AVL-008"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-AVL-R2-NFR",
+    "domain": "AVL",
+    "release": "R2",
+    "slice": "S07",
+    "requirements": [
+      "NFR-AVL-009"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-PER-R1-NFR",
+    "domain": "PER",
+    "release": "R1",
+    "slice": "S00–S06",
+    "requirements": [
+      "NFR-PER-001",
+      "NFR-PER-002",
+      "NFR-PER-003",
+      "NFR-PER-004",
+      "NFR-PER-005",
+      "NFR-PER-006",
+      "NFR-PER-007",
+      "NFR-PER-008",
+      "NFR-PER-009"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-PER-R2-NFR",
+    "domain": "PER",
+    "release": "R2",
+    "slice": "S07",
+    "requirements": [
+      "NFR-PER-010"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-INTG-R1-NFR",
+    "domain": "INTG",
+    "release": "R1",
+    "slice": "S00–S06",
+    "requirements": [
+      "NFR-INTG-001",
+      "NFR-INTG-002",
+      "NFR-INTG-003",
+      "NFR-INTG-004",
+      "NFR-INTG-006",
+      "NFR-INTG-007",
+      "NFR-INTG-008"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-INTG-R2-NFR",
+    "domain": "INTG",
+    "release": "R2",
+    "slice": "S07",
+    "requirements": [
+      "NFR-INTG-005"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-USA-R1-NFR",
+    "domain": "USA",
+    "release": "R1",
+    "slice": "S00–S06",
+    "requirements": [
+      "NFR-USA-001",
+      "NFR-USA-002",
+      "NFR-USA-003",
+      "NFR-USA-004",
+      "NFR-USA-005",
+      "NFR-USA-006",
+      "NFR-USA-007"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-USA-R2-NFR",
+    "domain": "USA",
+    "release": "R2",
+    "slice": "S07",
+    "requirements": [
+      "NFR-USA-008",
+      "NFR-USA-009"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-OBS-R1-NFR",
+    "domain": "OBS",
+    "release": "R1",
+    "slice": "S00–S06",
+    "requirements": [
+      "NFR-OBS-001",
+      "NFR-OBS-002",
+      "NFR-OBS-003",
+      "NFR-OBS-004",
+      "NFR-OBS-005",
+      "NFR-OBS-006",
+      "NFR-OBS-007"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-MNT-R1-NFR",
+    "domain": "MNT",
+    "release": "R1",
+    "slice": "S00–S06",
+    "requirements": [
+      "NFR-MNT-001",
+      "NFR-MNT-002",
+      "NFR-MNT-003",
+      "NFR-MNT-004",
+      "NFR-MNT-005",
+      "NFR-MNT-006",
+      "NFR-MNT-007"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-MNT-R2-NFR",
+    "domain": "MNT",
+    "release": "R2",
+    "slice": "S07",
+    "requirements": [
+      "NFR-MNT-008"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-AQL-R1-NFR",
+    "domain": "AQL",
+    "release": "R1",
+    "slice": "S00–S06",
+    "requirements": [
+      "NFR-AQL-001"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-AQL-R2-NFR",
+    "domain": "AQL",
+    "release": "R2",
+    "slice": "S07",
+    "requirements": [
+      "NFR-AQL-002",
+      "NFR-AQL-003",
+      "NFR-AQL-004",
+      "NFR-AQL-005",
+      "NFR-AQL-006"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-CST-R1-NFR",
+    "domain": "CST",
+    "release": "R1",
+    "slice": "S00–S06",
+    "requirements": [
+      "NFR-CST-001",
+      "NFR-CST-002",
+      "NFR-CST-003"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-CST-R2-NFR",
+    "domain": "CST",
+    "release": "R2",
+    "slice": "S07",
+    "requirements": [
+      "NFR-CST-004"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-SUP-R1-NFR",
+    "domain": "SUP",
+    "release": "R1",
+    "slice": "S00–S06",
+    "requirements": [
+      "NFR-SUP-001",
+      "NFR-SUP-002",
+      "NFR-SUP-003",
+      "NFR-SUP-004",
+      "NFR-SUP-005"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  },
+  {
+    "id": "WP-SUP-R2-NFR",
+    "domain": "SUP",
+    "release": "R2",
+    "slice": "S07",
+    "requirements": [
+      "NFR-SUP-006"
+    ],
+    "acceptance_gate": "All mapped source acceptance criteria and tests pass"
+  }
+]

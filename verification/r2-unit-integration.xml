@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testsuites>
+	<testcase name="live connector contracts reject open fields, unsafe mappings and overlapping paths" time="0.005871" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/connections.test.mjs"/>
+	<testcase name="live endpoint policy rejects private names, encoded IPs, credentials, queries and self calls" time="0.001281" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/connections.test.mjs"/>
+	<testcase name="request mapping emits actual WAV bytes and synthetic marker without reference labels" time="0.001726" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/connections.test.mjs"/>
+	<testcase name="response mapping enforces numeric probabilities and subject identity without coercion" time="0.000479" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/connections.test.mjs"/>
+	<testcase name="credential encryption is random, scoped and fails closed on tampering" time="0.026997" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/connections.test.mjs"/>
+	<testcase name="saved credentials are absent from list, history and configuration projections" time="0.014801" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/connections.test.mjs"/>
+	<testcase name="activation requires a recent real test, failures cannot activate and disabled calls are blocked" time="0.056069" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/connections.test.mjs"/>
+	<testcase name="editing invalidates the live test and endpoint changes cannot reuse credentials" time="0.016668" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/connections.test.mjs"/>
+	<testcase name="actual loopback HTTP receiver gets mapped audio, credential and idempotency header" time="0.062731" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/connections.test.mjs"/>
+	<testcase name="provider handling rejects redirects, non-JSON, bad JSON and oversized streams" time="0.002654" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/connections.test.mjs"/>
+	<testcase name="network failures preserve unknown outcome and never retry automatically" time="0.028297" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/connections.test.mjs"/>
+	<testcase name="same intent is one provider request, and competing concurrent calls are blocked" time="0.030123" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/connections.test.mjs"/>
+	<testcase name="disabling an in-flight connector discards its eventual result" time="0.013037" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/connections.test.mjs"/>
+	<testcase name="live cohort evaluation computes metrics only after all synthetic subjects return" time="0.058113" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/connections.test.mjs"/>
+	<testcase name="live commands enforce role, owner, institution and safety hold boundaries" time="0.031435" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/connections.test.mjs"/>
+	<testcase name="service checks use GET and retain only expected-status match, not provider records" time="0.001688" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/connections.test.mjs"/>
+	<testcase name="encrypted checkpoint capture and restore includes live configuration and call history" time="0.033601" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/connections.test.mjs"/>
+	<testcase name="failed partial cohorts do not publish misleading complete metrics" time="0.051542" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/connections.test.mjs"/>
+	<testcase name="uploaded synthetic audio requires both grants before any provider transfer" time="0.039745" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/connections.test.mjs"/>
+	<testcase name="stale successful test cannot activate and interrupted calls can only be released after expiry" time="0.012972" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/connections.test.mjs"/>
+	<testcase name="caller cancellation aborts the provider request without retry" time="0.000851" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/connections.test.mjs"/>
+	<testcase name="closed contracts reject unknown fields and type coercion" time="0.004926" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/core.test.mjs"/>
+	<testcase name="contract enforces date order and finite bounded model values" time="0.000780" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/core.test.mjs"/>
+	<testcase name="CSV parser checks duplicates, labels, synthetic identifiers, groups and row limits" time="0.000909" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/core.test.mjs"/>
+	<testcase name="reference metrics have known perfect and reversed outcomes" time="0.000602" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/core.test.mjs"/>
+	<testcase name="missing denominators are null and tied predictions yield AUC .5" time="0.000248" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/core.test.mjs"/>
+	<testcase name="seed is reproducible without overwriting persistent changes" time="0.022936" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/core.test.mjs"/>
+	<testcase name="owner and institution isolation on reads and writes" time="0.035237" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/core.test.mjs"/>
+	<testcase name="role enforcement rejects an evaluator creating programmes" time="0.009203" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/core.test.mjs"/>
+	<testcase name="mutation persists record snapshot receipt and audit atomically" time="0.012730" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/core.test.mjs"/>
+	<testcase name="idempotency returns original receipt after later changes and rejects changed intent" time="0.015520" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/core.test.mjs"/>
+	<testcase name="stale edits and concurrent revision races produce one winner" time="0.013395" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/core.test.mjs"/>
+	<testcase name="concurrent same idempotency key produces one operation" time="0.008836" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/core.test.mjs"/>
+	<testcase name="injected audit failure rolls back records snapshots and revision" time="0.010947" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/core.test.mjs"/>
+	<testcase name="study exact snapshot review rejects same-person aliases" time="0.018818" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/core.test.mjs"/>
+	<testcase name="returned study can be edited and resubmitted with new digest" time="0.026204" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/core.test.mjs"/>
+	<testcase name="data import enforces quarantine and independent custody release" time="0.016902" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/core.test.mjs"/>
+	<testcase name="custodian cannot release own imported dataset" time="0.012056" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/core.test.mjs"/>
+	<testcase name="evaluation has real expected metrics and frozen input hashes" time="0.016835" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/core.test.mjs"/>
+	<testcase name="expired and revoked grants block execution and historical replay" time="0.029015" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/core.test.mjs"/>
+	<testcase name="evidence download is the exact issued bytes and digest" time="0.019357" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/core.test.mjs"/>
+	<testcase name="same-person evidence issuance rejected" time="0.011877" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/core.test.mjs"/>
+	<testcase name="safety hold blocks exports and mutations while permitting concern intake" time="0.037261" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/core.test.mjs"/>
+	<testcase name="grant revocation and evidence withdrawal block download" time="0.022756" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/core.test.mjs"/>
+	<testcase name="revoked membership denied on next read and idempotent retry; admin protected" time="0.016253" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/core.test.mjs"/>
+	<testcase name="support projection excludes studies, datasets, models and audit content" time="0.007143" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/core.test.mjs"/>
+	<testcase name="unverified institution restricted until independent synthetic verification" time="0.020389" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/core.test.mjs"/>
+	<testcase name="SQLite schema rejects invalid kinds, broken FKs and duplicate versions" time="0.010737" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/core.test.mjs"/>
+	<testcase name="prototype names are not accepted as commands" time="0.000337" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/core.test.mjs"/>
+	<testcase name="returning and resubmitting unchanged protocol preserves content digest" time="0.024465" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/core.test.mjs"/>
+	<testcase name="R2 evidence rejects altered draft content and stored export bytes" time="0.118950" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/lab.test.mjs"/>
+	<testcase name="R2 contracts reject unknown fields, impossible quotas and non-finite values" time="0.002827" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/lab.test.mjs"/>
+	<testcase name="R2 same recipe produces byte-identical resources, audio and snapshot; different seed differs" time="0.013939" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/lab.test.mjs"/>
+	<testcase name="R2 registry graph has unique identities, synthetic lineage and no dangling references" time="0.003305" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/lab.test.mjs"/>
+	<testcase name="R2 WAV feature extraction reads actual samples and rejects malformed media" time="0.000972" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/lab.test.mjs"/>
+	<testcase name="R2 golden prediction arithmetic, ties, uncertainty and undefined denominators" time="0.000404" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/lab.test.mjs"/>
+	<testcase name="R2 prediction join rejects missing, duplicate, alien and prototype IDs" time="0.000218" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/lab.test.mjs"/>
+	<testcase name="R2 generation persists records, snapshot, audit and receipt atomically" time="0.039235" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/lab.test.mjs"/>
+	<testcase name="R2 generation failure publishes no partial state and rolls back audit and receipt" time="0.026072" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/lab.test.mjs"/>
+	<testcase name="R2 owner and tenant isolation extends to registry and mutation paths" time="0.077541" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/lab.test.mjs"/>
+	<testcase name="R2 projections exclude reference labels, full resources, predictions and audio seeds" time="0.043505" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/lab.test.mjs"/>
+	<testcase name="R2 normal scenario creates referrals, lab results, callbacks and passing assertions" time="0.046204" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/lab.test.mjs"/>
+	<testcase name="R2 pause freezes the clock; resume allows monotonically increasing time" time="0.092338" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/lab.test.mjs"/>
+	<testcase name="R2 laboratory outage waits then recovers using virtual time" time="0.047011" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/lab.test.mjs"/>
+	<testcase name="R2 duplicate callbacks never duplicate the business effect" time="0.038487" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/lab.test.mjs"/>
+	<testcase name="R2 intentionally lost callback and slow service fail their assertions" time="0.084136" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/lab.test.mjs"/>
+	<testcase name="R2 replay preserves final-state digest independent of clock increments" time="0.085474" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/lab.test.mjs"/>
+	<testcase name="R2 reset fences current runs, old generation reads and historical retries" time="0.043608" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/lab.test.mjs"/>
+	<testcase name="R2 fork preserves content digest with separate state and identity" time="0.047652" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/lab.test.mjs"/>
+	<testcase name="R2 cancelled runs cannot advance and current generation can be replayed" time="0.044095" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/lab.test.mjs"/>
+	<testcase name="R2 duplicate intent is one effect and changed intent or stale version is rejected" time="0.024091" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/lab.test.mjs"/>
+	<testcase name="R2 safety holds block execution and retry but allow cancellation and concerns" time="0.037648" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/lab.test.mjs"/>
+	<testcase name="R2 registration admits bounded configurations and different versions change predictions" time="0.036376" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/lab.test.mjs"/>
+	<testcase name="R2 uploaded predictions are joined exactly and classified separately" time="0.052040" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/lab.test.mjs"/>
+	<testcase name="R2 deterministic stub is never described as audio inference" time="0.027552" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/lab.test.mjs"/>
+	<testcase name="R2 evidence is independently issued, has exact hash and excludes subject labels" time="0.056444" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/lab.test.mjs"/>
+	<testcase name="R2 generation and run operations enforce role restrictions and membership revocation" time="0.034320" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/lab.test.mjs"/>
+	<testcase name="R2 schema enforces object kinds, valid JSON and snapshot uniqueness" time="0.027842" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/lab.test.mjs"/>
+	<testcase name="ECDSA export verifies exact evidence against separately trusted public key" time="0.013631" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/operations.test.mjs"/>
+	<testcase name="ECDSA rejects altered evidence, metadata, signature and substituted trust root" time="0.007303" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/operations.test.mjs"/>
+	<testcase name="signing fails closed without key and publishes no private fields" time="0.002094" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/operations.test.mjs"/>
+	<testcase name="encrypted checkpoint protects references and captures complete history and audio" time="0.100120" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/operations.test.mjs"/>
+	<testcase name="checkpoint encryption uses unique nonces and rejects altered ciphertext or scope" time="0.074525" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/operations.test.mjs"/>
+	<testcase name="checkpoint refuses missing or corrupted referenced audio" time="0.032551" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/operations.test.mjs"/>
+	<testcase name="checkpoint validates record snapshots and continuous audit history" time="0.075592" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/operations.test.mjs"/>
+	<testcase name="actual empty SQLite restoration preserves every table and exact object bytes" time="0.087116" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/operations.test.mjs"/>
+	<testcase name="restoration refuses populated databases and object collisions before overwriting" time="0.081068" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/operations.test.mjs"/>
+	<testcase name="database restoration rolls back on injected failure; target remains disposable" time="0.029740" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/operations.test.mjs"/>
+	<testcase name="operator recovery CLI restores encrypted archive to disk and refuses a second overwrite" time="0.970962" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/operations.test.mjs"/>
+	<testcase name="participant partition has deterministic disjoint assignments and exact totals" time="0.049895" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/suite.test.mjs"/>
+	<testcase name="suite contracts reject executable code, open nested trees and invalid scopes" time="0.002103" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/suite.test.mjs"/>
+	<testcase name="portable forest executes uploaded parameters on actual audio features" time="0.003808" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/suite.test.mjs"/>
+	<testcase name="portable package admission and resulting run bind the actual package" time="0.045138" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/suite.test.mjs"/>
+	<testcase name="dummy fixture seed is explicit, persisted and cannot silently duplicate" time="0.009540" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/suite.test.mjs"/>
+	<testcase name="declared endpoints reject obvious private destinations and inline secrets" time="0.000692" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/suite.test.mjs"/>
+	<testcase name="connector test fixtures preserve simulated failure and duplicate semantics" time="0.024856" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/suite.test.mjs"/>
+	<testcase name="job is durable and manual dispatch creates one real completed evaluation" time="0.047322" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/suite.test.mjs"/>
+	<testcase name="job lease fences other people and stale attempts; cancellation prevents commits" time="0.041930" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/suite.test.mjs"/>
+	<testcase name="failed job retry preserves attempts and commits after fault is removed" time="0.064566" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/suite.test.mjs"/>
+	<testcase name="expired job lease is reclaimable with increasing epoch" time="0.023095" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/suite.test.mjs"/>
+	<testcase name="reset rejects old jobs while permitting their cancellation" time="0.026251" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/suite.test.mjs"/>
+	<testcase name="three-job quota and atomic rollback prevent partial admitted jobs" time="0.030760" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/suite.test.mjs"/>
+	<testcase name="registry amendment creates a generation and active runs block mutation" time="0.038693" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/suite.test.mjs"/>
+	<testcase name="merge retains alias, rewires subjects and reduces scoring denominator" time="0.037820" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/suite.test.mjs"/>
+	<testcase name="paired statistics have known direction, bounds and exact discordance probability" time="0.001638" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/suite.test.mjs"/>
+	<testcase name="paired analysis and actual perturbation execute on frozen local models" time="0.059039" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/suite.test.mjs"/>
+	<testcase name="media state machine enforces uploader, manifest, custody and revocation" time="0.015291" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/suite.test.mjs"/>
+	<testcase name="access approvals expire, preserve reasons and reject repeated decisions" time="0.008880" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/suite.test.mjs"/>
+	<testcase name="issued correction atomically supersedes original evidence and blocks old download" time="0.042396" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/suite.test.mjs"/>
+	<testcase name="operational fixture results never claim measured infrastructure success" time="0.010799" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/suite.test.mjs"/>
+	<testcase name="suite records obey owner scope, support projection, schema constraints and hold" time="0.026309" classname="test" file="/workspace/scratch/892d768a3023/sandbox-r2-site/tests/suite.test.mjs"/>
+	<!-- tests 111 -->
+	<!-- suites 0 -->
+	<!-- pass 111 -->
+	<!-- fail 0 -->
+	<!-- cancelled 0 -->
+	<!-- skipped 0 -->
+	<!-- todo 0 -->
+	<!-- duration_ms 1594.24653 -->
+</testsuites>

@@ -1,0 +1,7 @@
+import {env} from 'cloudflare:workers';
+import {context,database,failure,identity,json,verifyOrigin} from '@/lib/http';
+import {AppError} from '@/lib/domain';
+import {connectionAccess,connectionsView,connectionAction} from '@/lib/connection-store';
+export const dynamic='force-dynamic';
+export async function GET(request:Request){try{const u=await identity(),c=context(request),db=database(),s=await connectionAccess(db,u.userId,c.tenant,c.profile,true);return json(await connectionsView(db,s.space.id))}catch(e){return failure(e)}}
+export async function POST(request:Request){try{const u=await identity();verifyOrigin(request);const c=context(request),key=request.headers.get('Idempotency-Key')||'';if(!/^[a-f0-9-]{36}$/.test(key))throw new AppError(422,'IDEMPOTENCY_KEY','A UUID intent key is required.');const reader=request.body?.getReader();if(!reader)throw new AppError(400,'JSON','Body required.');let body='',size=0;const decoder=new TextDecoder();while(true){const r=await reader.read();if(r.done)break;size+=r.value.length;if(size>16000){await reader.cancel();throw new AppError(413,'TOO_LARGE','Connection request exceeds 16 KiB.')}body+=decoder.decode(r.value,{stream:true})}body+=decoder.decode();let raw;try{raw=JSON.parse(body)}catch{throw new AppError(400,'JSON','Malformed JSON.')}return json(await connectionAction(database(),env.MEDIA,env.CHECKPOINT_KEY_HEX,u.userId,c.tenant,c.profile,raw,key,new URL(request.url).hostname))}catch(e){return failure(e)}}

@@ -1,0 +1,11 @@
+{
+  "source_file": "Global_Health_AI_Sandbox_Implementation_Pack.zip",
+  "source_sha256": "098e72271b3c9517646d9a0a3a9632e10dd3496d3759ac28ad75515455619d6a",
+  "source_library_id": "libfile_96e99a87ca88819195864eedf0412cd5",
+  "unchanged_source_files": [
+    "database/migrations/001_foundation.sql",
+    "database/migrations/002_isolation_and_privileges.sql",
+    "contracts/openapi.json"
+  ],
+  "additive_changes": "See docs/CONTRACT_CHANGES.md"
+}

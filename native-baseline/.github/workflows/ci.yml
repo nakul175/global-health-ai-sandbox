@@ -1,0 +1,50 @@
+name: Programme slice
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  native-application:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    services:
+      postgres:
+        image: postgres:18.6@sha256:5a5a84b19854a9ffaa54082c166ff4ec27473a361e496e5ea167f298f2da9722
+        env:
+          POSTGRES_USER: sandbox_dev
+          POSTGRES_PASSWORD: disposable-ci-only
+          POSTGRES_DB: sandbox_dev
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd "pg_isready -U sandbox_dev -d sandbox_dev"
+          --health-interval 5s --health-timeout 5s --health-retries 20
+    env:
+      MIGRATION_DATABASE_URL: postgresql://sandbox_dev:disposable-ci-only@127.0.0.1:5432/sandbox_dev
+      SANDBOX_CONFIG: .local/native-config.json
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5, resolved 2026-09-25
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.12.14'
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
+        with:
+          node-version: '24.19.0'
+          cache: npm
+      - name: Locked installation and build
+        run: |
+          python -m venv .venv
+          .venv/bin/python -m pip install --require-hashes -r environment/requirements-dev.lock
+          npm ci
+          npm run build
+          npx playwright install --with-deps chromium
+          .venv/bin/ruff check services scripts tests/unit tests/integration tests/native
+      - name: Provision synthetic native database and run application gates
+        run: |
+          .venv/bin/python scripts/provision_native.py
+          .venv/bin/python scripts/run_checks.py --browser --native
+      - name: Dependency audit
+        run: |
+          .venv/bin/pip-audit -r environment/requirements.lock
+          npm audit
+      # No release/deployment step: production launch gates remain open.

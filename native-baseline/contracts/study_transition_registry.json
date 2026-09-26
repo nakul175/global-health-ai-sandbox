@@ -1,0 +1,226 @@
+[
+  {
+    "code": "study.submit_feasibility",
+    "from_state": "draft",
+    "source_action": "Submit feasibility by PM",
+    "to_state": "feasibility_review",
+    "actor_roles": [
+      "PM"
+    ],
+    "guard": "Need, decision owner, candidate scope and study type present; snapshot application",
+    "source": "FSD study transition table row 1",
+    "activation": "Owning study capability and all named gates must be implemented and independently accepted",
+    "restrictions": "Hold overlays survive lifecycle changes; prior_valid_state is the stored pre-suspension state and must be reauthorized; no arbitrary jump"
+  },
+  {
+    "code": "study.return_feasibility",
+    "from_state": "feasibility_review",
+    "source_action": "Return by reviewer",
+    "to_state": "draft",
+    "actor_roles": [
+      "assigned_reviewer"
+    ],
+    "guard": "Record missing evidence and owner; retain first submission time",
+    "source": "FSD study transition table row 2",
+    "activation": "Owning study capability and all named gates must be implemented and independently accepted",
+    "restrictions": "Hold overlays survive lifecycle changes; prior_valid_state is the stored pre-suspension state and must be reauthorized; no arbitrary jump"
+  },
+  {
+    "code": "study.commission",
+    "from_state": "feasibility_review",
+    "source_action": "Commission by PM",
+    "to_state": "contracted",
+    "actor_roles": [
+      "PM"
+    ],
+    "guard": "Scope, funding and responsibilities accepted; record contract versions",
+    "source": "FSD study transition table row 3",
+    "activation": "Owning study capability and all named gates must be implemented and independently accepted",
+    "restrictions": "Hold overlays survive lifecycle changes; prior_valid_state is the stored pre-suspension state and must be reauthorized; no arbitrary jump"
+  },
+  {
+    "code": "study.reject_or_withdraw",
+    "from_state": "feasibility_review",
+    "source_action": "Reject or withdraw by eligible owner",
+    "to_state": "stopped",
+    "actor_roles": [
+      "accountable_owner"
+    ],
+    "guard": "Preserve reasons, reviews and retained duties",
+    "source": "FSD study transition table row 4",
+    "activation": "Owning study capability and all named gates must be implemented and independently accepted",
+    "restrictions": "Hold overlays survive lifecycle changes; prior_valid_state is the stored pre-suspension state and must be reauthorized; no arbitrary jump"
+  },
+  {
+    "code": "study.submit_protocol",
+    "from_state": "contracted",
+    "source_action": "Submit protocol by EV",
+    "to_state": "protocol_review",
+    "actor_roles": [
+      "EV"
+    ],
+    "guard": "Protocol and applicability checklist complete enough for review",
+    "source": "FSD study transition table row 5",
+    "activation": "Owning study capability and all named gates must be implemented and independently accepted",
+    "restrictions": "Hold overlays survive lifecycle changes; prior_valid_state is the stored pre-suspension state and must be reauthorized; no arbitrary jump"
+  },
+  {
+    "code": "study.approve_setup",
+    "from_state": "protocol_review",
+    "source_action": "Approve setup by qualified owners",
+    "to_state": "approved_for_setup",
+    "actor_roles": [
+      "qualified_assigned_owners"
+    ],
+    "guard": "Frozen preparatory decisions; outstanding conditions explicitly classified",
+    "source": "FSD study transition table row 6",
+    "activation": "Owning study capability and all named gates must be implemented and independently accepted",
+    "restrictions": "Hold overlays survive lifecycle changes; prior_valid_state is the stored pre-suspension state and must be reauthorized; no arbitrary jump"
+  },
+  {
+    "code": "study.request_protocol_rework",
+    "from_state": "protocol_review",
+    "source_action": "Request rework by reviewer",
+    "to_state": "protocol_review",
+    "actor_roles": [
+      "assigned_reviewer"
+    ],
+    "guard": "New revision awaited; decision remains pending",
+    "source": "FSD study transition table row 7",
+    "activation": "Owning study capability and all named gates must be implemented and independently accepted",
+    "restrictions": "Hold overlays survive lifecycle changes; prior_valid_state is the stored pre-suspension state and must be reauthorized; no arbitrary jump"
+  },
+  {
+    "code": "study.complete_readiness",
+    "from_state": "approved_for_setup",
+    "source_action": "Complete readiness by PM",
+    "to_state": "ready",
+    "actor_roles": [
+      "PM"
+    ],
+    "guard": "G1 and G2 plus all capability-specific gates pass",
+    "source": "FSD study transition table row 8",
+    "activation": "Owning study capability and all named gates must be implemented and independently accepted",
+    "restrictions": "Hold overlays survive lifecycle changes; prior_valid_state is the stored pre-suspension state and must be reauthorized; no arbitrary jump"
+  },
+  {
+    "code": "study.start",
+    "from_state": "ready",
+    "source_action": "Start by accountable EV or PI",
+    "to_state": "active",
+    "actor_roles": [
+      "EV",
+      "PI"
+    ],
+    "guard": "Recheck all effective permissions and exact versions at commitment",
+    "source": "FSD study transition table row 9",
+    "activation": "Owning study capability and all named gates must be implemented and independently accepted",
+    "restrictions": "Hold overlays survive lifecycle changes; prior_valid_state is the stored pre-suspension state and must be reauthorized; no arbitrary jump"
+  },
+  {
+    "code": "study.reconcile_evaluation",
+    "from_state": "active",
+    "source_action": "Reconcile evaluation by EV",
+    "to_state": "analysis",
+    "actor_roles": [
+      "EV"
+    ],
+    "guard": "Runs and data lock accounted for; outstanding safety duties remain active",
+    "source": "FSD study transition table row 10",
+    "activation": "Owning study capability and all named gates must be implemented and independently accepted",
+    "restrictions": "Hold overlays survive lifecycle changes; prior_valid_state is the stored pre-suspension state and must be reauthorized; no arbitrary jump"
+  },
+  {
+    "code": "study.submit_evidence",
+    "from_state": "analysis",
+    "source_action": "Submit evidence by EV",
+    "to_state": "independent_review",
+    "actor_roles": [
+      "EV"
+    ],
+    "guard": "Endpoints, failures, deviations and provenance reconciled",
+    "source": "FSD study transition table row 11",
+    "activation": "Owning study capability and all named gates must be implemented and independently accepted",
+    "restrictions": "Hold overlays survive lifecycle changes; prior_valid_state is the stored pre-suspension state and must be reauthorized; no arbitrary jump"
+  },
+  {
+    "code": "study.return_evidence",
+    "from_state": "independent_review",
+    "source_action": "Return by SR",
+    "to_state": "analysis",
+    "actor_roles": [
+      "SR"
+    ],
+    "guard": "Review reasons preserved; resubmission binds a new snapshot",
+    "source": "FSD study transition table row 12",
+    "activation": "Owning study capability and all named gates must be implemented and independently accepted",
+    "restrictions": "Hold overlays survive lifecycle changes; prior_valid_state is the stored pre-suspension state and must be reauthorized; no arbitrary jump"
+  },
+  {
+    "code": "study.issue_decision",
+    "from_state": "independent_review",
+    "source_action": "Issue by eligible signers",
+    "to_state": "decision_issued",
+    "actor_roles": [
+      "qualified_assigned_signers"
+    ],
+    "guard": "G3 passes; clinical interpretation and rights checks complete",
+    "source": "FSD study transition table row 13",
+    "activation": "Owning study capability and all named gates must be implemented and independently accepted",
+    "restrictions": "Hold overlays survive lifecycle changes; prior_valid_state is the stored pre-suspension state and must be reauthorized; no arbitrary jump"
+  },
+  {
+    "code": "study.suspend",
+    "from_state": "any_open_state",
+    "source_action": "Suspend by authorised CS, SO or governance owner",
+    "to_state": "suspended",
+    "actor_roles": [
+      "CS",
+      "SO",
+      "assigned_governance_owner"
+    ],
+    "guard": "Record affected scope, reason and previous state; enforce hold immediately",
+    "source": "FSD study transition table row 14",
+    "activation": "Owning study capability and all named gates must be implemented and independently accepted",
+    "restrictions": "Hold overlays survive lifecycle changes; prior_valid_state is the stored pre-suspension state and must be reauthorized; no arbitrary jump"
+  },
+  {
+    "code": "study.resume",
+    "from_state": "suspended",
+    "source_action": "Resume by independent eligible owners",
+    "to_state": "prior_valid_state",
+    "actor_roles": [
+      "independent_assigned_owners"
+    ],
+    "guard": "All applicable holds resolved and prerequisites rechecked; never jump ahead",
+    "source": "FSD study transition table row 15",
+    "activation": "Owning study capability and all named gates must be implemented and independently accepted",
+    "restrictions": "Hold overlays survive lifecycle changes; prior_valid_state is the stored pre-suspension state and must be reauthorized; no arbitrary jump"
+  },
+  {
+    "code": "study.stop",
+    "from_state": "active_or_suspended",
+    "source_action": "Stop by eligible owner",
+    "to_state": "stopped",
+    "actor_roles": [
+      "accountable_owner"
+    ],
+    "guard": "Termination reason, follow up and evidence retention plan recorded",
+    "source": "FSD study transition table row 16",
+    "activation": "Owning study capability and all named gates must be implemented and independently accepted",
+    "restrictions": "Hold overlays survive lifecycle changes; prior_valid_state is the stored pre-suspension state and must be reauthorized; no arbitrary jump"
+  },
+  {
+    "code": "study.close",
+    "from_state": "decision_issued_or_stopped",
+    "source_action": "Close by accountable owner",
+    "to_state": "closed",
+    "actor_roles": [
+      "accountable_owner"
+    ],
+    "guard": "Obligations completed or accepted by named successor; freeze closure snapshot",
+    "source": "FSD study transition table row 17",
+    "activation": "Owning study capability and all named gates must be implemented and independently accepted",
+    "restrictions": "Hold overlays survive lifecycle changes; prior_valid_state is the stored pre-suspension state and must be reauthorized; no arbitrary jump"
+  }
+]

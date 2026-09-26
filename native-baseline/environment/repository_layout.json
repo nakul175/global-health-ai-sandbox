@@ -1,0 +1,18 @@
+{
+  "services": [
+    "services/api/app/{identity,programmes,review,data,uploads,safety}",
+    "services/policy/app",
+    "services/worker/app"
+  ],
+  "frontend": "apps/web/src/{components,pages,api,state}",
+  "shared": [
+    "contracts",
+    "database/migrations",
+    "fixtures",
+    "tests/{unit,integration,e2e}",
+    "infra/{local,staging,production}",
+    "docs/decisions",
+    "runbooks"
+  ],
+  "ownership": "API writes business state through registered commands; policy owns privilege decisions; workers execute durable jobs; untrusted model runners are outside this process boundary"
+}

@@ -1,0 +1,17 @@
+{
+  "sources": [
+    {
+      "name": "Global_Health_AI_Sandbox_BRD.docx",
+      "sha256": "64210330c6ff3117f5e9cf88750a55b2dda554c90bd5d80f776bacafb7a02c55"
+    },
+    {
+      "name": "Global_Health_AI_Sandbox_FSD.docx",
+      "sha256": "9f1095e824b2a7da34fc69eb89a40ce7e3cebd02daa2bb27a14b1b642a8b899e"
+    }
+  ],
+  "source_package_sha256": "537ea834658a1f9ceca564e522bd8abc9538d8b09ddc21add06bb9dcc54de38e",
+  "requirements": 456,
+  "R1": 322,
+  "R2": 131,
+  "R3": 3
+}

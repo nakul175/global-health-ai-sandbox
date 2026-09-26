@@ -1,0 +1,31 @@
+{
+  "version": "0.1.0",
+  "date": "2026-09-25",
+  "application_tests": {
+    "unit": 19,
+    "integration": 23,
+    "smoke": 3
+  },
+  "total_pytest": 45,
+  "pytest_failures": 0,
+  "pytest_errors": 0,
+  "pytest_skips": 0,
+  "browser_tests": 7,
+  "browser_failures": 0,
+  "browser_skips": 0,
+  "migration_checks": 3,
+  "database": "PGlite 0.5.8 / PostgreSQL 18.3",
+  "python": "3.12.14",
+  "node": "24.19.0",
+  "browser": "Chromium 153.0.8010.0",
+  "native_postgresql_18_6": "not run",
+  "hosted_ci": "not run",
+  "production_deployment": "not performed",
+  "security_and_quality_limits": [
+    "No native concurrency or crash/durability proof",
+    "No production OIDC/PKCE ceremony",
+    "No clinical performance validation",
+    "No load/recovery/penetration certification",
+    "Automated axe checks are limited to directory screens; no complete accessibility conformance claim"
+  ]
+}

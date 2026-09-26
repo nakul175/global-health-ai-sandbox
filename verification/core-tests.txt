@@ -1,0 +1,37 @@
+✔ closed contracts reject unknown fields and type coercion (3.882808ms)
+✔ contract enforces date order and finite bounded model values (0.741001ms)
+✔ CSV parser checks duplicates, labels, synthetic identifiers, groups and row limits (0.885364ms)
+✔ reference metrics have known perfect and reversed outcomes (0.628176ms)
+✔ missing denominators are null and tied predictions yield AUC .5 (0.257749ms)
+✔ seed is reproducible without overwriting persistent changes (24.796745ms)
+✔ owner and institution isolation on reads and writes (15.016002ms)
+✔ role enforcement rejects an evaluator creating programmes (5.515121ms)
+✔ mutation persists record snapshot receipt and audit atomically (7.64631ms)
+✔ idempotency returns original receipt after later changes and rejects changed intent (12.709586ms)
+✔ stale edits and concurrent revision races produce one winner (7.19113ms)
+✔ concurrent same idempotency key produces one operation (8.475401ms)
+✔ injected audit failure rolls back records snapshots and revision (7.570348ms)
+✔ study exact snapshot review rejects same-person aliases (14.545479ms)
+✔ returned study can be edited and resubmitted with new digest (14.339135ms)
+✔ data import enforces quarantine and independent custody release (13.086196ms)
+✔ custodian cannot release own imported dataset (13.000254ms)
+✔ evaluation has real expected metrics and frozen input hashes (12.316832ms)
+✔ expired and revoked grants block execution and historical replay (10.570145ms)
+✔ evidence download is the exact issued bytes and digest (12.285812ms)
+✔ same-person evidence issuance rejected (14.102172ms)
+✔ safety hold blocks exports and mutations while permitting concern intake (12.80721ms)
+✔ grant revocation and evidence withdrawal block download (11.359768ms)
+✔ revoked membership denied on next read and idempotent retry; admin protected (8.313082ms)
+✔ support projection excludes studies, datasets, models and audit content (3.350683ms)
+✔ unverified institution restricted until independent synthetic verification (5.033432ms)
+✔ SQLite schema rejects invalid kinds, broken FKs and duplicate versions (4.579403ms)
+✔ prototype names are not accepted as commands (0.341173ms)
+✔ returning and resubmitting unchanged protocol preserves content digest (6.605827ms)
+ℹ tests 29
+ℹ suites 0
+ℹ pass 29
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 348.879548

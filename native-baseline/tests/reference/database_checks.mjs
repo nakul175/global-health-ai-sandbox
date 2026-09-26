@@ -1,0 +1,61 @@
+/** Executable PostgreSQL semantics checks in PGlite; not a deployed application test. */
+import {createRequire} from 'node:module';
+const require=createRequire(new URL('../environment/package.json',import.meta.url));
+const {PGlite}=require('@electric-sql/pglite');
+import fs from 'node:fs';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+let db;
+if(process.env.DATABASE_TEST_URL){const {Client}=require('pg'); const client=new Client({connectionString:process.env.DATABASE_TEST_URL});await client.connect();db={query:(...args)=>client.query(...args),exec:s=>client.query(s),close:()=>client.end()};}
+else db=new PGlite();
+const report={engine:(await db.query('select version()')).rows[0].version,scope:'Database constraints, tenant RLS and privileges; no application/network/durability validation',checks:[]};
+const record=(id,ok,detail='')=>{report.checks.push({id,status:ok?'passed':'failed',detail});if(!ok)throw new Error(id+': '+detail)};
+try {
+for(const f of ['bootstrap.sql','migrations/001_foundation.sql','migrations/002_isolation_and_privileges.sql'])await db.exec(fs.readFileSync(path.join(root,'database',f),'utf8'));
+record('DB01_migrations',true);
+await db.exec("SET app.seed_allowed='synthetic-only';");
+await db.exec(fs.readFileSync(path.join(root,'fixtures/seed.sql'),'utf8'));record('DB02_seed',true);
+const m=JSON.parse(fs.readFileSync(path.join(root,'fixtures/manifest.json'))),a=m.tenants.A,b=m.tenants.B;
+const one=async(sql,params=[])=>Object.values((await db.query(sql,params)).rows[0])[0];
+const ctx=async(t,p)=>{await db.query("SELECT set_config('app.tenant_id',$1,false),set_config('app.principal_id',$2,false)",[t,p]);};
+const fails=async(id,sql,params,code)=>{let error;try{await db.query(sql,params);}catch(e){error=e;}record(id,error?.code===code,error?error.code+' '+error.message:'Unexpected success');};
+await db.exec('SET ROLE sandbox_api');await ctx(a.id,a.principals.OA);
+record('DB03_tenant_A_visibility',Number(await one('SELECT count(*) FROM sandbox.resources WHERE tenant_id=$1',[a.id]))===12);
+record('DB04_tenant_B_hidden',Number(await one('SELECT count(*) FROM sandbox.resources WHERE tenant_id=$1',[b.id]))===0);
+await fails('DB05_cross_tenant_write','INSERT INTO sandbox.resources(tenant_id,id,kind,title,classification,state,created_by) VALUES($1,$2,\'study\',\'intrusion\',\'internal\',\'draft\',$3)',[b.id,'00000000-0000-4000-8000-000000000001',b.principals.OA],'42501');
+await fails('DB06_type_fk','INSERT INTO sandbox.studies(tenant_id,id,programme_id,owner_membership_id,objective,study_type) VALUES($1,$2,$3,$4,\'wrong type\',\'synthetic\')',[a.id,a.resources.artifact,a.resources.programme,a.memberships.EV],'23503');
+await fails('DB07_cross_tenant_fk','INSERT INTO sandbox.studies(tenant_id,id,programme_id,owner_membership_id,objective,study_type) VALUES($1,$2,$3,$4,\'foreign programme\',\'synthetic\')',[a.id,a.resources.draft,b.resources.programme,a.memberships.EV],'23503');
+await fails('DB08_no_truncate','TRUNCATE sandbox.resources',[],'42501');
+await fails('DB09_no_membership_elevation','UPDATE sandbox.memberships SET role_code=\'OP\' WHERE tenant_id=$1',[a.id],'42501');
+await fails('DB10_receipt_not_editable','UPDATE sandbox.command_receipts SET state=\'approved\'',[],'42501');
+await db.exec('RESET ROLE');
+await fails('DB11_audit_immutable_owner','UPDATE sandbox.review_decisions SET reason=\'modified signature\' WHERE tenant_id=$1',[a.id],'55000');
+await fails('DB12_null_is_not_missing_reason','INSERT INTO sandbox.observations(tenant_id,id,study_id,metric_id,metric_version,source_event_id,status,value,observed_at) VALUES($1,$2,$3,$4,1,\'bad-null\',\'missing\',NULL,now())',[a.id,'00000000-0000-4000-8000-000000000002',a.resources.study,a.resources.metric],'23514');
+record('DB13_ratio_expected',Number(await one("SELECT value FROM sandbox.observations WHERE tenant_id=$1 AND source_event_id='seed-observed'",[a.id]))===.8);
+record('DB14_zero_preserved',Number(await one("SELECT value FROM sandbox.observations WHERE tenant_id=$1 AND source_event_id='seed-zero'",[a.id]))===0);
+record('DB15_missing_preserved',(await one("SELECT value FROM sandbox.observations WHERE tenant_id=$1 AND source_event_id='seed-missing'",[a.id]))===null);
+await db.exec('SET ROLE sandbox_api');await ctx(a.id,a.principals.DE);
+const hash='a'.repeat(64);
+await db.query('INSERT INTO sandbox.upload_parts(tenant_id,upload_id,part_index,size_bytes,sha256,storage_key) VALUES($1,$2,1,5,$3,\'synthetic/part1\')',[a.id,a.resources.upload,hash]);record('DB16_out_of_order_last_part',true);
+await fails('DB17_duplicate_part_unique','INSERT INTO sandbox.upload_parts(tenant_id,upload_id,part_index,size_bytes,sha256,storage_key) VALUES($1,$2,1,5,$3,\'synthetic/part1b\')',[a.id,a.resources.upload,hash],'23505');
+await fails('DB18_bad_part_size','INSERT INTO sandbox.upload_parts(tenant_id,upload_id,part_index,size_bytes,sha256,storage_key) VALUES($1,$2,0,7,$3,\'synthetic/badpart\')',[a.id,a.resources.upload,hash],'23514');
+await fails('DB19_part_outside_total','INSERT INTO sandbox.upload_parts(tenant_id,upload_id,part_index,size_bytes,sha256,storage_key) VALUES($1,$2,2,5,$3,\'synthetic/outpart\')',[a.id,a.resources.upload,hash],'23514');
+await db.query("UPDATE sandbox.uploads SET state='verifying' WHERE tenant_id=$1 AND id=$2",[a.id,a.resources.upload]);
+await fails('DB20_finalisation_locks_parts','INSERT INTO sandbox.upload_parts(tenant_id,upload_id,part_index,size_bytes,sha256,storage_key) VALUES($1,$2,0,8388608,$3,\'synthetic/latepart\')',[a.id,a.resources.upload,hash],'55000');
+record('DB21_budget_admission',await one('SELECT sandbox.reserve_budget($1,60)',[a.resources.budget])===true);
+record('DB22_budget_reject_overbook',await one('SELECT sandbox.reserve_budget($1,21)',[a.resources.budget])===false);
+await db.query('UPDATE sandbox.budgets SET actual_units=120 WHERE tenant_id=$1 AND id=$2',[a.id,a.resources.budget]);record('DB23_actual_overrun_retained',Number(await one('SELECT actual_units FROM sandbox.budgets WHERE tenant_id=$1 AND id=$2',[a.id,a.resources.budget]))===120);
+await ctx('','');record('DB24_no_context_fail_closed',Number(await one('SELECT count(*) FROM sandbox.resources'))===0);
+await db.exec('RESET ROLE');
+record('DB25_all_tenant_tables_force_rls',Number(await one("SELECT count(*) FROM information_schema.columns cols JOIN pg_namespace n ON n.nspname=cols.table_schema JOIN pg_class c ON c.relnamespace=n.oid AND c.relname=cols.table_name WHERE cols.table_schema='sandbox' AND cols.column_name='tenant_id' AND (NOT c.relrowsecurity OR NOT c.relforcerowsecurity)"))===0);
+record('DB26_runtime_roles_no_bypass',Number(await one("SELECT count(*) FROM pg_roles WHERE rolname IN('sandbox_api','sandbox_worker','sandbox_policy','sandbox_auditor') AND (rolsuper OR rolbypassrls)"))===0);
+record('DB27_same_person_alias',await one('SELECT person_id FROM sandbox.principals WHERE tenant_id=$1 AND id=$2',[a.id,a.author_alias])===a.people.OA);
+record('DB28_cross_owner_projection',await one('SELECT remote_object_id FROM sandbox.external_references WHERE tenant_id=$1 AND id=$2',[b.id,b.resources.external_study])===a.resources.study);
+// Assignment and signer gate reject an author even through a different account.
+await db.query("INSERT INTO sandbox.review_assignments(tenant_id,snapshot_id,role_slot,reviewer_person_id,expires_at) VALUES($1,$2,'institution',$3,now()+interval '1 hour')",[a.id,a.resources.snapshot,a.people.OA]);
+await fails('DB29_author_cannot_sign','INSERT INTO sandbox.review_decisions(tenant_id,id,snapshot_id,role_slot,signer_principal_id,signer_person_id,auth_context_id,decision,reason) VALUES($1,$2,$3,\'institution\',$4,$5,$6,\'approved\',\'Synthetic forbidden self approval\')',[a.id,'00000000-0000-4000-8000-000000000003',a.resources.snapshot,a.author_alias,a.people.OA,a.contexts.OA],'42501');
+await db.exec('SET ROLE sandbox_api');await ctx(a.id,a.principals.OA);
+await db.exec('BEGIN');await db.query("SELECT set_config('app.tenant_id',$1,true)",[b.id]);await db.exec('ROLLBACK');
+record('DB30_transaction_context_restores',await one('SELECT sandbox.current_tenant()')===a.id);
+} catch(e){report.fatal=e.message;process.exitCode=1;}finally{await db.close();report.passed=report.checks.filter(x=>x.status==='passed').length;report.failed=report.checks.filter(x=>x.status==='failed').length;fs.writeFileSync(path.join(root,'verification/database_results.json'),JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));}

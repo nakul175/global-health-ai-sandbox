@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "provider": "Provider-neutral pipeline to translate into the chosen CI platform",
+  "triggers": [
+    "pull_request",
+    "main commit",
+    "scheduled dependency check"
+  ],
+  "jobs": [
+    {
+      "id": "contracts",
+      "requires": [],
+      "commands": [
+        "python -m pip install --require-hashes -r environment/requirements-dev.lock",
+        "python -m pytest tests/test_contracts.py -q --junitxml=verification/contracts_junit.xml"
+      ],
+      "pass_criteria": "Zero failures; no contract weakening without reviewed version change"
+    },
+    {
+      "id": "database_wasm",
+      "requires": [],
+      "commands": [
+        "cd environment && npm ci --ignore-scripts",
+        "node tests/database_checks.mjs"
+      ],
+      "pass_criteria": "All DB assertions pass; report engine version"
+    },
+    {
+      "id": "database_native",
+      "requires": [],
+      "service_image": "postgres:18.6@sha256:5a5a84b19854a9ffaa54082c166ff4ec27473a361e496e5ea167f298f2da9722",
+      "commands": [
+        "Use a fresh disposable sandbox_dev database; set DATABASE_TEST_URL to its admin DSN",
+        "node tests/database_checks.mjs",
+        "On a separate fresh database: apply bootstrap, run database/migrate.py twice; compare ledger and intentionally altered applied checksum failure"
+      ],
+      "pass_criteria": "Native PostgreSQL 18.6 checks, migration replay/checksum failure, multi-connection races; no skipped gate"
+    },
+    {
+      "id": "quality_security",
+      "requires": [],
+      "commands": [
+        "python -m ruff check implemented backend and tests",
+        "python -m pip_audit -r environment/requirements.lock",
+        "cd environment && npm audit --omit=dev",
+        "Generate software bill of materials and check for secret leakage"
+      ],
+      "pass_criteria": "No exploitable critical/high issue or unapproved exception; lockfile change reviewed"
+    },
+    {
+      "id": "application",
+      "requires": [
+        "contracts",
+        "database_native",
+        "quality_security"
+      ],
+      "commands": [
+        "Build backend/frontend once from locked inputs",
+        "Provision isolated OIDC tenant, database roles, regional object storage and synthetic fixtures",
+        "Set BASE_URL and test identities; run tests/test_application.py",
+        "Run source integration and browser acceptance catalogue, accessibility and required fault/load tests"
+      ],
+      "pass_criteria": "All affected source ACs and critical cross-tenant/rights tests pass; zero unexpected skips"
+    },
+    {
+      "id": "release",
+      "requires": [
+        "application"
+      ],
+      "commands": [
+        "Scan and sign immutable image digests; apply expand migration to staging",
+        "Deploy canary, smoke test, compare SLO and rights-denial telemetry",
+        "Promotion after recorded independent release review"
+      ],
+      "pass_criteria": "Rollback and restore rehearsal, restriction ledger reconciliation, operational owner and launch decisions present"
+    }
+  ],
+  "secret_policy": "PRs from untrusted sources receive no environment or production secrets; build and release identities separate; OIDC short-lived workload credentials; credentials never in artifacts or logs"
+}

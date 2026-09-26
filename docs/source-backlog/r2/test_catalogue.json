@@ -1,0 +1,2190 @@
+[
+  {
+    "id": "TC-V2-SYN-001",
+    "requirement_ids": [
+      "V2-SYN-001"
+    ],
+    "title": "Closed recipe validation",
+    "level": "contract",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Submit an unknown population field and then exact positive_count greater than person_count.",
+      "Verify field errors and absence of a released dataset."
+    ],
+    "expected_results": [
+      "Invalid recipe returns 422 with field errors and no published snapshot."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-SYN-002",
+    "requirement_ids": [
+      "V2-SYN-002"
+    ],
+    "title": "Deterministic connected records",
+    "level": "integration",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Generate the same recipe with one worker and with shuffled parallel work.",
+      "Compare canonical content after removing only declared execution metadata."
+    ],
+    "expected_results": [
+      "Two identical recipes yield equal canonical record digests when workers process entities in different orders."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-SYN-003",
+    "requirement_ids": [
+      "V2-SYN-003"
+    ],
+    "title": "Referential and temporal integrity",
+    "level": "integration",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Generate 1,000 people with linked histories and verify every foreign reference and causal time.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "All encounters, referrals, orders and results resolve; result time precedes no linked order."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-SYN-004",
+    "requirement_ids": [
+      "V2-SYN-004"
+    ],
+    "title": "Distribution and quota reporting",
+    "level": "unit",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Request exact site quotas and an independent sampled age distribution; reconcile realised counts.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "Exact quotas reconcile, sampled counts are reported and impossible allocations fail before publication."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-SYN-005",
+    "requirement_ids": [
+      "V2-SYN-005"
+    ],
+    "title": "Synthetic identity namespace",
+    "level": "security",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Generate every supported locale profile and inspect identifier and contact domains.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "All generated contacts route to the test sink or example.invalid and no configured live identity namespace is emitted."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-SYN-006",
+    "requirement_ids": [
+      "V2-SYN-006"
+    ],
+    "title": "Origin and mixed lineage",
+    "level": "integration",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Combine a synthetic record snapshot with a governed real asset placeholder and attempt synthetic-only export.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "Adding one approved real asset changes environment evidence classification to mixed and preserves that asset\u2019s rights."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-SYN-007",
+    "requirement_ids": [
+      "V2-SYN-007"
+    ],
+    "title": "Atomic publication",
+    "level": "integration",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Terminate generation after staging half its records, restart and inspect visible versions.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "Killing a generator halfway exposes no partial snapshot; cleanup and retry preserve one final publication."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-SYN-008",
+    "requirement_ids": [
+      "V2-SYN-008"
+    ],
+    "title": "Technical audio boundary",
+    "level": "integration",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Attach a technical audio fixture to a fictional positive label and attempt a clinical evidence release.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "A synthetic tone with a fictional positive outcome cannot be released as observed clinical validation."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-SYN-009",
+    "requirement_ids": [
+      "V2-SYN-009"
+    ],
+    "title": "Recipe suggestion review",
+    "level": "security",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Submit a recipe suggestion containing code execution and access policy instructions.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "Injected instructions cannot execute code, add credentials or publish a recipe."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-SYN-010",
+    "requirement_ids": [
+      "V2-SYN-010"
+    ],
+    "title": "Snapshot lifecycle",
+    "level": "integration",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Fork and archive a snapshot after producing a result, then verify historical evidence.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "A fork produces a new environment identity with matching canonical content; archival leaves evidence hashes intact."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-REG-001",
+    "requirement_ids": [
+      "V2-REG-001"
+    ],
+    "title": "Capability declaration",
+    "level": "contract",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Enumerate profile capabilities and call one unsupported operation.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "Every implemented operation has a contract; unsupported operations return an explicit unsupported response."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-REG-002",
+    "requirement_ids": [
+      "V2-REG-002"
+    ],
+    "title": "Scoped state and revisions",
+    "level": "security",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Attempt a stale update and then address tenant B resource from tenant A.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "Cross scope writes fail and stale If-Match returns 412 without a state change."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-REG-003",
+    "requirement_ids": [
+      "V2-REG-003"
+    ],
+    "title": "Patient relationships and merge",
+    "level": "integration",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Create two similar fictional people, request search, then perform an authorised explicit merge.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "Ambiguous matches remain ambiguous; authorised merge preserves linked references and original identifiers."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-REG-004",
+    "requirement_ids": [
+      "V2-REG-004"
+    ],
+    "title": "Lab and referral lifecycle",
+    "level": "integration",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Complete an order, deliver a duplicate result and then an authorised correction.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "A corrected final result supersedes the old result and retains order and referral links."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-REG-005",
+    "requirement_ids": [
+      "V2-REG-005"
+    ],
+    "title": "Simulated policy separation",
+    "level": "security",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Mint a simulated privileged token and present it to the control API.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "A simulated administrator token cannot grant platform access or bypass a real platform hold."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-REG-006",
+    "requirement_ids": [
+      "V2-REG-006"
+    ],
+    "title": "FHIR profile conformance",
+    "level": "contract",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Run positive and negative provider and consumer conformance cases against every advertised operation.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "CapabilityStatement, resource validation, supported searches and OperationOutcome checks pass for the declared subset."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-REG-007",
+    "requirement_ids": [
+      "V2-REG-007"
+    ],
+    "title": "Safe external effects",
+    "level": "security",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Configure live and private notification destinations and trigger every outbound service.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "Real SMS, email, production registry and private network destinations are blocked before delivery."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-SCN-001",
+    "requirement_ids": [
+      "V2-SCN-001"
+    ],
+    "title": "Frozen scenario plan",
+    "level": "integration",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Freeze, execute, edit and compare plan digests and run lineage.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "Editing a frozen plan creates a successor; old execution retains its original digest."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-SCN-002",
+    "requirement_ids": [
+      "V2-SCN-002"
+    ],
+    "title": "Separate clocks",
+    "level": "security",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Pause virtual time, expire a real credential, then attempt a registry write.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "Advancing or pausing virtual time never extends expired access."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-SCN-003",
+    "requirement_ids": [
+      "V2-SCN-003"
+    ],
+    "title": "Deterministic event ordering",
+    "level": "unit",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Schedule three services at the same virtual instant and replay under different worker order.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "Identical simultaneous events produce the same ordered effects on replay."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-SCN-004",
+    "requirement_ids": [
+      "V2-SCN-004"
+    ],
+    "title": "Fault phase and duplicate effect",
+    "level": "integration",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Apply after-commit response loss to lab order creation and retry the same operation key.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "A lost response after commit followed by an identical retry produces exactly one order."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-SCN-005",
+    "requirement_ids": [
+      "V2-SCN-005"
+    ],
+    "title": "Generation fenced reset",
+    "level": "integration",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Snapshot, reset, deliver a delayed old callback and inspect the new generation.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "Old generation callbacks cannot change a reset or forked environment."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-SCN-006",
+    "requirement_ids": [
+      "V2-SCN-006"
+    ],
+    "title": "Assertion semantics",
+    "level": "unit",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Run one missing trace and one transient invariant violation scenario.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "Missing telemetry is inconclusive; a violated invariant fails even if the final state looks correct."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-SCN-007",
+    "requirement_ids": [
+      "V2-SCN-007"
+    ],
+    "title": "Consistent snapshots",
+    "level": "integration",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Capture a quiescent snapshot before a delayed lab result and replay after restore.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "Replaying from a snapshot with a pending callback applies that callback once and preserves its due time."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-SCN-008",
+    "requirement_ids": [
+      "V2-SCN-008"
+    ],
+    "title": "Concurrent scenario isolation",
+    "level": "security",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Execute two scenarios with identical logical patient IDs concurrently.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "Two default executions cannot read or alter each other\u2019s registry state."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-MOD-001",
+    "requirement_ids": [
+      "V2-MOD-001"
+    ],
+    "title": "Immutable model identity",
+    "level": "integration",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Register two packages with same display name and different preprocessing.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "Changing preprocessing creates a new model version; old runs retain old identity."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-MOD-002",
+    "requirement_ids": [
+      "V2-MOD-002"
+    ],
+    "title": "Admission and dry run",
+    "level": "security",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Submit one valid fixture and packages with malformed output and forbidden file access.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "An invalid output or forbidden host access blocks admission with a bounded report."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-MOD-003",
+    "requirement_ids": [
+      "V2-MOD-003"
+    ],
+    "title": "Actual audio inference",
+    "level": "integration",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Execute two distinguishable compatible fixture models on the same ten technical audio assets.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "Known submitted model fixture emits its expected outputs; manifest proves its digest and runtime."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-MOD-004",
+    "requirement_ids": [
+      "V2-MOD-004"
+    ],
+    "title": "Approved remote inference",
+    "level": "security",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Change a remote service version and attempt a call to an unapproved region.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "Unapproved destination is denied; vendor version drift holds dependent evidence."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-MOD-005",
+    "requirement_ids": [
+      "V2-MOD-005"
+    ],
+    "title": "Evidence scope labelling",
+    "level": "integration",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Create one result in each execution mode and inspect UI and exported evidence.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "An imported prediction file never receives a platform executed model badge."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-MOD-006",
+    "requirement_ids": [
+      "V2-MOD-006"
+    ],
+    "title": "Application and device identity",
+    "level": "end_to_end",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Run the same app on an emulator and a physical device profile and compare evidence fields.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "Evidence differentiates emulator media injection from physical microphone capture."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-DAT-001",
+    "requirement_ids": [
+      "V2-DAT-001"
+    ],
+    "title": "Resumable integrity",
+    "level": "integration",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Interrupt, resume and finalise one audio upload; repeat with a conflicting part.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "Identical retry succeeds once; conflicting part is 409; wrong final digest prevents release."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-DAT-002",
+    "requirement_ids": [
+      "V2-DAT-002"
+    ],
+    "title": "Quarantine and decoder limits",
+    "level": "security",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Upload a valid WAV and a hostile oversized header while scanner is unavailable.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "Scanner outage and decoder exhaustion block preview, inference and release."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-DAT-003",
+    "requirement_ids": [
+      "V2-DAT-003"
+    ],
+    "title": "Explicit transforms",
+    "level": "integration",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Convert an admitted file twice with distinct recipes and inspect lineage.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "Changing conversion creates a new derived object without changing raw hash."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-DAT-004",
+    "requirement_ids": [
+      "V2-DAT-004"
+    ],
+    "title": "Restricted references",
+    "level": "security",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Run a probe package that attempts each forbidden reference access path.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "Attempts through files, network, API joins and logs are denied and audited."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-DAT-005",
+    "requirement_ids": [
+      "V2-DAT-005"
+    ],
+    "title": "Participant partitions",
+    "level": "integration",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Load repeated participant recordings with conflicting split assignments.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "Two recordings of one participant cannot enter independent partitions without a flagged approved exception."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-DAT-006",
+    "requirement_ids": [
+      "V2-DAT-006"
+    ],
+    "title": "Purpose and playback",
+    "level": "security",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Give a user playback scope, attempt inference, revoke grant and retry playback.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "Revoked or playback-only access cannot start inference or export raw media."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-VAL-001",
+    "requirement_ids": [
+      "V2-VAL-001"
+    ],
+    "title": "Protocol freeze",
+    "level": "integration",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Freeze a protocol, inspect outcomes and attempt to change threshold in place.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "Post freeze edits create a successor; a held out threshold search is labelled exploratory."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-VAL-002",
+    "requirement_ids": [
+      "V2-VAL-002"
+    ],
+    "title": "Complete denominators",
+    "level": "unit",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Score the golden fixture and compare counts, percentages and unresolved reference classes.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "The fixture reconciles 950 scored, 30 failed and 20 abstained to 1,000; none silently become negative."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-VAL-003",
+    "requirement_ids": [
+      "V2-VAL-003"
+    ],
+    "title": "Undefined measures",
+    "level": "unit",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Evaluate a single class cohort and an empty cohort.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "A cohort with no reference positives has not estimable sensitivity and AUC as applicable."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-VAL-004",
+    "requirement_ids": [
+      "V2-VAL-004"
+    ],
+    "title": "Uncertainty calculation",
+    "level": "unit",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Use repeated participant clips and a degenerate cohort; inspect sampled units and interval status.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "Repeated clips resample together; fewer than 95 percent valid replicates suppresses the interval."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-VAL-005",
+    "requirement_ids": [
+      "V2-VAL-005"
+    ],
+    "title": "Paired comparison",
+    "level": "unit",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Make version B fail on several A-positive samples; inspect paired and all-eligible tables.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "Differential failure cannot improve a reported result by silently excluding difficult units."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-VAL-006",
+    "requirement_ids": [
+      "V2-VAL-006"
+    ],
+    "title": "Cohorts and disclosure",
+    "level": "security",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Query overlapping small cohorts and attempt to retrieve suppressed individual errors.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "Small cell values and repeated-query differences cannot bypass the disclosure policy."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-VAL-007",
+    "requirement_ids": [
+      "V2-VAL-007"
+    ],
+    "title": "Robustness lineage",
+    "level": "integration",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Add bounded noise and a transform that invalidates some inputs, then inspect result lineage.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "A perturbation result is separate from unmodified data and invalid variants remain counted."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-VAL-008",
+    "requirement_ids": [
+      "V2-VAL-008"
+    ],
+    "title": "Comparable technical measures",
+    "level": "integration",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Compare cold and warm runs on different hardware and inspect comparison warnings.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "Vendor claimed latency is labelled; timeouts and retries remain visible in denominators and usage."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-RUN-001",
+    "requirement_ids": [
+      "V2-RUN-001"
+    ],
+    "title": "Atomic admission",
+    "level": "integration",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Submit concurrent identical and distinct runs at the remaining quota boundary.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "Concurrent starts cannot overspend quota or create duplicate runs for one operation key."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-RUN-002",
+    "requirement_ids": [
+      "V2-RUN-002"
+    ],
+    "title": "Fenced attempt leases",
+    "level": "integration",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Expire a lease, launch a replacement and deliver late completion from the old worker.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "A late worker from an expired lease cannot overwrite the replacement worker\u2019s result."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-RUN-003",
+    "requirement_ids": [
+      "V2-RUN-003"
+    ],
+    "title": "Bounded resources",
+    "level": "security",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Run fixture packages that exhaust memory, disk and output in isolation.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "Exhaustion terminates the attempt safely and records the exceeded limit without affecting another tenant."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-RUN-004",
+    "requirement_ids": [
+      "V2-RUN-004"
+    ],
+    "title": "Confirmed cancellation",
+    "level": "integration",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Request cancellation while dropping worker acknowledgement.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "Unacknowledged cancellation remains explicitly unresolved and cannot produce released evidence."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-RUN-005",
+    "requirement_ids": [
+      "V2-RUN-005"
+    ],
+    "title": "Policy rechecks",
+    "level": "security",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Revoke the grant between staging and inference, then attempt scoring and export.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "A hold during execution prevents release and triggers termination handling within target."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-RUN-006",
+    "requirement_ids": [
+      "V2-RUN-006"
+    ],
+    "title": "Remote uncertainty",
+    "level": "integration",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Simulate provider processing followed by connection loss without an idempotency guarantee.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "An ambiguous remote request is not blindly retried or marked confirmed cancelled."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-RUN-007",
+    "requirement_ids": [
+      "V2-RUN-007"
+    ],
+    "title": "Output cardinality",
+    "level": "contract",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Return each malformed prediction variant from a fixture model.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "Missing row becomes explicit failure; duplicate IDs and NaN cannot be accepted as scored output."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-RUN-008",
+    "requirement_ids": [
+      "V2-RUN-008"
+    ],
+    "title": "Attempt accounting",
+    "level": "integration",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Cancel a run after partial work, retry, then reconcile usage and quota.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "Resource totals reconcile across attempts and reservation cleanup produces an auditable adjustment."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-UX-001",
+    "requirement_ids": [
+      "V2-UX-001"
+    ],
+    "title": "Lab journeys",
+    "level": "end_to_end",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Remove a model admission, grant and quota in turn and inspect the readiness screen.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "A blocked run shows specific failed prerequisites and does not submit work."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-UX-002",
+    "requirement_ids": [
+      "V2-UX-002"
+    ],
+    "title": "Truthful status and provenance",
+    "level": "end_to_end",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Inspect every screen and export using synthetic, stub, imported and actual-run fixtures.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "Synthetic or stub result cannot visually appear to be approved clinical validation."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-UX-003",
+    "requirement_ids": [
+      "V2-UX-003"
+    ],
+    "title": "Accessible interaction",
+    "level": "accessibility",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Complete the principal journey with keyboard and screen reader and test narrow viewport.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "A keyboard-only user can create and review a scenario; chart values are available as accessible tables."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-UX-004",
+    "requirement_ids": [
+      "V2-UX-004"
+    ],
+    "title": "Recoverable state",
+    "level": "end_to_end",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Navigate away during submission and reopen; edit the same scenario in two sessions.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "Returning to a submitted run resumes its status without a duplicate run; stale save gives actionable conflict."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-SEC-001",
+    "requirement_ids": [
+      "V2-SEC-001"
+    ],
+    "title": "Tenant and field policy",
+    "level": "security",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Reuse tenant A IDs with tenant B credentials across all service boundaries.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "Cross tenant resource IDs fail without existence leakage in API, cache, queue and object paths."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-SEC-002",
+    "requirement_ids": [
+      "V2-SEC-002"
+    ],
+    "title": "Real independent approval",
+    "level": "security",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Attempt release using each ineligible identity and the original author.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "Service account, AI agent and scenario persona cannot sign a protected decision."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-SEC-003",
+    "requirement_ids": [
+      "V2-SEC-003"
+    ],
+    "title": "Controlled support",
+    "level": "security",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Exercise support access before, during and after its explicit grant.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "Support cannot read content before approval or after expiry and cannot impersonate a reviewer."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-SEC-004",
+    "requirement_ids": [
+      "V2-SEC-004"
+    ],
+    "title": "Network destination protection",
+    "level": "security",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Run DNS rebinding, redirect and private IP destination cases.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "All malicious destination fixtures fail before sensitive bytes are sent."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-SEC-005",
+    "requirement_ids": [
+      "V2-SEC-005"
+    ],
+    "title": "Secret and log control",
+    "level": "security",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Inject canaries, produce model errors and inspect all collected telemetry.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "Secret canaries and audio or reference payloads do not appear in logs, errors or browser assets."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-SEC-006",
+    "requirement_ids": [
+      "V2-SEC-006"
+    ],
+    "title": "Simulation containment",
+    "level": "security",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Attempt to bind an ecosystem service to production and target a platform endpoint with fault injection.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "No configured fault or test token affects a production destination or real platform authority."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-NFR-001",
+    "requirement_ids": [
+      "V2-NFR-001"
+    ],
+    "title": "Availability and recovery targets",
+    "level": "recovery",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Run a permitted-region recovery exercise and reconcile the measurement window.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "Independent journey probes and timed restore evidence meet each region\u2019s target without averaging failures away."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-NFR-002",
+    "requirement_ids": [
+      "V2-NFR-002"
+    ],
+    "title": "Recovery point reconciliation",
+    "level": "recovery",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Create timestamped fixtures, fail the region and reconcile restored authoritative records.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "Measured restored loss meets each target and uncertain rights block reopening until reconciled."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-NFR-003",
+    "requirement_ids": [
+      "V2-NFR-003"
+    ],
+    "title": "Source performance targets",
+    "level": "performance",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Run representative source L1 workload for 60 minutes including policy and ordinary background tasks.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "Pages p95 <=3 seconds; APIs p95 <=1 second and p99 <=3 seconds; acknowledgement p95 <=2 seconds; eligible reserved start p95 <=2 minutes."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-NFR-004",
+    "requirement_ids": [
+      "V2-NFR-004"
+    ],
+    "title": "Simulator capacity profile",
+    "level": "performance",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Run P1 once without faults and once with declared latency injection.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "Baseline p95 response is below one second over 30 minutes with no injected faults; injected delay is separately reported."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-NFR-005",
+    "requirement_ids": [
+      "V2-NFR-005"
+    ],
+    "title": "Online revocation target",
+    "level": "security",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Revoke while concurrently uploading, executing, scoring and exporting.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "The slowest relevant API, worker and export path ceases authorised access within target."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-NFR-006",
+    "requirement_ids": [
+      "V2-NFR-006"
+    ],
+    "title": "Resource fairness",
+    "level": "performance",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Exhaust tenant A generation and model quota while tenant B runs reserved jobs.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "Overload is bounded and another tenant with reserved capacity retains its service target."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-NFR-007",
+    "requirement_ids": [
+      "V2-NFR-007"
+    ],
+    "title": "Numerical reproducibility",
+    "level": "integration",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Repeat deterministic and stochastic models under the same manifest and compare according to declared mode.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "Declared nondeterministic runtime has repeated-run distribution or tolerance evidence; no false bitwise guarantee."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-API-001",
+    "requirement_ids": [
+      "V2-API-001"
+    ],
+    "title": "Strict schemas and errors",
+    "level": "contract",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Submit unknown nested fields, invalid enums and malformed UUIDs to each new command.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "Contract negatives fail with the specified status and bounded field errors without sensitive values."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-API-002",
+    "requirement_ids": [
+      "V2-API-002"
+    ],
+    "title": "Idempotency and revision",
+    "level": "integration",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Retry, change payload, revoke access, then submit missing and stale If-Match.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "Same key and payload returns one effect after access check; different payload is 409; stale revision is 412; missing revision is 428."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-API-003",
+    "requirement_ids": [
+      "V2-API-003"
+    ],
+    "title": "Stable pagination",
+    "level": "integration",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Page while inserting new rows and try reusing cursor with a new filter and another tenant.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "Pagination contains neither duplicates nor omissions in the snapshot; changed filter or tenant invalidates cursor."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-API-004",
+    "requirement_ids": [
+      "V2-API-004"
+    ],
+    "title": "Reliable versioned events",
+    "level": "integration",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Replay events out of order and duplicate one event while killing a consumer after commit.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "Duplicate delivery creates one effect; version gap triggers reconciliation; incompatible payload is not silently accepted."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-EVD-001",
+    "requirement_ids": [
+      "V2-EVD-001"
+    ],
+    "title": "Immutable evidence manifest",
+    "level": "integration",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Export a bundle, modify a referenced artefact and attempt integrity verification.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "Changing any referenced file invalidates verification; prior signed bundles remain immutable."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-EVD-002",
+    "requirement_ids": [
+      "V2-EVD-002"
+    ],
+    "title": "Rights aware release",
+    "level": "security",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Preview evidence, expire its grant, then attempt signed release.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "An expired grant or held result blocks release even when a prior preview was allowed."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-EVD-003",
+    "requirement_ids": [
+      "V2-EVD-003"
+    ],
+    "title": "Scope and correction history",
+    "level": "integration",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Release a synthetic result then correct a source item and inspect the successor dossier.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "Synthetic arithmetic is never labelled observed performance and a corrected dossier links to its superseded version."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-OPS-001",
+    "requirement_ids": [
+      "V2-OPS-001"
+    ],
+    "title": "Pinned build and fixture provenance",
+    "level": "build",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Build from clean checkout using reviewed lockfiles and run fixture validation.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "A clean environment reproduces the build and fixture manifests without production secrets."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-OPS-002",
+    "requirement_ids": [
+      "V2-OPS-002"
+    ],
+    "title": "Slice gates",
+    "level": "integration",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Remove required gate evidence and attempt promotion.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "Promotion fails when any required evidence or migration compatibility check is missing."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-OPS-003",
+    "requirement_ids": [
+      "V2-OPS-003"
+    ],
+    "title": "Deployed smoke journey",
+    "level": "smoke",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Deploy a candidate to the isolated smoke environment.",
+      "Execute the full dedicated synthetic journey and verify exact expected outputs.",
+      "Clean up disposable objects while retaining receipts."
+    ],
+    "expected_results": [
+      "Authentication, generation, registry write, known model execution, scoring, evidence and cross tenant denial all pass."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  },
+  {
+    "id": "TC-V2-OPS-004",
+    "requirement_ids": [
+      "V2-OPS-004"
+    ],
+    "title": "Recovery and rollback operations",
+    "level": "recovery",
+    "preconditions": [
+      "Capability implemented in a provisioned test environment; isolated synthetic tenants A and B; pinned fixtures and contracts.",
+      "Current grants and quotas unless the case explicitly changes them."
+    ],
+    "steps": [
+      "Rehearse one incompatible migration rollback and one restore with changed grants.",
+      "Read the resulting API state, persisted records and permitted audit or execution evidence."
+    ],
+    "expected_results": [
+      "A rollback preserves schema compatibility and evidence; restored grants reconcile before protected work resumes."
+    ],
+    "execution_status": "not_run",
+    "evidence_required": [
+      "source_revision",
+      "environment_manifest",
+      "fixture_digest",
+      "actual_result",
+      "redacted_test_log"
+    ]
+  }
+]

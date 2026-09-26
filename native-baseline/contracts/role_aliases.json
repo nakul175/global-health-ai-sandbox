@@ -1,0 +1,107 @@
+{
+  "applicant": "Authenticated representative in server-created applicant context, own application only",
+  "authenticated": "Current authenticated principal; minimal safety concern only",
+  "registered_submitter": {
+    "ORG": [
+      "applicant",
+      "PM"
+    ],
+    "WFL": [
+      "EV",
+      "PI"
+    ],
+    "DAC": [
+      "EV",
+      "PI"
+    ],
+    "ING": [
+      "DE"
+    ],
+    "SAF": [
+      "authenticated"
+    ],
+    "IAM": [
+      "OA"
+    ]
+  },
+  "assigned_reviewer": "Exact review_assignments person and registered role_slot; current membership; no author or same-person alias",
+  "registered_transition_actor": "Exact code, source state, assignment and actor rule in study_transition_registry.json; authority aliases resolve only to current verified people named in the applicable source ownership/gate record",
+  "named_successor": "Principal designated in the exact ownership assignment; cannot nominate self",
+  "delegated_member": "Membership carries discover/read capability on explicit resource scope; membership role alone is insufficient",
+  "record_editor": "Registered draft editor for domain and scope; immutable states forbidden",
+  "trusted_scorer": "Workload identity admitted for exact sealed benchmark version and scoring manifest; no interactive person",
+  "review_slots": {
+    "scientific": [
+      "SR"
+    ],
+    "custodian": [
+      "DC"
+    ],
+    "safety": [
+      "CS"
+    ],
+    "institution": [
+      "OA"
+    ],
+    "disclosure": [
+      "SR"
+    ],
+    "rights": [
+      "ER"
+    ]
+  },
+  "registered_submitter_by_payload_kind": {
+    "InstitutionApplication": [
+      "applicant"
+    ],
+    "Programme": [
+      "PM"
+    ],
+    "Study": [
+      "EV",
+      "PI"
+    ],
+    "AccessRequest": [
+      "EV",
+      "PI"
+    ],
+    "Import": [
+      "DE"
+    ],
+    "SafetyConcern": [
+      "authenticated"
+    ],
+    "MembershipInvitation": [
+      "OA"
+    ]
+  },
+  "precedence": "Payload-kind rules constrain domain roles; a PM cannot create an institution application through this role, and an applicant cannot create a programme.",
+  "review_submission_rules": {
+    "feasibility": [
+      "PM"
+    ],
+    "protocol": [
+      "EV"
+    ],
+    "evidence": [
+      "EV"
+    ],
+    "access": [
+      "EV",
+      "PI"
+    ],
+    "institution": [
+      "applicant"
+    ],
+    "dataset_release": [
+      "DC"
+    ],
+    "configuration": [
+      "DV"
+    ],
+    "safety_resumption": [
+      "CS",
+      "SO"
+    ]
+  }
+}

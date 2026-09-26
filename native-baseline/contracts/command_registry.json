@@ -1,0 +1,2349 @@
+[
+  {
+    "id": "CMD001",
+    "name": "CreateInstitutionApplication",
+    "domain": "ORG",
+    "actor": "Authenticated applicant representative",
+    "fields": [
+      "legal_identity",
+      "representative_ref",
+      "contact_email",
+      "terms_version"
+    ],
+    "origin": "FSD section 9",
+    "input_summary": "Identity, representative, contacts and terms",
+    "outcome": "Draft application; invalid legal references rejected",
+    "guard": "Server-issued applicant context only; legal reference validation; does not confer institutional privilege.",
+    "schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "legal_identity": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "legal_name": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            },
+            "registration_jurisdiction": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            },
+            "registration_reference": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            },
+            "entity_type": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            },
+            "evidence_refs": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "minItems": 1,
+              "maxItems": 1000,
+              "uniqueItems": true
+            }
+          },
+          "required": [
+            "legal_name",
+            "registration_jurisdiction",
+            "registration_reference",
+            "entity_type",
+            "evidence_refs"
+          ]
+        },
+        "representative_ref": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "contact_email": {
+          "type": "string",
+          "format": "email",
+          "maxLength": 254
+        },
+        "terms_version": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        }
+      },
+      "required": [
+        "legal_identity",
+        "representative_ref",
+        "contact_email",
+        "terms_version"
+      ]
+    }
+  },
+  {
+    "id": "CMD002",
+    "name": "InviteMember",
+    "domain": "IAM",
+    "actor": "OA",
+    "fields": [
+      "email",
+      "role_codes",
+      "scope_refs",
+      "expires_at"
+    ],
+    "origin": "FSD section 9",
+    "input_summary": "Institution, email, roles, scope and expiry",
+    "outcome": "Pending invitation; delegation and self-elevation checked",
+    "guard": "Current verified institution, delegable role subset and scope, positive expiry; recipient cannot activate own privilege.",
+    "schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "email": {
+          "type": "string",
+          "format": "email",
+          "maxLength": 254
+        },
+        "role_codes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "OP",
+              "OA",
+              "PM",
+              "CO",
+              "DV",
+              "DC",
+              "DE",
+              "AN",
+              "EV",
+              "SR",
+              "PI",
+              "CS",
+              "ER",
+              "BY",
+              "FN",
+              "SO",
+              "SU",
+              "AU",
+              "CR",
+              "SV"
+            ]
+          },
+          "minItems": 1,
+          "maxItems": 20,
+          "uniqueItems": true
+        },
+        "scope_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "minItems": 1,
+          "maxItems": 1000,
+          "uniqueItems": true
+        },
+        "expires_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "email",
+        "role_codes",
+        "scope_refs",
+        "expires_at"
+      ]
+    }
+  },
+  {
+    "id": "CMD003",
+    "name": "RevokeMembership",
+    "domain": "IAM",
+    "actor": "OA",
+    "fields": [
+      "membership_ref",
+      "reason"
+    ],
+    "origin": "FSD section 9",
+    "input_summary": "Subject, scope, reason and expected version",
+    "outcome": "Effective restriction and impact tasks within revocation target",
+    "guard": "Lock subject membership; prevent removing last owner without accepted successor; apply online revocation target.",
+    "schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "membership_ref": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 10,
+          "maxLength": 2000
+        }
+      },
+      "required": [
+        "membership_ref",
+        "reason"
+      ]
+    }
+  },
+  {
+    "id": "CMD004",
+    "name": "SubmitSolutionConfiguration",
+    "domain": "SOL",
+    "actor": "DV",
+    "fields": [
+      "intended_use",
+      "components",
+      "execution_mode",
+      "dependency_refs",
+      "artifact_refs"
+    ],
+    "origin": "FSD section 9",
+    "input_summary": "Intended use, components, mode, dependencies and files",
+    "outcome": "Frozen submission; quarantine or missing materials block review",
+    "guard": "Exact component versions, quarantine clearance, provider rights and selected execution-mode prerequisites.",
+    "schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "intended_use": {
+          "$ref": "#/components/schemas/IntendedUse"
+        },
+        "components": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200
+              },
+              "kind": {
+                "type": "string",
+                "enum": [
+                  "model",
+                  "prompt",
+                  "tool",
+                  "corpus",
+                  "runtime",
+                  "provider"
+                ]
+              },
+              "version": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200
+              },
+              "sha256": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "provider_ref": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "uuid"
+              }
+            },
+            "required": [
+              "name",
+              "kind",
+              "version",
+              "sha256",
+              "provider_ref"
+            ]
+          },
+          "minItems": 1,
+          "maxItems": 1000,
+          "uniqueItems": true
+        },
+        "execution_mode": {
+          "type": "string",
+          "enum": [
+            "container",
+            "remote_api",
+            "local_node"
+          ]
+        },
+        "dependency_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "minItems": 1,
+          "maxItems": 1000,
+          "uniqueItems": true
+        },
+        "artifact_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "minItems": 1,
+          "maxItems": 1000,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "intended_use",
+        "components",
+        "execution_mode",
+        "dependency_refs",
+        "artifact_refs"
+      ]
+    }
+  },
+  {
+    "id": "CMD005",
+    "name": "SubmitAccessRequest",
+    "domain": "DAC",
+    "actor": "EV or PI",
+    "fields": [
+      "dataset_release_ref",
+      "study_ref",
+      "purpose",
+      "user_refs",
+      "field_codes",
+      "region",
+      "valid_from",
+      "valid_until",
+      "cohort_sha256"
+    ],
+    "origin": "FSD section 9",
+    "input_summary": "Dataset release, study, purpose, users, fields, region and period",
+    "outcome": "Review package; discovery rights and scope validated",
+    "guard": "Discoverable exact dataset release; study reference and purpose; requested interval positive; no implied grant.",
+    "schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "dataset_release_ref": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "study_ref": {
+          "type": "string",
+          "format": "uuid",
+          "description": "Study UUID in active tenant, or custodian-owned verified external_reference of kind study. Never an unchecked remote UUID."
+        },
+        "purpose": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "user_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "minItems": 1,
+          "maxItems": 1000,
+          "uniqueItems": true
+        },
+        "field_codes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]{0,79}$",
+            "maxLength": 80
+          },
+          "minItems": 1,
+          "maxItems": 1000,
+          "uniqueItems": true
+        },
+        "region": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "valid_from": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "valid_until": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "cohort_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "dataset_release_ref",
+        "study_ref",
+        "purpose",
+        "user_refs",
+        "field_codes",
+        "region",
+        "valid_from",
+        "valid_until",
+        "cohort_sha256"
+      ]
+    }
+  },
+  {
+    "id": "CMD006",
+    "name": "DecideAccessRequest",
+    "domain": "DAC",
+    "actor": "DC with required rights owners",
+    "fields": [
+      "request_ref",
+      "decision",
+      "approved_scope",
+      "decision_refs"
+    ],
+    "origin": "FSD section 9",
+    "input_summary": "Frozen request, decision, approved subset and eligible signatures",
+    "outcome": "Grant or denial; independence and all required rights checked",
+    "guard": "Snapshot current; independent required owners; approved scope subset of request and all rights; approved_scope required only for approval.",
+    "schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "request_ref": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "approved",
+            "returned",
+            "rejected"
+          ]
+        },
+        "approved_scope": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "study_ref": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "dataset_release_ref": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "purpose": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            },
+            "user_refs": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "minItems": 1,
+              "maxItems": 1000,
+              "uniqueItems": true
+            },
+            "field_codes": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]{0,79}$",
+                "maxLength": 80
+              },
+              "minItems": 1,
+              "maxItems": 1000,
+              "uniqueItems": true
+            },
+            "region": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 80
+            },
+            "valid_from": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "valid_until": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "cohort_sha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            }
+          },
+          "required": [
+            "study_ref",
+            "dataset_release_ref",
+            "purpose",
+            "user_refs",
+            "field_codes",
+            "region",
+            "valid_from",
+            "valid_until",
+            "cohort_sha256"
+          ]
+        },
+        "decision_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "minItems": 1,
+          "maxItems": 1000,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "request_ref",
+        "decision",
+        "decision_refs"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "decision": {
+                "const": "approved"
+              }
+            },
+            "required": [
+              "decision"
+            ]
+          },
+          "then": {
+            "required": [
+              "approved_scope"
+            ]
+          },
+          "else": {
+            "not": {
+              "required": [
+                "approved_scope"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "CMD007",
+    "name": "RegisterImport",
+    "domain": "ING",
+    "actor": "DE",
+    "fields": [
+      "source_manifest",
+      "mapping_ref",
+      "grant_ref"
+    ],
+    "origin": "FSD section 9",
+    "input_summary": "Source manifest, rights and mapping",
+    "outcome": "Quarantined import identity and controlled transfer route",
+    "guard": "Current grant, approved source and mapping; transfer enters quarantine; no preview or search before clearance.",
+    "schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "source_manifest": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "source_ref": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "schema_ref": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "source_count": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            "files": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 200
+                  },
+                  "bytes": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 9007199254740991
+                  },
+                  "sha256": {
+                    "type": "string",
+                    "pattern": "^[a-f0-9]{64}$"
+                  }
+                },
+                "required": [
+                  "name",
+                  "bytes",
+                  "sha256"
+                ]
+              },
+              "minItems": 1,
+              "maxItems": 1000,
+              "uniqueItems": true
+            }
+          },
+          "required": [
+            "source_ref",
+            "schema_ref",
+            "source_count",
+            "files"
+          ]
+        },
+        "mapping_ref": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "grant_ref": {
+          "type": "string",
+          "format": "uuid"
+        }
+      },
+      "required": [
+        "source_manifest",
+        "mapping_ref",
+        "grant_ref"
+      ]
+    }
+  },
+  {
+    "id": "CMD008",
+    "name": "FinaliseImport",
+    "domain": "ING",
+    "actor": "DE",
+    "fields": [
+      "import_ref",
+      "artifact_ref",
+      "accepted_count",
+      "rejected_count",
+      "quarantined_count",
+      "source_count"
+    ],
+    "origin": "FSD section 9",
+    "input_summary": "Verified bytes, validation and reconciliation",
+    "outcome": "Reconciled batch; missing inputs or integrity mismatch block acceptance",
+    "guard": "Expected source digest and bytes; accepted + rejected + quarantined = source; counts nonnegative; no omitted records.",
+    "schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "import_ref": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "artifact_ref": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "accepted_count": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "rejected_count": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "quarantined_count": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "source_count": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": [
+        "import_ref",
+        "artifact_ref",
+        "accepted_count",
+        "rejected_count",
+        "quarantined_count",
+        "source_count"
+      ]
+    }
+  },
+  {
+    "id": "CMD009",
+    "name": "ReleaseDataset",
+    "domain": "CUR",
+    "actor": "DC with required quality reviewer",
+    "fields": [
+      "dataset_ref",
+      "manifest_ref",
+      "partition_ref",
+      "decision_refs"
+    ],
+    "origin": "FSD section 9",
+    "input_summary": "Members, labels, rights, partitions and quality decisions",
+    "outcome": "Immutable manifest; leakage or quality blockers prevent release",
+    "guard": "Immutable manifest, label quality, leakage/partition checks, rights, eligible quality decisions; sealed labels remain separate.",
+    "schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "dataset_ref": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "manifest_ref": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "partition_ref": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "decision_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "minItems": 1,
+          "maxItems": 1000,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "dataset_ref",
+        "manifest_ref",
+        "partition_ref",
+        "decision_refs"
+      ]
+    }
+  },
+  {
+    "id": "CMD010",
+    "name": "FreezeProtocol",
+    "domain": "PRO",
+    "actor": "EV with qualified decision owners",
+    "fields": [
+      "protocol_ref",
+      "plan_ref",
+      "threshold_refs",
+      "decision_refs"
+    ],
+    "origin": "FSD section 9",
+    "input_summary": "Complete plan, thresholds and review decisions",
+    "outcome": "Frozen protocol; missing clinical rules or stale review blocked",
+    "guard": "All endpoints, thresholds, sample and subgroup methods, failure rules, uncertainty and stop criteria complete and approved.",
+    "schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "protocol_ref": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "plan_ref": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "threshold_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "minItems": 1,
+          "maxItems": 1000,
+          "uniqueItems": true
+        },
+        "decision_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "minItems": 1,
+          "maxItems": 1000,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "protocol_ref",
+        "plan_ref",
+        "threshold_refs",
+        "decision_refs"
+      ]
+    }
+  },
+  {
+    "id": "CMD011",
+    "name": "ActivateStudy",
+    "domain": "WFL",
+    "actor": "Accountable EV or PI",
+    "fields": [
+      "study_ref",
+      "protocol_ref",
+      "config_ref",
+      "grant_refs",
+      "gate_refs",
+      "budget_ref"
+    ],
+    "origin": "FSD section 9",
+    "input_summary": "Exact scope, gates, owners, versions and budget",
+    "outcome": "Active study record; all applicable prerequisites rechecked",
+    "guard": "Ready state; exact frozen protocol/config; G1/G2 and all applicable G4/G7/G8; current grants, owners, budget; no holds.",
+    "schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "study_ref": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "protocol_ref": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "config_ref": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "grant_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "minItems": 1,
+          "maxItems": 1000,
+          "uniqueItems": true
+        },
+        "gate_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "minItems": 1,
+          "maxItems": 1000,
+          "uniqueItems": true
+        },
+        "budget_ref": {
+          "type": "string",
+          "format": "uuid"
+        }
+      },
+      "required": [
+        "study_ref",
+        "protocol_ref",
+        "config_ref",
+        "grant_refs",
+        "gate_refs",
+        "budget_ref"
+      ]
+    }
+  },
+  {
+    "id": "CMD012",
+    "name": "SubmitRun",
+    "domain": "RUN",
+    "actor": "EV",
+    "fields": [
+      "study_ref",
+      "manifest_ref",
+      "grant_refs",
+      "runtime_profile_ref",
+      "budget_ref",
+      "requested_units"
+    ],
+    "origin": "FSD section 9",
+    "input_summary": "Manifest, grants, resources, egress and budget",
+    "outcome": "Logical run plus attempt; same request deduplicated",
+    "guard": "Lock study and budget; exact immutable manifest; active grants and allowed region/egress; admitted resource profile; reserve budget atomically.",
+    "schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "study_ref": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "manifest_ref": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "grant_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "minItems": 1,
+          "maxItems": 1000,
+          "uniqueItems": true
+        },
+        "runtime_profile_ref": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "budget_ref": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "requested_units": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": [
+        "study_ref",
+        "manifest_ref",
+        "grant_refs",
+        "runtime_profile_ref",
+        "budget_ref",
+        "requested_units"
+      ]
+    }
+  },
+  {
+    "id": "CMD013",
+    "name": "CancelRun",
+    "domain": "RUN",
+    "actor": "EV",
+    "fields": [
+      "run_ref",
+      "reason"
+    ],
+    "origin": "FSD section 9",
+    "input_summary": "Run, reason and authority",
+    "outcome": "Cancellation intent followed by observed result; no assumed remote stop",
+    "guard": "Authorised run scope; terminal observations preserved; append intent then await observed termination; settle usage once.",
+    "schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "run_ref": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 10,
+          "maxLength": 2000
+        }
+      },
+      "required": [
+        "run_ref",
+        "reason"
+      ]
+    }
+  },
+  {
+    "id": "CMD014",
+    "name": "RequestOutputExport",
+    "domain": "DAC",
+    "actor": "Authorised EV or PI",
+    "fields": [
+      "asset_refs",
+      "recipient_ref",
+      "purpose",
+      "format"
+    ],
+    "origin": "FSD section 9",
+    "input_summary": "Exact assets, recipient, purpose and format",
+    "outcome": "Disclosure and rights review package; no immediate unrestricted link",
+    "guard": "Exact assets, intended recipient/purpose; rights and disclosure review task; cannot directly create unrestricted delivery.",
+    "schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "asset_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "minItems": 1,
+          "maxItems": 1000,
+          "uniqueItems": true
+        },
+        "recipient_ref": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "purpose": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "format": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        }
+      },
+      "required": [
+        "asset_refs",
+        "recipient_ref",
+        "purpose",
+        "format"
+      ]
+    }
+  },
+  {
+    "id": "CMD015",
+    "name": "IssueEvidence",
+    "domain": "EVD",
+    "actor": "SR with required clinical signer",
+    "fields": [
+      "dossier_ref",
+      "manifest_ref",
+      "decision_refs"
+    ],
+    "origin": "FSD section 9",
+    "input_summary": "Frozen dossier and eligible signatures",
+    "outcome": "Immutable issued report and status identity; incomplete provenance blocked",
+    "guard": "G3; frozen dossier, complete failures and deviations, claim provenance and eligible independent signers; immutable issued artifact.",
+    "schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "dossier_ref": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "manifest_ref": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "decision_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "minItems": 1,
+          "maxItems": 1000,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "dossier_ref",
+        "manifest_ref",
+        "decision_refs"
+      ]
+    }
+  },
+  {
+    "id": "CMD016",
+    "name": "PublishEvidenceView",
+    "domain": "EVD",
+    "actor": "Scientific release and rights owners",
+    "fields": [
+      "view_ref",
+      "manifest_ref",
+      "audience",
+      "decision_refs"
+    ],
+    "origin": "FSD section 9",
+    "input_summary": "Approved view, rights and audience",
+    "outcome": "Released view; changed bytes or recipients require renewed decision",
+    "guard": "Separately approved audience and exact sanitized bytes; current rights and report status; confidential titles excluded.",
+    "schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "view_ref": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "manifest_ref": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "audience": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "decision_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "minItems": 1,
+          "maxItems": 1000,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "view_ref",
+        "manifest_ref",
+        "audience",
+        "decision_refs"
+      ]
+    }
+  },
+  {
+    "id": "CMD017",
+    "name": "SubmitExternalPackage",
+    "domain": "REG",
+    "actor": "Authorised institutional representative",
+    "fields": [
+      "package_ref",
+      "channel_ref",
+      "recipient_ref",
+      "decision_refs"
+    ],
+    "origin": "FSD section 9",
+    "input_summary": "Frozen package, verified channel, recipient and human authority",
+    "outcome": "Dispatch record and independent receipt state",
+    "guard": "Verified channel/recipient, previewed immutable package and human authority; durable dispatch then separate receipt.",
+    "schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "package_ref": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "channel_ref": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "recipient_ref": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "decision_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "minItems": 1,
+          "maxItems": 1000,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "package_ref",
+        "channel_ref",
+        "recipient_ref",
+        "decision_refs"
+      ]
+    }
+  },
+  {
+    "id": "CMD018",
+    "name": "RecordSafetyConcern",
+    "domain": "SAF",
+    "actor": "Any authenticated reporter",
+    "fields": [
+      "concern",
+      "scope_refs",
+      "contact",
+      "occurred_at"
+    ],
+    "origin": "FSD section 9",
+    "input_summary": "Minimal concern and available scope or contact",
+    "outcome": "Immediate case and triage task; missing optional facts do not block",
+    "guard": "Any authenticated reporter may submit concern alone; other fields optional; attachment quarantine must not block initial intake.",
+    "schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "concern": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 20000
+        },
+        "scope_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "minItems": 1,
+          "maxItems": 1000,
+          "uniqueItems": true
+        },
+        "contact": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "occurred_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "concern"
+      ]
+    }
+  },
+  {
+    "id": "CMD019",
+    "name": "ApplyHold",
+    "domain": "SAF",
+    "actor": "CS SO or qualified governance owner",
+    "fields": [
+      "scope_refs",
+      "reason",
+      "hold_type"
+    ],
+    "origin": "FSD section 9",
+    "input_summary": "Affected scope, authority and reason",
+    "outcome": "Active restriction and impact records; historical evidence retained",
+    "guard": "Immediate authorised scope containment; record independent hold owner and reason; create impact tasks.",
+    "schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "scope_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "minItems": 1,
+          "maxItems": 1000,
+          "uniqueItems": true
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 10,
+          "maxLength": 2000
+        },
+        "hold_type": {
+          "type": "string",
+          "enum": [
+            "clinical",
+            "security",
+            "legal",
+            "governance"
+          ]
+        }
+      },
+      "required": [
+        "scope_refs",
+        "reason",
+        "hold_type"
+      ]
+    }
+  },
+  {
+    "id": "CMD020",
+    "name": "RequestResumption",
+    "domain": "SAF",
+    "actor": "Relevant independent CS or SO authority",
+    "fields": [
+      "scope_refs",
+      "remediation_refs",
+      "decision_refs"
+    ],
+    "origin": "FSD section 9",
+    "input_summary": "Remediation, verification and eligible decisions",
+    "outcome": "Resume only after all applicable holds and gates pass",
+    "guard": "Every applicable hold independently cleared, remediation verified, prerequisites refreshed; return only to prior valid state.",
+    "schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "scope_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "minItems": 1,
+          "maxItems": 1000,
+          "uniqueItems": true
+        },
+        "remediation_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "minItems": 1,
+          "maxItems": 1000,
+          "uniqueItems": true
+        },
+        "decision_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "minItems": 1,
+          "maxItems": 1000,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "scope_refs",
+        "remediation_refs",
+        "decision_refs"
+      ]
+    }
+  },
+  {
+    "id": "CMD021",
+    "name": "AuthoriseDeployment",
+    "domain": "DEP",
+    "actor": "BY with local clinical owners",
+    "fields": [
+      "site_ref",
+      "config_ref",
+      "use_ref",
+      "permission_refs",
+      "acceptance_ref",
+      "budget_ref",
+      "decision_refs"
+    ],
+    "origin": "FSD section 9",
+    "input_summary": "Site, use, configuration, buyer, permissions and acceptance",
+    "outcome": "Site-specific authorisation; evaluation result alone insufficient",
+    "guard": "G5 for exact site/use/configuration; verified local permission, buyer acceptance, training, fallback and funding.",
+    "schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "site_ref": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "config_ref": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "use_ref": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "permission_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "minItems": 1,
+          "maxItems": 1000,
+          "uniqueItems": true
+        },
+        "acceptance_ref": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "budget_ref": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "decision_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "minItems": 1,
+          "maxItems": 1000,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "site_ref",
+        "config_ref",
+        "use_ref",
+        "permission_refs",
+        "acceptance_ref",
+        "budget_ref",
+        "decision_refs"
+      ]
+    }
+  },
+  {
+    "id": "CMD022",
+    "name": "RecordInstalledVersion",
+    "domain": "DEP",
+    "actor": "PI",
+    "fields": [
+      "deployment_ref",
+      "config_ref",
+      "observed_at",
+      "source_ref"
+    ],
+    "origin": "FSD section 9",
+    "input_summary": "Deployment, observed configuration and source time",
+    "outcome": "Version observation and mismatch review where required",
+    "guard": "Authenticated observed source and event time; observation cannot itself authorise deployment; mismatches trigger review.",
+    "schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "deployment_ref": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "config_ref": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "observed_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "source_ref": {
+          "type": "string",
+          "format": "uuid"
+        }
+      },
+      "required": [
+        "deployment_ref",
+        "config_ref",
+        "observed_at",
+        "source_ref"
+      ]
+    }
+  },
+  {
+    "id": "CMD023",
+    "name": "SubmitMonitoringObservation",
+    "domain": "MON",
+    "actor": "SV",
+    "fields": [
+      "plan_ref",
+      "source_event_id",
+      "observed_at",
+      "measurements"
+    ],
+    "origin": "FSD section 9",
+    "input_summary": "Plan, source identity, event time and measurements",
+    "outcome": "Validated observation or quarantine; duplicate events reconciled",
+    "guard": "Current admitted source/plan; unique source event ID; finite observed values, null for missing statuses; retain event and receipt time.",
+    "schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "plan_ref": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "source_event_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "observed_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "measurements": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/MetricObservation"
+          },
+          "minItems": 1,
+          "maxItems": 100,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "plan_ref",
+        "source_event_id",
+        "observed_at",
+        "measurements"
+      ]
+    }
+  },
+  {
+    "id": "CMD024",
+    "name": "RecordExternalDecision",
+    "domain": "REG",
+    "actor": "ER",
+    "fields": [
+      "issuer_ref",
+      "reference",
+      "scope_refs",
+      "valid_from",
+      "valid_until",
+      "evidence_refs"
+    ],
+    "origin": "FSD section 9",
+    "input_summary": "Issuer, reference, scope, dates and evidence",
+    "outcome": "Unverified record until qualified verification completes",
+    "guard": "Issuer evidence and positive validity interval; record as unverified; no automatic regulatory authority.",
+    "schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "issuer_ref": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "reference": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "scope_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "minItems": 1,
+          "maxItems": 1000,
+          "uniqueItems": true
+        },
+        "valid_from": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "valid_until": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "minItems": 1,
+          "maxItems": 1000,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "issuer_ref",
+        "reference",
+        "scope_refs",
+        "valid_from",
+        "valid_until",
+        "evidence_refs"
+      ]
+    }
+  },
+  {
+    "id": "CMD025",
+    "name": "RequestDisposal",
+    "domain": "EXT",
+    "actor": "DC",
+    "fields": [
+      "asset_refs",
+      "basis_ref",
+      "proposed_at",
+      "reason"
+    ],
+    "origin": "FSD section 9",
+    "input_summary": "Assets, basis, scope, rights and proposed action",
+    "outcome": "Hold-aware assessment; no immediate destructive bypass",
+    "guard": "Approved retention basis, dependency inventory and legal-hold assessment; request creates assessment, never immediate deletion.",
+    "schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "asset_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "minItems": 1,
+          "maxItems": 1000,
+          "uniqueItems": true
+        },
+        "basis_ref": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "proposed_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 10,
+          "maxLength": 2000
+        }
+      },
+      "required": [
+        "asset_refs",
+        "basis_ref",
+        "proposed_at",
+        "reason"
+      ]
+    }
+  },
+  {
+    "id": "CMD026",
+    "name": "CloseInstitution",
+    "domain": "EXT",
+    "actor": "OA",
+    "fields": [
+      "institution_ref",
+      "inventory_ref",
+      "handover_refs",
+      "reason"
+    ],
+    "origin": "FSD section 9",
+    "input_summary": "Inventory, accepted handover, revocations and retention",
+    "outcome": "Scoped closure attestation with explicit residual duties",
+    "guard": "Accepted handover, inventory, revocations, retention and residual duties; cannot orphan incidents or held records.",
+    "schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "institution_ref": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "inventory_ref": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "handover_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "minItems": 1,
+          "maxItems": 1000,
+          "uniqueItems": true
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 10,
+          "maxLength": 2000
+        }
+      },
+      "required": [
+        "institution_ref",
+        "inventory_ref",
+        "handover_refs",
+        "reason"
+      ]
+    }
+  },
+  {
+    "id": "CMD027",
+    "name": "SubmitResource",
+    "domain": "WFL",
+    "actor": "Registered domain submitter",
+    "fields": [
+      "resource_ref",
+      "review_type"
+    ],
+    "origin": "Proposed LLD completion",
+    "input_summary": "Typed fields below plus command context",
+    "outcome": "Freeze review snapshot and assign required review slots",
+    "guard": "Freeze review snapshot and assign required review slots. Apply the registered domain transition and independent decision rules; generic role membership alone is insufficient.",
+    "schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "resource_ref": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "review_type": {
+          "type": "string",
+          "enum": [
+            "feasibility",
+            "protocol",
+            "evidence",
+            "access",
+            "institution",
+            "dataset_release",
+            "configuration",
+            "safety_resumption"
+          ]
+        }
+      },
+      "required": [
+        "resource_ref",
+        "review_type"
+      ]
+    }
+  },
+  {
+    "id": "CMD028",
+    "name": "RecordReviewDecision",
+    "domain": "WFL",
+    "actor": "Eligible reviewer for required role slot",
+    "fields": [
+      "snapshot_ref",
+      "decision",
+      "role_slot",
+      "reason",
+      "evidence_refs"
+    ],
+    "origin": "Proposed LLD completion",
+    "input_summary": "Typed fields below plus command context",
+    "outcome": "Append attributed decision bound to exact snapshot; reject conflict or stale evidence",
+    "guard": "Append attributed decision bound to exact snapshot; reject conflict or stale evidence. Apply the registered domain transition and independent decision rules; generic role membership alone is insufficient.",
+    "schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "snapshot_ref": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "approved",
+            "returned",
+            "rejected"
+          ]
+        },
+        "role_slot": {
+          "type": "string",
+          "enum": [
+            "scientific",
+            "custodian",
+            "safety",
+            "institution",
+            "disclosure",
+            "rights"
+          ]
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 10,
+          "maxLength": 2000
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "minItems": 1,
+          "maxItems": 1000,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "snapshot_ref",
+        "decision",
+        "role_slot",
+        "reason",
+        "evidence_refs"
+      ]
+    }
+  },
+  {
+    "id": "CMD029",
+    "name": "TransitionResource",
+    "domain": "WFL",
+    "actor": "Registered transition actor",
+    "fields": [
+      "resource_ref",
+      "transition_code",
+      "reason",
+      "decision_refs"
+    ],
+    "origin": "Proposed LLD completion",
+    "input_summary": "Typed fields below plus command context",
+    "outcome": "Apply registered transition under current guards; arbitrary state editing rejected",
+    "guard": "Apply registered transition under current guards; arbitrary state editing rejected. Apply the registered domain transition and independent decision rules; generic role membership alone is insufficient.",
+    "schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "resource_ref": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "transition_code": {
+          "type": "string",
+          "enum": [
+            "study.submit_feasibility",
+            "study.return_feasibility",
+            "study.commission",
+            "study.reject_or_withdraw",
+            "study.submit_protocol",
+            "study.approve_setup",
+            "study.request_protocol_rework",
+            "study.complete_readiness",
+            "study.start",
+            "study.reconcile_evaluation",
+            "study.submit_evidence",
+            "study.return_evidence",
+            "study.issue_decision",
+            "study.suspend",
+            "study.resume",
+            "study.stop",
+            "study.close"
+          ]
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 10,
+          "maxLength": 2000
+        },
+        "decision_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "minItems": 1,
+          "maxItems": 1000,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "resource_ref",
+        "transition_code",
+        "reason",
+        "decision_refs"
+      ]
+    }
+  },
+  {
+    "id": "CMD030",
+    "name": "GrantMembership",
+    "domain": "IAM",
+    "actor": "Separate eligible administrator",
+    "fields": [
+      "membership_ref",
+      "role_codes",
+      "scope_refs",
+      "expires_at",
+      "decision_refs"
+    ],
+    "origin": "Proposed LLD completion",
+    "input_summary": "Typed fields below plus command context",
+    "outcome": "Activate delegated scope only after independent approval",
+    "guard": "Activate delegated scope only after independent approval. Apply the registered domain transition and independent decision rules; generic role membership alone is insufficient.",
+    "schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "membership_ref": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "role_codes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "OP",
+              "OA",
+              "PM",
+              "CO",
+              "DV",
+              "DC",
+              "DE",
+              "AN",
+              "EV",
+              "SR",
+              "PI",
+              "CS",
+              "ER",
+              "BY",
+              "FN",
+              "SO",
+              "SU",
+              "AU",
+              "CR",
+              "SV"
+            ]
+          },
+          "minItems": 1,
+          "maxItems": 20,
+          "uniqueItems": true
+        },
+        "scope_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "minItems": 1,
+          "maxItems": 1000,
+          "uniqueItems": true
+        },
+        "expires_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "decision_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "minItems": 1,
+          "maxItems": 1000,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "membership_ref",
+        "role_codes",
+        "scope_refs",
+        "expires_at",
+        "decision_refs"
+      ]
+    }
+  },
+  {
+    "id": "CMD031",
+    "name": "RevokeAccessGrant",
+    "domain": "DAC",
+    "actor": "DC",
+    "fields": [
+      "grant_ref",
+      "reason"
+    ],
+    "origin": "Proposed LLD completion",
+    "input_summary": "Typed fields below plus command context",
+    "outcome": "Record effective revocation and bounded propagation tasks",
+    "guard": "Record effective revocation and bounded propagation tasks. Apply the registered domain transition and independent decision rules; generic role membership alone is insufficient.",
+    "schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "grant_ref": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 10,
+          "maxLength": 2000
+        }
+      },
+      "required": [
+        "grant_ref",
+        "reason"
+      ]
+    }
+  },
+  {
+    "id": "CMD032",
+    "name": "VerifyExternalDecision",
+    "domain": "REG",
+    "actor": "Qualified ER",
+    "fields": [
+      "external_decision_ref",
+      "verification_ref",
+      "decision_refs"
+    ],
+    "origin": "Proposed LLD completion",
+    "input_summary": "Typed fields below plus command context",
+    "outcome": "Mark independently verified evidence and exact applicable scope",
+    "guard": "Mark independently verified evidence and exact applicable scope. Apply the registered domain transition and independent decision rules; generic role membership alone is insufficient.",
+    "schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "external_decision_ref": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "verification_ref": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "decision_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "minItems": 1,
+          "maxItems": 1000,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "external_decision_ref",
+        "verification_ref",
+        "decision_refs"
+      ]
+    }
+  },
+  {
+    "id": "CMD033",
+    "name": "ReleaseOutputExport",
+    "domain": "DAC",
+    "actor": "DC and disclosure reviewer",
+    "fields": [
+      "export_ref",
+      "manifest_ref",
+      "decision_refs"
+    ],
+    "origin": "Proposed LLD completion",
+    "input_summary": "Typed fields below plus command context",
+    "outcome": "Issue controlled delivery for exact approved bytes and recipient",
+    "guard": "Issue controlled delivery for exact approved bytes and recipient. Apply the registered domain transition and independent decision rules; generic role membership alone is insufficient.",
+    "schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "export_ref": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "manifest_ref": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "decision_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "minItems": 1,
+          "maxItems": 1000,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "export_ref",
+        "manifest_ref",
+        "decision_refs"
+      ]
+    }
+  },
+  {
+    "id": "CMD034",
+    "name": "RetryJob",
+    "domain": "OPS",
+    "actor": "SO within job scope",
+    "fields": [
+      "job_ref",
+      "reason"
+    ],
+    "origin": "Proposed LLD completion",
+    "input_summary": "Typed fields below plus command context",
+    "outcome": "Create new safe attempt; preserve prior attempts and enforce retry limit",
+    "guard": "Create new safe attempt; preserve prior attempts and enforce retry limit. Apply the registered domain transition and independent decision rules; generic role membership alone is insufficient.",
+    "schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "job_ref": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 10,
+          "maxLength": 2000
+        }
+      },
+      "required": [
+        "job_ref",
+        "reason"
+      ]
+    }
+  },
+  {
+    "id": "CMD035",
+    "name": "CompleteNodeInstruction",
+    "domain": "RUN",
+    "actor": "SV scoped to node",
+    "fields": [
+      "instruction_ref",
+      "observed_state",
+      "observed_at",
+      "attestation_ref"
+    ],
+    "origin": "Proposed LLD completion",
+    "input_summary": "Typed fields below plus command context",
+    "outcome": "Append authenticated observation; do not infer state from delivery alone",
+    "guard": "Append authenticated observation; do not infer state from delivery alone. Apply the registered domain transition and independent decision rules; generic role membership alone is insufficient.",
+    "schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "instruction_ref": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "observed_state": {
+          "type": "string",
+          "enum": [
+            "stopped",
+            "running",
+            "failed",
+            "completed"
+          ]
+        },
+        "observed_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "attestation_ref": {
+          "type": "string",
+          "format": "uuid"
+        }
+      },
+      "required": [
+        "instruction_ref",
+        "observed_state",
+        "observed_at",
+        "attestation_ref"
+      ]
+    }
+  },
+  {
+    "id": "CMD036",
+    "name": "IssueCorrection",
+    "domain": "EVD",
+    "actor": "SR with required release owners",
+    "fields": [
+      "original_report_ref",
+      "successor_ref",
+      "reason",
+      "decision_refs"
+    ],
+    "origin": "Proposed LLD completion",
+    "input_summary": "Typed fields below plus command context",
+    "outcome": "Link immutable successor and append public status correction",
+    "guard": "Link immutable successor and append public status correction. Apply the registered domain transition and independent decision rules; generic role membership alone is insufficient.",
+    "schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "original_report_ref": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "successor_ref": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 10,
+          "maxLength": 2000
+        },
+        "decision_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "minItems": 1,
+          "maxItems": 1000,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "original_report_ref",
+        "successor_ref",
+        "reason",
+        "decision_refs"
+      ]
+    }
+  },
+  {
+    "id": "CMD037",
+    "name": "ApproveConfiguration",
+    "domain": "OPS",
+    "actor": "Independent eligible SO",
+    "fields": [
+      "config_change_ref",
+      "decision_refs"
+    ],
+    "origin": "Proposed LLD completion",
+    "input_summary": "Typed fields below plus command context",
+    "outcome": "Apply approved configuration version at effective time",
+    "guard": "Apply approved configuration version at effective time. Apply the registered domain transition and independent decision rules; generic role membership alone is insufficient.",
+    "schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "config_change_ref": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "decision_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "minItems": 1,
+          "maxItems": 1000,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "config_change_ref",
+        "decision_refs"
+      ]
+    }
+  },
+  {
+    "id": "CMD038",
+    "name": "RecordBudgetAdjustment",
+    "domain": "BIL",
+    "actor": "FN",
+    "fields": [
+      "budget_ref",
+      "delta_units",
+      "currency",
+      "decision_refs",
+      "reason"
+    ],
+    "origin": "Proposed LLD completion",
+    "input_summary": "Typed fields below plus command context",
+    "outcome": "Append finance adjustment; cannot alter scientific or safety record",
+    "guard": "Append finance adjustment; cannot alter scientific or safety record. Apply the registered domain transition and independent decision rules; generic role membership alone is insufficient.",
+    "schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "budget_ref": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "delta_units": {
+          "type": "integer",
+          "minimum": -9007199254740991,
+          "maximum": 9007199254740991
+        },
+        "currency": {
+          "type": "string",
+          "pattern": "^[A-Z]{3}$"
+        },
+        "decision_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "minItems": 1,
+          "maxItems": 1000,
+          "uniqueItems": true
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 10,
+          "maxLength": 2000
+        }
+      },
+      "required": [
+        "budget_ref",
+        "delta_units",
+        "currency",
+        "decision_refs",
+        "reason"
+      ]
+    }
+  },
+  {
+    "id": "CMD039",
+    "name": "AcceptOwnership",
+    "domain": "ORG",
+    "actor": "Named eligible successor",
+    "fields": [
+      "assignment_ref"
+    ],
+    "origin": "Proposed LLD completion",
+    "input_summary": "Typed fields below plus command context",
+    "outcome": "Record eligible successor acceptance before predecessor removal",
+    "guard": "Record eligible successor acceptance before predecessor removal. Apply the registered domain transition and independent decision rules; generic role membership alone is insufficient.",
+    "schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "assignment_ref": {
+          "type": "string",
+          "format": "uuid"
+        }
+      },
+      "required": [
+        "assignment_ref"
+      ]
+    }
+  },
+  {
+    "id": "CMD040",
+    "name": "RecordConnectorReceipt",
+    "domain": "API",
+    "actor": "SV scoped to connector",
+    "fields": [
+      "delivery_ref",
+      "receipt_id",
+      "received_at",
+      "outcome"
+    ],
+    "origin": "Proposed LLD completion",
+    "input_summary": "Typed fields below plus command context",
+    "outcome": "Append unique receipt and independently update delivery state",
+    "guard": "Append unique receipt and independently update delivery state. Apply the registered domain transition and independent decision rules; generic role membership alone is insufficient.",
+    "schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "delivery_ref": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "receipt_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "received_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "outcome": {
+          "type": "string",
+          "enum": [
+            "acknowledged",
+            "processed",
+            "rejected"
+          ]
+        }
+      },
+      "required": [
+        "delivery_ref",
+        "receipt_id",
+        "received_at",
+        "outcome"
+      ]
+    }
+  }
+]

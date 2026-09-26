@@ -1,0 +1,146 @@
+[
+  {
+    "tenant": "e08c4c63-745d-515f-a994-e317f5d946aa",
+    "resource": "b11c0287-a2b3-59db-8b67-8e4f5b0dedbb",
+    "key": "fixtures/snapshots/e08c4c63-745d-515f-a994-e317f5d946aa/b11c0287-a2b3-59db-8b67-8e4f5b0dedbb-v1.json",
+    "sha256": "b4fbf219f8e2d918bafe177fa8d71683301bb6b7cce4bbb2ab6afd2f10b19a88",
+    "schema": "ResourceSummary",
+    "scope": "Synthetic metadata snapshot for DB fixtures; full live review snapshots must be created by application"
+  },
+  {
+    "tenant": "e08c4c63-745d-515f-a994-e317f5d946aa",
+    "resource": "b78664a0-2245-5631-a8f0-253530fd7845",
+    "key": "fixtures/snapshots/e08c4c63-745d-515f-a994-e317f5d946aa/b78664a0-2245-5631-a8f0-253530fd7845-v1.json",
+    "sha256": "4c299caa4677cd41462b47a5d768db85a4bd8dacb98aed878afec615f1c62c21",
+    "schema": "ResourceSummary",
+    "scope": "Synthetic metadata snapshot for DB fixtures; full live review snapshots must be created by application"
+  },
+  {
+    "tenant": "e08c4c63-745d-515f-a994-e317f5d946aa",
+    "resource": "18a75940-4a1e-5765-805d-c44b63ba9c43",
+    "key": "fixtures/snapshots/e08c4c63-745d-515f-a994-e317f5d946aa/18a75940-4a1e-5765-805d-c44b63ba9c43-v1.json",
+    "sha256": "b922297dc5055c207797cad798dc3612c19b6db6c3bf1e4280888648bf95e087",
+    "schema": "ResourceSummary",
+    "scope": "Synthetic metadata snapshot for DB fixtures; full live review snapshots must be created by application"
+  },
+  {
+    "tenant": "e08c4c63-745d-515f-a994-e317f5d946aa",
+    "resource": "c228cfac-def0-5055-ac6b-e4817dff926e",
+    "key": "fixtures/snapshots/e08c4c63-745d-515f-a994-e317f5d946aa/c228cfac-def0-5055-ac6b-e4817dff926e-v1.json",
+    "sha256": "c6313c36134ad8db07a3109435c2c834304a007d4eb7f068332d25a936d941f7",
+    "schema": "ResourceSummary",
+    "scope": "Synthetic metadata snapshot for DB fixtures; full live review snapshots must be created by application"
+  },
+  {
+    "tenant": "e08c4c63-745d-515f-a994-e317f5d946aa",
+    "resource": "0148b7b7-419f-5143-a6d9-65b22d18954d",
+    "key": "fixtures/snapshots/e08c4c63-745d-515f-a994-e317f5d946aa/0148b7b7-419f-5143-a6d9-65b22d18954d-v1.json",
+    "sha256": "f793dc3b71259ad85ae5905c337b5dd1968151a173f36dddf6ab3965bfea3fae",
+    "schema": "ResourceSummary",
+    "scope": "Synthetic metadata snapshot for DB fixtures; full live review snapshots must be created by application"
+  },
+  {
+    "tenant": "e08c4c63-745d-515f-a994-e317f5d946aa",
+    "resource": "c33eca33-2144-5f8d-98ab-33729dd89f16",
+    "key": "fixtures/snapshots/e08c4c63-745d-515f-a994-e317f5d946aa/c33eca33-2144-5f8d-98ab-33729dd89f16-v1.json",
+    "sha256": "ac57a498b972b10b53176616bb4a7f44be2fbcd7a7b08a2bf6d55562f4d2008f",
+    "schema": "ResourceSummary",
+    "scope": "Synthetic metadata snapshot for DB fixtures; full live review snapshots must be created by application"
+  },
+  {
+    "tenant": "e08c4c63-745d-515f-a994-e317f5d946aa",
+    "resource": "c507a3e4-11ca-5b9f-b26b-b3422c01aa95",
+    "key": "fixtures/snapshots/e08c4c63-745d-515f-a994-e317f5d946aa/c507a3e4-11ca-5b9f-b26b-b3422c01aa95-v1.json",
+    "sha256": "1fd94a0bfbcc4ce288cb80f17ea56ff16b213e7efe2f7a55b5e42139b2e236bd",
+    "schema": "ResourceSummary",
+    "scope": "Synthetic metadata snapshot for DB fixtures; full live review snapshots must be created by application"
+  },
+  {
+    "tenant": "e08c4c63-745d-515f-a994-e317f5d946aa",
+    "resource": "f7291c45-fdc2-5b5c-a2c5-349de1c9d7ac",
+    "key": "fixtures/snapshots/e08c4c63-745d-515f-a994-e317f5d946aa/f7291c45-fdc2-5b5c-a2c5-349de1c9d7ac-v1.json",
+    "sha256": "c6cb2ddc1ce7fa7d5783d68e8aef5601dba83f00b44810ad460e9a870ceed0e7",
+    "schema": "ResourceSummary",
+    "scope": "Synthetic metadata snapshot for DB fixtures; full live review snapshots must be created by application"
+  },
+  {
+    "tenant": "e08c4c63-745d-515f-a994-e317f5d946aa",
+    "resource": "67f73732-5e09-5efa-9bf8-e8601e8c9f7b",
+    "key": "fixtures/snapshots/e08c4c63-745d-515f-a994-e317f5d946aa/67f73732-5e09-5efa-9bf8-e8601e8c9f7b-v1.json",
+    "sha256": "bd377525bd1b0a1662e548a5f7d561b951e1cb848a62f58261a80ff0caedc4ef",
+    "schema": "ResourceSummary",
+    "scope": "Synthetic metadata snapshot for DB fixtures; full live review snapshots must be created by application"
+  },
+  {
+    "tenant": "067eb82e-40ab-5400-a83a-036d24ee2872",
+    "resource": "3ba2f8fe-3649-5cc9-a23f-ca0ea6197cdb",
+    "key": "fixtures/snapshots/067eb82e-40ab-5400-a83a-036d24ee2872/3ba2f8fe-3649-5cc9-a23f-ca0ea6197cdb-v1.json",
+    "sha256": "d4b84ebfca951dc591c78ad0f8bc3e15b68e56fe8854360804bee46669faba46",
+    "schema": "ResourceSummary",
+    "scope": "Synthetic metadata snapshot for DB fixtures; full live review snapshots must be created by application"
+  },
+  {
+    "tenant": "067eb82e-40ab-5400-a83a-036d24ee2872",
+    "resource": "d3de9ba9-0517-5d8d-8314-87a79c578581",
+    "key": "fixtures/snapshots/067eb82e-40ab-5400-a83a-036d24ee2872/d3de9ba9-0517-5d8d-8314-87a79c578581-v1.json",
+    "sha256": "80884ccac62f375eb8558cae16c982fd5e9a8f71e72edefd0d918ca694c0b9c5",
+    "schema": "ResourceSummary",
+    "scope": "Synthetic metadata snapshot for DB fixtures; full live review snapshots must be created by application"
+  },
+  {
+    "tenant": "067eb82e-40ab-5400-a83a-036d24ee2872",
+    "resource": "4da8dc84-4463-5afa-9c28-92fc5bec478b",
+    "key": "fixtures/snapshots/067eb82e-40ab-5400-a83a-036d24ee2872/4da8dc84-4463-5afa-9c28-92fc5bec478b-v1.json",
+    "sha256": "eb11610fac2e17c7b32ae96fd77be1e6bd62ff6cb1dc4fd91ff35e188d851016",
+    "schema": "ResourceSummary",
+    "scope": "Synthetic metadata snapshot for DB fixtures; full live review snapshots must be created by application"
+  },
+  {
+    "tenant": "067eb82e-40ab-5400-a83a-036d24ee2872",
+    "resource": "91421608-2491-5eb6-9922-51f6f4a2daf5",
+    "key": "fixtures/snapshots/067eb82e-40ab-5400-a83a-036d24ee2872/91421608-2491-5eb6-9922-51f6f4a2daf5-v1.json",
+    "sha256": "f55c6ecc7ce6a90f32ca3d2cbf640975a54d4a69bbc15944f2a33756ce06c728",
+    "schema": "ResourceSummary",
+    "scope": "Synthetic metadata snapshot for DB fixtures; full live review snapshots must be created by application"
+  },
+  {
+    "tenant": "067eb82e-40ab-5400-a83a-036d24ee2872",
+    "resource": "e46a0713-3a1b-59b1-ac01-ef2adf5e88d0",
+    "key": "fixtures/snapshots/067eb82e-40ab-5400-a83a-036d24ee2872/e46a0713-3a1b-59b1-ac01-ef2adf5e88d0-v1.json",
+    "sha256": "71b1ec0963fdf9145544ba8f74928512b7e50035f31a310dd2aaf511fcb25394",
+    "schema": "ResourceSummary",
+    "scope": "Synthetic metadata snapshot for DB fixtures; full live review snapshots must be created by application"
+  },
+  {
+    "tenant": "067eb82e-40ab-5400-a83a-036d24ee2872",
+    "resource": "4e7a5c97-fa35-58c4-a94d-dc40d4d546c8",
+    "key": "fixtures/snapshots/067eb82e-40ab-5400-a83a-036d24ee2872/4e7a5c97-fa35-58c4-a94d-dc40d4d546c8-v1.json",
+    "sha256": "67a4c908ab3bcbdc68b76c37559d36a5c750518a4b52ff0aef8cb2f783eaed43",
+    "schema": "ResourceSummary",
+    "scope": "Synthetic metadata snapshot for DB fixtures; full live review snapshots must be created by application"
+  },
+  {
+    "tenant": "067eb82e-40ab-5400-a83a-036d24ee2872",
+    "resource": "0102cd85-c8c1-5fa0-a161-7578a586476e",
+    "key": "fixtures/snapshots/067eb82e-40ab-5400-a83a-036d24ee2872/0102cd85-c8c1-5fa0-a161-7578a586476e-v1.json",
+    "sha256": "074a7d9760d87cbe25c5cc8a15326c58c75355bc4dcbbe631673c9f5fc070896",
+    "schema": "ResourceSummary",
+    "scope": "Synthetic metadata snapshot for DB fixtures; full live review snapshots must be created by application"
+  },
+  {
+    "tenant": "067eb82e-40ab-5400-a83a-036d24ee2872",
+    "resource": "10d5be17-444a-5e76-9abf-cd3ac963dd6b",
+    "key": "fixtures/snapshots/067eb82e-40ab-5400-a83a-036d24ee2872/10d5be17-444a-5e76-9abf-cd3ac963dd6b-v1.json",
+    "sha256": "0edd4ea394e6c86c491e5ea5a79bd58f5f2f2e77f7c2aedcb049d3288a69179a",
+    "schema": "ResourceSummary",
+    "scope": "Synthetic metadata snapshot for DB fixtures; full live review snapshots must be created by application"
+  },
+  {
+    "tenant": "067eb82e-40ab-5400-a83a-036d24ee2872",
+    "resource": "f9aaa06b-554a-5599-9cc8-eec62f56e9b9",
+    "key": "fixtures/snapshots/067eb82e-40ab-5400-a83a-036d24ee2872/f9aaa06b-554a-5599-9cc8-eec62f56e9b9-v1.json",
+    "sha256": "d92eba1fe72524778cbad4f3cf4084ef6f60ffbe5410de1e80629b5ecf4b95dd",
+    "schema": "ResourceSummary",
+    "scope": "Synthetic metadata snapshot for DB fixtures; full live review snapshots must be created by application"
+  }
+]

@@ -1,0 +1,10 @@
+{
+  "checks": 3,
+  "failed": 0,
+  "engine": "pglite",
+  "evidence": [
+    "ledger hashes match source",
+    "repeat application unchanged",
+    "modified applied checksum rejected"
+  ]
+}

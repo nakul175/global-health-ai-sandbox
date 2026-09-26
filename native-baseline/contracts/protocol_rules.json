@@ -1,0 +1,76 @@
+{
+  "version": "1.1",
+  "json": "UTF-8; reject duplicate property names, NaN and infinities, unknown fields; max JSON body 1 MiB; no silent coercion",
+  "idempotency": {
+    "scope": [
+      "tenant",
+      "principal",
+      "command"
+    ],
+    "digest": "SHA256 of RFC8785 canonical JSON containing context, payload, method and route; exclude transport headers",
+    "receipt_days": 7,
+    "concurrent": "Unique key and transactional pending receipt; one committer; duplicate waits <=2s then 409 E_GATE_BLOCKED with Retry-After 1",
+    "replay": "Authorize current principal/context/object/fields before returning existing authorized receipt",
+    "conflict": "Same key different digest ->409; key expiry does not bypass durable source_event_id/receipt/snapshot uniqueness"
+  },
+  "pagination": {
+    "mode": "keyset",
+    "order": [
+      "created_at DESC",
+      "id DESC"
+    ],
+    "limit_default": 50,
+    "limit_max": 200,
+    "cursor": "Opaque authenticated token containing version, tenant, principal, scope revision, filter digest, last tuple, as_of timestamp and expiry",
+    "cursor_ttl_seconds": 900,
+    "invalid": "422 E_VALIDATION",
+    "changed_scope": "discard cursor and restart; no previous total or hidden count",
+    "count": "Omitted; no count over undiscoverable records"
+  },
+  "concurrency": {
+    "patch": "If-Match \"vN\"; missing428; stale409; no wildcard",
+    "commands": "expected_version compared under row lock",
+    "commit": "state + receipt + audit + outbox in one database transaction",
+    "failure": "No effect on failed transaction; external effects only after committed outbox"
+  },
+  "events": {
+    "delivery": "at least once",
+    "deduplicate": [
+      "consumer_id",
+      "event_id"
+    ],
+    "order": "Per aggregate sequence, not wall clock; park gap, reconcile source, never guess missing transition",
+    "retries_seconds": [
+      1,
+      5,
+      30,
+      120,
+      600
+    ],
+    "after_exhaustion": "Durable dead-letter and alert; authorized operator replay same event_id",
+    "compatibility": "Consumers handle registered event types only; invalid schema quarantined; schema version changes explicit"
+  },
+  "upload": {
+    "chunk_bytes": 8388608,
+    "max_bytes": 10737418240,
+    "max_parts": 1280,
+    "parallel_per_session": 4,
+    "lifetime_seconds": 259200,
+    "part_capability_seconds": 30,
+    "whole_object_sha256": true,
+    "states": [
+      "open",
+      "verifying",
+      "quarantined",
+      "complete",
+      "aborted",
+      "expired",
+      "failed"
+    ],
+    "transport": "Application upload gateway; no direct durable bearer URL; chunk digest and exact length checked on ingress",
+    "finalize": "Serialize with PUT/abort; validate part coverage then durable job; full digest verification produces quarantined artifact only",
+    "availability": "Scanner and custodian release required before preview, search, AI, use or export",
+    "recovery": "Read acknowledged parts; resend missing parts using same index/digest; conflicting digest requires new session",
+    "expiry": "No resume after expiry; current rights required throughout; cleanup idempotent after retention/hold evaluation"
+  }
+}

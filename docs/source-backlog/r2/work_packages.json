@@ -1,0 +1,79 @@
+[
+  {
+    "id": "WP01",
+    "title": "Foundation",
+    "depends_on": [],
+    "milestone": "M0"
+  },
+  {
+    "id": "WP02",
+    "title": "Synthetic generation",
+    "depends_on": [
+      "WP01"
+    ],
+    "milestone": "M1"
+  },
+  {
+    "id": "WP03",
+    "title": "Registry runtime",
+    "depends_on": [
+      "WP02"
+    ],
+    "milestone": "M1"
+  },
+  {
+    "id": "WP04",
+    "title": "Scenario engine",
+    "depends_on": [
+      "WP03"
+    ],
+    "milestone": "M1"
+  },
+  {
+    "id": "WP05",
+    "title": "Model execution",
+    "depends_on": [
+      "WP01"
+    ],
+    "milestone": "M2"
+  },
+  {
+    "id": "WP06",
+    "title": "Scoring and evidence",
+    "depends_on": [
+      "WP05"
+    ],
+    "milestone": "M2"
+  },
+  {
+    "id": "WP07",
+    "title": "Connected application",
+    "depends_on": [
+      "WP04",
+      "WP06"
+    ],
+    "milestone": "M3"
+  },
+  {
+    "id": "WP08",
+    "title": "Device and profile expansion",
+    "depends_on": [
+      "WP07"
+    ],
+    "milestone": "M4"
+  },
+  {
+    "id": "WP09",
+    "title": "Institutional readiness",
+    "depends_on": [
+      "WP01",
+      "WP02",
+      "WP03",
+      "WP04",
+      "WP05",
+      "WP06",
+      "WP07"
+    ],
+    "milestone": "M5"
+  }
+]

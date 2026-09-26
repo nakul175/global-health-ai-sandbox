@@ -1,0 +1,1219 @@
+[
+  {
+    "action": "CreateInstitutionApplication",
+    "command_id": "CMD001",
+    "eligible_roles": [
+      "applicant"
+    ],
+    "record_scope": "Exact resource versions in active institution, delegated programme/study/site and approved purpose; external projections only through valid local reference",
+    "read_fields": "Minimum permitted projection for action; source-only secret or sealed fields excluded",
+    "write_fields": [
+      "legal_identity",
+      "representative_ref",
+      "contact_email",
+      "terms_version"
+    ],
+    "conditions": [
+      "Server-issued applicant context only; legal reference validation; does not confer institutional privilege.",
+      "Current membership and scope; no role union across active contexts; restrictions override grants",
+      "Reauthorize before replay and background effect; scope/version and disclosure rules still apply"
+    ],
+    "independent_decision_required": false,
+    "service_allowed": false,
+    "recent_auth_seconds": null,
+    "default": "deny"
+  },
+  {
+    "action": "InviteMember",
+    "command_id": "CMD002",
+    "eligible_roles": [
+      "OA"
+    ],
+    "record_scope": "Exact resource versions in active institution, delegated programme/study/site and approved purpose; external projections only through valid local reference",
+    "read_fields": "Minimum permitted projection for action; source-only secret or sealed fields excluded",
+    "write_fields": [
+      "email",
+      "role_codes",
+      "scope_refs",
+      "expires_at"
+    ],
+    "conditions": [
+      "Current verified institution, delegable role subset and scope, positive expiry; recipient cannot activate own privilege.",
+      "Current membership and scope; no role union across active contexts; restrictions override grants",
+      "Reauthorize before replay and background effect; scope/version and disclosure rules still apply"
+    ],
+    "independent_decision_required": false,
+    "service_allowed": false,
+    "recent_auth_seconds": null,
+    "default": "deny"
+  },
+  {
+    "action": "RevokeMembership",
+    "command_id": "CMD003",
+    "eligible_roles": [
+      "OA"
+    ],
+    "record_scope": "Exact resource versions in active institution, delegated programme/study/site and approved purpose; external projections only through valid local reference",
+    "read_fields": "Minimum permitted projection for action; source-only secret or sealed fields excluded",
+    "write_fields": [
+      "membership_ref",
+      "reason"
+    ],
+    "conditions": [
+      "Lock subject membership; prevent removing last owner without accepted successor; apply online revocation target.",
+      "Current membership and scope; no role union across active contexts; restrictions override grants",
+      "Reauthorize before replay and background effect; scope/version and disclosure rules still apply"
+    ],
+    "independent_decision_required": false,
+    "service_allowed": false,
+    "recent_auth_seconds": null,
+    "default": "deny"
+  },
+  {
+    "action": "SubmitSolutionConfiguration",
+    "command_id": "CMD004",
+    "eligible_roles": [
+      "DV"
+    ],
+    "record_scope": "Exact resource versions in active institution, delegated programme/study/site and approved purpose; external projections only through valid local reference",
+    "read_fields": "Minimum permitted projection for action; source-only secret or sealed fields excluded",
+    "write_fields": [
+      "intended_use",
+      "components",
+      "execution_mode",
+      "dependency_refs",
+      "artifact_refs"
+    ],
+    "conditions": [
+      "Exact component versions, quarantine clearance, provider rights and selected execution-mode prerequisites.",
+      "Current membership and scope; no role union across active contexts; restrictions override grants",
+      "Reauthorize before replay and background effect; scope/version and disclosure rules still apply"
+    ],
+    "independent_decision_required": false,
+    "service_allowed": false,
+    "recent_auth_seconds": null,
+    "default": "deny"
+  },
+  {
+    "action": "SubmitAccessRequest",
+    "command_id": "CMD005",
+    "eligible_roles": [
+      "EV",
+      "PI"
+    ],
+    "record_scope": "Exact resource versions in active institution, delegated programme/study/site and approved purpose; external projections only through valid local reference",
+    "read_fields": "Minimum permitted projection for action; source-only secret or sealed fields excluded",
+    "write_fields": [
+      "dataset_release_ref",
+      "study_ref",
+      "purpose",
+      "user_refs",
+      "field_codes",
+      "region",
+      "valid_from",
+      "valid_until",
+      "cohort_sha256"
+    ],
+    "conditions": [
+      "Discoverable exact dataset release; study reference and purpose; requested interval positive; no implied grant.",
+      "Current membership and scope; no role union across active contexts; restrictions override grants",
+      "Reauthorize before replay and background effect; scope/version and disclosure rules still apply"
+    ],
+    "independent_decision_required": false,
+    "service_allowed": false,
+    "recent_auth_seconds": null,
+    "default": "deny"
+  },
+  {
+    "action": "DecideAccessRequest",
+    "command_id": "CMD006",
+    "eligible_roles": [
+      "DC"
+    ],
+    "record_scope": "Exact resource versions in active institution, delegated programme/study/site and approved purpose; external projections only through valid local reference",
+    "read_fields": "Minimum permitted projection for action; source-only secret or sealed fields excluded",
+    "write_fields": [
+      "request_ref",
+      "decision",
+      "approved_scope",
+      "decision_refs"
+    ],
+    "conditions": [
+      "Snapshot current; independent required owners; approved scope subset of request and all rights; approved_scope required only for approval.",
+      "Current membership and scope; no role union across active contexts; restrictions override grants",
+      "Reauthorize before replay and background effect; scope/version and disclosure rules still apply"
+    ],
+    "independent_decision_required": true,
+    "service_allowed": false,
+    "recent_auth_seconds": 300,
+    "default": "deny"
+  },
+  {
+    "action": "RegisterImport",
+    "command_id": "CMD007",
+    "eligible_roles": [
+      "DE"
+    ],
+    "record_scope": "Exact resource versions in active institution, delegated programme/study/site and approved purpose; external projections only through valid local reference",
+    "read_fields": "Minimum permitted projection for action; source-only secret or sealed fields excluded",
+    "write_fields": [
+      "source_manifest",
+      "mapping_ref",
+      "grant_ref"
+    ],
+    "conditions": [
+      "Current grant, approved source and mapping; transfer enters quarantine; no preview or search before clearance.",
+      "Current membership and scope; no role union across active contexts; restrictions override grants",
+      "Reauthorize before replay and background effect; scope/version and disclosure rules still apply"
+    ],
+    "independent_decision_required": false,
+    "service_allowed": false,
+    "recent_auth_seconds": null,
+    "default": "deny"
+  },
+  {
+    "action": "FinaliseImport",
+    "command_id": "CMD008",
+    "eligible_roles": [
+      "DE"
+    ],
+    "record_scope": "Exact resource versions in active institution, delegated programme/study/site and approved purpose; external projections only through valid local reference",
+    "read_fields": "Minimum permitted projection for action; source-only secret or sealed fields excluded",
+    "write_fields": [
+      "import_ref",
+      "artifact_ref",
+      "accepted_count",
+      "rejected_count",
+      "quarantined_count",
+      "source_count"
+    ],
+    "conditions": [
+      "Expected source digest and bytes; accepted + rejected + quarantined = source; counts nonnegative; no omitted records.",
+      "Current membership and scope; no role union across active contexts; restrictions override grants",
+      "Reauthorize before replay and background effect; scope/version and disclosure rules still apply"
+    ],
+    "independent_decision_required": false,
+    "service_allowed": false,
+    "recent_auth_seconds": null,
+    "default": "deny"
+  },
+  {
+    "action": "ReleaseDataset",
+    "command_id": "CMD009",
+    "eligible_roles": [
+      "DC"
+    ],
+    "record_scope": "Exact resource versions in active institution, delegated programme/study/site and approved purpose; external projections only through valid local reference",
+    "read_fields": "Minimum permitted projection for action; source-only secret or sealed fields excluded",
+    "write_fields": [
+      "dataset_ref",
+      "manifest_ref",
+      "partition_ref",
+      "decision_refs"
+    ],
+    "conditions": [
+      "Immutable manifest, label quality, leakage/partition checks, rights, eligible quality decisions; sealed labels remain separate.",
+      "Current membership and scope; no role union across active contexts; restrictions override grants",
+      "Reauthorize before replay and background effect; scope/version and disclosure rules still apply"
+    ],
+    "independent_decision_required": true,
+    "service_allowed": false,
+    "recent_auth_seconds": 300,
+    "default": "deny"
+  },
+  {
+    "action": "FreezeProtocol",
+    "command_id": "CMD010",
+    "eligible_roles": [
+      "EV"
+    ],
+    "record_scope": "Exact resource versions in active institution, delegated programme/study/site and approved purpose; external projections only through valid local reference",
+    "read_fields": "Minimum permitted projection for action; source-only secret or sealed fields excluded",
+    "write_fields": [
+      "protocol_ref",
+      "plan_ref",
+      "threshold_refs",
+      "decision_refs"
+    ],
+    "conditions": [
+      "All endpoints, thresholds, sample and subgroup methods, failure rules, uncertainty and stop criteria complete and approved.",
+      "Current membership and scope; no role union across active contexts; restrictions override grants",
+      "Reauthorize before replay and background effect; scope/version and disclosure rules still apply"
+    ],
+    "independent_decision_required": true,
+    "service_allowed": false,
+    "recent_auth_seconds": 300,
+    "default": "deny"
+  },
+  {
+    "action": "ActivateStudy",
+    "command_id": "CMD011",
+    "eligible_roles": [
+      "EV",
+      "PI"
+    ],
+    "record_scope": "Exact resource versions in active institution, delegated programme/study/site and approved purpose; external projections only through valid local reference",
+    "read_fields": "Minimum permitted projection for action; source-only secret or sealed fields excluded",
+    "write_fields": [
+      "study_ref",
+      "protocol_ref",
+      "config_ref",
+      "grant_refs",
+      "gate_refs",
+      "budget_ref"
+    ],
+    "conditions": [
+      "Ready state; exact frozen protocol/config; G1/G2 and all applicable G4/G7/G8; current grants, owners, budget; no holds.",
+      "Current membership and scope; no role union across active contexts; restrictions override grants",
+      "Reauthorize before replay and background effect; scope/version and disclosure rules still apply"
+    ],
+    "independent_decision_required": false,
+    "service_allowed": false,
+    "recent_auth_seconds": null,
+    "default": "deny"
+  },
+  {
+    "action": "SubmitRun",
+    "command_id": "CMD012",
+    "eligible_roles": [
+      "EV"
+    ],
+    "record_scope": "Exact resource versions in active institution, delegated programme/study/site and approved purpose; external projections only through valid local reference",
+    "read_fields": "Minimum permitted projection for action; source-only secret or sealed fields excluded",
+    "write_fields": [
+      "study_ref",
+      "manifest_ref",
+      "grant_refs",
+      "runtime_profile_ref",
+      "budget_ref",
+      "requested_units"
+    ],
+    "conditions": [
+      "Lock study and budget; exact immutable manifest; active grants and allowed region/egress; admitted resource profile; reserve budget atomically.",
+      "Current membership and scope; no role union across active contexts; restrictions override grants",
+      "Reauthorize before replay and background effect; scope/version and disclosure rules still apply"
+    ],
+    "independent_decision_required": false,
+    "service_allowed": false,
+    "recent_auth_seconds": null,
+    "default": "deny"
+  },
+  {
+    "action": "CancelRun",
+    "command_id": "CMD013",
+    "eligible_roles": [
+      "EV"
+    ],
+    "record_scope": "Exact resource versions in active institution, delegated programme/study/site and approved purpose; external projections only through valid local reference",
+    "read_fields": "Minimum permitted projection for action; source-only secret or sealed fields excluded",
+    "write_fields": [
+      "run_ref",
+      "reason"
+    ],
+    "conditions": [
+      "Authorised run scope; terminal observations preserved; append intent then await observed termination; settle usage once.",
+      "Current membership and scope; no role union across active contexts; restrictions override grants",
+      "Reauthorize before replay and background effect; scope/version and disclosure rules still apply"
+    ],
+    "independent_decision_required": false,
+    "service_allowed": false,
+    "recent_auth_seconds": null,
+    "default": "deny"
+  },
+  {
+    "action": "RequestOutputExport",
+    "command_id": "CMD014",
+    "eligible_roles": [
+      "EV",
+      "PI"
+    ],
+    "record_scope": "Exact resource versions in active institution, delegated programme/study/site and approved purpose; external projections only through valid local reference",
+    "read_fields": "Minimum permitted projection for action; source-only secret or sealed fields excluded",
+    "write_fields": [
+      "asset_refs",
+      "recipient_ref",
+      "purpose",
+      "format"
+    ],
+    "conditions": [
+      "Exact assets, intended recipient/purpose; rights and disclosure review task; cannot directly create unrestricted delivery.",
+      "Current membership and scope; no role union across active contexts; restrictions override grants",
+      "Reauthorize before replay and background effect; scope/version and disclosure rules still apply"
+    ],
+    "independent_decision_required": false,
+    "service_allowed": false,
+    "recent_auth_seconds": null,
+    "default": "deny"
+  },
+  {
+    "action": "IssueEvidence",
+    "command_id": "CMD015",
+    "eligible_roles": [
+      "SR"
+    ],
+    "record_scope": "Exact resource versions in active institution, delegated programme/study/site and approved purpose; external projections only through valid local reference",
+    "read_fields": "Minimum permitted projection for action; source-only secret or sealed fields excluded",
+    "write_fields": [
+      "dossier_ref",
+      "manifest_ref",
+      "decision_refs"
+    ],
+    "conditions": [
+      "G3; frozen dossier, complete failures and deviations, claim provenance and eligible independent signers; immutable issued artifact.",
+      "Current membership and scope; no role union across active contexts; restrictions override grants",
+      "Reauthorize before replay and background effect; scope/version and disclosure rules still apply"
+    ],
+    "independent_decision_required": true,
+    "service_allowed": false,
+    "recent_auth_seconds": 300,
+    "default": "deny"
+  },
+  {
+    "action": "PublishEvidenceView",
+    "command_id": "CMD016",
+    "eligible_roles": [
+      "SR"
+    ],
+    "record_scope": "Exact resource versions in active institution, delegated programme/study/site and approved purpose; external projections only through valid local reference",
+    "read_fields": "Minimum permitted projection for action; source-only secret or sealed fields excluded",
+    "write_fields": [
+      "view_ref",
+      "manifest_ref",
+      "audience",
+      "decision_refs"
+    ],
+    "conditions": [
+      "Separately approved audience and exact sanitized bytes; current rights and report status; confidential titles excluded.",
+      "Current membership and scope; no role union across active contexts; restrictions override grants",
+      "Reauthorize before replay and background effect; scope/version and disclosure rules still apply"
+    ],
+    "independent_decision_required": true,
+    "service_allowed": false,
+    "recent_auth_seconds": 300,
+    "default": "deny"
+  },
+  {
+    "action": "SubmitExternalPackage",
+    "command_id": "CMD017",
+    "eligible_roles": [
+      "ER"
+    ],
+    "record_scope": "Exact resource versions in active institution, delegated programme/study/site and approved purpose; external projections only through valid local reference",
+    "read_fields": "Minimum permitted projection for action; source-only secret or sealed fields excluded",
+    "write_fields": [
+      "package_ref",
+      "channel_ref",
+      "recipient_ref",
+      "decision_refs"
+    ],
+    "conditions": [
+      "Verified channel/recipient, previewed immutable package and human authority; durable dispatch then separate receipt.",
+      "Current membership and scope; no role union across active contexts; restrictions override grants",
+      "Reauthorize before replay and background effect; scope/version and disclosure rules still apply"
+    ],
+    "independent_decision_required": false,
+    "service_allowed": false,
+    "recent_auth_seconds": null,
+    "default": "deny"
+  },
+  {
+    "action": "RecordSafetyConcern",
+    "command_id": "CMD018",
+    "eligible_roles": [
+      "authenticated"
+    ],
+    "record_scope": "Exact resource versions in active institution, delegated programme/study/site and approved purpose; external projections only through valid local reference",
+    "read_fields": "Minimum permitted projection for action; source-only secret or sealed fields excluded",
+    "write_fields": [
+      "concern",
+      "scope_refs",
+      "contact",
+      "occurred_at"
+    ],
+    "conditions": [
+      "Any authenticated reporter may submit concern alone; other fields optional; attachment quarantine must not block initial intake.",
+      "Current membership and scope; no role union across active contexts; restrictions override grants",
+      "Reauthorize before replay and background effect; scope/version and disclosure rules still apply"
+    ],
+    "independent_decision_required": false,
+    "service_allowed": false,
+    "recent_auth_seconds": null,
+    "default": "deny"
+  },
+  {
+    "action": "ApplyHold",
+    "command_id": "CMD019",
+    "eligible_roles": [
+      "CS",
+      "SO",
+      "CO"
+    ],
+    "record_scope": "Exact resource versions in active institution, delegated programme/study/site and approved purpose; external projections only through valid local reference",
+    "read_fields": "Minimum permitted projection for action; source-only secret or sealed fields excluded",
+    "write_fields": [
+      "scope_refs",
+      "reason",
+      "hold_type"
+    ],
+    "conditions": [
+      "Immediate authorised scope containment; record independent hold owner and reason; create impact tasks.",
+      "Current membership and scope; no role union across active contexts; restrictions override grants",
+      "Reauthorize before replay and background effect; scope/version and disclosure rules still apply"
+    ],
+    "independent_decision_required": false,
+    "service_allowed": false,
+    "recent_auth_seconds": 300,
+    "default": "deny"
+  },
+  {
+    "action": "RequestResumption",
+    "command_id": "CMD020",
+    "eligible_roles": [
+      "CS",
+      "SO"
+    ],
+    "record_scope": "Exact resource versions in active institution, delegated programme/study/site and approved purpose; external projections only through valid local reference",
+    "read_fields": "Minimum permitted projection for action; source-only secret or sealed fields excluded",
+    "write_fields": [
+      "scope_refs",
+      "remediation_refs",
+      "decision_refs"
+    ],
+    "conditions": [
+      "Every applicable hold independently cleared, remediation verified, prerequisites refreshed; return only to prior valid state.",
+      "Current membership and scope; no role union across active contexts; restrictions override grants",
+      "Reauthorize before replay and background effect; scope/version and disclosure rules still apply"
+    ],
+    "independent_decision_required": true,
+    "service_allowed": false,
+    "recent_auth_seconds": 300,
+    "default": "deny"
+  },
+  {
+    "action": "AuthoriseDeployment",
+    "command_id": "CMD021",
+    "eligible_roles": [
+      "BY"
+    ],
+    "record_scope": "Exact resource versions in active institution, delegated programme/study/site and approved purpose; external projections only through valid local reference",
+    "read_fields": "Minimum permitted projection for action; source-only secret or sealed fields excluded",
+    "write_fields": [
+      "site_ref",
+      "config_ref",
+      "use_ref",
+      "permission_refs",
+      "acceptance_ref",
+      "budget_ref",
+      "decision_refs"
+    ],
+    "conditions": [
+      "G5 for exact site/use/configuration; verified local permission, buyer acceptance, training, fallback and funding.",
+      "Current membership and scope; no role union across active contexts; restrictions override grants",
+      "Reauthorize before replay and background effect; scope/version and disclosure rules still apply"
+    ],
+    "independent_decision_required": true,
+    "service_allowed": false,
+    "recent_auth_seconds": 300,
+    "default": "deny"
+  },
+  {
+    "action": "RecordInstalledVersion",
+    "command_id": "CMD022",
+    "eligible_roles": [
+      "PI"
+    ],
+    "record_scope": "Exact resource versions in active institution, delegated programme/study/site and approved purpose; external projections only through valid local reference",
+    "read_fields": "Minimum permitted projection for action; source-only secret or sealed fields excluded",
+    "write_fields": [
+      "deployment_ref",
+      "config_ref",
+      "observed_at",
+      "source_ref"
+    ],
+    "conditions": [
+      "Authenticated observed source and event time; observation cannot itself authorise deployment; mismatches trigger review.",
+      "Current membership and scope; no role union across active contexts; restrictions override grants",
+      "Reauthorize before replay and background effect; scope/version and disclosure rules still apply"
+    ],
+    "independent_decision_required": false,
+    "service_allowed": false,
+    "recent_auth_seconds": null,
+    "default": "deny"
+  },
+  {
+    "action": "SubmitMonitoringObservation",
+    "command_id": "CMD023",
+    "eligible_roles": [
+      "SV"
+    ],
+    "record_scope": "Exact resource versions in active institution, delegated programme/study/site and approved purpose; external projections only through valid local reference",
+    "read_fields": "Minimum permitted projection for action; source-only secret or sealed fields excluded",
+    "write_fields": [
+      "plan_ref",
+      "source_event_id",
+      "observed_at",
+      "measurements"
+    ],
+    "conditions": [
+      "Current admitted source/plan; unique source event ID; finite observed values, null for missing statuses; retain event and receipt time.",
+      "Current membership and scope; no role union across active contexts; restrictions override grants",
+      "Reauthorize before replay and background effect; scope/version and disclosure rules still apply"
+    ],
+    "independent_decision_required": false,
+    "service_allowed": true,
+    "recent_auth_seconds": null,
+    "default": "deny"
+  },
+  {
+    "action": "RecordExternalDecision",
+    "command_id": "CMD024",
+    "eligible_roles": [
+      "ER"
+    ],
+    "record_scope": "Exact resource versions in active institution, delegated programme/study/site and approved purpose; external projections only through valid local reference",
+    "read_fields": "Minimum permitted projection for action; source-only secret or sealed fields excluded",
+    "write_fields": [
+      "issuer_ref",
+      "reference",
+      "scope_refs",
+      "valid_from",
+      "valid_until",
+      "evidence_refs"
+    ],
+    "conditions": [
+      "Issuer evidence and positive validity interval; record as unverified; no automatic regulatory authority.",
+      "Current membership and scope; no role union across active contexts; restrictions override grants",
+      "Reauthorize before replay and background effect; scope/version and disclosure rules still apply"
+    ],
+    "independent_decision_required": false,
+    "service_allowed": false,
+    "recent_auth_seconds": null,
+    "default": "deny"
+  },
+  {
+    "action": "RequestDisposal",
+    "command_id": "CMD025",
+    "eligible_roles": [
+      "DC"
+    ],
+    "record_scope": "Exact resource versions in active institution, delegated programme/study/site and approved purpose; external projections only through valid local reference",
+    "read_fields": "Minimum permitted projection for action; source-only secret or sealed fields excluded",
+    "write_fields": [
+      "asset_refs",
+      "basis_ref",
+      "proposed_at",
+      "reason"
+    ],
+    "conditions": [
+      "Approved retention basis, dependency inventory and legal-hold assessment; request creates assessment, never immediate deletion.",
+      "Current membership and scope; no role union across active contexts; restrictions override grants",
+      "Reauthorize before replay and background effect; scope/version and disclosure rules still apply"
+    ],
+    "independent_decision_required": false,
+    "service_allowed": false,
+    "recent_auth_seconds": null,
+    "default": "deny"
+  },
+  {
+    "action": "CloseInstitution",
+    "command_id": "CMD026",
+    "eligible_roles": [
+      "OA"
+    ],
+    "record_scope": "Exact resource versions in active institution, delegated programme/study/site and approved purpose; external projections only through valid local reference",
+    "read_fields": "Minimum permitted projection for action; source-only secret or sealed fields excluded",
+    "write_fields": [
+      "institution_ref",
+      "inventory_ref",
+      "handover_refs",
+      "reason"
+    ],
+    "conditions": [
+      "Accepted handover, inventory, revocations, retention and residual duties; cannot orphan incidents or held records.",
+      "Current membership and scope; no role union across active contexts; restrictions override grants",
+      "Reauthorize before replay and background effect; scope/version and disclosure rules still apply"
+    ],
+    "independent_decision_required": false,
+    "service_allowed": false,
+    "recent_auth_seconds": null,
+    "default": "deny"
+  },
+  {
+    "action": "SubmitResource",
+    "command_id": "CMD027",
+    "eligible_roles": [
+      "registered_submitter"
+    ],
+    "record_scope": "Exact resource versions in active institution, delegated programme/study/site and approved purpose; external projections only through valid local reference",
+    "read_fields": "Minimum permitted projection for action; source-only secret or sealed fields excluded",
+    "write_fields": [
+      "resource_ref",
+      "review_type"
+    ],
+    "conditions": [
+      "Freeze review snapshot and assign required review slots. Apply the registered domain transition and independent decision rules; generic role membership alone is insufficient.",
+      "Current membership and scope; no role union across active contexts; restrictions override grants",
+      "Reauthorize before replay and background effect; scope/version and disclosure rules still apply"
+    ],
+    "independent_decision_required": false,
+    "service_allowed": false,
+    "recent_auth_seconds": null,
+    "default": "deny"
+  },
+  {
+    "action": "RecordReviewDecision",
+    "command_id": "CMD028",
+    "eligible_roles": [
+      "assigned_reviewer"
+    ],
+    "record_scope": "Exact resource versions in active institution, delegated programme/study/site and approved purpose; external projections only through valid local reference",
+    "read_fields": "Minimum permitted projection for action; source-only secret or sealed fields excluded",
+    "write_fields": [
+      "snapshot_ref",
+      "decision",
+      "role_slot",
+      "reason",
+      "evidence_refs"
+    ],
+    "conditions": [
+      "Append attributed decision bound to exact snapshot; reject conflict or stale evidence. Apply the registered domain transition and independent decision rules; generic role membership alone is insufficient.",
+      "Current membership and scope; no role union across active contexts; restrictions override grants",
+      "Reauthorize before replay and background effect; scope/version and disclosure rules still apply"
+    ],
+    "independent_decision_required": false,
+    "service_allowed": false,
+    "recent_auth_seconds": null,
+    "default": "deny"
+  },
+  {
+    "action": "TransitionResource",
+    "command_id": "CMD029",
+    "eligible_roles": [
+      "registered_transition_actor"
+    ],
+    "record_scope": "Exact resource versions in active institution, delegated programme/study/site and approved purpose; external projections only through valid local reference",
+    "read_fields": "Minimum permitted projection for action; source-only secret or sealed fields excluded",
+    "write_fields": [
+      "resource_ref",
+      "transition_code",
+      "reason",
+      "decision_refs"
+    ],
+    "conditions": [
+      "Apply registered transition under current guards; arbitrary state editing rejected. Apply the registered domain transition and independent decision rules; generic role membership alone is insufficient.",
+      "Current membership and scope; no role union across active contexts; restrictions override grants",
+      "Reauthorize before replay and background effect; scope/version and disclosure rules still apply"
+    ],
+    "independent_decision_required": false,
+    "service_allowed": false,
+    "recent_auth_seconds": null,
+    "default": "deny"
+  },
+  {
+    "action": "GrantMembership",
+    "command_id": "CMD030",
+    "eligible_roles": [
+      "OA"
+    ],
+    "record_scope": "Exact resource versions in active institution, delegated programme/study/site and approved purpose; external projections only through valid local reference",
+    "read_fields": "Minimum permitted projection for action; source-only secret or sealed fields excluded",
+    "write_fields": [
+      "membership_ref",
+      "role_codes",
+      "scope_refs",
+      "expires_at",
+      "decision_refs"
+    ],
+    "conditions": [
+      "Activate delegated scope only after independent approval. Apply the registered domain transition and independent decision rules; generic role membership alone is insufficient.",
+      "Current membership and scope; no role union across active contexts; restrictions override grants",
+      "Reauthorize before replay and background effect; scope/version and disclosure rules still apply"
+    ],
+    "independent_decision_required": true,
+    "service_allowed": false,
+    "recent_auth_seconds": 300,
+    "default": "deny"
+  },
+  {
+    "action": "RevokeAccessGrant",
+    "command_id": "CMD031",
+    "eligible_roles": [
+      "DC"
+    ],
+    "record_scope": "Exact resource versions in active institution, delegated programme/study/site and approved purpose; external projections only through valid local reference",
+    "read_fields": "Minimum permitted projection for action; source-only secret or sealed fields excluded",
+    "write_fields": [
+      "grant_ref",
+      "reason"
+    ],
+    "conditions": [
+      "Record effective revocation and bounded propagation tasks. Apply the registered domain transition and independent decision rules; generic role membership alone is insufficient.",
+      "Current membership and scope; no role union across active contexts; restrictions override grants",
+      "Reauthorize before replay and background effect; scope/version and disclosure rules still apply"
+    ],
+    "independent_decision_required": false,
+    "service_allowed": false,
+    "recent_auth_seconds": null,
+    "default": "deny"
+  },
+  {
+    "action": "VerifyExternalDecision",
+    "command_id": "CMD032",
+    "eligible_roles": [
+      "ER"
+    ],
+    "record_scope": "Exact resource versions in active institution, delegated programme/study/site and approved purpose; external projections only through valid local reference",
+    "read_fields": "Minimum permitted projection for action; source-only secret or sealed fields excluded",
+    "write_fields": [
+      "external_decision_ref",
+      "verification_ref",
+      "decision_refs"
+    ],
+    "conditions": [
+      "Mark independently verified evidence and exact applicable scope. Apply the registered domain transition and independent decision rules; generic role membership alone is insufficient.",
+      "Current membership and scope; no role union across active contexts; restrictions override grants",
+      "Reauthorize before replay and background effect; scope/version and disclosure rules still apply"
+    ],
+    "independent_decision_required": true,
+    "service_allowed": false,
+    "recent_auth_seconds": 300,
+    "default": "deny"
+  },
+  {
+    "action": "ReleaseOutputExport",
+    "command_id": "CMD033",
+    "eligible_roles": [
+      "DC"
+    ],
+    "record_scope": "Exact resource versions in active institution, delegated programme/study/site and approved purpose; external projections only through valid local reference",
+    "read_fields": "Minimum permitted projection for action; source-only secret or sealed fields excluded",
+    "write_fields": [
+      "export_ref",
+      "manifest_ref",
+      "decision_refs"
+    ],
+    "conditions": [
+      "Issue controlled delivery for exact approved bytes and recipient. Apply the registered domain transition and independent decision rules; generic role membership alone is insufficient.",
+      "Current membership and scope; no role union across active contexts; restrictions override grants",
+      "Reauthorize before replay and background effect; scope/version and disclosure rules still apply"
+    ],
+    "independent_decision_required": true,
+    "service_allowed": false,
+    "recent_auth_seconds": 300,
+    "default": "deny"
+  },
+  {
+    "action": "RetryJob",
+    "command_id": "CMD034",
+    "eligible_roles": [
+      "SO"
+    ],
+    "record_scope": "Exact resource versions in active institution, delegated programme/study/site and approved purpose; external projections only through valid local reference",
+    "read_fields": "Minimum permitted projection for action; source-only secret or sealed fields excluded",
+    "write_fields": [
+      "job_ref",
+      "reason"
+    ],
+    "conditions": [
+      "Create new safe attempt; preserve prior attempts and enforce retry limit. Apply the registered domain transition and independent decision rules; generic role membership alone is insufficient.",
+      "Current membership and scope; no role union across active contexts; restrictions override grants",
+      "Reauthorize before replay and background effect; scope/version and disclosure rules still apply"
+    ],
+    "independent_decision_required": false,
+    "service_allowed": false,
+    "recent_auth_seconds": null,
+    "default": "deny"
+  },
+  {
+    "action": "CompleteNodeInstruction",
+    "command_id": "CMD035",
+    "eligible_roles": [
+      "SV"
+    ],
+    "record_scope": "Exact resource versions in active institution, delegated programme/study/site and approved purpose; external projections only through valid local reference",
+    "read_fields": "Minimum permitted projection for action; source-only secret or sealed fields excluded",
+    "write_fields": [
+      "instruction_ref",
+      "observed_state",
+      "observed_at",
+      "attestation_ref"
+    ],
+    "conditions": [
+      "Append authenticated observation; do not infer state from delivery alone. Apply the registered domain transition and independent decision rules; generic role membership alone is insufficient.",
+      "Current membership and scope; no role union across active contexts; restrictions override grants",
+      "Reauthorize before replay and background effect; scope/version and disclosure rules still apply"
+    ],
+    "independent_decision_required": false,
+    "service_allowed": true,
+    "recent_auth_seconds": null,
+    "default": "deny"
+  },
+  {
+    "action": "IssueCorrection",
+    "command_id": "CMD036",
+    "eligible_roles": [
+      "SR"
+    ],
+    "record_scope": "Exact resource versions in active institution, delegated programme/study/site and approved purpose; external projections only through valid local reference",
+    "read_fields": "Minimum permitted projection for action; source-only secret or sealed fields excluded",
+    "write_fields": [
+      "original_report_ref",
+      "successor_ref",
+      "reason",
+      "decision_refs"
+    ],
+    "conditions": [
+      "Link immutable successor and append public status correction. Apply the registered domain transition and independent decision rules; generic role membership alone is insufficient.",
+      "Current membership and scope; no role union across active contexts; restrictions override grants",
+      "Reauthorize before replay and background effect; scope/version and disclosure rules still apply"
+    ],
+    "independent_decision_required": true,
+    "service_allowed": false,
+    "recent_auth_seconds": 300,
+    "default": "deny"
+  },
+  {
+    "action": "ApproveConfiguration",
+    "command_id": "CMD037",
+    "eligible_roles": [
+      "SO"
+    ],
+    "record_scope": "Exact resource versions in active institution, delegated programme/study/site and approved purpose; external projections only through valid local reference",
+    "read_fields": "Minimum permitted projection for action; source-only secret or sealed fields excluded",
+    "write_fields": [
+      "config_change_ref",
+      "decision_refs"
+    ],
+    "conditions": [
+      "Apply approved configuration version at effective time. Apply the registered domain transition and independent decision rules; generic role membership alone is insufficient.",
+      "Current membership and scope; no role union across active contexts; restrictions override grants",
+      "Reauthorize before replay and background effect; scope/version and disclosure rules still apply"
+    ],
+    "independent_decision_required": true,
+    "service_allowed": false,
+    "recent_auth_seconds": 300,
+    "default": "deny"
+  },
+  {
+    "action": "RecordBudgetAdjustment",
+    "command_id": "CMD038",
+    "eligible_roles": [
+      "FN"
+    ],
+    "record_scope": "Exact resource versions in active institution, delegated programme/study/site and approved purpose; external projections only through valid local reference",
+    "read_fields": "Minimum permitted projection for action; source-only secret or sealed fields excluded",
+    "write_fields": [
+      "budget_ref",
+      "delta_units",
+      "currency",
+      "decision_refs",
+      "reason"
+    ],
+    "conditions": [
+      "Append finance adjustment; cannot alter scientific or safety record. Apply the registered domain transition and independent decision rules; generic role membership alone is insufficient.",
+      "Current membership and scope; no role union across active contexts; restrictions override grants",
+      "Reauthorize before replay and background effect; scope/version and disclosure rules still apply"
+    ],
+    "independent_decision_required": false,
+    "service_allowed": false,
+    "recent_auth_seconds": null,
+    "default": "deny"
+  },
+  {
+    "action": "AcceptOwnership",
+    "command_id": "CMD039",
+    "eligible_roles": [
+      "named_successor"
+    ],
+    "record_scope": "Exact resource versions in active institution, delegated programme/study/site and approved purpose; external projections only through valid local reference",
+    "read_fields": "Minimum permitted projection for action; source-only secret or sealed fields excluded",
+    "write_fields": [
+      "assignment_ref"
+    ],
+    "conditions": [
+      "Record eligible successor acceptance before predecessor removal. Apply the registered domain transition and independent decision rules; generic role membership alone is insufficient.",
+      "Current membership and scope; no role union across active contexts; restrictions override grants",
+      "Reauthorize before replay and background effect; scope/version and disclosure rules still apply"
+    ],
+    "independent_decision_required": false,
+    "service_allowed": false,
+    "recent_auth_seconds": null,
+    "default": "deny"
+  },
+  {
+    "action": "RecordConnectorReceipt",
+    "command_id": "CMD040",
+    "eligible_roles": [
+      "SV"
+    ],
+    "record_scope": "Exact resource versions in active institution, delegated programme/study/site and approved purpose; external projections only through valid local reference",
+    "read_fields": "Minimum permitted projection for action; source-only secret or sealed fields excluded",
+    "write_fields": [
+      "delivery_ref",
+      "receipt_id",
+      "received_at",
+      "outcome"
+    ],
+    "conditions": [
+      "Append unique receipt and independently update delivery state. Apply the registered domain transition and independent decision rules; generic role membership alone is insufficient.",
+      "Current membership and scope; no role union across active contexts; restrictions override grants",
+      "Reauthorize before replay and background effect; scope/version and disclosure rules still apply"
+    ],
+    "independent_decision_required": false,
+    "service_allowed": true,
+    "recent_auth_seconds": null,
+    "default": "deny"
+  },
+  {
+    "action": "Discover",
+    "command_id": null,
+    "eligible_roles": [
+      "delegated_member"
+    ],
+    "record_scope": "Explicit bounded scope; never global by role alone",
+    "read_fields": "Metadata fields explicitly discoverable; exclude hidden facets/counts",
+    "write_fields": [],
+    "conditions": [
+      "Metadata fields explicitly discoverable; exclude hidden facets/counts",
+      "Deny when any required context, rights or provenance cannot be verified"
+    ],
+    "independent_decision_required": false,
+    "service_allowed": false,
+    "recent_auth_seconds": null,
+    "default": "deny"
+  },
+  {
+    "action": "ViewMetadata",
+    "command_id": null,
+    "eligible_roles": [
+      "delegated_member"
+    ],
+    "record_scope": "Explicit bounded scope; never global by role alone",
+    "read_fields": "Allowed metadata only; confidential titles excluded without discovery",
+    "write_fields": [],
+    "conditions": [
+      "Allowed metadata only; confidential titles excluded without discovery",
+      "Deny when any required context, rights or provenance cannot be verified"
+    ],
+    "independent_decision_required": false,
+    "service_allowed": false,
+    "recent_auth_seconds": null,
+    "default": "deny"
+  },
+  {
+    "action": "ViewRecord",
+    "command_id": null,
+    "eligible_roles": [
+      "delegated_member"
+    ],
+    "record_scope": "Explicit bounded scope; never global by role alone",
+    "read_fields": "Exact permitted fields; masking applied after current rights check",
+    "write_fields": [],
+    "conditions": [
+      "Exact permitted fields; masking applied after current rights check",
+      "Deny when any required context, rights or provenance cannot be verified"
+    ],
+    "independent_decision_required": false,
+    "service_allowed": false,
+    "recent_auth_seconds": null,
+    "default": "deny"
+  },
+  {
+    "action": "CreateDraft",
+    "command_id": null,
+    "eligible_roles": [
+      "registered_submitter"
+    ],
+    "record_scope": "Explicit bounded scope; never global by role alone",
+    "read_fields": "Registered domain editable fields; tenant/actor/version/state are server-owned",
+    "write_fields": [],
+    "conditions": [
+      "Registered domain editable fields; tenant/actor/version/state are server-owned",
+      "Deny when any required context, rights or provenance cannot be verified"
+    ],
+    "independent_decision_required": false,
+    "service_allowed": false,
+    "recent_auth_seconds": null,
+    "default": "deny"
+  },
+  {
+    "action": "PatchDraft",
+    "command_id": null,
+    "eligible_roles": [
+      "record_editor"
+    ],
+    "record_scope": "Explicit bounded scope; never global by role alone",
+    "read_fields": "Allowlisted draft fields and exact If-Match; frozen fields require successor",
+    "write_fields": [],
+    "conditions": [
+      "Allowlisted draft fields and exact If-Match; frozen fields require successor",
+      "Deny when any required context, rights or provenance cannot be verified"
+    ],
+    "independent_decision_required": false,
+    "service_allowed": false,
+    "recent_auth_seconds": null,
+    "default": "deny"
+  },
+  {
+    "action": "ReadAudit",
+    "command_id": null,
+    "eligible_roles": [
+      "AU"
+    ],
+    "record_scope": "Explicit bounded scope; never global by role alone",
+    "read_fields": "Scoped redacted audit; no credential, patient payload or hidden object hints",
+    "write_fields": [],
+    "conditions": [
+      "Scoped redacted audit; no credential, patient payload or hidden object hints",
+      "Deny when any required context, rights or provenance cannot be verified"
+    ],
+    "independent_decision_required": false,
+    "service_allowed": false,
+    "recent_auth_seconds": null,
+    "default": "deny"
+  },
+  {
+    "action": "SupportRead",
+    "command_id": null,
+    "eligible_roles": [
+      "SU"
+    ],
+    "record_scope": "Explicit bounded scope; never global by role alone",
+    "read_fields": "Approved case, exact resource, metadata-only fields, expiry and consent; no raw clinical or model content",
+    "write_fields": [],
+    "conditions": [
+      "Approved case, exact resource, metadata-only fields, expiry and consent; no raw clinical or model content",
+      "Deny when any required context, rights or provenance cannot be verified"
+    ],
+    "independent_decision_required": false,
+    "service_allowed": false,
+    "recent_auth_seconds": null,
+    "default": "deny"
+  },
+  {
+    "action": "EmergencyAccess",
+    "command_id": null,
+    "eligible_roles": [
+      "SO"
+    ],
+    "record_scope": "Explicit bounded scope; never global by role alone",
+    "read_fields": "Named incident, least scope, short expiry, independent oversight; no sealed labels or self-signing",
+    "write_fields": [],
+    "conditions": [
+      "Named incident, least scope, short expiry, independent oversight; no sealed labels or self-signing",
+      "Deny when any required context, rights or provenance cannot be verified"
+    ],
+    "independent_decision_required": true,
+    "service_allowed": false,
+    "recent_auth_seconds": 300,
+    "default": "deny"
+  },
+  {
+    "action": "AIRetrieve",
+    "command_id": null,
+    "eligible_roles": [
+      "SV"
+    ],
+    "record_scope": "Explicit bounded scope; never global by role alone",
+    "read_fields": "Approved assistant identity, user-delegated intersection, current grant and purpose; no scope union",
+    "write_fields": [],
+    "conditions": [
+      "Approved assistant identity, user-delegated intersection, current grant and purpose; no scope union",
+      "Deny when any required context, rights or provenance cannot be verified"
+    ],
+    "independent_decision_required": false,
+    "service_allowed": true,
+    "recent_auth_seconds": null,
+    "default": "deny"
+  },
+  {
+    "action": "AIPropose",
+    "command_id": null,
+    "eligible_roles": [
+      "SV"
+    ],
+    "record_scope": "Explicit bounded scope; never global by role alone",
+    "read_fields": "Draft suggestion only; no approval, publication, export dispatch or deployment authority",
+    "write_fields": [],
+    "conditions": [
+      "Draft suggestion only; no approval, publication, export dispatch or deployment authority",
+      "Deny when any required context, rights or provenance cannot be verified"
+    ],
+    "independent_decision_required": false,
+    "service_allowed": true,
+    "recent_auth_seconds": null,
+    "default": "deny"
+  },
+  {
+    "action": "ReadSealedLabels",
+    "command_id": null,
+    "eligible_roles": [
+      "trusted_scorer"
+    ],
+    "record_scope": "Explicit bounded scope; never global by role alone",
+    "read_fields": "Only workload identity for admitted scoring method and exact manifest; unavailable to DV/EV/OP/support",
+    "write_fields": [],
+    "conditions": [
+      "Only workload identity for admitted scoring method and exact manifest; unavailable to DV/EV/OP/support",
+      "Deny when any required context, rights or provenance cannot be verified"
+    ],
+    "independent_decision_required": false,
+    "service_allowed": true,
+    "recent_auth_seconds": null,
+    "default": "deny"
+  },
+  {
+    "action": "UploadPart",
+    "command_id": null,
+    "eligible_roles": [
+      "DE"
+    ],
+    "record_scope": "Explicit bounded scope; never global by role alone",
+    "read_fields": "Exact upload owner, region, active rights, chunk index/size/digest and session lifetime",
+    "write_fields": [],
+    "conditions": [
+      "Exact upload owner, region, active rights, chunk index/size/digest and session lifetime",
+      "Deny when any required context, rights or provenance cannot be verified"
+    ],
+    "independent_decision_required": false,
+    "service_allowed": false,
+    "recent_auth_seconds": null,
+    "default": "deny"
+  },
+  {
+    "action": "FinalizeUpload",
+    "command_id": null,
+    "eligible_roles": [
+      "DE"
+    ],
+    "record_scope": "Explicit bounded scope; never global by role alone",
+    "read_fields": "All unique parts acknowledged; current authorization; durable intent into quarantine",
+    "write_fields": [],
+    "conditions": [
+      "All unique parts acknowledged; current authorization; durable intent into quarantine",
+      "Deny when any required context, rights or provenance cannot be verified"
+    ],
+    "independent_decision_required": false,
+    "service_allowed": false,
+    "recent_auth_seconds": null,
+    "default": "deny"
+  },
+  {
+    "action": "ReadPublicEvidence",
+    "command_id": null,
+    "eligible_roles": [
+      "anonymous"
+    ],
+    "record_scope": "Explicit bounded scope; never global by role alone",
+    "read_fields": "Approved public projection, current report status and permitted successor link",
+    "write_fields": [],
+    "conditions": [
+      "Approved public projection, current report status and permitted successor link",
+      "Deny when any required context, rights or provenance cannot be verified"
+    ],
+    "independent_decision_required": false,
+    "service_allowed": false,
+    "recent_auth_seconds": null,
+    "default": "deny"
+  }
+]

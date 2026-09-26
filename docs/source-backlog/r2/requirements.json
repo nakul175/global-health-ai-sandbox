@@ -1,0 +1,1877 @@
+[
+  {
+    "id": "V2-SYN-001",
+    "area_code": "SYN",
+    "area": "Synthetic data generation",
+    "title": "Closed recipe validation",
+    "requirement": "The generator shall reject undeclared fields, invalid ranges and infeasible exact quotas before publishing any records.",
+    "acceptance_criteria": [
+      "Invalid recipe returns 422 with field errors and no published snapshot."
+    ],
+    "related_fsd_ids": [
+      "FS-API-005",
+      "QC-INTG-004"
+    ],
+    "baseline_relationship": "new_scope",
+    "milestone": "M1",
+    "work_package": "WP02",
+    "priority": "P0",
+    "owner": "Data engineering",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-SYN-001"
+    ]
+  },
+  {
+    "id": "V2-SYN-002",
+    "area_code": "SYN",
+    "area": "Synthetic data generation",
+    "title": "Deterministic connected records",
+    "requirement": "Generation shall pin algorithm, template, seed and canonical ordering, with stable logical IDs independent of worker order.",
+    "acceptance_criteria": [
+      "Two identical recipes yield equal canonical record digests when workers process entities in different orders."
+    ],
+    "related_fsd_ids": [
+      "FS-API-005",
+      "QC-INTG-004"
+    ],
+    "baseline_relationship": "new_scope",
+    "milestone": "M1",
+    "work_package": "WP02",
+    "priority": "P0",
+    "owner": "Data engineering",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-SYN-002"
+    ]
+  },
+  {
+    "id": "V2-SYN-003",
+    "area_code": "SYN",
+    "area": "Synthetic data generation",
+    "title": "Referential and temporal integrity",
+    "requirement": "Every generated relation and time sequence shall satisfy the published template constraints.",
+    "acceptance_criteria": [
+      "All encounters, referrals, orders and results resolve; result time precedes no linked order."
+    ],
+    "related_fsd_ids": [
+      "FS-API-005",
+      "QC-INTG-004"
+    ],
+    "baseline_relationship": "new_scope",
+    "milestone": "M1",
+    "work_package": "WP02",
+    "priority": "P0",
+    "owner": "Data engineering",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-SYN-003"
+    ]
+  },
+  {
+    "id": "V2-SYN-004",
+    "area_code": "SYN",
+    "area": "Synthetic data generation",
+    "title": "Distribution and quota reporting",
+    "requirement": "Generation shall distinguish exact allocations from sampled distributions and report realised counts.",
+    "acceptance_criteria": [
+      "Exact quotas reconcile, sampled counts are reported and impossible allocations fail before publication."
+    ],
+    "related_fsd_ids": [
+      "FS-API-005",
+      "QC-INTG-004"
+    ],
+    "baseline_relationship": "new_scope",
+    "milestone": "M1",
+    "work_package": "WP02",
+    "priority": "P0",
+    "owner": "Data engineering",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-SYN-004"
+    ]
+  },
+  {
+    "id": "V2-SYN-005",
+    "area_code": "SYN",
+    "area": "Synthetic data generation",
+    "title": "Synthetic identity namespace",
+    "requirement": "The default generator shall emit reserved fictional identities and non routable contact destinations.",
+    "acceptance_criteria": [
+      "All generated contacts route to the test sink or example.invalid and no configured live identity namespace is emitted."
+    ],
+    "related_fsd_ids": [
+      "FS-API-005",
+      "QC-INTG-004"
+    ],
+    "baseline_relationship": "new_scope",
+    "milestone": "M1",
+    "work_package": "WP02",
+    "priority": "P0",
+    "owner": "Data engineering",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-SYN-005"
+    ]
+  },
+  {
+    "id": "V2-SYN-006",
+    "area_code": "SYN",
+    "area": "Synthetic data generation",
+    "title": "Origin and mixed lineage",
+    "requirement": "Every generated resource shall carry synthetic origin and recipe lineage; mixed inputs shall retain per asset classification.",
+    "acceptance_criteria": [
+      "Adding one approved real asset changes environment evidence classification to mixed and preserves that asset\u2019s rights."
+    ],
+    "related_fsd_ids": [
+      "FS-ING-007",
+      "FS-DAC-009"
+    ],
+    "baseline_relationship": "new_scope",
+    "milestone": "M1",
+    "work_package": "WP02",
+    "priority": "P0",
+    "owner": "Data engineering",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-SYN-006"
+    ]
+  },
+  {
+    "id": "V2-SYN-007",
+    "area_code": "SYN",
+    "area": "Synthetic data generation",
+    "title": "Atomic publication",
+    "requirement": "A generation job shall stage records and publish only a complete validated snapshot.",
+    "acceptance_criteria": [
+      "Killing a generator halfway exposes no partial snapshot; cleanup and retry preserve one final publication."
+    ],
+    "related_fsd_ids": [
+      "FS-API-005",
+      "QC-INTG-004"
+    ],
+    "baseline_relationship": "new_scope",
+    "milestone": "M1",
+    "work_package": "WP02",
+    "priority": "P0",
+    "owner": "Data engineering",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-SYN-007"
+    ]
+  },
+  {
+    "id": "V2-SYN-008",
+    "area_code": "SYN",
+    "area": "Synthetic data generation",
+    "title": "Technical audio boundary",
+    "requirement": "Generated technical audio shall be marked as a compatibility fixture and shall not create clinical accuracy evidence.",
+    "acceptance_criteria": [
+      "A synthetic tone with a fictional positive outcome cannot be released as observed clinical validation."
+    ],
+    "related_fsd_ids": [
+      "FS-EVD-006",
+      "QC-AQL-001"
+    ],
+    "baseline_relationship": "new_scope",
+    "milestone": "M1",
+    "work_package": "WP02",
+    "priority": "P0",
+    "owner": "Data engineering",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-SYN-008"
+    ]
+  },
+  {
+    "id": "V2-SYN-009",
+    "area_code": "SYN",
+    "area": "Synthetic data generation",
+    "title": "Recipe suggestion review",
+    "requirement": "AI assisted recipe drafts shall use allowlisted schema fields and require authorised publication.",
+    "acceptance_criteria": [
+      "Injected instructions cannot execute code, add credentials or publish a recipe."
+    ],
+    "related_fsd_ids": [
+      "FS-API-005",
+      "QC-INTG-004"
+    ],
+    "baseline_relationship": "new_scope",
+    "milestone": "M3",
+    "work_package": "WP02",
+    "priority": "P0",
+    "owner": "Data engineering",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-SYN-009"
+    ]
+  },
+  {
+    "id": "V2-SYN-010",
+    "area_code": "SYN",
+    "area": "Synthetic data generation",
+    "title": "Snapshot lifecycle",
+    "requirement": "Users shall inspect, fork, archive and reproduce authorised snapshots without changing prior evidence.",
+    "acceptance_criteria": [
+      "A fork produces a new environment identity with matching canonical content; archival leaves evidence hashes intact."
+    ],
+    "related_fsd_ids": [
+      "FS-API-005",
+      "QC-INTG-004"
+    ],
+    "baseline_relationship": "new_scope",
+    "milestone": "M1",
+    "work_package": "WP02",
+    "priority": "P0",
+    "owner": "Data engineering",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-SYN-010"
+    ]
+  },
+  {
+    "id": "V2-REG-001",
+    "area_code": "REG",
+    "area": "Registry simulation",
+    "title": "Capability declaration",
+    "requirement": "Each registry profile shall declare resource types, operations, searches, schema version and limitations.",
+    "acceptance_criteria": [
+      "Every implemented operation has a contract; unsupported operations return an explicit unsupported response."
+    ],
+    "related_fsd_ids": [
+      "FS-API-001",
+      "FS-API-003",
+      "FS-API-009"
+    ],
+    "baseline_relationship": "new_scope",
+    "milestone": "M1",
+    "work_package": "WP03",
+    "priority": "P0",
+    "owner": "Integration engineering",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-REG-001"
+    ]
+  },
+  {
+    "id": "V2-REG-002",
+    "area_code": "REG",
+    "area": "Registry simulation",
+    "title": "Scoped state and revisions",
+    "requirement": "Registry writes shall enforce tenant, project, environment generation, profile and resource revision.",
+    "acceptance_criteria": [
+      "Cross scope writes fail and stale If-Match returns 412 without a state change."
+    ],
+    "related_fsd_ids": [
+      "FS-API-001",
+      "FS-API-003",
+      "FS-API-009"
+    ],
+    "baseline_relationship": "new_scope",
+    "milestone": "M1",
+    "work_package": "WP03",
+    "priority": "P0",
+    "owner": "Integration engineering",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-REG-002"
+    ]
+  },
+  {
+    "id": "V2-REG-003",
+    "area_code": "REG",
+    "area": "Registry simulation",
+    "title": "Patient relationships and merge",
+    "requirement": "The patient profile shall support scoped duplicate detection and explicit alias or merge history without guessing identity.",
+    "acceptance_criteria": [
+      "Ambiguous matches remain ambiguous; authorised merge preserves linked references and original identifiers."
+    ],
+    "related_fsd_ids": [
+      "FS-API-001",
+      "FS-API-003",
+      "FS-API-009"
+    ],
+    "baseline_relationship": "new_scope",
+    "milestone": "M1",
+    "work_package": "WP03",
+    "priority": "P0",
+    "owner": "Integration engineering",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-REG-003"
+    ]
+  },
+  {
+    "id": "V2-REG-004",
+    "area_code": "REG",
+    "area": "Registry simulation",
+    "title": "Lab and referral lifecycle",
+    "requirement": "Supported lab and referral transitions shall maintain order, result, correction and referral lineage.",
+    "acceptance_criteria": [
+      "A corrected final result supersedes the old result and retains order and referral links."
+    ],
+    "related_fsd_ids": [
+      "FS-API-001",
+      "FS-API-003",
+      "FS-API-009"
+    ],
+    "baseline_relationship": "new_scope",
+    "milestone": "M1",
+    "work_package": "WP03",
+    "priority": "P0",
+    "owner": "Integration engineering",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-REG-004"
+    ]
+  },
+  {
+    "id": "V2-REG-005",
+    "area_code": "REG",
+    "area": "Registry simulation",
+    "title": "Simulated policy separation",
+    "requirement": "Simulated consent and identity profiles shall test application behaviour without influencing platform authorisation.",
+    "acceptance_criteria": [
+      "A simulated administrator token cannot grant platform access or bypass a real platform hold."
+    ],
+    "related_fsd_ids": [
+      "FS-API-001",
+      "FS-API-003",
+      "FS-API-009"
+    ],
+    "baseline_relationship": "new_scope",
+    "milestone": "M3",
+    "work_package": "WP03",
+    "priority": "P0",
+    "owner": "Integration engineering",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-REG-005"
+    ]
+  },
+  {
+    "id": "V2-REG-006",
+    "area_code": "REG",
+    "area": "Registry simulation",
+    "title": "FHIR profile conformance",
+    "requirement": "An advertised FHIR endpoint shall implement only its pinned, tested profile with standard response conventions.",
+    "acceptance_criteria": [
+      "CapabilityStatement, resource validation, supported searches and OperationOutcome checks pass for the declared subset."
+    ],
+    "related_fsd_ids": [
+      "FS-API-001",
+      "FS-API-003",
+      "FS-API-009"
+    ],
+    "baseline_relationship": "new_scope",
+    "milestone": "M1",
+    "work_package": "WP03",
+    "priority": "P0",
+    "owner": "Integration engineering",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-REG-006"
+    ]
+  },
+  {
+    "id": "V2-REG-007",
+    "area_code": "REG",
+    "area": "Registry simulation",
+    "title": "Safe external effects",
+    "requirement": "Synthetic messages, identities and fault traffic shall remain within approved test bindings.",
+    "acceptance_criteria": [
+      "Real SMS, email, production registry and private network destinations are blocked before delivery."
+    ],
+    "related_fsd_ids": [
+      "FS-API-001",
+      "FS-API-003",
+      "FS-API-009"
+    ],
+    "baseline_relationship": "new_scope",
+    "milestone": "M1",
+    "work_package": "WP03",
+    "priority": "P0",
+    "owner": "Integration engineering",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-REG-007"
+    ]
+  },
+  {
+    "id": "V2-SCN-001",
+    "area_code": "SCN",
+    "area": "Scenario orchestration",
+    "title": "Frozen scenario plan",
+    "requirement": "A scenario shall freeze snapshot, bindings, steps, faults, clock policy and assertions as one immutable version.",
+    "acceptance_criteria": [
+      "Editing a frozen plan creates a successor; old execution retains its original digest."
+    ],
+    "related_fsd_ids": [
+      "FS-HUM-001",
+      "FS-API-007"
+    ],
+    "baseline_relationship": "new_scope",
+    "milestone": "M1",
+    "work_package": "WP04",
+    "priority": "P0",
+    "owner": "Simulation engineering",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-SCN-001"
+    ]
+  },
+  {
+    "id": "V2-SCN-002",
+    "area_code": "SCN",
+    "area": "Scenario orchestration",
+    "title": "Separate clocks",
+    "requirement": "Virtual time shall control simulated events while wall time controls credentials, leases, quotas and grants.",
+    "acceptance_criteria": [
+      "Advancing or pausing virtual time never extends expired access."
+    ],
+    "related_fsd_ids": [
+      "FS-HUM-001",
+      "FS-API-007"
+    ],
+    "baseline_relationship": "new_scope",
+    "milestone": "M1",
+    "work_package": "WP04",
+    "priority": "P0",
+    "owner": "Simulation engineering",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-SCN-002"
+    ]
+  },
+  {
+    "id": "V2-SCN-003",
+    "area_code": "SCN",
+    "area": "Scenario orchestration",
+    "title": "Deterministic event ordering",
+    "requirement": "Events shall order by virtual due time, service sequence and event ID under a versioned algorithm.",
+    "acceptance_criteria": [
+      "Identical simultaneous events produce the same ordered effects on replay."
+    ],
+    "related_fsd_ids": [
+      "FS-HUM-001",
+      "FS-API-007"
+    ],
+    "baseline_relationship": "new_scope",
+    "milestone": "M1",
+    "work_package": "WP04",
+    "priority": "P0",
+    "owner": "Simulation engineering",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-SCN-003"
+    ]
+  },
+  {
+    "id": "V2-SCN-004",
+    "area_code": "SCN",
+    "area": "Scenario orchestration",
+    "title": "Fault phase and duplicate effect",
+    "requirement": "Fault recipes shall specify deterministic occurrence and whether failure happens before or after business commit.",
+    "acceptance_criteria": [
+      "A lost response after commit followed by an identical retry produces exactly one order."
+    ],
+    "related_fsd_ids": [
+      "FS-HUM-001",
+      "FS-API-007"
+    ],
+    "baseline_relationship": "new_scope",
+    "milestone": "M1",
+    "work_package": "WP04",
+    "priority": "P0",
+    "owner": "Simulation engineering",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-SCN-004"
+    ]
+  },
+  {
+    "id": "V2-SCN-005",
+    "area_code": "SCN",
+    "area": "Scenario orchestration",
+    "title": "Generation fenced reset",
+    "requirement": "Reset shall create a new generation, revoke old credentials and reject stale callbacks.",
+    "acceptance_criteria": [
+      "Old generation callbacks cannot change a reset or forked environment."
+    ],
+    "related_fsd_ids": [
+      "FS-HUM-001",
+      "FS-API-007"
+    ],
+    "baseline_relationship": "new_scope",
+    "milestone": "M1",
+    "work_package": "WP04",
+    "priority": "P0",
+    "owner": "Simulation engineering",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-SCN-005"
+    ]
+  },
+  {
+    "id": "V2-SCN-006",
+    "area_code": "SCN",
+    "area": "Scenario orchestration",
+    "title": "Assertion semantics",
+    "requirement": "Assertions shall distinguish exact count, eventual state, invariant and absent effect with bounded deadlines.",
+    "acceptance_criteria": [
+      "Missing telemetry is inconclusive; a violated invariant fails even if the final state looks correct."
+    ],
+    "related_fsd_ids": [
+      "FS-HUM-001",
+      "FS-API-007"
+    ],
+    "baseline_relationship": "new_scope",
+    "milestone": "M1",
+    "work_package": "WP04",
+    "priority": "P0",
+    "owner": "Simulation engineering",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-SCN-006"
+    ]
+  },
+  {
+    "id": "V2-SCN-007",
+    "area_code": "SCN",
+    "area": "Scenario orchestration",
+    "title": "Consistent snapshots",
+    "requirement": "Snapshot capture shall preserve state, event cursor, pending callbacks and virtual clock consistently.",
+    "acceptance_criteria": [
+      "Replaying from a snapshot with a pending callback applies that callback once and preserves its due time."
+    ],
+    "related_fsd_ids": [
+      "FS-HUM-001",
+      "FS-API-007"
+    ],
+    "baseline_relationship": "new_scope",
+    "milestone": "M1",
+    "work_package": "WP04",
+    "priority": "P0",
+    "owner": "Simulation engineering",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-SCN-007"
+    ]
+  },
+  {
+    "id": "V2-SCN-008",
+    "area_code": "SCN",
+    "area": "Scenario orchestration",
+    "title": "Concurrent scenario isolation",
+    "requirement": "Concurrent scenarios shall fork isolated state unless shared state testing is explicitly selected.",
+    "acceptance_criteria": [
+      "Two default executions cannot read or alter each other\u2019s registry state."
+    ],
+    "related_fsd_ids": [
+      "FS-HUM-001",
+      "FS-API-007"
+    ],
+    "baseline_relationship": "new_scope",
+    "milestone": "M1",
+    "work_package": "WP04",
+    "priority": "P0",
+    "owner": "Simulation engineering",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-SCN-008"
+    ]
+  },
+  {
+    "id": "V2-MOD-001",
+    "area_code": "MOD",
+    "area": "Model and application onboarding",
+    "title": "Immutable model identity",
+    "requirement": "A model version shall bind package, preprocessing, postprocessing, runtime, input and output digests.",
+    "acceptance_criteria": [
+      "Changing preprocessing creates a new model version; old runs retain old identity."
+    ],
+    "related_fsd_ids": [
+      "FS-SOL-002",
+      "FS-RUN-005"
+    ],
+    "baseline_relationship": "refinement",
+    "milestone": "M2",
+    "work_package": "WP05",
+    "priority": "P0",
+    "owner": "Execution engineering",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-MOD-001"
+    ]
+  },
+  {
+    "id": "V2-MOD-002",
+    "area_code": "MOD",
+    "area": "Model and application onboarding",
+    "title": "Admission and dry run",
+    "requirement": "Only packages that pass integrity, contract, resource and isolation admission shall become runnable.",
+    "acceptance_criteria": [
+      "An invalid output or forbidden host access blocks admission with a bounded report."
+    ],
+    "related_fsd_ids": [
+      "FS-SOL-002",
+      "FS-SOL-003",
+      "FS-RUN-002"
+    ],
+    "baseline_relationship": "refinement",
+    "milestone": "M2",
+    "work_package": "WP05",
+    "priority": "P0",
+    "owner": "Execution engineering",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-MOD-002"
+    ]
+  },
+  {
+    "id": "V2-MOD-003",
+    "area_code": "MOD",
+    "area": "Model and application onboarding",
+    "title": "Actual audio inference",
+    "requirement": "The platform shall execute the admitted package on permitted audio rather than substituting a fixed internal model.",
+    "acceptance_criteria": [
+      "Known submitted model fixture emits its expected outputs; manifest proves its digest and runtime."
+    ],
+    "related_fsd_ids": [
+      "FS-SOL-002",
+      "FS-SOL-003",
+      "FS-RUN-002"
+    ],
+    "baseline_relationship": "refinement",
+    "milestone": "M2",
+    "work_package": "WP05",
+    "priority": "P0",
+    "owner": "Execution engineering",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-MOD-003"
+    ]
+  },
+  {
+    "id": "V2-MOD-004",
+    "area_code": "MOD",
+    "area": "Model and application onboarding",
+    "title": "Approved remote inference",
+    "requirement": "Remote adapters shall enforce destination, region, current data rights, secret scope and version declaration.",
+    "acceptance_criteria": [
+      "Unapproved destination is denied; vendor version drift holds dependent evidence."
+    ],
+    "related_fsd_ids": [
+      "FS-RUN-008",
+      "FS-DAC-006"
+    ],
+    "baseline_relationship": "refinement",
+    "milestone": "M3",
+    "work_package": "WP05",
+    "priority": "P0",
+    "owner": "Execution engineering",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-MOD-004"
+    ]
+  },
+  {
+    "id": "V2-MOD-005",
+    "area_code": "MOD",
+    "area": "Model and application onboarding",
+    "title": "Evidence scope labelling",
+    "requirement": "Prediction import, stub responses, local model execution and remote service execution shall be labelled distinctly.",
+    "acceptance_criteria": [
+      "An imported prediction file never receives a platform executed model badge."
+    ],
+    "related_fsd_ids": [
+      "FS-EVD-003",
+      "FS-EVD-006"
+    ],
+    "baseline_relationship": "refinement",
+    "milestone": "M2",
+    "work_package": "WP05",
+    "priority": "P0",
+    "owner": "Execution engineering",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-MOD-005"
+    ]
+  },
+  {
+    "id": "V2-MOD-006",
+    "area_code": "MOD",
+    "area": "Model and application onboarding",
+    "title": "Application and device identity",
+    "requirement": "Application tests shall bind build digest, model binding, device or emulator profile and exercised path.",
+    "acceptance_criteria": [
+      "Evidence differentiates emulator media injection from physical microphone capture."
+    ],
+    "related_fsd_ids": [
+      "FS-HUM-002",
+      "FS-HUM-003"
+    ],
+    "baseline_relationship": "refinement",
+    "milestone": "M4",
+    "work_package": "WP05",
+    "priority": "P0",
+    "owner": "Execution engineering",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-MOD-006"
+    ]
+  },
+  {
+    "id": "V2-DAT-001",
+    "area_code": "DAT",
+    "area": "Audio and data preparation",
+    "title": "Resumable integrity",
+    "requirement": "Audio transfer shall preserve the baseline chunk protocol with per part and final integrity checks and current rights.",
+    "acceptance_criteria": [
+      "Identical retry succeeds once; conflicting part is 409; wrong final digest prevents release."
+    ],
+    "related_fsd_ids": [
+      "FS-ING-006"
+    ],
+    "baseline_relationship": "scope_extension",
+    "milestone": "M2",
+    "work_package": "WP05",
+    "priority": "P0",
+    "owner": "Data engineering",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-DAT-001"
+    ]
+  },
+  {
+    "id": "V2-DAT-002",
+    "area_code": "DAT",
+    "area": "Audio and data preparation",
+    "title": "Quarantine and decoder limits",
+    "requirement": "Audio shall remain unavailable until scanner, bounded decode and release checks succeed.",
+    "acceptance_criteria": [
+      "Scanner outage and decoder exhaustion block preview, inference and release."
+    ],
+    "related_fsd_ids": [
+      "FS-ING-002",
+      "FS-ING-003"
+    ],
+    "baseline_relationship": "scope_extension",
+    "milestone": "M2",
+    "work_package": "WP05",
+    "priority": "P0",
+    "owner": "Data engineering",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-DAT-002"
+    ]
+  },
+  {
+    "id": "V2-DAT-003",
+    "area_code": "DAT",
+    "area": "Audio and data preparation",
+    "title": "Explicit transforms",
+    "requirement": "Raw audio shall remain immutable and any conversion shall carry a versioned recipe and derived digest.",
+    "acceptance_criteria": [
+      "Changing conversion creates a new derived object without changing raw hash."
+    ],
+    "related_fsd_ids": [
+      "FS-ING-007",
+      "FS-ING-008"
+    ],
+    "baseline_relationship": "scope_extension",
+    "milestone": "M2",
+    "work_package": "WP05",
+    "priority": "P0",
+    "owner": "Data engineering",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-DAT-003"
+    ]
+  },
+  {
+    "id": "V2-DAT-004",
+    "area_code": "DAT",
+    "area": "Audio and data preparation",
+    "title": "Restricted references",
+    "requirement": "The model and simulator shall not read restricted labels or label revealing metadata.",
+    "acceptance_criteria": [
+      "Attempts through files, network, API joins and logs are denied and audited."
+    ],
+    "related_fsd_ids": [
+      "FS-CUR-007",
+      "FS-DAC-011"
+    ],
+    "baseline_relationship": "scope_extension",
+    "milestone": "M2",
+    "work_package": "WP05",
+    "priority": "P0",
+    "owner": "Data engineering",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-DAT-004"
+    ]
+  },
+  {
+    "id": "V2-DAT-005",
+    "area_code": "DAT",
+    "area": "Audio and data preparation",
+    "title": "Participant partitions",
+    "requirement": "Known participant grouping and approved duplicate checks shall inform partitions and report unresolved overlap.",
+    "acceptance_criteria": [
+      "Two recordings of one participant cannot enter independent partitions without a flagged approved exception."
+    ],
+    "related_fsd_ids": [
+      "FS-CUR-008",
+      "FS-ING-004"
+    ],
+    "baseline_relationship": "scope_extension",
+    "milestone": "M2",
+    "work_package": "WP05",
+    "priority": "P0",
+    "owner": "Data engineering",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-DAT-005"
+    ]
+  },
+  {
+    "id": "V2-DAT-006",
+    "area_code": "DAT",
+    "area": "Audio and data preparation",
+    "title": "Purpose and playback",
+    "requirement": "Audio read, playback, inference and export shall require separate applicable permissions and current grants.",
+    "acceptance_criteria": [
+      "Revoked or playback-only access cannot start inference or export raw media."
+    ],
+    "related_fsd_ids": [
+      "FS-DAC-003",
+      "FS-DAC-008",
+      "FS-DAC-009"
+    ],
+    "baseline_relationship": "scope_extension",
+    "milestone": "M2",
+    "work_package": "WP05",
+    "priority": "P0",
+    "owner": "Data engineering",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-DAT-006"
+    ]
+  },
+  {
+    "id": "V2-VAL-001",
+    "area_code": "VAL",
+    "area": "Evaluation and comparison",
+    "title": "Protocol freeze",
+    "requirement": "Evaluation shall bind immutable reference definition, data release, sampling unit, threshold and analysis method.",
+    "acceptance_criteria": [
+      "Post freeze edits create a successor; a held out threshold search is labelled exploratory."
+    ],
+    "related_fsd_ids": [
+      "FS-PRO-004",
+      "FS-PRO-008"
+    ],
+    "baseline_relationship": "refinement",
+    "milestone": "M2",
+    "work_package": "WP06",
+    "priority": "P0",
+    "owner": "Methodology and scoring",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-VAL-001"
+    ]
+  },
+  {
+    "id": "V2-VAL-002",
+    "area_code": "VAL",
+    "area": "Evaluation and comparison",
+    "title": "Complete denominators",
+    "requirement": "The scorer shall account for every eligible unit and distinguish failure, abstention and missing reference.",
+    "acceptance_criteria": [
+      "The fixture reconciles 950 scored, 30 failed and 20 abstained to 1,000; none silently become negative."
+    ],
+    "related_fsd_ids": [
+      "FS-VAL-001",
+      "FS-VAL-005",
+      "FS-PRO-005"
+    ],
+    "baseline_relationship": "refinement",
+    "milestone": "M2",
+    "work_package": "WP06",
+    "priority": "P0",
+    "owner": "Methodology and scoring",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-VAL-002"
+    ]
+  },
+  {
+    "id": "V2-VAL-003",
+    "area_code": "VAL",
+    "area": "Evaluation and comparison",
+    "title": "Undefined measures",
+    "requirement": "Unavailable metrics shall carry a not estimable reason rather than zero or fabricated confidence.",
+    "acceptance_criteria": [
+      "A cohort with no reference positives has not estimable sensitivity and AUC as applicable."
+    ],
+    "related_fsd_ids": [
+      "FS-VAL-001",
+      "QC-INTG-007"
+    ],
+    "baseline_relationship": "refinement",
+    "milestone": "M2",
+    "work_package": "WP06",
+    "priority": "P0",
+    "owner": "Methodology and scoring",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-VAL-003"
+    ]
+  },
+  {
+    "id": "V2-VAL-004",
+    "area_code": "VAL",
+    "area": "Evaluation and comparison",
+    "title": "Uncertainty calculation",
+    "requirement": "Intervals shall use the declared sampling unit, method, seed, replicate count and invalid replicate policy.",
+    "acceptance_criteria": [
+      "Repeated clips resample together; fewer than 95 percent valid replicates suppresses the interval."
+    ],
+    "related_fsd_ids": [
+      "FS-VAL-003"
+    ],
+    "baseline_relationship": "refinement",
+    "milestone": "M2",
+    "work_package": "WP06",
+    "priority": "P0",
+    "owner": "Methodology and scoring",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-VAL-004"
+    ]
+  },
+  {
+    "id": "V2-VAL-005",
+    "area_code": "VAL",
+    "area": "Evaluation and comparison",
+    "title": "Paired comparison",
+    "requirement": "Version comparison shall preserve matched units and show all eligible cohort coverage and failure changes.",
+    "acceptance_criteria": [
+      "Differential failure cannot improve a reported result by silently excluding difficult units."
+    ],
+    "related_fsd_ids": [
+      "FS-VAL-009"
+    ],
+    "baseline_relationship": "refinement",
+    "milestone": "M2",
+    "work_package": "WP06",
+    "priority": "P0",
+    "owner": "Methodology and scoring",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-VAL-005"
+    ]
+  },
+  {
+    "id": "V2-VAL-006",
+    "area_code": "VAL",
+    "area": "Evaluation and comparison",
+    "title": "Cohorts and disclosure",
+    "requirement": "Cohort results shall show denominators, missing metadata and approved suppression and query budgets.",
+    "acceptance_criteria": [
+      "Small cell values and repeated-query differences cannot bypass the disclosure policy."
+    ],
+    "related_fsd_ids": [
+      "FS-VAL-008",
+      "FS-DAC-011"
+    ],
+    "baseline_relationship": "refinement",
+    "milestone": "M2",
+    "work_package": "WP06",
+    "priority": "P0",
+    "owner": "Methodology and scoring",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-VAL-006"
+    ]
+  },
+  {
+    "id": "V2-VAL-007",
+    "area_code": "VAL",
+    "area": "Evaluation and comparison",
+    "title": "Robustness lineage",
+    "requirement": "Perturbed audio evaluations shall preserve the raw input and record recipe, seed and invalid variants.",
+    "acceptance_criteria": [
+      "A perturbation result is separate from unmodified data and invalid variants remain counted."
+    ],
+    "related_fsd_ids": [
+      "FS-VAL-007"
+    ],
+    "baseline_relationship": "refinement",
+    "milestone": "M3",
+    "work_package": "WP06",
+    "priority": "P0",
+    "owner": "Methodology and scoring",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-VAL-007"
+    ]
+  },
+  {
+    "id": "V2-VAL-008",
+    "area_code": "VAL",
+    "area": "Evaluation and comparison",
+    "title": "Comparable technical measures",
+    "requirement": "Latency and cost reporting shall distinguish phases, failures, resource profile and measurement authority.",
+    "acceptance_criteria": [
+      "Vendor claimed latency is labelled; timeouts and retries remain visible in denominators and usage."
+    ],
+    "related_fsd_ids": [
+      "FS-RUN-004",
+      "FS-ANA-006"
+    ],
+    "baseline_relationship": "refinement",
+    "milestone": "M2",
+    "work_package": "WP06",
+    "priority": "P0",
+    "owner": "Methodology and scoring",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-VAL-008"
+    ]
+  },
+  {
+    "id": "V2-RUN-001",
+    "area_code": "RUN",
+    "area": "Execution lifecycle",
+    "title": "Atomic admission",
+    "requirement": "Run creation shall atomically check scope and reserve quota with audit, receipt and outbox.",
+    "acceptance_criteria": [
+      "Concurrent starts cannot overspend quota or create duplicate runs for one operation key."
+    ],
+    "related_fsd_ids": [
+      "FS-RUN-005",
+      "FS-RUN-006",
+      "FS-RUN-007"
+    ],
+    "baseline_relationship": "refinement",
+    "milestone": "M2",
+    "work_package": "WP05",
+    "priority": "P0",
+    "owner": "Execution engineering",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-RUN-001"
+    ]
+  },
+  {
+    "id": "V2-RUN-002",
+    "area_code": "RUN",
+    "area": "Execution lifecycle",
+    "title": "Fenced attempt leases",
+    "requirement": "Only the active attempt lease fencing token shall commit result and terminal run state.",
+    "acceptance_criteria": [
+      "A late worker from an expired lease cannot overwrite the replacement worker\u2019s result."
+    ],
+    "related_fsd_ids": [
+      "FS-RUN-005",
+      "FS-RUN-006",
+      "FS-RUN-007"
+    ],
+    "baseline_relationship": "refinement",
+    "milestone": "M2",
+    "work_package": "WP05",
+    "priority": "P0",
+    "owner": "Execution engineering",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-RUN-002"
+    ]
+  },
+  {
+    "id": "V2-RUN-003",
+    "area_code": "RUN",
+    "area": "Execution lifecycle",
+    "title": "Bounded resources",
+    "requirement": "Execution shall enforce package admitted CPU, memory, disk, duration, network and output ceilings.",
+    "acceptance_criteria": [
+      "Exhaustion terminates the attempt safely and records the exceeded limit without affecting another tenant."
+    ],
+    "related_fsd_ids": [
+      "FS-RUN-005",
+      "FS-RUN-006",
+      "FS-RUN-007"
+    ],
+    "baseline_relationship": "refinement",
+    "milestone": "M2",
+    "work_package": "WP05",
+    "priority": "P0",
+    "owner": "Execution engineering",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-RUN-003"
+    ]
+  },
+  {
+    "id": "V2-RUN-004",
+    "area_code": "RUN",
+    "area": "Execution lifecycle",
+    "title": "Confirmed cancellation",
+    "requirement": "Cancellation shall be requested, acknowledged and confirmed after actual worker termination.",
+    "acceptance_criteria": [
+      "Unacknowledged cancellation remains explicitly unresolved and cannot produce released evidence."
+    ],
+    "related_fsd_ids": [
+      "FS-RUN-012"
+    ],
+    "baseline_relationship": "refinement",
+    "milestone": "M2",
+    "work_package": "WP05",
+    "priority": "P0",
+    "owner": "Execution engineering",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-RUN-004"
+    ]
+  },
+  {
+    "id": "V2-RUN-005",
+    "area_code": "RUN",
+    "area": "Execution lifecycle",
+    "title": "Policy rechecks",
+    "requirement": "Policy shall be rechecked at admission, lease, data read, scoring and evidence release.",
+    "acceptance_criteria": [
+      "A hold during execution prevents release and triggers termination handling within target."
+    ],
+    "related_fsd_ids": [
+      "FS-DAC-008",
+      "QC-SEC-007"
+    ],
+    "baseline_relationship": "refinement",
+    "milestone": "M2",
+    "work_package": "WP05",
+    "priority": "P0",
+    "owner": "Execution engineering",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-RUN-005"
+    ]
+  },
+  {
+    "id": "V2-RUN-006",
+    "area_code": "RUN",
+    "area": "Execution lifecycle",
+    "title": "Remote uncertainty",
+    "requirement": "Remote timeout and cancellation shall record unknown provider outcome and use only approved retry semantics.",
+    "acceptance_criteria": [
+      "An ambiguous remote request is not blindly retried or marked confirmed cancelled."
+    ],
+    "related_fsd_ids": [
+      "FS-RUN-008"
+    ],
+    "baseline_relationship": "refinement",
+    "milestone": "M3",
+    "work_package": "WP05",
+    "priority": "P0",
+    "owner": "Execution engineering",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-RUN-006"
+    ]
+  },
+  {
+    "id": "V2-RUN-007",
+    "area_code": "RUN",
+    "area": "Execution lifecycle",
+    "title": "Output cardinality",
+    "requirement": "Output validation shall reject extra, duplicate, malformed and nonfinite predictions and account for missing ones.",
+    "acceptance_criteria": [
+      "Missing row becomes explicit failure; duplicate IDs and NaN cannot be accepted as scored output."
+    ],
+    "related_fsd_ids": [
+      "FS-RUN-009",
+      "FS-VAL-005"
+    ],
+    "baseline_relationship": "refinement",
+    "milestone": "M2",
+    "work_package": "WP05",
+    "priority": "P0",
+    "owner": "Execution engineering",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-RUN-007"
+    ]
+  },
+  {
+    "id": "V2-RUN-008",
+    "area_code": "RUN",
+    "area": "Execution lifecycle",
+    "title": "Attempt accounting",
+    "requirement": "All failed, retried, cancelled and successful attempts shall retain usage and release abandoned reservations.",
+    "acceptance_criteria": [
+      "Resource totals reconcile across attempts and reservation cleanup produces an auditable adjustment."
+    ],
+    "related_fsd_ids": [
+      "FS-RUN-004",
+      "FS-ANA-006"
+    ],
+    "baseline_relationship": "refinement",
+    "milestone": "M2",
+    "work_package": "WP05",
+    "priority": "P0",
+    "owner": "Execution engineering",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-RUN-008"
+    ]
+  },
+  {
+    "id": "V2-UX-001",
+    "area_code": "UX",
+    "area": "User experience",
+    "title": "Lab journeys",
+    "requirement": "Users shall start model evaluation and ecosystem testing from project scoped journeys with actionable readiness checks.",
+    "acceptance_criteria": [
+      "A blocked run shows specific failed prerequisites and does not submit work."
+    ],
+    "related_fsd_ids": [
+      "FS-ANA-001"
+    ],
+    "baseline_relationship": "new_scope",
+    "milestone": "M3",
+    "work_package": "WP07",
+    "priority": "P0",
+    "owner": "Product design",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-UX-001"
+    ]
+  },
+  {
+    "id": "V2-UX-002",
+    "area_code": "UX",
+    "area": "User experience",
+    "title": "Truthful status and provenance",
+    "requirement": "Every result shall expose origin, execution scope, completeness and approval state without conflating them.",
+    "acceptance_criteria": [
+      "Synthetic or stub result cannot visually appear to be approved clinical validation."
+    ],
+    "related_fsd_ids": [
+      "FS-ANA-001"
+    ],
+    "baseline_relationship": "new_scope",
+    "milestone": "M3",
+    "work_package": "WP07",
+    "priority": "P0",
+    "owner": "Product design",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-UX-002"
+    ]
+  },
+  {
+    "id": "V2-UX-003",
+    "area_code": "UX",
+    "area": "User experience",
+    "title": "Accessible interaction",
+    "requirement": "Forms, state changes, tables and charts shall support keyboard and assistive technology operation with non colour cues.",
+    "acceptance_criteria": [
+      "A keyboard-only user can create and review a scenario; chart values are available as accessible tables."
+    ],
+    "related_fsd_ids": [
+      "FS-ANA-001"
+    ],
+    "baseline_relationship": "new_scope",
+    "milestone": "M3",
+    "work_package": "WP07",
+    "priority": "P0",
+    "owner": "Product design",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-UX-003"
+    ]
+  },
+  {
+    "id": "V2-UX-004",
+    "area_code": "UX",
+    "area": "User experience",
+    "title": "Recoverable state",
+    "requirement": "Drafts and asynchronous operations shall survive navigation; stale changes and partial failures shall be explicit.",
+    "acceptance_criteria": [
+      "Returning to a submitted run resumes its status without a duplicate run; stale save gives actionable conflict."
+    ],
+    "related_fsd_ids": [
+      "FS-ANA-001"
+    ],
+    "baseline_relationship": "new_scope",
+    "milestone": "M3",
+    "work_package": "WP07",
+    "priority": "P0",
+    "owner": "Product design",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-UX-004"
+    ]
+  },
+  {
+    "id": "V2-SEC-001",
+    "area_code": "SEC",
+    "area": "Access and security",
+    "title": "Tenant and field policy",
+    "requirement": "All services shall enforce scoped records, field access and separate privileges for protected references.",
+    "acceptance_criteria": [
+      "Cross tenant resource IDs fail without existence leakage in API, cache, queue and object paths."
+    ],
+    "related_fsd_ids": [
+      "QC-SEC-007",
+      "QC-SEC-008"
+    ],
+    "baseline_relationship": "refinement",
+    "milestone": "M0",
+    "work_package": "WP01",
+    "priority": "P0",
+    "owner": "Security engineering",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-SEC-001"
+    ]
+  },
+  {
+    "id": "V2-SEC-002",
+    "area_code": "SEC",
+    "area": "Access and security",
+    "title": "Real independent approval",
+    "requirement": "Protected review and release shall require eligible real people and applicable separation of duties.",
+    "acceptance_criteria": [
+      "Service account, AI agent and scenario persona cannot sign a protected decision."
+    ],
+    "related_fsd_ids": [
+      "FS-EVD-004",
+      "QC-AQL-005"
+    ],
+    "baseline_relationship": "refinement",
+    "milestone": "M5",
+    "work_package": "WP01",
+    "priority": "P0",
+    "owner": "Security engineering",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-SEC-002"
+    ]
+  },
+  {
+    "id": "V2-SEC-003",
+    "area_code": "SEC",
+    "area": "Access and security",
+    "title": "Controlled support",
+    "requirement": "Support shall use scoped expiring grants linked to reason and ticket with independent audit.",
+    "acceptance_criteria": [
+      "Support cannot read content before approval or after expiry and cannot impersonate a reviewer."
+    ],
+    "related_fsd_ids": [
+      "QC-SEC-007",
+      "QC-SEC-008"
+    ],
+    "baseline_relationship": "refinement",
+    "milestone": "M0",
+    "work_package": "WP01",
+    "priority": "P0",
+    "owner": "Security engineering",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-SEC-003"
+    ]
+  },
+  {
+    "id": "V2-SEC-004",
+    "area_code": "SEC",
+    "area": "Access and security",
+    "title": "Network destination protection",
+    "requirement": "Outbound inference and callbacks shall block unapproved, private, metadata, redirected and rebound destinations.",
+    "acceptance_criteria": [
+      "All malicious destination fixtures fail before sensitive bytes are sent."
+    ],
+    "related_fsd_ids": [
+      "FS-RUN-003",
+      "FS-RUN-008"
+    ],
+    "baseline_relationship": "refinement",
+    "milestone": "M0",
+    "work_package": "WP01",
+    "priority": "P0",
+    "owner": "Security engineering",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-SEC-004"
+    ]
+  },
+  {
+    "id": "V2-SEC-005",
+    "area_code": "SEC",
+    "area": "Access and security",
+    "title": "Secret and log control",
+    "requirement": "Secrets shall use workload scoped references and sensitive outputs shall remain out of ordinary logs and client bundles.",
+    "acceptance_criteria": [
+      "Secret canaries and audio or reference payloads do not appear in logs, errors or browser assets."
+    ],
+    "related_fsd_ids": [
+      "QC-SEC-007",
+      "QC-SEC-008"
+    ],
+    "baseline_relationship": "refinement",
+    "milestone": "M0",
+    "work_package": "WP01",
+    "priority": "P0",
+    "owner": "Security engineering",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-SEC-005"
+    ]
+  },
+  {
+    "id": "V2-SEC-006",
+    "area_code": "SEC",
+    "area": "Access and security",
+    "title": "Simulation containment",
+    "requirement": "Simulator faults, synthetic identities and test credentials shall be unusable against production and control services.",
+    "acceptance_criteria": [
+      "No configured fault or test token affects a production destination or real platform authority."
+    ],
+    "related_fsd_ids": [
+      "QC-SEC-007",
+      "QC-SEC-008"
+    ],
+    "baseline_relationship": "refinement",
+    "milestone": "M0",
+    "work_package": "WP01",
+    "priority": "P0",
+    "owner": "Security engineering",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-SEC-006"
+    ]
+  },
+  {
+    "id": "V2-NFR-001",
+    "area_code": "NFR",
+    "area": "Quality attributes",
+    "title": "Availability and recovery targets",
+    "requirement": "Production shall retain 99.9 percent availability and recovery within four hours in permitted locations.",
+    "acceptance_criteria": [
+      "Independent journey probes and timed restore evidence meet each region\u2019s target without averaging failures away."
+    ],
+    "related_fsd_ids": [
+      "QC-AVL-001",
+      "QC-AVL-003"
+    ],
+    "baseline_relationship": "refinement",
+    "milestone": "M5",
+    "work_package": "WP09",
+    "priority": "P0",
+    "owner": "Quality and operations",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-NFR-001"
+    ]
+  },
+  {
+    "id": "V2-NFR-002",
+    "area_code": "NFR",
+    "area": "Quality attributes",
+    "title": "Recovery point reconciliation",
+    "requirement": "Recovery shall meet 5 minute decision, grant and audit RPO; 15 minute metadata and final artefact RPO; 24 hour input RPO unless stricter.",
+    "acceptance_criteria": [
+      "Measured restored loss meets each target and uncertain rights block reopening until reconciled."
+    ],
+    "related_fsd_ids": [
+      "QC-AVL-004",
+      "QC-AVL-005"
+    ],
+    "baseline_relationship": "refinement",
+    "milestone": "M5",
+    "work_package": "WP09",
+    "priority": "P0",
+    "owner": "Quality and operations",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-NFR-002"
+    ]
+  },
+  {
+    "id": "V2-NFR-003",
+    "area_code": "NFR",
+    "area": "Quality attributes",
+    "title": "Source performance targets",
+    "requirement": "The implementation shall retain source L1 interaction, API and queue targets with measured profile and denominators.",
+    "acceptance_criteria": [
+      "Pages p95 <=3 seconds; APIs p95 <=1 second and p99 <=3 seconds; acknowledgement p95 <=2 seconds; eligible reserved start p95 <=2 minutes."
+    ],
+    "related_fsd_ids": [
+      "QC-PER-001",
+      "QC-PER-002",
+      "QC-PER-006"
+    ],
+    "baseline_relationship": "refinement",
+    "milestone": "M5",
+    "work_package": "WP09",
+    "priority": "P0",
+    "owner": "Quality and operations",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-NFR-003"
+    ]
+  },
+  {
+    "id": "V2-NFR-004",
+    "area_code": "NFR",
+    "area": "Quality attributes",
+    "title": "Simulator capacity profile",
+    "requirement": "P1 shall support five environments, each 1,000 people and 20,000 linked resources, at aggregate 20 registry requests per second.",
+    "acceptance_criteria": [
+      "Baseline p95 response is below one second over 30 minutes with no injected faults; injected delay is separately reported."
+    ],
+    "related_fsd_ids": [
+      "QC-AVL-001",
+      "QC-PER-002",
+      "QC-INTG-004"
+    ],
+    "baseline_relationship": "refinement",
+    "milestone": "M3",
+    "work_package": "WP09",
+    "priority": "P0",
+    "owner": "Quality and operations",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-NFR-004"
+    ]
+  },
+  {
+    "id": "V2-NFR-005",
+    "area_code": "NFR",
+    "area": "Quality attributes",
+    "title": "Online revocation target",
+    "requirement": "Online credential, grant and job revocation shall become effective within 60 seconds.",
+    "acceptance_criteria": [
+      "The slowest relevant API, worker and export path ceases authorised access within target."
+    ],
+    "related_fsd_ids": [
+      "QC-SEC-007"
+    ],
+    "baseline_relationship": "refinement",
+    "milestone": "M2",
+    "work_package": "WP09",
+    "priority": "P0",
+    "owner": "Quality and operations",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-NFR-005"
+    ]
+  },
+  {
+    "id": "V2-NFR-006",
+    "area_code": "NFR",
+    "area": "Quality attributes",
+    "title": "Resource fairness",
+    "requirement": "No tenant shall exceed admitted quotas or starve other reserved tenants through generator or model overload.",
+    "acceptance_criteria": [
+      "Overload is bounded and another tenant with reserved capacity retains its service target."
+    ],
+    "related_fsd_ids": [
+      "FS-RUN-004",
+      "QC-AVL-007"
+    ],
+    "baseline_relationship": "refinement",
+    "milestone": "M5",
+    "work_package": "WP09",
+    "priority": "P0",
+    "owner": "Quality and operations",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-NFR-006"
+    ]
+  },
+  {
+    "id": "V2-NFR-007",
+    "area_code": "NFR",
+    "area": "Quality attributes",
+    "title": "Numerical reproducibility",
+    "requirement": "Evidence shall distinguish bitwise synthetic determinism from bounded stochastic model reproducibility.",
+    "acceptance_criteria": [
+      "Declared nondeterministic runtime has repeated-run distribution or tolerance evidence; no false bitwise guarantee."
+    ],
+    "related_fsd_ids": [
+      "QC-INTG-004",
+      "QC-INTG-005"
+    ],
+    "baseline_relationship": "refinement",
+    "milestone": "M2",
+    "work_package": "WP09",
+    "priority": "P0",
+    "owner": "Quality and operations",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-NFR-007"
+    ]
+  },
+  {
+    "id": "V2-API-001",
+    "area_code": "API",
+    "area": "API and events",
+    "title": "Strict schemas and errors",
+    "requirement": "Control APIs shall reject unknown fields and invalid enums and return safe structured errors.",
+    "acceptance_criteria": [
+      "Contract negatives fail with the specified status and bounded field errors without sensitive values."
+    ],
+    "related_fsd_ids": [
+      "FS-API-001",
+      "FS-API-002",
+      "FS-API-007"
+    ],
+    "baseline_relationship": "refinement",
+    "milestone": "M0",
+    "work_package": "WP01",
+    "priority": "P0",
+    "owner": "Platform engineering",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-API-001"
+    ]
+  },
+  {
+    "id": "V2-API-002",
+    "area_code": "API",
+    "area": "API and events",
+    "title": "Idempotency and revision",
+    "requirement": "Mutations shall bind operation keys to current scope and request digest; mutable edits require If-Match.",
+    "acceptance_criteria": [
+      "Same key and payload returns one effect after access check; different payload is 409; stale revision is 412; missing revision is 428."
+    ],
+    "related_fsd_ids": [
+      "FS-API-001",
+      "FS-API-002",
+      "FS-API-007"
+    ],
+    "baseline_relationship": "refinement",
+    "milestone": "M0",
+    "work_package": "WP01",
+    "priority": "P0",
+    "owner": "Platform engineering",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-API-002"
+    ]
+  },
+  {
+    "id": "V2-API-003",
+    "area_code": "API",
+    "area": "API and events",
+    "title": "Stable pagination",
+    "requirement": "List APIs shall use scoped opaque cursors, deterministic ordering, limits and a frozen snapshot boundary.",
+    "acceptance_criteria": [
+      "Pagination contains neither duplicates nor omissions in the snapshot; changed filter or tenant invalidates cursor."
+    ],
+    "related_fsd_ids": [
+      "FS-API-001",
+      "FS-API-002",
+      "FS-API-007"
+    ],
+    "baseline_relationship": "refinement",
+    "milestone": "M0",
+    "work_package": "WP01",
+    "priority": "P0",
+    "owner": "Platform engineering",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-API-003"
+    ]
+  },
+  {
+    "id": "V2-API-004",
+    "area_code": "API",
+    "area": "API and events",
+    "title": "Reliable versioned events",
+    "requirement": "Events shall use typed payloads, outbox delivery, scoped consumer deduplication and bounded retry with dead letters.",
+    "acceptance_criteria": [
+      "Duplicate delivery creates one effect; version gap triggers reconciliation; incompatible payload is not silently accepted."
+    ],
+    "related_fsd_ids": [
+      "FS-API-001",
+      "FS-API-002",
+      "FS-API-007"
+    ],
+    "baseline_relationship": "refinement",
+    "milestone": "M0",
+    "work_package": "WP01",
+    "priority": "P0",
+    "owner": "Platform engineering",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-API-004"
+    ]
+  },
+  {
+    "id": "V2-EVD-001",
+    "area_code": "EVD",
+    "area": "Evidence and release",
+    "title": "Immutable evidence manifest",
+    "requirement": "Evidence shall bind all model, data, protocol, runtime, scenario, environment and scorer versions with integrity hashes.",
+    "acceptance_criteria": [
+      "Changing any referenced file invalidates verification; prior signed bundles remain immutable."
+    ],
+    "related_fsd_ids": [
+      "FS-EVD-001",
+      "FS-EVD-002",
+      "FS-EVD-011"
+    ],
+    "baseline_relationship": "refinement",
+    "milestone": "M2",
+    "work_package": "WP06",
+    "priority": "P0",
+    "owner": "Evidence engineering",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-EVD-001"
+    ]
+  },
+  {
+    "id": "V2-EVD-002",
+    "area_code": "EVD",
+    "area": "Evidence and release",
+    "title": "Rights aware release",
+    "requirement": "Release shall require current export rights, unresolved issue disclosure and eligible independent approval where required.",
+    "acceptance_criteria": [
+      "An expired grant or held result blocks release even when a prior preview was allowed."
+    ],
+    "related_fsd_ids": [
+      "FS-DAC-009",
+      "FS-EVD-004",
+      "FS-EVD-008"
+    ],
+    "baseline_relationship": "refinement",
+    "milestone": "M5",
+    "work_package": "WP06",
+    "priority": "P0",
+    "owner": "Evidence engineering",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-EVD-002"
+    ]
+  },
+  {
+    "id": "V2-EVD-003",
+    "area_code": "EVD",
+    "area": "Evidence and release",
+    "title": "Scope and correction history",
+    "requirement": "Reports shall retain origin, limitations, complete denominators and correction or retraction lineage.",
+    "acceptance_criteria": [
+      "Synthetic arithmetic is never labelled observed performance and a corrected dossier links to its superseded version."
+    ],
+    "related_fsd_ids": [
+      "FS-EVD-006",
+      "FS-EVD-009",
+      "FS-EVD-011"
+    ],
+    "baseline_relationship": "refinement",
+    "milestone": "M2",
+    "work_package": "WP06",
+    "priority": "P0",
+    "owner": "Evidence engineering",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-EVD-003"
+    ]
+  },
+  {
+    "id": "V2-OPS-001",
+    "area_code": "OPS",
+    "area": "Development and operations",
+    "title": "Pinned build and fixture provenance",
+    "requirement": "Builds shall pin dependencies, images, profiles and software inventory and record their source revision.",
+    "acceptance_criteria": [
+      "A clean environment reproduces the build and fixture manifests without production secrets."
+    ],
+    "related_fsd_ids": [
+      "QC-AVL-003",
+      "QC-AVL-006"
+    ],
+    "baseline_relationship": "refinement",
+    "milestone": "M0",
+    "work_package": "WP01",
+    "priority": "P0",
+    "owner": "Platform operations",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-OPS-001"
+    ]
+  },
+  {
+    "id": "V2-OPS-002",
+    "area_code": "OPS",
+    "area": "Development and operations",
+    "title": "Slice gates",
+    "requirement": "Each slice shall include contracts, migrations, access policies, negative cases, observability and runbook evidence before enabling its capability.",
+    "acceptance_criteria": [
+      "Promotion fails when any required evidence or migration compatibility check is missing."
+    ],
+    "related_fsd_ids": [
+      "QC-AVL-003",
+      "QC-AVL-006"
+    ],
+    "baseline_relationship": "refinement",
+    "milestone": "M0",
+    "work_package": "WP01",
+    "priority": "P0",
+    "owner": "Platform operations",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-OPS-002"
+    ]
+  },
+  {
+    "id": "V2-OPS-003",
+    "area_code": "OPS",
+    "area": "Development and operations",
+    "title": "Deployed smoke journey",
+    "requirement": "Every deployment shall run a dedicated synthetic smoke journey across actual provisioned services.",
+    "acceptance_criteria": [
+      "Authentication, generation, registry write, known model execution, scoring, evidence and cross tenant denial all pass."
+    ],
+    "related_fsd_ids": [
+      "QC-AVL-003",
+      "QC-AVL-006"
+    ],
+    "baseline_relationship": "refinement",
+    "milestone": "M2",
+    "work_package": "WP01",
+    "priority": "P0",
+    "owner": "Platform operations",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-OPS-003"
+    ]
+  },
+  {
+    "id": "V2-OPS-004",
+    "area_code": "OPS",
+    "area": "Development and operations",
+    "title": "Recovery and rollback operations",
+    "requirement": "Operators shall have tested procedures for rollback, restore, stuck jobs, key rotation and unknown external outcomes.",
+    "acceptance_criteria": [
+      "A rollback preserves schema compatibility and evidence; restored grants reconcile before protected work resumes."
+    ],
+    "related_fsd_ids": [
+      "QC-AVL-003",
+      "QC-AVL-006"
+    ],
+    "baseline_relationship": "refinement",
+    "milestone": "M5",
+    "work_package": "WP01",
+    "priority": "P0",
+    "owner": "Platform operations",
+    "status": "proposed_not_implemented",
+    "test_ids": [
+      "TC-V2-OPS-004"
+    ]
+  }
+]

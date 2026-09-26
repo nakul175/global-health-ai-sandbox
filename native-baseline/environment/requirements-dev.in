@@ -1,0 +1,8 @@
+-r requirements.in
+pytest==9.1.1
+ruff==0.16.9
+jsonschema==4.26.0
+openapi-spec-validator==0.9.0
+pip-audit==2.10.1
+
+pip==26.2

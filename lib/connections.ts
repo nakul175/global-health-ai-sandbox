@@ -1,0 +1,42 @@
+import {z} from 'zod';
+import {AppError,canonical,digest} from './domain';
+import {base64,unbase64,byteHash} from './attestation';
+import {audioFeatures} from './lab';
+
+const path=z.string().regex(/^[A-Za-z][A-Za-z0-9_]*(\.[A-Za-z][A-Za-z0-9_]*){0,5}$/).max(120).refine(p=>!p.split('.').some(s=>['__proto__','prototype','constructor'].includes(s)),'Unsafe field path');
+export const connectionConfig=z.object({
+ name:z.string().trim().min(3).max(100),kind:z.enum(['model','service_check']),endpoint:z.string().min(10).max(500),auth:z.enum(['none','bearer','api_key']),header:z.enum(['X-API-Key','api-key','Ocp-Apim-Subscription-Key']),
+ request:z.object({subject:path,audio:path,sampleRate:path,synthetic:path}).strict(),
+ response:z.object({value:path,subject:path.or(z.literal('')),expected:z.string().max(80)}).strict(),threshold:z.number().finite().min(.01).max(.99),
+}).strict().superRefine((c,ctx)=>{const p=Object.values(c.request);if(p.some((a,i)=>p.some((b,j)=>i!==j&&(a===b||a.startsWith(b+'.')))))ctx.addIssue({code:'custom',message:'Request field paths must be distinct and must not nest inside one another.'});});
+export type ConnectionConfig=z.infer<typeof connectionConfig>;
+export const connectionCommand=z.discriminatedUnion('action',[
+ z.object({action:z.literal('save'),id:z.string().uuid(),version:z.number().int().min(0),config:connectionConfig,secret:z.string().min(8).max(4096).regex(/^[\x21-\x7e]+$/).optional(),keepCredential:z.boolean()}).strict(),
+ ...(['test','activate','disable','abandon'] as const).map(action=>z.object({action:z.literal(action),id:z.string().uuid(),version:z.number().int().positive(),consent:z.literal(true)}).strict()),
+ z.object({action:z.literal('run'),id:z.string().uuid(),version:z.number().int().positive(),consent:z.literal(true),source:z.discriminatedUnion('type',[
+ z.object({type:z.literal('ecosystem'),id:z.string().min(1).max(100),generation:z.number().int().positive()}).strict(),
+ z.object({type:z.literal('media'),id:z.string().uuid()}).strict()])}).strict(),
+]);
+export function safeEndpoint(value:string,selfHost?:string){let u:URL;try{u=new URL(value)}catch{throw new AppError(422,'ENDPOINT','Use a complete public HTTPS URL.');}
+ const host=u.hostname.toLowerCase();if(u.protocol!=='https:'||u.username||u.password||u.search||u.hash||(u.port&&u.port!=='443')||!host.includes('.')||host.endsWith('.')||!/^([a-z0-9][a-z0-9-]*\.)+[a-z][a-z0-9-]*$/.test(host)||/(^|\.)(localhost|local|internal|test|invalid|lan|home|arpa)$/.test(host)||/^(metadata|instance-data)(\.|$)/.test(host)||host===selfHost||host.endsWith('.chatgpt.site')||host.endsWith('.openai.com'))throw new AppError(422,'ENDPOINT','Use public HTTPS on port 443, without query strings, embedded credentials, private names or this platform as the destination.');
+ return u.toString();
+}
+function at(value:any,path:string){let v=value;for(const part of path.split('.')){if(v===null||typeof v!=='object'||!Object.hasOwn(v,part))throw new AppError(422,'RESPONSE_MAPPING','The configured response field is missing.');v=v[part]}return v}
+function put(target:any,path:string,value:any){const parts=path.split('.');let p=target;for(const name of parts.slice(0,-1))p=p[name]??=(Object.create(null));p[parts.at(-1)!]=value}
+export function requestPayload(config:ConnectionConfig,subjectId:string,audio:Uint8Array){const features=audioFeatures(audio),result=Object.create(null);put(result,config.request.subject,subjectId);put(result,config.request.audio,base64(audio));put(result,config.request.sampleRate,features.sampleRate);put(result,config.request.synthetic,true);return result}
+export function mappedResponse(config:ConnectionConfig,json:any,subjectId:string){const value=at(json,config.response.value);if(config.kind==='model'){if(typeof value!=='number'||!Number.isFinite(value)||value<0||value>1)throw new AppError(422,'RESPONSE_MAPPING','Prediction must be a number from zero to one.');if(config.response.subject&&at(json,config.response.subject)!==subjectId)throw new AppError(422,'RESPONSE_MAPPING','Response subject does not match the request.');return {probability:value}}if(!['string','number','boolean'].includes(typeof value)||String(value)!==config.response.expected)throw new AppError(422,'RESPONSE_MAPPING','Service response does not match the configured expected value.');return {matched:true}}
+export async function credentialCipher(secret:string,master:string|undefined,scope:string){if(!master||!/^[a-f0-9]{64}$/.test(master))throw new AppError(503,'CREDENTIAL_STORAGE','Credential storage is not configured.');const key=await crypto.subtle.importKey('raw',Uint8Array.from(master.match(/../g)!,v=>parseInt(v,16)),{name:'AES-GCM'},false,['encrypt']),iv=crypto.getRandomValues(new Uint8Array(12));const encrypted=await crypto.subtle.encrypt({name:'AES-GCM',iv,additionalData:new TextEncoder().encode('connector:'+scope)},key,new TextEncoder().encode(secret));return {iv:base64(iv),ciphertext:base64(new Uint8Array(encrypted))}}
+export async function credentialPlain(envelope:any,master:string|undefined,scope:string){try{if(!master||!/^[a-f0-9]{64}$/.test(master))throw new Error();const key=await crypto.subtle.importKey('raw',Uint8Array.from(master.match(/../g)!,v=>parseInt(v,16)),{name:'AES-GCM'},false,['decrypt']);const bytes=await crypto.subtle.decrypt({name:'AES-GCM',iv:unbase64(envelope.iv) as BufferSource,additionalData:new TextEncoder().encode('connector:'+scope)},key,unbase64(envelope.ciphertext) as BufferSource);return new TextDecoder().decode(bytes)}catch{throw new AppError(503,'CREDENTIAL_STORAGE','Stored credential is unavailable. Replace it and retest.')}}
+export type Transport=(url:string,init:RequestInit)=>Promise<Response>;
+export async function callProvider(config:ConnectionConfig,secret:string,subjectId:string,audio:Uint8Array,callId:string,transport:Transport=fetch,signal?:AbortSignal){
+ const endpoint=safeEndpoint(config.endpoint),controller=new AbortController(),abort=()=>controller.abort();signal?.addEventListener('abort',abort,{once:true});if(signal?.aborted)controller.abort();const timer=setTimeout(abort,8000),start=Date.now();
+ try{const headers:Record<string,string>={Accept:'application/json','Idempotency-Key':callId};if(config.auth==='bearer')headers.Authorization='Bearer '+secret;if(config.auth==='api_key')headers[config.header]=secret;
+ const body=config.kind==='model'?canonical(requestPayload(config,subjectId,audio)):undefined;if(body)headers['Content-Type']='application/json';
+ const response=await transport(endpoint,{method:config.kind==='model'?'POST':'GET',headers,body,redirect:'manual',signal:controller.signal,credentials:'omit',cache:'no-store'});
+ if(response.status>=300&&response.status<400){await response.body?.cancel();throw new AppError(422,'REDIRECT_BLOCKED','Redirects are blocked. Configure the final endpoint explicitly.');}
+ if(!response.ok){await response.body?.cancel();throw new AppError(502,'PROVIDER_HTTP',`Provider returned HTTP ${response.status}; its response body was not retained.`)}
+ if(!/^application\/(?:[a-z0-9.+-]*\+)?json(?:;|$)/i.test(response.headers.get('Content-Type')||'')){await response.body?.cancel();throw new AppError(422,'PROVIDER_CONTENT_TYPE','Provider must return JSON.');}
+ const reader=response.body?.getReader();if(!reader)throw new AppError(422,'PROVIDER_BODY','Provider returned no body.');let bytes=0,text='';const decoder=new TextDecoder();while(true){const r=await reader.read();if(r.done)break;bytes+=r.value.length;if(bytes>65536){await reader.cancel();throw new AppError(413,'PROVIDER_LIMIT','Provider response exceeds 64 KiB.');}text+=decoder.decode(r.value,{stream:true});}text+=decoder.decode();let json;try{json=JSON.parse(text)}catch{throw new AppError(422,'PROVIDER_JSON','Provider returned malformed JSON.');}
+ const result=mappedResponse(config,json,subjectId);return {...result,httpStatus:response.status,durationMs:Date.now()-start,inputHash:body?await digest(body):null,responseHash:await digest(text),audioHash:config.kind==='model'?await byteHash(audio):null};
+ }catch(e){if(e instanceof AppError)throw e;throw new AppError(502,controller.signal.aborted?'PROVIDER_TIMEOUT':'PROVIDER_NETWORK',controller.signal.aborted?'Provider timed out. Its processing outcome is unknown; no automatic retry was sent.':'Provider connection failed. Its processing outcome is unknown; no automatic retry was sent.');}finally{clearTimeout(timer);signal?.removeEventListener('abort',abort)}
+}
