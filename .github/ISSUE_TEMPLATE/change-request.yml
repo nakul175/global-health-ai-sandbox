@@ -1,0 +1,50 @@
+name: Change request
+description: New capability or a change to existing behaviour, documentation or process.
+title: "[CR] "
+labels: ["type:change-request", "status:new"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Changes to identity, hosting, evidence signing, scoring, money or live integrations also need an ADR.
+  - type: dropdown
+    id: scope
+    attributes:
+      label: Release scope
+      options:
+        - Deployed R2 alpha
+        - Proposed R3 (government adoption)
+        - Native baseline
+        - Documentation or process only
+    validations:
+      required: true
+  - type: textarea
+    id: need
+    attributes:
+      label: Need
+      description: Who needs this and what problem it solves.
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Desired outcome
+      description: Observable behaviour when done. Draft acceptance criteria if you can.
+    validations:
+      required: true
+  - type: input
+    id: requirements
+    attributes:
+      label: Related requirement IDs
+      description: Existing IDs from docs/releases/r3/requirements.json or the source backlog, if known.
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      options: [Now, Next, Later]
+    validations:
+      required: true
+  - type: textarea
+    id: constraints
+    attributes:
+      label: Constraints and out of scope

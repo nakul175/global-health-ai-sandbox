@@ -1,0 +1,51 @@
+name: Bug report
+description: Something in the deployed alpha or the native baseline behaves incorrectly.
+title: "[Bug] "
+labels: ["type:bug", "status:new"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use synthetic data only. Never paste credentials, patient records or supplier-confidential material.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Hosted R2 alpha (app/, lib/, db/)
+        - Native baseline (native-baseline/)
+        - Documentation or R3 specification
+        - Build, CI or tooling
+    validations:
+      required: true
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Proposed severity
+      description: Critical = data exposure or integrity loss; High = security or broken core workflow; Medium = incorrect behaviour with a workaround; Low = minor.
+      options: [Critical, High, Medium, Low]
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: Include file paths and line numbers if known.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behaviour
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      description: Commands, requests or UI steps using synthetic fixtures.
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Logs, test output, commit SHA, environment.

@@ -15,6 +15,7 @@ This repository is the source of truth for product, engineering and operating do
 | Original implementation specifications | [Native specification catalogue](../native-baseline/specs/01_Engineering_Implementation_Plan.md) and the other nine files in that directory |
 | Original requirement traceability | [Source backlog](source-backlog/backlog.json), [R2 requirements](source-backlog/r2/requirements.json) |
 | Documentation maintenance | [Policy](DOCUMENTATION_POLICY.md), [changelog](CHANGELOG.md) |
+| How work is requested, built and reviewed | [Agent-assisted delivery process](DELIVERY_PROCESS.md) |
 
 ## Baselines and precedence
 

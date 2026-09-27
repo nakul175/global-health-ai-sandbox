@@ -1,5 +1,13 @@
 # Documentation changelog
 
+## 2026-09-27 — Agent-assisted delivery process
+
+- Added five restricted-tool Claude agent definitions under `.claude/agents/` (spec writer, builder, verifier, independent reviewer, release steward) and documented the flow in [the delivery process](DELIVERY_PROCESS.md).
+- Added Bug and Change Request issue forms with type, severity and status labels.
+- Added an application quality workflow: typecheck and tests on every pull request, and lint errors blocked in changed files. Full-repository lint is reported but not blocking because of existing lint debt.
+- Updated the documentation policy to name the scheduled agent pickup as the only unattended writing process. It opens draft pull requests only; human approval and merge remain required.
+- No application behaviour, migration or deployed runtime changed.
+
 ## 2026-09-26 — Government adoption design baseline 1.0.0
 
 - Added the R3 BRD, FSD, HLD, LLD, UI/wireframes, API/events, candidate database design, permissions, implementation backlog, test catalogue, fixture plan, development/CI, threat model, runbooks, pilot plan, economics and decision records.

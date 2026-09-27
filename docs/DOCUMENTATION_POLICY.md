@@ -38,4 +38,4 @@ The automated check runs on pushes and pull requests, checks references/traceabi
 
 Markdown, JSON, CSV, SQL and SVG in Git are canonical. PDFs and presentations are snapshots and must name the source revision. Sensitive customer data, patient records, live credentials, private incident details and supplier-confidential datasets must never be committed. Use synthetic fixtures and controlled external evidence storage.
 
-Maintain documentation during each future development change. No unattended periodic writing or automatic approval is implied. The CI gate checks the repository whenever a change is pushed; it does not silently invent or update product decisions.
+Maintain documentation during each future development change. The only unattended writing process is the scheduled agent pickup described in [the delivery process](DELIVERY_PROCESS.md); it opens draft pull requests and never approves or merges them. No automatic approval is implied. The CI gate checks the repository whenever a change is pushed; it does not silently invent or update product decisions.
