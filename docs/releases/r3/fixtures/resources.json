@@ -1,0 +1,515 @@
+[
+  {
+    "resourceId": "00000000-0000-4000-8000-000000000100",
+    "schema": "ProgrammeData",
+    "data": {
+      "name": "Synthetic TB programme",
+      "objective": "Compare synthetic screening workflows",
+      "countryCode": "IN",
+      "currency": "INR",
+      "currencyExponent": 2,
+      "timeZone": "Asia/Kolkata",
+      "startDate": "2026-10-01",
+      "endDate": "2027-09-30",
+      "ownerPersonId": "00000000-0000-4000-8000-000000000010"
+    },
+    "classification": "synthetic_storage_fixture",
+    "artifactStatus": "Declared fixture hashes; no real artifacts or external endpoints provisioned"
+  },
+  {
+    "resourceId": "00000000-0000-4000-8000-000000000200",
+    "schema": "ProgrammeData",
+    "data": {
+      "name": "Synthetic other agency programme",
+      "objective": "Compare synthetic screening workflows",
+      "countryCode": "IN",
+      "currency": "INR",
+      "currencyExponent": 2,
+      "timeZone": "Asia/Kolkata",
+      "startDate": "2026-10-01",
+      "endDate": "2027-09-30",
+      "ownerPersonId": "00000000-0000-4000-8000-000000000020"
+    },
+    "classification": "synthetic_storage_fixture",
+    "artifactStatus": "Declared fixture hashes; no real artifacts or external endpoints provisioned"
+  },
+  {
+    "resourceId": "00000000-0000-4000-8000-000000000101",
+    "schema": "ContextData",
+    "data": {
+      "programmeId": "00000000-0000-4000-8000-000000000100",
+      "name": "Synthetic district A",
+      "screeningVolume": 10000,
+      "prevalence": "0.10",
+      "referralCompletion": "1.00",
+      "annualCapacity": 1500,
+      "facilities": [
+        {
+          "id": "00000000-0000-4000-8000-000000000700",
+          "name": "Synthetic health centre",
+          "kind": "health_centre",
+          "annualCapacity": 10000,
+          "staffCount": 12,
+          "deviceClass": "low_end_android",
+          "connectivity": "intermittent",
+          "sourceId": "00000000-0000-4000-8000-000000000500"
+        },
+        {
+          "id": "00000000-0000-4000-8000-000000000701",
+          "name": "Synthetic laboratory",
+          "kind": "laboratory",
+          "annualCapacity": 1500,
+          "staffCount": 4,
+          "deviceClass": "desktop",
+          "connectivity": "reliable",
+          "sourceId": "00000000-0000-4000-8000-000000000500"
+        }
+      ],
+      "languages": [
+        "en-IN",
+        "hi-IN"
+      ],
+      "sources": [
+        {
+          "id": "00000000-0000-4000-8000-000000000500",
+          "title": "Fictional fixture inputs",
+          "classification": "synthetic",
+          "reference": "Synthetic fixture v1; not epidemiology or market prices",
+          "periodStart": "2026-01-01",
+          "periodEnd": "2026-12-31",
+          "ownerPersonId": "00000000-0000-4000-8000-000000000010"
+        }
+      ],
+      "recipeSeed": 42,
+      "evidenceClass": "synthetic",
+      "assumptionSourceIds": {
+        "screeningVolume": "00000000-0000-4000-8000-000000000500",
+        "prevalence": "00000000-0000-4000-8000-000000000500",
+        "referralCompletion": "00000000-0000-4000-8000-000000000500",
+        "annualCapacity": "00000000-0000-4000-8000-000000000500"
+      }
+    },
+    "classification": "synthetic_storage_fixture",
+    "artifactStatus": "Declared fixture hashes; no real artifacts or external endpoints provisioned"
+  },
+  {
+    "resourceId": "00000000-0000-4000-8000-000000000102",
+    "schema": "SubmissionData",
+    "data": {
+      "programmeId": "00000000-0000-4000-8000-000000000100",
+      "supplierId": "00000000-0000-4000-8000-000000000013",
+      "name": "Synthetic reference A",
+      "intendedUse": "Synthetic workflow exercise only",
+      "modelVersion": "fixture-v1-102",
+      "modelDigest": "412ca7236d188ac54866865054ed51494318ca98687e91fd6f52decccce9825c",
+      "versionAssurance": "verified_digest",
+      "runtimeMode": "builtin",
+      "artifact": {
+        "artifactId": "00000000-0000-4000-8000-000000000600",
+        "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "mediaType": "application/json",
+        "sizeBytes": 1000,
+        "evidenceClass": "synthetic"
+      },
+      "connectorId": null,
+      "limitations": [
+        "No clinical claim; synthetic reference model"
+      ],
+      "price": {
+        "currency": "INR",
+        "currencyExponent": 2,
+        "priceDate": "2026-09-26",
+        "setupMinor": 5000000,
+        "annualFixedMinor": 2000000,
+        "screenUnitMinor": 1000,
+        "sourceId": "00000000-0000-4000-8000-000000000500"
+      },
+      "evidence": []
+    },
+    "classification": "synthetic_storage_fixture",
+    "artifactStatus": "Declared fixture hashes; no real artifacts or external endpoints provisioned"
+  },
+  {
+    "resourceId": "00000000-0000-4000-8000-000000000103",
+    "schema": "SubmissionData",
+    "data": {
+      "programmeId": "00000000-0000-4000-8000-000000000100",
+      "supplierId": "00000000-0000-4000-8000-000000000015",
+      "name": "Synthetic reference B",
+      "intendedUse": "Synthetic workflow exercise only",
+      "modelVersion": "fixture-v1-103",
+      "modelDigest": "e3b40229d9a89606fcf600fa3f6c169fef153c178fa2189cf0556f4ef2f7ed7f",
+      "versionAssurance": "verified_digest",
+      "runtimeMode": "builtin",
+      "artifact": {
+        "artifactId": "00000000-0000-4000-8000-000000000600",
+        "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "mediaType": "application/json",
+        "sizeBytes": 1000,
+        "evidenceClass": "synthetic"
+      },
+      "connectorId": null,
+      "limitations": [
+        "No clinical claim; synthetic reference model"
+      ],
+      "price": {
+        "currency": "INR",
+        "currencyExponent": 2,
+        "priceDate": "2026-09-26",
+        "setupMinor": 5000000,
+        "annualFixedMinor": 2000000,
+        "screenUnitMinor": 1500,
+        "sourceId": "00000000-0000-4000-8000-000000000500"
+      },
+      "evidence": []
+    },
+    "classification": "synthetic_storage_fixture",
+    "artifactStatus": "Declared fixture hashes; no real artifacts or external endpoints provisioned"
+  },
+  {
+    "resourceId": "00000000-0000-4000-8000-000000000104",
+    "schema": "SubmissionData",
+    "data": {
+      "programmeId": "00000000-0000-4000-8000-000000000100",
+      "supplierId": "00000000-0000-4000-8000-000000000016",
+      "name": "Synthetic reference C",
+      "intendedUse": "Synthetic workflow exercise only",
+      "modelVersion": "fixture-v1-104",
+      "modelDigest": "ad2ed2fddf3bbb5f706912522c689e4d012333eebc8f0d3a78583db24230f27e",
+      "versionAssurance": "verified_digest",
+      "runtimeMode": "builtin",
+      "artifact": {
+        "artifactId": "00000000-0000-4000-8000-000000000600",
+        "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "mediaType": "application/json",
+        "sizeBytes": 1000,
+        "evidenceClass": "synthetic"
+      },
+      "connectorId": null,
+      "limitations": [
+        "No clinical claim; synthetic reference model"
+      ],
+      "price": {
+        "currency": "INR",
+        "currencyExponent": 2,
+        "priceDate": "2026-09-26",
+        "setupMinor": 5000000,
+        "annualFixedMinor": 2000000,
+        "screenUnitMinor": 800,
+        "sourceId": "00000000-0000-4000-8000-000000000500"
+      },
+      "evidence": []
+    },
+    "classification": "synthetic_storage_fixture",
+    "artifactStatus": "Declared fixture hashes; no real artifacts or external endpoints provisioned"
+  },
+  {
+    "resourceId": "00000000-0000-4000-8000-000000000105",
+    "schema": "ProtocolData",
+    "data": {
+      "programmeId": "00000000-0000-4000-8000-000000000100",
+      "contextId": "00000000-0000-4000-8000-000000000101",
+      "submissionIds": [
+        "00000000-0000-4000-8000-000000000102",
+        "00000000-0000-4000-8000-000000000103",
+        "00000000-0000-4000-8000-000000000104"
+      ],
+      "intendedUse": "Compare synthetic screening workflows",
+      "population": "Fictional population",
+      "inclusion": [
+        "Synthetic identifiers only"
+      ],
+      "exclusion": [
+        "Missing prediction reported as error"
+      ],
+      "cohort": {
+        "artifactId": "00000000-0000-4000-8000-000000000600",
+        "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "mediaType": "application/json",
+        "sizeBytes": 1000,
+        "evidenceClass": "synthetic"
+      },
+      "evidenceClass": "synthetic",
+      "comparator": "paired_suppliers",
+      "threshold": "0.50",
+      "metrics": [
+        "sensitivity",
+        "specificity",
+        "precision",
+        "accuracy",
+        "coverage"
+      ],
+      "subgroups": [
+        {
+          "field": "district",
+          "values": [
+            "synthetic_district_a"
+          ],
+          "minimumDisclosureCount": 10
+        }
+      ],
+      "scorerVersion": "reference-v1",
+      "operationalScenarios": [
+        "normal",
+        "provider_timeout"
+      ]
+    },
+    "classification": "synthetic_storage_fixture",
+    "artifactStatus": "Declared fixture hashes; no real artifacts or external endpoints provisioned"
+  },
+  {
+    "resourceId": "00000000-0000-4000-8000-000000000106",
+    "schema": "RunData",
+    "data": {
+      "programmeId": "00000000-0000-4000-8000-000000000100",
+      "protocolId": "00000000-0000-4000-8000-000000000105",
+      "manifestDigest": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "submissionIds": [
+        "00000000-0000-4000-8000-000000000102",
+        "00000000-0000-4000-8000-000000000103",
+        "00000000-0000-4000-8000-000000000104"
+      ],
+      "evidenceClass": "synthetic"
+    },
+    "classification": "synthetic_storage_fixture",
+    "artifactStatus": "Declared fixture hashes; no real artifacts or external endpoints provisioned"
+  },
+  {
+    "resourceId": "00000000-0000-4000-8000-000000000107",
+    "schema": "BudgetData",
+    "data": {
+      "programmeId": "00000000-0000-4000-8000-000000000100",
+      "contextId": "00000000-0000-4000-8000-000000000101",
+      "runId": "00000000-0000-4000-8000-000000000106",
+      "name": "Synthetic three-year budget",
+      "scenario": "base",
+      "inputs": {
+        "currency": "INR",
+        "currencyExponent": 2,
+        "horizonYears": 3,
+        "screeningVolume": 10000,
+        "prevalence": "0.10",
+        "sensitivity": "0.80",
+        "specificity": "0.90",
+        "referralCompletion": "1.00",
+        "annualCapacity": 1500,
+        "screenUnitMinor": 1000,
+        "confirmUnitMinor": 10000,
+        "setupMinor": 5000000,
+        "annualFixedMinor": 2000000
+      },
+      "funding": [
+        {
+          "id": "00000000-0000-4000-8000-000000000800",
+          "source": "Synthetic grant",
+          "year": 1,
+          "amountMinor": 34000000,
+          "status": "committed"
+        },
+        {
+          "id": "00000000-0000-4000-8000-000000000801",
+          "source": "Synthetic grant",
+          "year": 2,
+          "amountMinor": 20000000,
+          "status": "committed"
+        }
+      ],
+      "sources": [
+        {
+          "id": "00000000-0000-4000-8000-000000000500",
+          "title": "Fictional fixture inputs",
+          "classification": "synthetic",
+          "reference": "Synthetic fixture v1; not epidemiology or market prices",
+          "periodStart": "2026-01-01",
+          "periodEnd": "2026-12-31",
+          "ownerPersonId": "00000000-0000-4000-8000-000000000010"
+        }
+      ],
+      "calculatorVersion": "reference-v1",
+      "priceDate": "2026-09-26",
+      "evidenceClass": "synthetic",
+      "inputSourceIds": {
+        "screeningVolume": "00000000-0000-4000-8000-000000000500",
+        "prevalence": "00000000-0000-4000-8000-000000000500",
+        "sensitivity": "00000000-0000-4000-8000-000000000500",
+        "specificity": "00000000-0000-4000-8000-000000000500",
+        "referralCompletion": "00000000-0000-4000-8000-000000000500",
+        "annualCapacity": "00000000-0000-4000-8000-000000000500",
+        "screenUnitMinor": "00000000-0000-4000-8000-000000000500",
+        "confirmUnitMinor": "00000000-0000-4000-8000-000000000500",
+        "setupMinor": "00000000-0000-4000-8000-000000000500",
+        "annualFixedMinor": "00000000-0000-4000-8000-000000000500"
+      }
+    },
+    "classification": "synthetic_storage_fixture",
+    "artifactStatus": "Declared fixture hashes; no real artifacts or external endpoints provisioned"
+  },
+  {
+    "resourceId": "00000000-0000-4000-8000-000000000108",
+    "schema": "EvidenceData",
+    "data": {
+      "programmeId": "00000000-0000-4000-8000-000000000100",
+      "runIds": [
+        "00000000-0000-4000-8000-000000000106"
+      ],
+      "budgetIds": [
+        "00000000-0000-4000-8000-000000000107"
+      ],
+      "title": "Synthetic committee brief",
+      "findings": [
+        {
+          "title": "Funding gap",
+          "statement": "Synthetic year-three commitment is absent",
+          "sourceResourceId": "00000000-0000-4000-8000-000000000107",
+          "sourceDigest": "0bc086eb277d1d68619017ce9edb55937bd7200c85ae482c6eacc456ae8d33fd",
+          "kind": "calculated"
+        }
+      ],
+      "limitations": [
+        "Synthetic workflow and arithmetic only; no clinical validation"
+      ],
+      "proposedDecision": "more_evidence",
+      "conditions": [
+        "Provision approved clinical evidence before any clinical claim"
+      ],
+      "evidenceClass": "synthetic",
+      "supersedesId": null
+    },
+    "classification": "synthetic_storage_fixture",
+    "artifactStatus": "Declared fixture hashes; no real artifacts or external endpoints provisioned"
+  },
+  {
+    "resourceId": "00000000-0000-4000-8000-000000000109",
+    "schema": "PilotData",
+    "data": {
+      "programmeId": "00000000-0000-4000-8000-000000000100",
+      "name": "Synthetic pilot",
+      "siteIds": [
+        "00000000-0000-4000-8000-000000000700"
+      ],
+      "submissionIds": [
+        "00000000-0000-4000-8000-000000000102"
+      ],
+      "startDate": "2026-10-01",
+      "endDate": "2026-12-31",
+      "indicators": [
+        {
+          "code": "screened",
+          "unit": "count",
+          "freshnessMinutes": 1440,
+          "expectedSiteCount": 1
+        }
+      ],
+      "successCriteria": [
+        "Synthetic operations complete"
+      ],
+      "pauseCriteria": [
+        "Unexpected output or integrity failure"
+      ],
+      "oversightPersonIds": [
+        "00000000-0000-4000-8000-000000000011"
+      ],
+      "latenessHours": 72,
+      "evidenceClass": "synthetic"
+    },
+    "classification": "synthetic_storage_fixture",
+    "artifactStatus": "Declared fixture hashes; no real artifacts or external endpoints provisioned"
+  },
+  {
+    "resourceId": "00000000-0000-4000-8000-000000000110",
+    "schema": "RegistryShareData",
+    "data": {
+      "programmeId": "00000000-0000-4000-8000-000000000100",
+      "evidenceId": "00000000-0000-4000-8000-000000000108",
+      "recipientOrgId": "00000000-0000-4000-8000-000000000002",
+      "approvedFields": [
+        "intended_use",
+        "limitations",
+        "methods"
+      ],
+      "expiresAt": "2027-01-01T00:00:00Z",
+      "transferability": "local_tests_required",
+      "assessmentReason": "Synthetic evidence does not establish clinical applicability"
+    },
+    "classification": "synthetic_storage_fixture",
+    "artifactStatus": "Declared fixture hashes; no real artifacts or external endpoints provisioned"
+  },
+  {
+    "resourceId": "00000000-0000-4000-8000-000000000111",
+    "schema": "ContextData",
+    "data": {
+      "programmeId": "00000000-0000-4000-8000-000000000100",
+      "name": "Synthetic district B",
+      "screeningVolume": 7000,
+      "prevalence": "0.10",
+      "referralCompletion": "1.00",
+      "annualCapacity": 3000,
+      "facilities": [
+        {
+          "id": "00000000-0000-4000-8000-000000000702",
+          "name": "Synthetic health centre",
+          "kind": "health_centre",
+          "annualCapacity": 7000,
+          "staffCount": 12,
+          "deviceClass": "low_end_android",
+          "connectivity": "reliable",
+          "sourceId": "00000000-0000-4000-8000-000000000500"
+        },
+        {
+          "id": "00000000-0000-4000-8000-000000000703",
+          "name": "Synthetic laboratory",
+          "kind": "laboratory",
+          "annualCapacity": 3000,
+          "staffCount": 4,
+          "deviceClass": "desktop",
+          "connectivity": "reliable",
+          "sourceId": "00000000-0000-4000-8000-000000000500"
+        }
+      ],
+      "languages": [
+        "en-IN",
+        "hi-IN"
+      ],
+      "sources": [
+        {
+          "id": "00000000-0000-4000-8000-000000000500",
+          "title": "Fictional fixture inputs",
+          "classification": "synthetic",
+          "reference": "Synthetic fixture v1; not epidemiology or market prices",
+          "periodStart": "2026-01-01",
+          "periodEnd": "2026-12-31",
+          "ownerPersonId": "00000000-0000-4000-8000-000000000010"
+        }
+      ],
+      "recipeSeed": 42,
+      "evidenceClass": "synthetic",
+      "assumptionSourceIds": {
+        "screeningVolume": "00000000-0000-4000-8000-000000000500",
+        "prevalence": "00000000-0000-4000-8000-000000000500",
+        "referralCompletion": "00000000-0000-4000-8000-000000000500",
+        "annualCapacity": "00000000-0000-4000-8000-000000000500"
+      }
+    },
+    "classification": "synthetic_storage_fixture",
+    "artifactStatus": "Declared fixture hashes; no real artifacts or external endpoints provisioned"
+  },
+  {
+    "resourceId": "00000000-0000-4000-8000-000000000112",
+    "schema": "AccessGrantData",
+    "data": {
+      "programmeId": "00000000-0000-4000-8000-000000000100",
+      "granteePersonId": "00000000-0000-4000-8000-000000000019",
+      "purpose": "Synthetic support diagnostics",
+      "resourceIds": [
+        "00000000-0000-4000-8000-000000000100"
+      ],
+      "allowedActions": [
+        "diagnose"
+      ],
+      "expiresAt": "2026-09-26T04:00:00Z",
+      "dataClass": "synthetic"
+    },
+    "classification": "synthetic_storage_fixture",
+    "artifactStatus": "No live credentials or endpoints"
+  }
+]

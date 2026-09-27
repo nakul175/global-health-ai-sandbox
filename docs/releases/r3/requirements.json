@@ -1,0 +1,1396 @@
+[
+  {
+    "id": "GOV-IAM-01",
+    "title": "Verify stable institutional identities and derive active membership server-side",
+    "requirement": "Verify stable institutional identities and derive active membership server-side.",
+    "type": "functional",
+    "stage": "R3A",
+    "priority": "P0",
+    "owner_role": "Security and backend",
+    "status": "proposed",
+    "work_package": "WP-GOV-01",
+    "design_doc": "08-access-control.md",
+    "acceptance_criteria": [
+      "Two verified principals access the same assigned organisation; caller-supplied roles confer no rights.",
+      "Return 404 or 403 without organisation data or a new membership."
+    ],
+    "test_ids": [
+      "TC-GOV-IAM-01-P",
+      "TC-GOV-IAM-01-N"
+    ],
+    "baseline_relationship": "R3 extension; original IDs retained without implying closure",
+    "implementation_evidence": []
+  },
+  {
+    "id": "GOV-IAM-02",
+    "title": "Keep organisation boundaries in reads, writes, search, jobs and artifacts",
+    "requirement": "Keep organisation boundaries in reads, writes, search, jobs and artifacts.",
+    "type": "functional",
+    "stage": "R3A",
+    "priority": "P0",
+    "owner_role": "Security and backend",
+    "status": "proposed",
+    "work_package": "WP-GOV-01",
+    "design_doc": "08-access-control.md",
+    "acceptance_criteria": [
+      "A scoped user can retrieve its own records and all cross-org routes deny access.",
+      "No titles, counts, artifacts or side effects from Institution B."
+    ],
+    "test_ids": [
+      "TC-GOV-IAM-02-P",
+      "TC-GOV-IAM-02-N",
+      "TC-GOV-DB-ISOLATION"
+    ],
+    "baseline_relationship": "R3 extension; original IDs retained without implying closure",
+    "implementation_evidence": []
+  },
+  {
+    "id": "GOV-IAM-03",
+    "title": "Use recipient-bound single-use invitations expiring after 72 hours",
+    "requirement": "Use recipient-bound single-use invitations expiring after 72 hours.",
+    "type": "functional",
+    "stage": "R3A",
+    "priority": "P0",
+    "owner_role": "Security and backend",
+    "status": "proposed",
+    "work_package": "WP-GOV-01",
+    "design_doc": "08-access-control.md",
+    "acceptance_criteria": [
+      "The intended verified recipient accepts once and receives only the granted role.",
+      "Reject mismatches/expiry; replay cannot create extra membership."
+    ],
+    "test_ids": [
+      "TC-GOV-IAM-03-P",
+      "TC-GOV-IAM-03-N"
+    ],
+    "baseline_relationship": "R3 extension; original IDs retained without implying closure",
+    "implementation_evidence": []
+  },
+  {
+    "id": "GOV-IAM-04",
+    "title": "Enforce independent review using stable person and conflict history",
+    "requirement": "Enforce independent review using stable person and conflict history.",
+    "type": "functional",
+    "stage": "R3A",
+    "priority": "P0",
+    "owner_role": "Security and backend",
+    "status": "proposed",
+    "work_package": "WP-GOV-01",
+    "design_doc": "08-access-control.md",
+    "acceptance_criteria": [
+      "A distinct conflict-free reviewer can approve the exact reviewed version.",
+      "Reject approval and retain the original contribution history."
+    ],
+    "test_ids": [
+      "TC-GOV-IAM-04-P",
+      "TC-GOV-IAM-04-N",
+      "TC-GOV-UNIT-POLICY"
+    ],
+    "baseline_relationship": "R3 extension; original IDs retained without implying closure",
+    "implementation_evidence": []
+  },
+  {
+    "id": "GOV-IAM-05",
+    "title": "Revoke membership on the next protected action and prevent last-admin removal",
+    "requirement": "Revoke membership on the next protected action and prevent last-admin removal.",
+    "type": "functional",
+    "stage": "R3A",
+    "priority": "P0",
+    "owner_role": "Security and backend",
+    "status": "proposed",
+    "work_package": "WP-GOV-01",
+    "design_doc": "08-access-control.md",
+    "acceptance_criteria": [
+      "Suspension denies subsequent requests and job dispatch; another active admin can manage recovery.",
+      "Last-admin removal conflicts; revoked replay exposes no protected outcome."
+    ],
+    "test_ids": [
+      "TC-GOV-IAM-05-P",
+      "TC-GOV-IAM-05-N"
+    ],
+    "baseline_relationship": "R3 extension; original IDs retained without implying closure",
+    "implementation_evidence": []
+  },
+  {
+    "id": "GOV-IAM-06",
+    "title": "Limit service and support identities to explicit scope, purpose and expiry",
+    "requirement": "Limit service and support identities to explicit scope, purpose and expiry.",
+    "type": "functional",
+    "stage": "R3A",
+    "priority": "P0",
+    "owner_role": "Security and backend",
+    "status": "proposed",
+    "work_package": "WP-GOV-01",
+    "design_doc": "08-access-control.md",
+    "acceptance_criteria": [
+      "A diagnostic grant exposes only redacted metadata for at most four hours.",
+      "Deny action and never return credentials, labels or raw media."
+    ],
+    "test_ids": [
+      "TC-GOV-IAM-06-P",
+      "TC-GOV-IAM-06-N"
+    ],
+    "baseline_relationship": "R3 extension; original IDs retained without implying closure",
+    "implementation_evidence": []
+  },
+  {
+    "id": "GOV-CTX-01",
+    "title": "Create organisation-owned programmes with objective, country, currency, timezone and dates",
+    "requirement": "Create organisation-owned programmes with objective, country, currency, timezone and dates.",
+    "type": "functional",
+    "stage": "R3A",
+    "priority": "P0",
+    "owner_role": "Product and full-stack",
+    "status": "proposed",
+    "work_package": "WP-GOV-02",
+    "design_doc": "02-fsd.md",
+    "acceptance_criteria": [
+      "Valid programmes persist for a second assigned user with the same values.",
+      "Return field errors and write no programme."
+    ],
+    "test_ids": [
+      "TC-GOV-CTX-01-P",
+      "TC-GOV-CTX-01-N"
+    ],
+    "baseline_relationship": "R3 extension; original IDs retained without implying closure",
+    "implementation_evidence": []
+  },
+  {
+    "id": "GOV-CTX-02",
+    "title": "Version local context and retain value-level provenance and unknowns",
+    "requirement": "Version local context and retain value-level provenance and unknowns.",
+    "type": "functional",
+    "stage": "R3A",
+    "priority": "P0",
+    "owner_role": "Product and full-stack",
+    "status": "proposed",
+    "work_package": "WP-GOV-02",
+    "design_doc": "02-fsd.md",
+    "acceptance_criteria": [
+      "Each required assumption has source/classification; prior snapshots remain unchanged.",
+      "Block the dependent calculation or mutation; never substitute zero."
+    ],
+    "test_ids": [
+      "TC-GOV-CTX-02-P",
+      "TC-GOV-CTX-02-N"
+    ],
+    "baseline_relationship": "R3 extension; original IDs retained without implying closure",
+    "implementation_evidence": []
+  },
+  {
+    "id": "GOV-CTX-03",
+    "title": "Import bounded CSV atomically with preview and row errors",
+    "requirement": "Import bounded CSV atomically with preview and row errors.",
+    "type": "functional",
+    "stage": "R3A",
+    "priority": "P0",
+    "owner_role": "Product and full-stack",
+    "status": "proposed",
+    "work_package": "WP-GOV-02",
+    "design_doc": "02-fsd.md",
+    "acceptance_criteria": [
+      "Valid preview imports exactly once within 5 MiB/10000-row bounds.",
+      "Show specific errors; previous context remains unchanged."
+    ],
+    "test_ids": [
+      "TC-GOV-CTX-03-P",
+      "TC-GOV-CTX-03-N"
+    ],
+    "baseline_relationship": "R3 extension; original IDs retained without implying closure",
+    "implementation_evidence": []
+  },
+  {
+    "id": "GOV-CTX-04",
+    "title": "Generate clearly labelled deterministic synthetic ecosystem substitutes",
+    "requirement": "Generate clearly labelled deterministic synthetic ecosystem substitutes.",
+    "type": "functional",
+    "stage": "R3A",
+    "priority": "P0",
+    "owner_role": "Product and full-stack",
+    "status": "proposed",
+    "work_package": "WP-GOV-02",
+    "design_doc": "02-fsd.md",
+    "acceptance_criteria": [
+      "Same recipe/version/seed gives identical logical records and hashes.",
+      "Reject class promotion; synthetic labels persist in exports."
+    ],
+    "test_ids": [
+      "TC-GOV-CTX-04-P",
+      "TC-GOV-CTX-04-N"
+    ],
+    "baseline_relationship": "R3 extension; original IDs retained without implying closure",
+    "implementation_evidence": []
+  },
+  {
+    "id": "GOV-CTX-05",
+    "title": "Archive programmes without erasing evidence or active responsibilities",
+    "requirement": "Archive programmes without erasing evidence or active responsibilities.",
+    "type": "functional",
+    "stage": "R3A",
+    "priority": "P0",
+    "owner_role": "Product and full-stack",
+    "status": "proposed",
+    "work_package": "WP-GOV-02",
+    "design_doc": "02-fsd.md",
+    "acceptance_criteria": [
+      "An idle programme archives and retains authorised history.",
+      "Return state conflict and leave programme active."
+    ],
+    "test_ids": [
+      "TC-GOV-CTX-05-P",
+      "TC-GOV-CTX-05-N"
+    ],
+    "baseline_relationship": "R3 extension; original IDs retained without implying closure",
+    "implementation_evidence": []
+  },
+  {
+    "id": "GOV-SUP-01",
+    "title": "Isolate suppliers to assigned submissions and released feedback",
+    "requirement": "Isolate suppliers to assigned submissions and released feedback.",
+    "type": "functional",
+    "stage": "R3A",
+    "priority": "P0",
+    "owner_role": "Full-stack and evaluation",
+    "status": "proposed",
+    "work_package": "WP-GOV-03",
+    "design_doc": "02-fsd.md",
+    "acceptance_criteria": [
+      "Supplier A reads/edits its draft and sees approved feedback only.",
+      "Deny or omit all competitor/protected fields."
+    ],
+    "test_ids": [
+      "TC-GOV-SUP-01-P",
+      "TC-GOV-SUP-01-N"
+    ],
+    "baseline_relationship": "R3 extension; original IDs retained without implying closure",
+    "implementation_evidence": []
+  },
+  {
+    "id": "GOV-SUP-02",
+    "title": "Record immutable model identity, declared limitations and version assurance",
+    "requirement": "Record immutable model identity, declared limitations and version assurance.",
+    "type": "functional",
+    "stage": "R3A",
+    "priority": "P0",
+    "owner_role": "Full-stack and evaluation",
+    "status": "proposed",
+    "work_package": "WP-GOV-03",
+    "design_doc": "02-fsd.md",
+    "acceptance_criteria": [
+      "Verified artifact digest is distinct from supplier-declared remote version.",
+      "Reject assurance claim or mark it supplier_declared/unverifiable."
+    ],
+    "test_ids": [
+      "TC-GOV-SUP-02-P",
+      "TC-GOV-SUP-02-N"
+    ],
+    "baseline_relationship": "R3 extension; original IDs retained without implying closure",
+    "implementation_evidence": []
+  },
+  {
+    "id": "GOV-SUP-03",
+    "title": "Keep submitted versions immutable and preserve withdrawal history",
+    "requirement": "Keep submitted versions immutable and preserve withdrawal history.",
+    "type": "functional",
+    "stage": "R3A",
+    "priority": "P0",
+    "owner_role": "Full-stack and evaluation",
+    "status": "proposed",
+    "work_package": "WP-GOV-03",
+    "design_doc": "02-fsd.md",
+    "acceptance_criteria": [
+      "Return creates a revision; withdrawal retains prior evaluated bytes.",
+      "Reject overwrite/delete and preserve provenance."
+    ],
+    "test_ids": [
+      "TC-GOV-SUP-03-P",
+      "TC-GOV-SUP-03-N"
+    ],
+    "baseline_relationship": "R3 extension; original IDs retained without implying closure",
+    "implementation_evidence": []
+  },
+  {
+    "id": "GOV-SUP-04",
+    "title": "Record price currency, period, source and intended use",
+    "requirement": "Record price currency, period, source and intended use.",
+    "type": "functional",
+    "stage": "R3A",
+    "priority": "P0",
+    "owner_role": "Full-stack and evaluation",
+    "status": "proposed",
+    "work_package": "WP-GOV-03",
+    "design_doc": "02-fsd.md",
+    "acceptance_criteria": [
+      "Comparable quotes retain source/date and fixed/per-screening components.",
+      "Block monetary comparison and explain the mismatch."
+    ],
+    "test_ids": [
+      "TC-GOV-SUP-04-P",
+      "TC-GOV-SUP-04-N"
+    ],
+    "baseline_relationship": "R3 extension; original IDs retained without implying closure",
+    "implementation_evidence": []
+  },
+  {
+    "id": "GOV-EVA-01",
+    "title": "Freeze protocol and all model/cohort/context/method dependencies before evaluation",
+    "requirement": "Freeze protocol and all model/cohort/context/method dependencies before evaluation.",
+    "type": "functional",
+    "stage": "R3A",
+    "priority": "P0",
+    "owner_role": "Evaluation and backend",
+    "status": "proposed",
+    "work_package": "WP-GOV-04",
+    "design_doc": "17-evidence-and-economics.md",
+    "acceptance_criteria": [
+      "Run manifest contains verified hashes and a reviewed protocol version.",
+      "Old run retains old hashes and is labelled stale for the new draft."
+    ],
+    "test_ids": [
+      "TC-GOV-EVA-01-P",
+      "TC-GOV-EVA-01-N"
+    ],
+    "baseline_relationship": "R3 extension; original IDs retained without implying closure",
+    "implementation_evidence": []
+  },
+  {
+    "id": "GOV-EVA-02",
+    "title": "Compare suppliers on the same declared cohort and eligibility rules",
+    "requirement": "Compare suppliers on the same declared cohort and eligibility rules.",
+    "type": "functional",
+    "stage": "R3A",
+    "priority": "P0",
+    "owner_role": "Evaluation and backend",
+    "status": "proposed",
+    "work_package": "WP-GOV-04",
+    "design_doc": "17-evidence-and-economics.md",
+    "acceptance_criteria": [
+      "Comparisons show paired cohort and inclusion/exclusion counts.",
+      "Reject unqualified ranking and identify incompatible dependencies."
+    ],
+    "test_ids": [
+      "TC-GOV-EVA-02-P",
+      "TC-GOV-EVA-02-N"
+    ],
+    "baseline_relationship": "R3 extension; original IDs retained without implying closure",
+    "implementation_evidence": []
+  },
+  {
+    "id": "GOV-EVA-03",
+    "title": "Protect reference labels from supplier execution and responses",
+    "requirement": "Protect reference labels from supplier execution and responses.",
+    "type": "functional",
+    "stage": "R3A",
+    "priority": "P0",
+    "owner_role": "Evaluation and backend",
+    "status": "proposed",
+    "work_package": "WP-GOV-04",
+    "design_doc": "17-evidence-and-economics.md",
+    "acceptance_criteria": [
+      "Trusted scorer joins labels only after predictions are received.",
+      "No reference labels or hidden outcomes are disclosed."
+    ],
+    "test_ids": [
+      "TC-GOV-EVA-03-P",
+      "TC-GOV-EVA-03-N"
+    ],
+    "baseline_relationship": "R3 extension; original IDs retained without implying closure",
+    "implementation_evidence": []
+  },
+  {
+    "id": "GOV-EVA-04",
+    "title": "Use durable runs with leases, fencing, cancellation and explicit unknown outcomes",
+    "requirement": "Use durable runs with leases, fencing, cancellation and explicit unknown outcomes.",
+    "type": "functional",
+    "stage": "R3A",
+    "priority": "P0",
+    "owner_role": "Evaluation and backend",
+    "status": "proposed",
+    "work_package": "WP-GOV-04",
+    "design_doc": "17-evidence-and-economics.md",
+    "acceptance_criteria": [
+      "A current worker publishes once; expired/cancelled workers cannot overwrite.",
+      "Fence late results; retain unknown outcome without automatic resend."
+    ],
+    "test_ids": [
+      "TC-GOV-EVA-04-P",
+      "TC-GOV-EVA-04-N"
+    ],
+    "baseline_relationship": "R3 extension; original IDs retained without implying closure",
+    "implementation_evidence": []
+  },
+  {
+    "id": "GOV-EVA-05",
+    "title": "Report coverage, failure counts and metric denominators",
+    "requirement": "Report coverage, failure counts and metric denominators.",
+    "type": "functional",
+    "stage": "R3A",
+    "priority": "P0",
+    "owner_role": "Evaluation and backend",
+    "status": "proposed",
+    "work_package": "WP-GOV-04",
+    "design_doc": "17-evidence-and-economics.md",
+    "acceptance_criteria": [
+      "Partial run reports completed/eligible and does not pass complete-cohort acceptance.",
+      "Reject completion claim and show omitted/error counts."
+    ],
+    "test_ids": [
+      "TC-GOV-EVA-05-P",
+      "TC-GOV-EVA-05-N"
+    ],
+    "baseline_relationship": "R3 extension; original IDs retained without implying closure",
+    "implementation_evidence": []
+  },
+  {
+    "id": "GOV-EVA-06",
+    "title": "Compute pinned metrics and uncertainty with explicit non-estimable values",
+    "requirement": "Compute pinned metrics and uncertainty with explicit non-estimable values.",
+    "type": "functional",
+    "stage": "R3A",
+    "priority": "P0",
+    "owner_role": "Evaluation and backend",
+    "status": "proposed",
+    "work_package": "WP-GOV-04",
+    "design_doc": "17-evidence-and-economics.md",
+    "acceptance_criteria": [
+      "Known confusion matrix gives expected metrics and Wilson bounds.",
+      "Metric is not_estimable or validation fails; no fabricated zero/one."
+    ],
+    "test_ids": [
+      "TC-GOV-EVA-06-P",
+      "TC-GOV-EVA-06-N",
+      "TC-GOV-UNIT-METRICS"
+    ],
+    "baseline_relationship": "R3 extension; original IDs retained without implying closure",
+    "implementation_evidence": []
+  },
+  {
+    "id": "GOV-EVA-07",
+    "title": "Pre-specify subgroups and suppress insufficient group detail",
+    "requirement": "Pre-specify subgroups and suppress insufficient group detail.",
+    "type": "functional",
+    "stage": "R3A",
+    "priority": "P0",
+    "owner_role": "Evaluation and backend",
+    "status": "proposed",
+    "work_package": "WP-GOV-04",
+    "design_doc": "17-evidence-and-economics.md",
+    "acceptance_criteria": [
+      "Groups below approved disclosure threshold show insufficient_evidence.",
+      "Reject subgroup change after freeze and suppress identifying breakdowns."
+    ],
+    "test_ids": [
+      "TC-GOV-EVA-07-P",
+      "TC-GOV-EVA-07-N"
+    ],
+    "baseline_relationship": "R3 extension; original IDs retained without implying closure",
+    "implementation_evidence": []
+  },
+  {
+    "id": "GOV-EVA-08",
+    "title": "Expose evidence classes separately and retain a no-AI comparator where specified",
+    "requirement": "Expose evidence classes separately and retain a no-AI comparator where specified.",
+    "type": "functional",
+    "stage": "R3A",
+    "priority": "P0",
+    "owner_role": "Evaluation and backend",
+    "status": "proposed",
+    "work_package": "WP-GOV-04",
+    "design_doc": "17-evidence-and-economics.md",
+    "acceptance_criteria": [
+      "Every result/export shows evidence class and source of baseline comparison.",
+      "Reject mixed claim; separate tables and limitations remain visible."
+    ],
+    "test_ids": [
+      "TC-GOV-EVA-08-P",
+      "TC-GOV-EVA-08-N"
+    ],
+    "baseline_relationship": "R3 extension; original IDs retained without implying closure",
+    "implementation_evidence": []
+  },
+  {
+    "id": "GOV-BUD-01",
+    "title": "Calculate costs with explicit versioned decimal assumptions and minor-unit money",
+    "requirement": "Calculate costs with explicit versioned decimal assumptions and minor-unit money.",
+    "type": "functional",
+    "stage": "R3A",
+    "priority": "P0",
+    "owner_role": "Finance and engineering",
+    "status": "proposed",
+    "work_package": "WP-GOV-05",
+    "design_doc": "17-evidence-and-economics.md",
+    "acceptance_criteria": [
+      "Reference scenario yields annual totals 34000000,29000000,29000000 INR minor units.",
+      "Return validation error and no apparently valid cost total."
+    ],
+    "test_ids": [
+      "TC-GOV-BUD-01-P",
+      "TC-GOV-BUD-01-N",
+      "TC-GOV-UNIT-MONEY"
+    ],
+    "baseline_relationship": "R3 extension; original IDs retained without implying closure",
+    "implementation_evidence": []
+  },
+  {
+    "id": "GOV-BUD-02",
+    "title": "Calculate referral demand and capacity gaps without inventing queue delays",
+    "requirement": "Calculate referral demand and capacity gaps without inventing queue delays.",
+    "type": "functional",
+    "stage": "R3A",
+    "priority": "P0",
+    "owner_role": "Finance and engineering",
+    "status": "proposed",
+    "work_package": "WP-GOV-05",
+    "design_doc": "17-evidence-and-economics.md",
+    "acceptance_criteria": [
+      "Reference scenario yields demand 1700 and capacity gap 200.",
+      "Return unsupported/insufficient model, not an invented delay."
+    ],
+    "test_ids": [
+      "TC-GOV-BUD-02-P",
+      "TC-GOV-BUD-02-N"
+    ],
+    "baseline_relationship": "R3 extension; original IDs retained without implying closure",
+    "implementation_evidence": []
+  },
+  {
+    "id": "GOV-BUD-03",
+    "title": "Track committed/received funding once and show post-grant gaps",
+    "requirement": "Track committed/received funding once and show post-grant gaps.",
+    "type": "functional",
+    "stage": "R3A",
+    "priority": "P0",
+    "owner_role": "Finance and engineering",
+    "status": "proposed",
+    "work_package": "WP-GOV-05",
+    "design_doc": "17-evidence-and-economics.md",
+    "acceptance_criteria": [
+      "Reference funding yields gaps 0,9000000,29000000.",
+      "Prevent double count and keep unfunded years visible."
+    ],
+    "test_ids": [
+      "TC-GOV-BUD-03-P",
+      "TC-GOV-BUD-03-N"
+    ],
+    "baseline_relationship": "R3 extension; original IDs retained without implying closure",
+    "implementation_evidence": []
+  },
+  {
+    "id": "GOV-BUD-04",
+    "title": "Compare explicit low/base/high and current-service scenarios with provenance",
+    "requirement": "Compare explicit low/base/high and current-service scenarios with provenance.",
+    "type": "functional",
+    "stage": "R3A",
+    "priority": "P0",
+    "owner_role": "Finance and engineering",
+    "status": "proposed",
+    "work_package": "WP-GOV-05",
+    "design_doc": "17-evidence-and-economics.md",
+    "acceptance_criteria": [
+      "Each result identifies inputs, currency, horizon, price date and calculation version.",
+      "Block equivalent-cost claim and identify missing/mismatched inputs."
+    ],
+    "test_ids": [
+      "TC-GOV-BUD-04-P",
+      "TC-GOV-BUD-04-N"
+    ],
+    "baseline_relationship": "R3 extension; original IDs retained without implying closure",
+    "implementation_evidence": []
+  },
+  {
+    "id": "GOV-BUD-05",
+    "title": "Keep revised budgets separate from approved evidence snapshots",
+    "requirement": "Keep revised budgets separate from approved evidence snapshots.",
+    "type": "functional",
+    "stage": "R3A",
+    "priority": "P0",
+    "owner_role": "Finance and engineering",
+    "status": "proposed",
+    "work_package": "WP-GOV-05",
+    "design_doc": "17-evidence-and-economics.md",
+    "acceptance_criteria": [
+      "Changing a price creates a new calculation/version and leaves issued pack unchanged.",
+      "Preserve issued bytes and require a successor pack for new figures."
+    ],
+    "test_ids": [
+      "TC-GOV-BUD-05-P",
+      "TC-GOV-BUD-05-N"
+    ],
+    "baseline_relationship": "R3 extension; original IDs retained without implying closure",
+    "implementation_evidence": []
+  },
+  {
+    "id": "GOV-EVD-01",
+    "title": "Snapshot comparison, budget and limitations into a traceable committee pack",
+    "requirement": "Snapshot comparison, budget and limitations into a traceable committee pack.",
+    "type": "functional",
+    "stage": "R3A",
+    "priority": "P0",
+    "owner_role": "Evaluation and full-stack",
+    "status": "proposed",
+    "work_package": "WP-GOV-06",
+    "design_doc": "02-fsd.md",
+    "acceptance_criteria": [
+      "Pack links every finding to version/hash and exposes missing evidence.",
+      "Reject unsupported claim or mark it explicitly as author interpretation/gap."
+    ],
+    "test_ids": [
+      "TC-GOV-EVD-01-P",
+      "TC-GOV-EVD-01-N",
+      "TC-GOV-SMOKE-DECISION"
+    ],
+    "baseline_relationship": "R3 extension; original IDs retained without implying closure",
+    "implementation_evidence": []
+  },
+  {
+    "id": "GOV-EVD-02",
+    "title": "Review and issue only exact independently approved pack bytes",
+    "requirement": "Review and issue only exact independently approved pack bytes.",
+    "type": "functional",
+    "stage": "R3A",
+    "priority": "P0",
+    "owner_role": "Evaluation and full-stack",
+    "status": "proposed",
+    "work_package": "WP-GOV-06",
+    "design_doc": "02-fsd.md",
+    "acceptance_criteria": [
+      "Issuer obtains approval for the current digest from an eligible distinct person.",
+      "Invalidate approval and block issuance."
+    ],
+    "test_ids": [
+      "TC-GOV-EVD-02-P",
+      "TC-GOV-EVD-02-N",
+      "TC-GOV-UNIT-STATE"
+    ],
+    "baseline_relationship": "R3 extension; original IDs retained without implying closure",
+    "implementation_evidence": []
+  },
+  {
+    "id": "GOV-EVD-03",
+    "title": "Correct or withdraw issued evidence without overwriting history",
+    "requirement": "Correct or withdraw issued evidence without overwriting history.",
+    "type": "functional",
+    "stage": "R3A",
+    "priority": "P0",
+    "owner_role": "Evaluation and full-stack",
+    "status": "proposed",
+    "work_package": "WP-GOV-06",
+    "design_doc": "02-fsd.md",
+    "acceptance_criteria": [
+      "Successor links predecessor; old issued bytes remain verifiable with status.",
+      "Reject replacement and require an explicit correction record."
+    ],
+    "test_ids": [
+      "TC-GOV-EVD-03-P",
+      "TC-GOV-EVD-03-N"
+    ],
+    "baseline_relationship": "R3 extension; original IDs retained without implying closure",
+    "implementation_evidence": []
+  },
+  {
+    "id": "GOV-EVD-04",
+    "title": "Export PDF, DOCX, XLSX and canonical JSON with evidence labels and provenance",
+    "requirement": "Export PDF, DOCX, XLSX and canonical JSON with evidence labels and provenance.",
+    "type": "functional",
+    "stage": "R3A",
+    "priority": "P0",
+    "owner_role": "Evaluation and full-stack",
+    "status": "proposed",
+    "work_package": "WP-GOV-06",
+    "design_doc": "02-fsd.md",
+    "acceptance_criteria": [
+      "Exports reconcile figures and state editable copies are uncontrolled after modification.",
+      "Escape dangerous cells and omit unauthorised fields."
+    ],
+    "test_ids": [
+      "TC-GOV-EVD-04-P",
+      "TC-GOV-EVD-04-N"
+    ],
+    "baseline_relationship": "R3 extension; original IDs retained without implying closure",
+    "implementation_evidence": []
+  },
+  {
+    "id": "GOV-EVD-05",
+    "title": "Authorise every export and bind expiring artifact grants",
+    "requirement": "Authorise every export and bind expiring artifact grants.",
+    "type": "functional",
+    "stage": "R3A",
+    "priority": "P0",
+    "owner_role": "Evaluation and full-stack",
+    "status": "proposed",
+    "work_package": "WP-GOV-06",
+    "design_doc": "02-fsd.md",
+    "acceptance_criteria": [
+      "Eligible user downloads the exact artifact hash via <=300-second grant.",
+      "Deny new access without leaking artifact bytes."
+    ],
+    "test_ids": [
+      "TC-GOV-EVD-05-P",
+      "TC-GOV-EVD-05-N"
+    ],
+    "baseline_relationship": "R3 extension; original IDs retained without implying closure",
+    "implementation_evidence": []
+  },
+  {
+    "id": "GOV-INT-01",
+    "title": "Distinguish mock, official sandbox and live adapter modes",
+    "requirement": "Distinguish mock, official sandbox and live adapter modes.",
+    "type": "functional",
+    "stage": "R3B",
+    "priority": "P1",
+    "owner_role": "Integration and security",
+    "status": "proposed",
+    "work_package": "WP-GOV-07",
+    "design_doc": "06-api-and-events.md",
+    "acceptance_criteria": [
+      "Mode and profile version persist in UI, results and reports.",
+      "Reject conformance claim and retain mock/health-check label."
+    ],
+    "test_ids": [
+      "TC-GOV-INT-01-P",
+      "TC-GOV-INT-01-N"
+    ],
+    "baseline_relationship": "R3 extension; original IDs retained without implying closure",
+    "implementation_evidence": []
+  },
+  {
+    "id": "GOV-INT-02",
+    "title": "Require destination, data-transfer authority and version-matched tests before activation",
+    "requirement": "Require destination, data-transfer authority and version-matched tests before activation.",
+    "type": "functional",
+    "stage": "R3B",
+    "priority": "P1",
+    "owner_role": "Integration and security",
+    "status": "proposed",
+    "work_package": "WP-GOV-07",
+    "design_doc": "06-api-and-events.md",
+    "acceptance_criteria": [
+      "Approved configuration activates only after exact-version required tests pass.",
+      "Invalidate activation and block outbound work."
+    ],
+    "test_ids": [
+      "TC-GOV-INT-02-P",
+      "TC-GOV-INT-02-N"
+    ],
+    "baseline_relationship": "R3 extension; original IDs retained without implying closure",
+    "implementation_evidence": []
+  },
+  {
+    "id": "GOV-INT-03",
+    "title": "Constrain egress, secrets, redirects, body size and timeouts",
+    "requirement": "Constrain egress, secrets, redirects, body size and timeouts.",
+    "type": "functional",
+    "stage": "R3B",
+    "priority": "P1",
+    "owner_role": "Integration and security",
+    "status": "proposed",
+    "work_package": "WP-GOV-07",
+    "design_doc": "06-api-and-events.md",
+    "acceptance_criteria": [
+      "Only approved destination receives mapped authorised data and scoped credential.",
+      "Block unsafe traffic and redact secrets/provider bodies."
+    ],
+    "test_ids": [
+      "TC-GOV-INT-03-P",
+      "TC-GOV-INT-03-N"
+    ],
+    "baseline_relationship": "R3 extension; original IDs retained without implying closure",
+    "implementation_evidence": []
+  },
+  {
+    "id": "GOV-INT-04",
+    "title": "Test selected national transactions including consent and recovery failures",
+    "requirement": "Test selected national transactions including consent and recovery failures.",
+    "type": "functional",
+    "stage": "R3B",
+    "priority": "P1",
+    "owner_role": "Integration and security",
+    "status": "proposed",
+    "work_package": "WP-GOV-07",
+    "design_doc": "06-api-and-events.md",
+    "acceptance_criteria": [
+      "Actual provisioned sandbox passes declared positive and negative cases.",
+      "Report blocked_external_dependency, never a dummy success."
+    ],
+    "test_ids": [
+      "TC-GOV-INT-04-P",
+      "TC-GOV-INT-04-N",
+      "TC-GOV-SMOKE-CONNECTOR"
+    ],
+    "baseline_relationship": "R3 extension; original IDs retained without implying closure",
+    "implementation_evidence": []
+  },
+  {
+    "id": "GOV-INT-05",
+    "title": "Reconcile ambiguous external operations before retries",
+    "requirement": "Reconcile ambiguous external operations before retries.",
+    "type": "functional",
+    "stage": "R3B",
+    "priority": "P1",
+    "owner_role": "Integration and security",
+    "status": "proposed",
+    "work_package": "WP-GOV-07",
+    "design_doc": "06-api-and-events.md",
+    "acceptance_criteria": [
+      "Provider operation ID/status resolves safe retry or unknown outcome.",
+      "Prevent replay unless adapter proves idempotence; retain unknown state."
+    ],
+    "test_ids": [
+      "TC-GOV-INT-05-P",
+      "TC-GOV-INT-05-N"
+    ],
+    "baseline_relationship": "R3 extension; original IDs retained without implying closure",
+    "implementation_evidence": []
+  },
+  {
+    "id": "GOV-PIL-01",
+    "title": "Approve pilot sites, model versions, measures and stopping criteria before activation",
+    "requirement": "Approve pilot sites, model versions, measures and stopping criteria before activation.",
+    "type": "functional",
+    "stage": "R3B",
+    "priority": "P1",
+    "owner_role": "Programme and engineering",
+    "status": "proposed",
+    "work_package": "WP-GOV-08",
+    "design_doc": "04-lld.md",
+    "acceptance_criteria": [
+      "Different eligible reviewer approves the exact pilot-plan version.",
+      "Reject activation and require review."
+    ],
+    "test_ids": [
+      "TC-GOV-PIL-01-P",
+      "TC-GOV-PIL-01-N"
+    ],
+    "baseline_relationship": "R3 extension; original IDs retained without implying closure",
+    "implementation_evidence": []
+  },
+  {
+    "id": "GOV-PIL-02",
+    "title": "Ingest scoped observations with source IDs and event/receive timestamps",
+    "requirement": "Ingest scoped observations with source IDs and event/receive timestamps.",
+    "type": "functional",
+    "stage": "R3B",
+    "priority": "P1",
+    "owner_role": "Programme and engineering",
+    "status": "proposed",
+    "work_package": "WP-GOV-08",
+    "design_doc": "04-lld.md",
+    "acceptance_criteria": [
+      "Identical source event replay does not duplicate observations.",
+      "Return duplicate conflict/cross-org denial with no overwrite."
+    ],
+    "test_ids": [
+      "TC-GOV-PIL-02-P",
+      "TC-GOV-PIL-02-N",
+      "TC-GOV-SMOKE-PILOT"
+    ],
+    "baseline_relationship": "R3 extension; original IDs retained without implying closure",
+    "implementation_evidence": []
+  },
+  {
+    "id": "GOV-PIL-03",
+    "title": "Show freshness, completeness and revised late-data windows",
+    "requirement": "Show freshness, completeness and revised late-data windows.",
+    "type": "functional",
+    "stage": "R3B",
+    "priority": "P1",
+    "owner_role": "Programme and engineering",
+    "status": "proposed",
+    "work_package": "WP-GOV-08",
+    "design_doc": "04-lld.md",
+    "acceptance_criteria": [
+      "Late event updates event-time window and marks it revised.",
+      "Show stale/incomplete state; do not imply zero incidents."
+    ],
+    "test_ids": [
+      "TC-GOV-PIL-03-P",
+      "TC-GOV-PIL-03-N"
+    ],
+    "baseline_relationship": "R3 extension; original IDs retained without implying closure",
+    "implementation_evidence": []
+  },
+  {
+    "id": "GOV-PIL-04",
+    "title": "Track alerts with responsible owner and reasoned resolution",
+    "requirement": "Track alerts with responsible owner and reasoned resolution.",
+    "type": "functional",
+    "stage": "R3B",
+    "priority": "P1",
+    "owner_role": "Programme and engineering",
+    "status": "proposed",
+    "work_package": "WP-GOV-08",
+    "design_doc": "04-lld.md",
+    "acceptance_criteria": [
+      "Assigned user acknowledges/investigates/resolves with an audit trail.",
+      "Reject resolution or show delivery unavailable, never delivered."
+    ],
+    "test_ids": [
+      "TC-GOV-PIL-04-P",
+      "TC-GOV-PIL-04-N"
+    ],
+    "baseline_relationship": "R3 extension; original IDs retained without implying closure",
+    "implementation_evidence": []
+  },
+  {
+    "id": "GOV-PIL-05",
+    "title": "Pause platform dispatch and require independent revalidation/resumption",
+    "requirement": "Pause platform dispatch and require independent revalidation/resumption.",
+    "type": "functional",
+    "stage": "R3B",
+    "priority": "P1",
+    "owner_role": "Programme and engineering",
+    "status": "proposed",
+    "work_package": "WP-GOV-08",
+    "design_doc": "04-lld.md",
+    "acceptance_criteria": [
+      "Pause blocks new work; distinct safety reviewer can resume approved unchanged scope.",
+      "Reject claim/resume and require revalidation."
+    ],
+    "test_ids": [
+      "TC-GOV-PIL-05-P",
+      "TC-GOV-PIL-05-N"
+    ],
+    "baseline_relationship": "R3 extension; original IDs retained without implying closure",
+    "implementation_evidence": []
+  },
+  {
+    "id": "GOV-REG-01",
+    "title": "Share only approved redacted evidence with named recipient institutions",
+    "requirement": "Share only approved redacted evidence with named recipient institutions.",
+    "type": "functional",
+    "stage": "R3C",
+    "priority": "P1",
+    "owner_role": "Product and data governance",
+    "status": "proposed",
+    "work_package": "WP-GOV-09",
+    "design_doc": "08-access-control.md",
+    "acceptance_criteria": [
+      "Recipient sees the approved projection and exact version.",
+      "Block disclosure until redaction/review passes."
+    ],
+    "test_ids": [
+      "TC-GOV-REG-01-P",
+      "TC-GOV-REG-01-N"
+    ],
+    "baseline_relationship": "R3 extension; original IDs retained without implying closure",
+    "implementation_evidence": []
+  },
+  {
+    "id": "GOV-REG-02",
+    "title": "Require local transferability assessment before reuse claims",
+    "requirement": "Require local transferability assessment before reuse claims.",
+    "type": "functional",
+    "stage": "R3C",
+    "priority": "P1",
+    "owner_role": "Product and data governance",
+    "status": "proposed",
+    "work_package": "WP-GOV-09",
+    "design_doc": "08-access-control.md",
+    "acceptance_criteria": [
+      "Population/setting/device/language/pathway differences produce explicit assessment.",
+      "Reject equivalence claim; record local_tests_required or not_applicable."
+    ],
+    "test_ids": [
+      "TC-GOV-REG-02-P",
+      "TC-GOV-REG-02-N"
+    ],
+    "baseline_relationship": "R3 extension; original IDs retained without implying closure",
+    "implementation_evidence": []
+  },
+  {
+    "id": "GOV-REG-03",
+    "title": "Revoke future registry access and disclose limits of download recall",
+    "requirement": "Revoke future registry access and disclose limits of download recall.",
+    "type": "functional",
+    "stage": "R3C",
+    "priority": "P1",
+    "owner_role": "Product and data governance",
+    "status": "proposed",
+    "work_package": "WP-GOV-09",
+    "design_doc": "08-access-control.md",
+    "acceptance_criteria": [
+      "Revoked recipient cannot open new records or generate new download grants.",
+      "UI/report states recall is not guaranteed; no false deletion claim."
+    ],
+    "test_ids": [
+      "TC-GOV-REG-03-P",
+      "TC-GOV-REG-03-N"
+    ],
+    "baseline_relationship": "R3 extension; original IDs retained without implying closure",
+    "implementation_evidence": []
+  },
+  {
+    "id": "GOV-REG-04",
+    "title": "Track model/evidence age and material changes in reused records",
+    "requirement": "Track model/evidence age and material changes in reused records.",
+    "type": "functional",
+    "stage": "R3C",
+    "priority": "P1",
+    "owner_role": "Product and data governance",
+    "status": "proposed",
+    "work_package": "WP-GOV-09",
+    "design_doc": "08-access-control.md",
+    "acceptance_criteria": [
+      "Updated model makes prior evidence applicability visibly stale.",
+      "Require reassessment and retain old version context."
+    ],
+    "test_ids": [
+      "TC-GOV-REG-04-P",
+      "TC-GOV-REG-04-N"
+    ],
+    "baseline_relationship": "R3 extension; original IDs retained without implying closure",
+    "implementation_evidence": []
+  },
+  {
+    "id": "GOV-POR-01",
+    "title": "Aggregate only authorised programmes with provenance and freshness",
+    "requirement": "Aggregate only authorised programmes with provenance and freshness.",
+    "type": "functional",
+    "stage": "R3C",
+    "priority": "P1",
+    "owner_role": "Product and frontend",
+    "status": "proposed",
+    "work_package": "WP-GOV-10",
+    "design_doc": "05-ui-and-wireframes.md",
+    "acceptance_criteria": [
+      "Portfolio totals reconcile accessible records and expose stale sources.",
+      "Exclude hidden records and metadata."
+    ],
+    "test_ids": [
+      "TC-GOV-POR-01-P",
+      "TC-GOV-POR-01-N"
+    ],
+    "baseline_relationship": "R3 extension; original IDs retained without implying closure",
+    "implementation_evidence": []
+  },
+  {
+    "id": "GOV-POR-02",
+    "title": "Publish only separately approved public transparency fields",
+    "requirement": "Publish only separately approved public transparency fields.",
+    "type": "functional",
+    "stage": "R3C",
+    "priority": "P1",
+    "owner_role": "Product and frontend",
+    "status": "proposed",
+    "work_package": "WP-GOV-10",
+    "design_doc": "05-ui-and-wireframes.md",
+    "acceptance_criteria": [
+      "Public preview exactly matches approved redacted projection.",
+      "Deny publication until approved projection is used."
+    ],
+    "test_ids": [
+      "TC-GOV-POR-02-P",
+      "TC-GOV-POR-02-N"
+    ],
+    "baseline_relationship": "R3 extension; original IDs retained without implying closure",
+    "implementation_evidence": []
+  },
+  {
+    "id": "GOV-POR-03",
+    "title": "Preserve institutional ownership and staff handover",
+    "requirement": "Preserve institutional ownership and staff handover.",
+    "type": "functional",
+    "stage": "R3C",
+    "priority": "P1",
+    "owner_role": "Product and frontend",
+    "status": "proposed",
+    "work_package": "WP-GOV-10",
+    "design_doc": "05-ui-and-wireframes.md",
+    "acceptance_criteria": [
+      "Successor finds decisions, sources, funding commitments and outstanding actions.",
+      "Deny deletion/access and preserve organisation records."
+    ],
+    "test_ids": [
+      "TC-GOV-POR-03-P",
+      "TC-GOV-POR-03-N"
+    ],
+    "baseline_relationship": "R3 extension; original IDs retained without implying closure",
+    "implementation_evidence": []
+  },
+  {
+    "id": "GOV-DEP-01",
+    "title": "Define a verifiable deployment profile for selected government infrastructure",
+    "requirement": "Define a verifiable deployment profile for selected government infrastructure.",
+    "type": "functional",
+    "stage": "R3C",
+    "priority": "P1",
+    "owner_role": "Platform and operations",
+    "status": "proposed",
+    "work_package": "WP-GOV-11",
+    "design_doc": "13-operations.md",
+    "acceptance_criteria": [
+      "Profile identifies region, services, identity, key custody and operational owners.",
+      "Keep profile proposed/blocked and exclude the claim."
+    ],
+    "test_ids": [
+      "TC-GOV-DEP-01-P",
+      "TC-GOV-DEP-01-N"
+    ],
+    "baseline_relationship": "R3 extension; original IDs retained without implying closure",
+    "implementation_evidence": []
+  },
+  {
+    "id": "GOV-DEP-02",
+    "title": "Use a genuine identity boundary outside the trusted hosted dispatcher",
+    "requirement": "Use a genuine identity boundary outside the trusted hosted dispatcher.",
+    "type": "functional",
+    "stage": "R3C",
+    "priority": "P1",
+    "owner_role": "Platform and operations",
+    "status": "proposed",
+    "work_package": "WP-GOV-11",
+    "design_doc": "13-operations.md",
+    "acceptance_criteria": [
+      "Alternative deployment verifies tokens and rejects forged identity headers.",
+      "Reject unauthenticated caller regardless of spoofed headers."
+    ],
+    "test_ids": [
+      "TC-GOV-DEP-02-P",
+      "TC-GOV-DEP-02-N"
+    ],
+    "baseline_relationship": "R3 extension; original IDs retained without implying closure",
+    "implementation_evidence": []
+  },
+  {
+    "id": "GOV-DEP-03",
+    "title": "Provide complete documented institution export and exit",
+    "requirement": "Provide complete documented institution export and exit.",
+    "type": "functional",
+    "stage": "R3C",
+    "priority": "P1",
+    "owner_role": "Platform and operations",
+    "status": "proposed",
+    "work_package": "WP-GOV-11",
+    "design_doc": "13-operations.md",
+    "acceptance_criteria": [
+      "Export/import drill preserves records, artifacts, relationships and evidence hashes.",
+      "Fail completeness/security checks; no exit-success claim."
+    ],
+    "test_ids": [
+      "TC-GOV-DEP-03-P",
+      "TC-GOV-DEP-03-N"
+    ],
+    "baseline_relationship": "R3 extension; original IDs retained without implying closure",
+    "implementation_evidence": []
+  },
+  {
+    "id": "GOV-DEP-04",
+    "title": "Exercise encrypted recovery with separately recoverable keys",
+    "requirement": "Exercise encrypted recovery with separately recoverable keys.",
+    "type": "functional",
+    "stage": "R3C",
+    "priority": "P1",
+    "owner_role": "Platform and operations",
+    "status": "proposed",
+    "work_package": "WP-GOV-11",
+    "design_doc": "13-operations.md",
+    "acceptance_criteria": [
+      "Isolated restore verifies hashes and meets measured RPO/RTO targets.",
+      "Reconcile unknown operations; prevent unsolicited replay."
+    ],
+    "test_ids": [
+      "TC-GOV-DEP-04-P",
+      "TC-GOV-DEP-04-N"
+    ],
+    "baseline_relationship": "R3 extension; original IDs retained without implying closure",
+    "implementation_evidence": []
+  },
+  {
+    "id": "GOV-NFR-01",
+    "title": "Meet explicit measured interactive latency and concurrency targets",
+    "requirement": "Meet explicit measured interactive latency and concurrency targets.",
+    "type": "nonfunctional",
+    "stage": "R3A",
+    "priority": "P0",
+    "owner_role": "QA security and accessibility",
+    "status": "proposed",
+    "work_package": "WP-GOV-12",
+    "design_doc": "10-test-plan.md",
+    "acceptance_criteria": [
+      "At HLD envelope p95 reads <1s and writes <2s in 30-minute test, with zero isolation failures.",
+      "Backpressure/rate limits protect peers and preserve state."
+    ],
+    "test_ids": [
+      "TC-GOV-NFR-01-P",
+      "TC-GOV-NFR-01-N"
+    ],
+    "baseline_relationship": "R3 extension; original IDs retained without implying closure",
+    "implementation_evidence": []
+  },
+  {
+    "id": "GOV-NFR-02",
+    "title": "Target WCAG 2.2 AA with automated and manual accessibility evidence",
+    "requirement": "Target WCAG 2.2 AA with automated and manual accessibility evidence.",
+    "type": "nonfunctional",
+    "stage": "R3A",
+    "priority": "P0",
+    "owner_role": "QA security and accessibility",
+    "status": "proposed",
+    "work_package": "WP-GOV-12",
+    "design_doc": "10-test-plan.md",
+    "acceptance_criteria": [
+      "Keyboard/screen-reader/reflow users complete priority journeys.",
+      "Fail acceptance until equivalent accessible interaction exists."
+    ],
+    "test_ids": [
+      "TC-GOV-NFR-02-P",
+      "TC-GOV-NFR-02-N"
+    ],
+    "baseline_relationship": "R3 extension; original IDs retained without implying closure",
+    "implementation_evidence": []
+  },
+  {
+    "id": "GOV-NFR-03",
+    "title": "Support externalised language strings and low-bandwidth presentation",
+    "requirement": "Support externalised language strings and low-bandwidth presentation.",
+    "type": "nonfunctional",
+    "stage": "R3A",
+    "priority": "P0",
+    "owner_role": "QA security and accessibility",
+    "status": "proposed",
+    "work_package": "WP-GOV-12",
+    "design_doc": "10-test-plan.md",
+    "acceptance_criteria": [
+      "Locale formatting is consistent and essential tables remain usable without optional charts.",
+      "Block protected offline writes and explain reconnection requirement."
+    ],
+    "test_ids": [
+      "TC-GOV-NFR-03-P",
+      "TC-GOV-NFR-03-N"
+    ],
+    "baseline_relationship": "R3 extension; original IDs retained without implying closure",
+    "implementation_evidence": []
+  },
+  {
+    "id": "GOV-NFR-04",
+    "title": "Minimise sensitive data and implement configurable retention/legal hold",
+    "requirement": "Minimise sensitive data and implement configurable retention/legal hold.",
+    "type": "nonfunctional",
+    "stage": "R3A",
+    "priority": "P0",
+    "owner_role": "QA security and accessibility",
+    "status": "proposed",
+    "work_package": "WP-GOV-12",
+    "design_doc": "10-test-plan.md",
+    "acceptance_criteria": [
+      "Approved retention deletes eligible data while preserving held/dependent evidence.",
+      "Block operation and fail release review."
+    ],
+    "test_ids": [
+      "TC-GOV-NFR-04-P",
+      "TC-GOV-NFR-04-N"
+    ],
+    "baseline_relationship": "R3 extension; original IDs retained without implying closure",
+    "implementation_evidence": []
+  },
+  {
+    "id": "GOV-NFR-05",
+    "title": "Record auditable mutations without secrets or raw protected payloads",
+    "requirement": "Record auditable mutations without secrets or raw protected payloads.",
+    "type": "nonfunctional",
+    "stage": "R3A",
+    "priority": "P0",
+    "owner_role": "QA security and accessibility",
+    "status": "proposed",
+    "work_package": "WP-GOV-12",
+    "design_doc": "10-test-plan.md",
+    "acceptance_criteria": [
+      "Actor, org, action, version, time and digest correlate with actual write.",
+      "No successful audit for rolled-back write and no token leakage."
+    ],
+    "test_ids": [
+      "TC-GOV-NFR-05-P",
+      "TC-GOV-NFR-05-N"
+    ],
+    "baseline_relationship": "R3 extension; original IDs retained without implying closure",
+    "implementation_evidence": []
+  },
+  {
+    "id": "GOV-NFR-06",
+    "title": "Maintain API compatibility, idempotency and optimistic conflict control",
+    "requirement": "Maintain API compatibility, idempotency and optimistic conflict control.",
+    "type": "nonfunctional",
+    "stage": "R3A",
+    "priority": "P0",
+    "owner_role": "QA security and accessibility",
+    "status": "proposed",
+    "work_package": "WP-GOV-12",
+    "design_doc": "10-test-plan.md",
+    "acceptance_criteria": [
+      "Retries return same authorised logical outcome and stale writes return 412.",
+      "Return 409 or 428 without side effects."
+    ],
+    "test_ids": [
+      "TC-GOV-NFR-06-P",
+      "TC-GOV-NFR-06-N"
+    ],
+    "baseline_relationship": "R3 extension; original IDs retained without implying closure",
+    "implementation_evidence": []
+  },
+  {
+    "id": "GOV-NFR-07",
+    "title": "Keep documentation traceability and honest implementation/test status current",
+    "requirement": "Keep documentation traceability and honest implementation/test status current.",
+    "type": "nonfunctional",
+    "stage": "R3A",
+    "priority": "P0",
+    "owner_role": "QA security and accessibility",
+    "status": "proposed",
+    "work_package": "WP-GOV-12",
+    "design_doc": "10-test-plan.md",
+    "acceptance_criteria": [
+      "Every requirement maps to design, package and planned/executed case; CI checks pass.",
+      "Documentation gate fails and requests evidence/update."
+    ],
+    "test_ids": [
+      "TC-GOV-NFR-07-P",
+      "TC-GOV-NFR-07-N"
+    ],
+    "baseline_relationship": "R3 extension; original IDs retained without implying closure",
+    "implementation_evidence": []
+  },
+  {
+    "id": "GOV-NFR-08",
+    "title": "Operate observable jobs, incidents, backups and support ownership",
+    "requirement": "Operate observable jobs, incidents, backups and support ownership.",
+    "type": "nonfunctional",
+    "stage": "R3A",
+    "priority": "P0",
+    "owner_role": "QA security and accessibility",
+    "status": "proposed",
+    "work_package": "WP-GOV-12",
+    "design_doc": "10-test-plan.md",
+    "acceptance_criteria": [
+      "Synthetic failure triggers visible incident/freshness state and an assigned runbook.",
+      "Show actual delivery state and missing channel dependency."
+    ],
+    "test_ids": [
+      "TC-GOV-NFR-08-P",
+      "TC-GOV-NFR-08-N"
+    ],
+    "baseline_relationship": "R3 extension; original IDs retained without implying closure",
+    "implementation_evidence": []
+  },
+  {
+    "id": "GOV-NFR-09",
+    "title": "Test recovery objectives and release scopes rather than claiming unmeasured SLAs",
+    "requirement": "Test recovery objectives and release scopes rather than claiming unmeasured SLAs.",
+    "type": "nonfunctional",
+    "stage": "R3A",
+    "priority": "P0",
+    "owner_role": "QA security and accessibility",
+    "status": "proposed",
+    "work_package": "WP-GOV-12",
+    "design_doc": "10-test-plan.md",
+    "acceptance_criteria": [
+      "Selected deployment demonstrates proposed RPO <=24h and RTO <=8h in a recorded exercise.",
+      "Block unsupported operational claim and retain pending gate."
+    ],
+    "test_ids": [
+      "TC-GOV-NFR-09-P",
+      "TC-GOV-NFR-09-N"
+    ],
+    "baseline_relationship": "R3 extension; original IDs retained without implying closure",
+    "implementation_evidence": []
+  }
+]

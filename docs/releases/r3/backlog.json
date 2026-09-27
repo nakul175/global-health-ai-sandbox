@@ -1,0 +1,612 @@
+[
+  {
+    "id": "WP-GOV-01",
+    "title": "Institution identity and policy",
+    "stage": "R3A",
+    "owner_role": "Security and backend",
+    "depends_on": [],
+    "requirements": [
+      "GOV-IAM-01",
+      "GOV-IAM-02",
+      "GOV-IAM-03",
+      "GOV-IAM-04",
+      "GOV-IAM-05",
+      "GOV-IAM-06"
+    ],
+    "status": "proposed",
+    "deliverables": [
+      "Real users, organisation scope, role/field checks and safe membership recovery",
+      "Closed contract, migration/fixtures, UI states and negative tests",
+      "Updated documentation and environment-specific verification"
+    ],
+    "acceptance_gate": "All mapped requirements accepted with executed evidence; no blocked dependency hidden as a dummy pass.",
+    "tasks": [
+      {
+        "id": "WP-GOV-01-01",
+        "title": "Resolve dependencies and freeze contract",
+        "status": "planned"
+      },
+      {
+        "id": "WP-GOV-01-02",
+        "title": "Implement domain and storage with unit/database tests",
+        "status": "planned"
+      },
+      {
+        "id": "WP-GOV-01-03",
+        "title": "Implement protected API and durable effects",
+        "status": "planned"
+      },
+      {
+        "id": "WP-GOV-01-04",
+        "title": "Implement accessible UI states",
+        "status": "planned"
+      },
+      {
+        "id": "WP-GOV-01-05",
+        "title": "Execute integration/smoke/acceptance and update evidence",
+        "status": "planned"
+      }
+    ]
+  },
+  {
+    "id": "WP-GOV-02",
+    "title": "Programme and district context",
+    "stage": "R3A",
+    "owner_role": "Product and full-stack",
+    "depends_on": [
+      "WP-GOV-01"
+    ],
+    "requirements": [
+      "GOV-CTX-01",
+      "GOV-CTX-02",
+      "GOV-CTX-03",
+      "GOV-CTX-04",
+      "GOV-CTX-05"
+    ],
+    "status": "proposed",
+    "deliverables": [
+      "Versioned profiles, provenance and atomic CSV import",
+      "Closed contract, migration/fixtures, UI states and negative tests",
+      "Updated documentation and environment-specific verification"
+    ],
+    "acceptance_gate": "All mapped requirements accepted with executed evidence; no blocked dependency hidden as a dummy pass.",
+    "tasks": [
+      {
+        "id": "WP-GOV-02-01",
+        "title": "Resolve dependencies and freeze contract",
+        "status": "planned"
+      },
+      {
+        "id": "WP-GOV-02-02",
+        "title": "Implement domain and storage with unit/database tests",
+        "status": "planned"
+      },
+      {
+        "id": "WP-GOV-02-03",
+        "title": "Implement protected API and durable effects",
+        "status": "planned"
+      },
+      {
+        "id": "WP-GOV-02-04",
+        "title": "Implement accessible UI states",
+        "status": "planned"
+      },
+      {
+        "id": "WP-GOV-02-05",
+        "title": "Execute integration/smoke/acceptance and update evidence",
+        "status": "planned"
+      }
+    ]
+  },
+  {
+    "id": "WP-GOV-03",
+    "title": "Supplier participation",
+    "stage": "R3A",
+    "owner_role": "Full-stack and evaluation",
+    "depends_on": [
+      "WP-GOV-01",
+      "WP-GOV-02"
+    ],
+    "requirements": [
+      "GOV-SUP-01",
+      "GOV-SUP-02",
+      "GOV-SUP-03",
+      "GOV-SUP-04"
+    ],
+    "status": "proposed",
+    "deliverables": [
+      "Isolated supplier submissions, version declarations and controlled feedback",
+      "Closed contract, migration/fixtures, UI states and negative tests",
+      "Updated documentation and environment-specific verification"
+    ],
+    "acceptance_gate": "All mapped requirements accepted with executed evidence; no blocked dependency hidden as a dummy pass.",
+    "tasks": [
+      {
+        "id": "WP-GOV-03-01",
+        "title": "Resolve dependencies and freeze contract",
+        "status": "planned"
+      },
+      {
+        "id": "WP-GOV-03-02",
+        "title": "Implement domain and storage with unit/database tests",
+        "status": "planned"
+      },
+      {
+        "id": "WP-GOV-03-03",
+        "title": "Implement protected API and durable effects",
+        "status": "planned"
+      },
+      {
+        "id": "WP-GOV-03-04",
+        "title": "Implement accessible UI states",
+        "status": "planned"
+      },
+      {
+        "id": "WP-GOV-03-05",
+        "title": "Execute integration/smoke/acceptance and update evidence",
+        "status": "planned"
+      }
+    ]
+  },
+  {
+    "id": "WP-GOV-04",
+    "title": "Evaluation and comparison",
+    "stage": "R3A",
+    "owner_role": "Evaluation and backend",
+    "depends_on": [
+      "WP-GOV-02",
+      "WP-GOV-03"
+    ],
+    "requirements": [
+      "GOV-EVA-01",
+      "GOV-EVA-02",
+      "GOV-EVA-03",
+      "GOV-EVA-04",
+      "GOV-EVA-05",
+      "GOV-EVA-06",
+      "GOV-EVA-07",
+      "GOV-EVA-08"
+    ],
+    "status": "proposed",
+    "deliverables": [
+      "Frozen protocol, durable jobs, comparable results and uncertainty",
+      "Closed contract, migration/fixtures, UI states and negative tests",
+      "Updated documentation and environment-specific verification"
+    ],
+    "acceptance_gate": "All mapped requirements accepted with executed evidence; no blocked dependency hidden as a dummy pass.",
+    "tasks": [
+      {
+        "id": "WP-GOV-04-01",
+        "title": "Resolve dependencies and freeze contract",
+        "status": "planned"
+      },
+      {
+        "id": "WP-GOV-04-02",
+        "title": "Implement domain and storage with unit/database tests",
+        "status": "planned"
+      },
+      {
+        "id": "WP-GOV-04-03",
+        "title": "Implement protected API and durable effects",
+        "status": "planned"
+      },
+      {
+        "id": "WP-GOV-04-04",
+        "title": "Implement accessible UI states",
+        "status": "planned"
+      },
+      {
+        "id": "WP-GOV-04-05",
+        "title": "Execute integration/smoke/acceptance and update evidence",
+        "status": "planned"
+      }
+    ]
+  },
+  {
+    "id": "WP-GOV-05",
+    "title": "Budget and funding",
+    "stage": "R3A",
+    "owner_role": "Finance and engineering",
+    "depends_on": [
+      "WP-GOV-02",
+      "WP-GOV-04"
+    ],
+    "requirements": [
+      "GOV-BUD-01",
+      "GOV-BUD-02",
+      "GOV-BUD-03",
+      "GOV-BUD-04",
+      "GOV-BUD-05"
+    ],
+    "status": "proposed",
+    "deliverables": [
+      "Deterministic costs, capacity gaps and funding continuity",
+      "Closed contract, migration/fixtures, UI states and negative tests",
+      "Updated documentation and environment-specific verification"
+    ],
+    "acceptance_gate": "All mapped requirements accepted with executed evidence; no blocked dependency hidden as a dummy pass.",
+    "tasks": [
+      {
+        "id": "WP-GOV-05-01",
+        "title": "Resolve dependencies and freeze contract",
+        "status": "planned"
+      },
+      {
+        "id": "WP-GOV-05-02",
+        "title": "Implement domain and storage with unit/database tests",
+        "status": "planned"
+      },
+      {
+        "id": "WP-GOV-05-03",
+        "title": "Implement protected API and durable effects",
+        "status": "planned"
+      },
+      {
+        "id": "WP-GOV-05-04",
+        "title": "Implement accessible UI states",
+        "status": "planned"
+      },
+      {
+        "id": "WP-GOV-05-05",
+        "title": "Execute integration/smoke/acceptance and update evidence",
+        "status": "planned"
+      }
+    ]
+  },
+  {
+    "id": "WP-GOV-06",
+    "title": "Evidence and committee pack",
+    "stage": "R3A",
+    "owner_role": "Evaluation and full-stack",
+    "depends_on": [
+      "WP-GOV-04",
+      "WP-GOV-05"
+    ],
+    "requirements": [
+      "GOV-EVD-01",
+      "GOV-EVD-02",
+      "GOV-EVD-03",
+      "GOV-EVD-04",
+      "GOV-EVD-05"
+    ],
+    "status": "proposed",
+    "deliverables": [
+      "Independent review, immutable issue/correction and controlled exports",
+      "Closed contract, migration/fixtures, UI states and negative tests",
+      "Updated documentation and environment-specific verification"
+    ],
+    "acceptance_gate": "All mapped requirements accepted with executed evidence; no blocked dependency hidden as a dummy pass.",
+    "tasks": [
+      {
+        "id": "WP-GOV-06-01",
+        "title": "Resolve dependencies and freeze contract",
+        "status": "planned"
+      },
+      {
+        "id": "WP-GOV-06-02",
+        "title": "Implement domain and storage with unit/database tests",
+        "status": "planned"
+      },
+      {
+        "id": "WP-GOV-06-03",
+        "title": "Implement protected API and durable effects",
+        "status": "planned"
+      },
+      {
+        "id": "WP-GOV-06-04",
+        "title": "Implement accessible UI states",
+        "status": "planned"
+      },
+      {
+        "id": "WP-GOV-06-05",
+        "title": "Execute integration/smoke/acceptance and update evidence",
+        "status": "planned"
+      }
+    ]
+  },
+  {
+    "id": "WP-GOV-07",
+    "title": "Integration proving ground",
+    "stage": "R3B",
+    "owner_role": "Integration and security",
+    "depends_on": [
+      "WP-GOV-01",
+      "WP-GOV-04"
+    ],
+    "requirements": [
+      "GOV-INT-01",
+      "GOV-INT-02",
+      "GOV-INT-03",
+      "GOV-INT-04",
+      "GOV-INT-05"
+    ],
+    "status": "proposed",
+    "deliverables": [
+      "One provisioned national adapter with positive/negative/recovery evidence",
+      "Closed contract, migration/fixtures, UI states and negative tests",
+      "Updated documentation and environment-specific verification"
+    ],
+    "acceptance_gate": "All mapped requirements accepted with executed evidence; no blocked dependency hidden as a dummy pass.",
+    "tasks": [
+      {
+        "id": "WP-GOV-07-01",
+        "title": "Resolve dependencies and freeze contract",
+        "status": "planned"
+      },
+      {
+        "id": "WP-GOV-07-02",
+        "title": "Implement domain and storage with unit/database tests",
+        "status": "planned"
+      },
+      {
+        "id": "WP-GOV-07-03",
+        "title": "Implement protected API and durable effects",
+        "status": "planned"
+      },
+      {
+        "id": "WP-GOV-07-04",
+        "title": "Implement accessible UI states",
+        "status": "planned"
+      },
+      {
+        "id": "WP-GOV-07-05",
+        "title": "Execute integration/smoke/acceptance and update evidence",
+        "status": "planned"
+      }
+    ]
+  },
+  {
+    "id": "WP-GOV-08",
+    "title": "Pilot monitoring",
+    "stage": "R3B",
+    "owner_role": "Programme and engineering",
+    "depends_on": [
+      "WP-GOV-06",
+      "WP-GOV-07"
+    ],
+    "requirements": [
+      "GOV-PIL-01",
+      "GOV-PIL-02",
+      "GOV-PIL-03",
+      "GOV-PIL-04",
+      "GOV-PIL-05"
+    ],
+    "status": "proposed",
+    "deliverables": [
+      "Approved pilot, deduplicated observations, freshness and pause/resume",
+      "Closed contract, migration/fixtures, UI states and negative tests",
+      "Updated documentation and environment-specific verification"
+    ],
+    "acceptance_gate": "All mapped requirements accepted with executed evidence; no blocked dependency hidden as a dummy pass.",
+    "tasks": [
+      {
+        "id": "WP-GOV-08-01",
+        "title": "Resolve dependencies and freeze contract",
+        "status": "planned"
+      },
+      {
+        "id": "WP-GOV-08-02",
+        "title": "Implement domain and storage with unit/database tests",
+        "status": "planned"
+      },
+      {
+        "id": "WP-GOV-08-03",
+        "title": "Implement protected API and durable effects",
+        "status": "planned"
+      },
+      {
+        "id": "WP-GOV-08-04",
+        "title": "Implement accessible UI states",
+        "status": "planned"
+      },
+      {
+        "id": "WP-GOV-08-05",
+        "title": "Execute integration/smoke/acceptance and update evidence",
+        "status": "planned"
+      }
+    ]
+  },
+  {
+    "id": "WP-GOV-09",
+    "title": "Reusable evidence registry",
+    "stage": "R3C",
+    "owner_role": "Product and data governance",
+    "depends_on": [
+      "WP-GOV-06",
+      "WP-GOV-08"
+    ],
+    "requirements": [
+      "GOV-REG-01",
+      "GOV-REG-02",
+      "GOV-REG-03",
+      "GOV-REG-04"
+    ],
+    "status": "proposed",
+    "deliverables": [
+      "Approved sharing, transferability, recipient isolation and revocation",
+      "Closed contract, migration/fixtures, UI states and negative tests",
+      "Updated documentation and environment-specific verification"
+    ],
+    "acceptance_gate": "All mapped requirements accepted with executed evidence; no blocked dependency hidden as a dummy pass.",
+    "tasks": [
+      {
+        "id": "WP-GOV-09-01",
+        "title": "Resolve dependencies and freeze contract",
+        "status": "planned"
+      },
+      {
+        "id": "WP-GOV-09-02",
+        "title": "Implement domain and storage with unit/database tests",
+        "status": "planned"
+      },
+      {
+        "id": "WP-GOV-09-03",
+        "title": "Implement protected API and durable effects",
+        "status": "planned"
+      },
+      {
+        "id": "WP-GOV-09-04",
+        "title": "Implement accessible UI states",
+        "status": "planned"
+      },
+      {
+        "id": "WP-GOV-09-05",
+        "title": "Execute integration/smoke/acceptance and update evidence",
+        "status": "planned"
+      }
+    ]
+  },
+  {
+    "id": "WP-GOV-10",
+    "title": "Government portfolio",
+    "stage": "R3C",
+    "owner_role": "Product and frontend",
+    "depends_on": [
+      "WP-GOV-08",
+      "WP-GOV-09"
+    ],
+    "requirements": [
+      "GOV-POR-01",
+      "GOV-POR-02",
+      "GOV-POR-03"
+    ],
+    "status": "proposed",
+    "deliverables": [
+      "Authorised portfolio aggregates, public projection and staff handover",
+      "Closed contract, migration/fixtures, UI states and negative tests",
+      "Updated documentation and environment-specific verification"
+    ],
+    "acceptance_gate": "All mapped requirements accepted with executed evidence; no blocked dependency hidden as a dummy pass.",
+    "tasks": [
+      {
+        "id": "WP-GOV-10-01",
+        "title": "Resolve dependencies and freeze contract",
+        "status": "planned"
+      },
+      {
+        "id": "WP-GOV-10-02",
+        "title": "Implement domain and storage with unit/database tests",
+        "status": "planned"
+      },
+      {
+        "id": "WP-GOV-10-03",
+        "title": "Implement protected API and durable effects",
+        "status": "planned"
+      },
+      {
+        "id": "WP-GOV-10-04",
+        "title": "Implement accessible UI states",
+        "status": "planned"
+      },
+      {
+        "id": "WP-GOV-10-05",
+        "title": "Execute integration/smoke/acceptance and update evidence",
+        "status": "planned"
+      }
+    ]
+  },
+  {
+    "id": "WP-GOV-11",
+    "title": "Deployment portability",
+    "stage": "R3C",
+    "owner_role": "Platform and operations",
+    "depends_on": [
+      "WP-GOV-01",
+      "WP-GOV-06"
+    ],
+    "requirements": [
+      "GOV-DEP-01",
+      "GOV-DEP-02",
+      "GOV-DEP-03",
+      "GOV-DEP-04"
+    ],
+    "status": "proposed",
+    "deliverables": [
+      "Named hosting profile, identity boundary, exit and restore drills",
+      "Closed contract, migration/fixtures, UI states and negative tests",
+      "Updated documentation and environment-specific verification"
+    ],
+    "acceptance_gate": "All mapped requirements accepted with executed evidence; no blocked dependency hidden as a dummy pass.",
+    "tasks": [
+      {
+        "id": "WP-GOV-11-01",
+        "title": "Resolve dependencies and freeze contract",
+        "status": "planned"
+      },
+      {
+        "id": "WP-GOV-11-02",
+        "title": "Implement domain and storage with unit/database tests",
+        "status": "planned"
+      },
+      {
+        "id": "WP-GOV-11-03",
+        "title": "Implement protected API and durable effects",
+        "status": "planned"
+      },
+      {
+        "id": "WP-GOV-11-04",
+        "title": "Implement accessible UI states",
+        "status": "planned"
+      },
+      {
+        "id": "WP-GOV-11-05",
+        "title": "Execute integration/smoke/acceptance and update evidence",
+        "status": "planned"
+      }
+    ]
+  },
+  {
+    "id": "WP-GOV-12",
+    "title": "Cross-cutting assurance",
+    "stage": "R3A",
+    "owner_role": "QA security and accessibility",
+    "depends_on": [
+      "WP-GOV-01"
+    ],
+    "requirements": [
+      "GOV-NFR-01",
+      "GOV-NFR-02",
+      "GOV-NFR-03",
+      "GOV-NFR-04",
+      "GOV-NFR-05",
+      "GOV-NFR-06",
+      "GOV-NFR-07",
+      "GOV-NFR-08",
+      "GOV-NFR-09"
+    ],
+    "status": "proposed",
+    "deliverables": [
+      "Stage-specific security, integrity, accessibility, performance and documentation gates",
+      "Closed contract, migration/fixtures, UI states and negative tests",
+      "Updated documentation and environment-specific verification"
+    ],
+    "acceptance_gate": "All mapped requirements accepted with executed evidence; no blocked dependency hidden as a dummy pass.",
+    "tasks": [
+      {
+        "id": "WP-GOV-12-01",
+        "title": "Resolve dependencies and freeze contract",
+        "status": "planned"
+      },
+      {
+        "id": "WP-GOV-12-02",
+        "title": "Implement domain and storage with unit/database tests",
+        "status": "planned"
+      },
+      {
+        "id": "WP-GOV-12-03",
+        "title": "Implement protected API and durable effects",
+        "status": "planned"
+      },
+      {
+        "id": "WP-GOV-12-04",
+        "title": "Implement accessible UI states",
+        "status": "planned"
+      },
+      {
+        "id": "WP-GOV-12-05",
+        "title": "Execute integration/smoke/acceptance and update evidence",
+        "status": "planned"
+      }
+    ]
+  }
+]

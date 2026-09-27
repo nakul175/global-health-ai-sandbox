@@ -2,7 +2,7 @@
 
 For 0.5.0 signing, encrypted checkpoints and the tested isolated recovery procedure, use `ASSURANCE_0_5.md`. The original recovery limitation below is historical; production regional recovery and RPO/RTO remain unverified.
 
-This deployment is owner-private. Opening the hosted URL requires ChatGPT sign-in with the owning account. Keep that audience until the owner explicitly requests sharing.
+Current audience, updated 26 September 2026: the owner authorised public reachability. Opening the hosted URL still requires ChatGPT sign-in, and each authenticated account has its own owner-scoped application data. Synthetic role profiles do not represent independent institutional users. Change the hosted audience only through the hosting controls with user authorisation.
 
 ## Development
 

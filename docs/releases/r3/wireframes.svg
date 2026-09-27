@@ -1,0 +1,169 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1440" viewBox="0 0 1600 1440" role="img" aria-labelledby="title desc">
+<title id="title">Government adoption workspace — R3 wireframes</title>
+<desc id="desc">Four proposed desktop screens: programme overview, supplier comparison, budget and funding, independent evidence review. All values are synthetic examples. These are designs, not implemented screens.</desc>
+<style>text{font-family:Arial,sans-serif;fill:#18333d}.title{font-size:34px;font-weight:700}.h{font-size:23px;font-weight:700}.b{font-size:16px;font-weight:700}.t{font-size:15px}.s{font-size:13px;fill:#526972}.muted{fill:#657b85}.white{fill:#fff}.line{stroke:#dce5e8;stroke-width:1}.num{font-size:28px;font-weight:700}</style>
+<rect width="1600" height="1440" fill="#edf3f5"/>
+<text x="40" y="52" class="title">Government AI evaluation and adoption</text>
+<text x="40" y="83" class="t muted">R3 design baseline • Illustrative screens • Synthetic values • Not implemented UI</text>
+<rect x="40" y="120" width="740" height="600" rx="8" fill="#fff"/>
+<rect x="40" y="120" width="740" height="46" rx="8" fill="#143b47"/>
+<text x="60" y="149" class="b white">HEALTH AI SANDBOX  /  Synthetic Health Agency A</text>
+<text x="64" y="204" class="h">Programme overview</text>
+<text x="64" y="230" class="s">Synthetic TB programme • Evidence: synthetic only</text>
+<rect x="64" y="250" width="125" height="30" rx="5" fill="#e3f3ed"/>
+<text x="71" y="270" class="s">Context</text>
+<text x="210" y="270" class="s">Suppliers</text>
+<text x="349" y="270" class="s">Comparison</text>
+<text x="488" y="270" class="s">Budget</text>
+<text x="627" y="270" class="s">Decision</text>
+<line x1="64" y1="294" x2="756" y2="294" class="line"/>
+<rect x="64" y="314" width="692" height="67" rx="8" fill="#fff4dc"/>
+<text x="80" y="339" class="b">Next action: complete independent protocol review</text>
+<text x="80" y="363" class="s">Owner: assigned evaluator   •   Model versions and context are ready</text>
+<rect x="64" y="400" width="220" height="92" rx="8" fill="#f2f6f7"/>
+<text x="78" y="426" class="s">District profiles</text>
+<text x="78" y="465" class="num">2</text>
+<rect x="300" y="400" width="220" height="92" rx="8" fill="#f2f6f7"/>
+<text x="314" y="426" class="s">Supplier submissions</text>
+<text x="314" y="465" class="num">3</text>
+<rect x="536" y="400" width="220" height="92" rx="8" fill="#f2f6f7"/>
+<text x="550" y="426" class="s">Open evidence gaps</text>
+<text x="550" y="465" class="num">4</text>
+<text x="64" y="524" class="b">Readiness for evaluation</text>
+<text x="64" y="554" class="t">Programme context and sources</text>
+<text x="589" y="554" class="s">Ready</text>
+<line x1="64" y1="564" x2="756" y2="564" class="line"/>
+<text x="64" y="585" class="t">Three supplier versions</text>
+<text x="589" y="585" class="s">Ready</text>
+<line x1="64" y1="595" x2="756" y2="595" class="line"/>
+<text x="64" y="616" class="t">Independent protocol approval</text>
+<text x="589" y="616" class="s">Pending</text>
+<line x1="64" y1="626" x2="756" y2="626" class="line"/>
+<text x="64" y="647" class="t">Clinical evidence</text>
+<text x="589" y="647" class="s">Not supplied</text>
+<line x1="64" y1="657" x2="756" y2="657" class="line"/>
+<rect x="820" y="120" width="740" height="600" rx="8" fill="#fff"/>
+<rect x="820" y="120" width="740" height="46" rx="8" fill="#143b47"/>
+<text x="840" y="149" class="b white">HEALTH AI SANDBOX  /  Synthetic Health Agency A</text>
+<text x="844" y="204" class="h">Compare supplier evidence</text>
+<text x="844" y="230" class="s">Synthetic TB programme • Evidence: synthetic only</text>
+<text x="851" y="270" class="s">Context</text>
+<text x="990" y="270" class="s">Suppliers</text>
+<rect x="1122" y="250" width="125" height="30" rx="5" fill="#e3f3ed"/>
+<text x="1129" y="270" class="s">Comparison</text>
+<text x="1268" y="270" class="s">Budget</text>
+<text x="1407" y="270" class="s">Decision</text>
+<line x1="844" y1="294" x2="1536" y2="294" class="line"/>
+<text x="844" y="328" class="s">Protocol v1 • Same synthetic cohort • No automatic winner</text>
+<text x="844" y="369" class="b">Measure</text>
+<text x="1134" y="369" class="b">Reference A</text>
+<text x="1269" y="369" class="b">Reference B</text>
+<text x="1404" y="369" class="b">Reference C</text>
+<text x="844" y="408" class="s">Completed / eligible</text>
+<text x="1134" y="408" class="s">10,000 / 10,000</text>
+<text x="1269" y="408" class="s">10,000 / 10,000</text>
+<text x="1404" y="408" class="s">8,000 / 10,000</text>
+<line x1="844" y1="422" x2="1536" y2="422" class="line"/>
+<text x="844" y="451" class="s">Sensitivity</text>
+<text x="1134" y="451" class="s">80%</text>
+<text x="1269" y="451" class="s">85%</text>
+<text x="1404" y="451" class="s">Incomplete</text>
+<line x1="844" y1="465" x2="1536" y2="465" class="line"/>
+<text x="844" y="494" class="s">Specificity</text>
+<text x="1134" y="494" class="s">90%</text>
+<text x="1269" y="494" class="s">92%</text>
+<text x="1404" y="494" class="s">Incomplete</text>
+<line x1="844" y1="508" x2="1536" y2="508" class="line"/>
+<text x="844" y="537" class="s">Version assurance</text>
+<text x="1134" y="537" class="s">Verified fixture</text>
+<text x="1269" y="537" class="s">Verified fixture</text>
+<text x="1404" y="537" class="s">Verified fixture</text>
+<line x1="844" y1="551" x2="1536" y2="551" class="line"/>
+<text x="844" y="580" class="s">Eligible for comparison</text>
+<text x="1134" y="580" class="s">Yes</text>
+<text x="1269" y="580" class="s">Yes</text>
+<text x="1404" y="580" class="s">Partial results</text>
+<line x1="844" y1="594" x2="1536" y2="594" class="line"/>
+<rect x="844" y="622" width="692" height="74" rx="8" fill="#fff4dc"/>
+<text x="859" y="649" class="b">Interpretation requires the evidence context</text>
+<text x="859" y="674" class="s">Synthetic metrics do not establish clinical accuracy. C has incomplete coverage.</text>
+<rect x="40" y="760" width="740" height="600" rx="8" fill="#fff"/>
+<rect x="40" y="760" width="740" height="46" rx="8" fill="#143b47"/>
+<text x="60" y="789" class="b white">HEALTH AI SANDBOX  /  Synthetic Health Agency A</text>
+<text x="64" y="844" class="h">Budget and funding continuity</text>
+<text x="64" y="870" class="s">Synthetic TB programme • Evidence: synthetic only</text>
+<text x="71" y="910" class="s">Context</text>
+<text x="210" y="910" class="s">Suppliers</text>
+<text x="349" y="910" class="s">Comparison</text>
+<rect x="481" y="890" width="125" height="30" rx="5" fill="#e3f3ed"/>
+<text x="488" y="910" class="s">Budget</text>
+<text x="627" y="910" class="s">Decision</text>
+<line x1="64" y1="934" x2="756" y2="934" class="line"/>
+<text x="64" y="968" class="s">Base scenario • INR • 3 years • Calculator reference-v1</text>
+<rect x="64" y="988" width="250" height="210" rx="8" fill="#f2f6f7"/>
+<text x="79" y="1019" class="b">Assumptions</text>
+<text x="79" y="1050" class="s">Annual screens</text>
+<text x="229" y="1050" class="s">10,000</text>
+<text x="79" y="1080" class="s">Prevalence</text>
+<text x="229" y="1080" class="s">10%</text>
+<text x="79" y="1110" class="s">Sens. / spec.</text>
+<text x="229" y="1110" class="s">80% / 90%</text>
+<text x="79" y="1140" class="s">Laboratory capacity</text>
+<text x="229" y="1140" class="s">1,500 / year</text>
+<text x="79" y="1170" class="s">Source</text>
+<text x="229" y="1170" class="s">Fixture v1</text>
+<text x="344" y="1014" class="s">Total programme cost</text>
+<text x="344" y="1051" class="b">INR 920,000</text>
+<text x="554" y="1014" class="s">Unfunded balance</text>
+<text x="554" y="1051" class="b">INR 380,000</text>
+<text x="344" y="1096" class="t">Confirmatory demand: 1,700 / year</text>
+<text x="344" y="1127" class="t">Capacity gap: 200 / year</text>
+<text x="344" y="1166" class="s">No waiting-time estimate is inferred.</text>
+<text x="64" y="1234" class="b">Year</text>
+<text x="254" y="1234" class="b">Programme cost</text>
+<text x="454" y="1234" class="b">Secured funding</text>
+<text x="634" y="1234" class="b">Gap</text>
+<text x="64" y="1268" class="t">1</text>
+<text x="254" y="1268" class="t">340,000</text>
+<text x="454" y="1268" class="t">340,000</text>
+<text x="634" y="1268" class="t">0</text>
+<line x1="64" y1="1278" x2="756" y2="1278" class="line"/>
+<text x="64" y="1301" class="t">2</text>
+<text x="254" y="1301" class="t">290,000</text>
+<text x="454" y="1301" class="t">200,000</text>
+<text x="634" y="1301" class="t">90,000</text>
+<line x1="64" y1="1311" x2="756" y2="1311" class="line"/>
+<text x="64" y="1334" class="t">3</text>
+<text x="254" y="1334" class="t">290,000</text>
+<text x="454" y="1334" class="t">0</text>
+<text x="634" y="1334" class="t">290,000</text>
+<line x1="64" y1="1344" x2="756" y2="1344" class="line"/>
+<rect x="820" y="760" width="740" height="600" rx="8" fill="#fff"/>
+<rect x="820" y="760" width="740" height="46" rx="8" fill="#143b47"/>
+<text x="840" y="789" class="b white">HEALTH AI SANDBOX  /  Synthetic Health Agency A</text>
+<text x="844" y="844" class="h">Independent evidence review</text>
+<text x="844" y="870" class="s">Synthetic TB programme • Evidence: synthetic only</text>
+<text x="851" y="910" class="s">Context</text>
+<text x="990" y="910" class="s">Suppliers</text>
+<text x="1129" y="910" class="s">Comparison</text>
+<text x="1268" y="910" class="s">Budget</text>
+<rect x="1400" y="890" width="125" height="30" rx="5" fill="#e3f3ed"/>
+<text x="1407" y="910" class="s">Decision</text>
+<line x1="844" y1="934" x2="1536" y2="934" class="line"/>
+<rect x="844" y="958" width="692" height="47" rx="8" fill="#e3f3ed"/>
+<text x="859" y="987" class="b">Pack v3 • In review • Exact version and digest recorded</text>
+<text x="844" y="1045" class="s">Proposed decision</text>
+<text x="844" y="1075" class="b">Request more evidence before a clinical pilot</text>
+<text x="844" y="1117" class="b">Evidence included</text>
+<text x="844" y="1147" class="s">Synthetic comparison: protocol v1 and pinned model versions</text>
+<text x="844" y="1177" class="s">Three-year funding case: INR 380,000 remains unfunded</text>
+<text x="844" y="1207" class="s">Limitations: no representative clinical evaluation supplied</text>
+<line x1="844" y1="1227" x2="1536" y2="1227" class="line"/>
+<text x="844" y="1254" class="b">Reviewer: independent verified person</text>
+<text x="844" y="1282" class="s">Conflict declaration required • Author cannot approve own pack</text>
+<rect x="844" y="1307" width="210" height="40" rx="8" fill="#e8eef1"/>
+<text x="861" y="1333" class="b">Request changes</text>
+<rect x="1071" y="1307" width="230" height="40" rx="8" fill="#146b5c"/>
+<text x="1089" y="1333" class="b white">Approve this version</text>
+<text x="40" y="1400" class="t muted">Design notes: persistent evidence labels; missing-data states; accessible tables; human decisions; institution-owned history.</text>
+</svg>

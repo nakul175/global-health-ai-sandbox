@@ -1,0 +1,214 @@
+{
+  "version": "1.0.0",
+  "classification": "synthetic_only",
+  "as_of": "2026-09-26T00:00:00Z",
+  "organisations": [
+    {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "name": "Synthetic Health Agency A"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000002",
+      "name": "Synthetic Health Agency B"
+    }
+  ],
+  "principals": [
+    {
+      "id": "00000000-0000-4000-8000-000000000010",
+      "name": "Synthetic Author",
+      "role": "programme_lead",
+      "org": 1,
+      "status": "active"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000011",
+      "name": "Synthetic Reviewer",
+      "role": "evaluator",
+      "org": 1,
+      "status": "active"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000012",
+      "name": "Synthetic Finance",
+      "role": "finance",
+      "org": 1,
+      "status": "active"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000013",
+      "name": "Synthetic Vendor",
+      "role": "vendor",
+      "org": 1,
+      "status": "active"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000014",
+      "name": "Synthetic Revoked",
+      "role": "evaluator",
+      "org": 1,
+      "status": "revoked"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000020",
+      "name": "Synthetic Other Agency",
+      "role": "institution_admin",
+      "org": 2,
+      "status": "active"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000015",
+      "name": "Synthetic Vendor B",
+      "role": "vendor",
+      "org": 1,
+      "status": "active",
+      "expiresAt": null
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000016",
+      "name": "Synthetic Vendor C",
+      "role": "vendor",
+      "org": 1,
+      "status": "active",
+      "expiresAt": null
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000017",
+      "name": "Synthetic Safety",
+      "role": "safety",
+      "org": 1,
+      "status": "active",
+      "expiresAt": null
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000018",
+      "name": "Synthetic Auditor",
+      "role": "auditor",
+      "org": 1,
+      "status": "active",
+      "expiresAt": null
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000019",
+      "name": "Synthetic Support",
+      "role": "support",
+      "org": 1,
+      "status": "active",
+      "expiresAt": "2026-09-26T04:00:00Z"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000021",
+      "name": "Synthetic Expired Reviewer",
+      "role": "evaluator",
+      "org": 1,
+      "status": "active",
+      "expiresAt": "2026-09-25T00:00:00Z"
+    }
+  ],
+  "budget": {
+    "currency": "INR",
+    "currencyExponent": 2,
+    "horizonYears": 3,
+    "screeningVolume": 10000,
+    "prevalence": "0.10",
+    "sensitivity": "0.80",
+    "specificity": "0.90",
+    "referralCompletion": "1.00",
+    "annualCapacity": 1500,
+    "screenUnitMinor": 1000,
+    "confirmUnitMinor": 10000,
+    "setupMinor": 5000000,
+    "annualFixedMinor": 2000000,
+    "securedFundingMinor": [
+      34000000,
+      20000000,
+      0
+    ]
+  },
+  "expected": {
+    "tp": "800.00",
+    "fn": "200.00",
+    "fp": "900.00",
+    "tn": "8100.00",
+    "confirmatoryDemand": "1700.00",
+    "capacityGap": "200.00",
+    "annualTotalsMinor": [
+      34000000,
+      29000000,
+      29000000
+    ],
+    "totalMinor": 92000000,
+    "annualFundingGapMinor": [
+      0,
+      9000000,
+      29000000
+    ],
+    "fundingGapMinor": 38000000,
+    "sensitivity": "0.80",
+    "specificity": "0.90",
+    "precision": "0.4705882353",
+    "accuracy": "0.89"
+  },
+  "negative_cases": [
+    {
+      "name": "mixed_currency",
+      "action": "Compare INR and USD without approved conversion",
+      "expected": "VALIDATION_FAILED"
+    },
+    {
+      "name": "zero_denominator",
+      "tp": 0,
+      "fn": 0,
+      "expected": "not_estimable"
+    },
+    {
+      "name": "partial_coverage",
+      "eligible": 100,
+      "completed": 80,
+      "expected_coverage": "0.80",
+      "complete_cohort_accepted": false
+    },
+    {
+      "name": "self_approval",
+      "author_id": 10,
+      "reviewer_id": 10,
+      "expected": "CONFLICT_OF_INTEREST"
+    }
+  ],
+  "supplier_result_examples": [
+    {
+      "supplier": "A",
+      "submissionId": "00000000-0000-4000-8000-000000000102",
+      "eligible": 10000,
+      "completed": 10000,
+      "tp": 800,
+      "fn": 200,
+      "fp": 900,
+      "tn": 8100,
+      "expectedSensitivity": "0.80",
+      "expectedSpecificity": "0.90"
+    },
+    {
+      "supplier": "B",
+      "submissionId": "00000000-0000-4000-8000-000000000103",
+      "eligible": 10000,
+      "completed": 10000,
+      "tp": 850,
+      "fn": 150,
+      "fp": 720,
+      "tn": 8280,
+      "expectedSensitivity": "0.85",
+      "expectedSpecificity": "0.92"
+    },
+    {
+      "supplier": "C",
+      "submissionId": "00000000-0000-4000-8000-000000000104",
+      "eligible": 10000,
+      "completed": 8000,
+      "tp": 640,
+      "fn": 160,
+      "fp": 720,
+      "tn": 6480,
+      "completeCohortAccepted": false
+    }
+  ]
+}
