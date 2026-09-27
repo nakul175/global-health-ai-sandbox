@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {DatabaseSync} from 'node:sqlite';
 import {readFileSync,readdirSync} from 'node:fs';
-import {AppError,parseCommand,parseCSV,sampleCSV,score,profiles,execute,visible,digest} from '../.test-build/domain.mjs';
+import {AppError,parseCommand,parseCSV,sampleCSV,score,profiles,execute,visible,digest,canonical} from '../.test-build/domain.mjs';
 import {load,mutate,actorFor,exportReport} from '../.test-build/store.mjs';
 class D1 {
  constructor(){this.raw=new DatabaseSync(':memory:');this.raw.exec('PRAGMA foreign_keys = ON');for(const f of readdirSync('drizzle').filter(f=>f.endsWith('.sql')).sort())this.raw.exec(readFileSync('drizzle/'+f,'utf8'))}
@@ -19,6 +19,14 @@ test('contract enforces date order and finite bounded model values',()=>{assert.
 test('CSV parser checks duplicates, labels, synthetic identifiers, groups and row limits',()=>{assert.equal(parseCSV(sampleCSV).length,40);for(const csv of [sampleCSV.replace('SYN-002','SYN-001'),sampleCSV.replace('SYN-001','patient-001'),sampleCSV.replace('cohort_a','Smith'),sampleCSV.replace('0.0000,0','NaN,0'),sampleCSV.replace('sample_id','id'),sampleCSV.split('\n')[0]])assert.throws(()=>parseCSV(csv));});
 test('reference metrics have known perfect and reversed outcomes',()=>{const rows=parseCSV(sampleCSV),perfect=score(rows,{weight:8,intercept:-4,threshold:.5}),reversed=score(rows,{weight:-8,intercept:4,threshold:.5});assert.equal(perfect.tp,20);assert.equal(perfect.tn,20);assert.equal(perfect.auc,1);assert.equal(perfect.sensitivity,1);assert.equal(reversed.accuracy,0);assert.equal(reversed.auc,0)});
 test('missing denominators are null and tied predictions yield AUC .5',()=>{const rows=parseCSV(sampleCSV),tied=score(rows,{weight:0,intercept:0,threshold:.5});assert.equal(tied.auc,.5);assert.equal(score(rows.map(r=>({...r,label:0})),{weight:8,intercept:-4,threshold:.5}).sensitivity,null)});
+test('canonical JSON omits undefined fields, nulls undefined array items and stays parseable',()=>{
+ const value={zeta:undefined,alpha:1,nested:{gone:undefined,kept:null,list:[1,undefined,{missing:undefined,fn(){}}]},fn(){}};
+ const text=canonical(value);
+ assert.equal(text,'{"alpha":1,"nested":{"kept":null,"list":[1,null,{}]}}');
+ assert.deepEqual(JSON.parse(text),JSON.parse(JSON.stringify(value)));
+ assert.equal(canonical({b:{d:undefined,c:2},a:[]}),'{"a":[],"b":{"c":2}}');
+ assert.equal(canonical([undefined]),'[null]');
+});
 test('seed is reproducible without overwriting persistent changes',async()=>{const {run,get}=await context();await run('programme.create',programme);const a=await get(),b=await get();assert.deepEqual(a,b);assert.equal(a.records.filter(r=>r.kind==='programme').length,2)});
 test('owner and institution isolation on reads and writes',async()=>{const {db,get}=await context(),a=await get(),b=await load(db,'owner','beacon'),foreign=await load(db,'different-owner','aster');assert.ok(a.records.every(r=>!b.records.some(x=>x.id===r.id)));assert.ok(a.records.every(r=>!foreign.records.some(x=>x.id===r.id)));await assert.rejects(mutate(db,'owner','beacon','maya',cmd('programme.update',{id:a.records.find(r=>r.kind==='programme').id,changes:programme}),crypto.randomUUID(),b.revision),err('UNAVAILABLE'))});
 test('role enforcement rejects an evaluator creating programmes',async()=>{const {run}=await context();await assert.rejects(run('programme.create',programme,'elena'),err('FORBIDDEN'))});

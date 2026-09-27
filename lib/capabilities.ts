@@ -565,6 +565,6 @@ export const capabilities = [
     "title": "Recovery and rollback operations",
     "requirement": "Operators shall have tested procedures for rollback, restore, stuck jobs, key rotation and unknown external outcomes.",
     "mode": "partial",
-    "detail": "Actual metadata serialisation roundtrip and documented rollback; failover, crash, key rotation and load exercises are explicitly simulated."
+    "detail": "Encrypted checkpoint capture, verification and tested isolated restore, plus documented rollback; the in-process backup/restore drill and the failover, crash, key rotation and load exercises are explicitly simulated."
   }
 ] as const;

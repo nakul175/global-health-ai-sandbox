@@ -25,7 +25,7 @@ These labels appear in module descriptions, saved records, exports and the 81-en
 | Analysis | 60/20/20 participant partitions; paired accuracy difference, 400-replicate percentile bootstrap and exact McNemar probability; actual gain/noise waveform perturbation and inference | One synthetic environment; no cross-dataset identity proof, clinical validation or hardware benchmark |
 | Access | Recorded scoped requests, independent test-admin decision, expiry, revocation; aggregate support diagnostics protected by grant | Invitations and application/device identities are explicitly dummy; no message is sent or real credential created |
 | Evidence | Correction draft links to original; independent issuance atomically supersedes old report; old download blocked; hashes verified | No institutional digital signature, real independent reviewer or regulatory approval |
-| Operations | Permitted metadata export, measured in-process metadata serialisation roundtrip, repeatable acceptance pipeline | Export is not a complete backup; failover/worker-crash/key-rotation/load exercises are tabletop fixtures |
+| Operations | Permitted metadata export, in-process metadata consistency drill (parsed record count and recomputed content digests), repeatable acceptance pipeline | Export is not a complete backup; every `suite.exercise.run` result is labelled simulated, including backup/restore, which measures no database or object-store backup, restore or recovery time — real capture, verification and isolated restore run only through the checkpoint API (`ASSURANCE_0_5.md`); failover/worker-crash/key-rotation/load exercises are tabletop fixtures |
 
 ## Clearly simulated dependencies
 
@@ -42,7 +42,7 @@ Container/GPU workers, live remote inference/EHR/laboratory connections, real in
 5. Download a generated WAV from the lab. In **Audio**, upload it as Leo. The file remains quarantined. Switch to Sam to release it for synthetic testing.
 6. As Leo, request playback and inference separately in **Access**. As Alex, approve. Return to Leo: download and score the uploaded bytes. Revoke a grant and confirm the corresponding operation fails.
 7. In lab Evidence, draft as Maya and issue as Elena. In workbench Evidence, draft a correction; issue it as Elena in the lab. The old report becomes superseded.
-8. In Operations, compare the real metadata roundtrip with the labelled regional-failover fixture. No production latency, availability or recovery result should appear as measured.
+8. In Operations, run the backup/restore drill and the regional-failover fixture; both are labelled simulated, and the drill reports its parsed record count and recomputed digests (it fails visibly if a stored content digest no longer recomputes). No production latency, availability or recovery result should appear as measured.
 
 Active module selection survives test-role switching through the URL. Failed commands preserve input; stale revisions require refresh/review. An interrupted upload can resume by selecting the same file with the original uploader identity.
 
@@ -52,7 +52,7 @@ Existing limits remain explicit: six ecosystems, 200 people per ecosystem, 24 pr
 
 Reference labels are hidden from normal views but still share this Worker/database. Synthesised waveforms correlate with generated labels by construction. Neither metrics nor fixture approvals establish real clinical accuracy.
 
-Native hosting applies new migration `0002_amazing_silhouette.sql` and provisions logical R2 binding `MEDIA`. Prior migrations are unchanged. Roll application code back to a compatible source version while retaining additive tables and bucket content. Do not destroy data to roll back. Interrupted storage writes can leave unreferenced chunk objects if the later database commit fails; a production orphan-retention sweeper is not implemented.
+Native hosting applies new migration `0002_amazing_silhouette.sql` and provisions logical R2 binding `MEDIA`. Prior migrations are unchanged. Roll application code back to a compatible source version while retaining additive tables and bucket content. Do not destroy data to roll back. A chunk object is written before its metadata commit; when that commit is rejected (stale revision, conflicting intent, hold, gate or database failure) the route deletes the object again unless committed metadata now references it, so a rejected part leaves no orphan. Only a failure of that best-effort cleanup itself can leave an unreferenced object; a production orphan-retention sweeper is not implemented.
 
 ## Verification and automation
 

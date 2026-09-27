@@ -82,7 +82,16 @@ export function authorize(action:Action,actor:Profile,items:RecordItem[]){
  const institution=items.find(x=>x.kind==='institution');
  if(institution?.status!=='verified'&&!['institution.submit','institution.decide','concern.record','concern.resolve','member.status'].includes(action))throw new AppError(403,'INSTITUTION_UNVERIFIED','Institution verification is required first.');
 }
-export function canonical(value:any):string{if(value===null||typeof value!=='object')return JSON.stringify(value);if(Array.isArray(value))return '['+value.map(canonical).join(',')+']';return '{'+Object.keys(value).sort().map(k=>JSON.stringify(k)+':'+canonical(value[k])).join(',')+'}'}
+// Values JSON.stringify cannot represent: an object key holding one is omitted and an array item becomes null (#7),
+// so canonical output is always valid JSON and parses to the same value as JSON.stringify would produce.
+const representable=(value:unknown)=>value!==undefined&&typeof value!=='function'&&typeof value!=='symbol';
+export function canonical(value:unknown):string{
+ if(value===null||typeof value!=='object')return JSON.stringify(value);
+ if(Array.isArray(value))return '['+value.map(item=>representable(item)?canonical(item):'null').join(',')+']';
+ const record=value as Record<string,unknown>;
+ const keys=Object.keys(record).filter(k=>representable(record[k])).sort();
+ return '{'+keys.map(k=>JSON.stringify(k)+':'+canonical(record[k])).join(',')+'}';
+}
 export async function digest(value:any){const bytes=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(typeof value==='string'?value:canonical(value)));return [...new Uint8Array(bytes)].map(x=>x.toString(16).padStart(2,'0')).join('')}
 export type Row={sample_id:string;signal:number;label:0|1;group:string};
 export const sampleCSV='sample_id,signal,label,group\n'+Array.from({length:40},(_,i)=>`SYN-${String(i+1).padStart(3,'0')},${((i%20)/19).toFixed(4)},${(i%20)>=10?1:0},${i<20?'cohort_a':'cohort_b'}`).join('\n')+'\n';

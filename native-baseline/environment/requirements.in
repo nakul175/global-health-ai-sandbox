@@ -7,4 +7,6 @@ httpx==0.28.1
 PyJWT[crypto]==2.15.0
 
 jsonschema==4.26.0
+# jsonschema checks `format: date-time` only when this optional validator is installed at runtime.
+rfc3339-validator==0.1.4
 rfc8785==0.1.4

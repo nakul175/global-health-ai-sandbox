@@ -61,6 +61,29 @@ export function pairedComparison(left:any[],right:any[],refs:Record<string,0|1>,
  const improved=deltas.filter(x=>x===1).length,worsened=deltas.filter(x=>x===-1).length,n=improved+worsened,k=Math.min(improved,worsened);let term=2**(-n),tail=term;for(let i=1;i<=k;i++){term*= (n-i+1)/i;tail+=term}
  return {n:deltas.length,deltaAccuracy:deltas.reduce((a,b)=>a+b,0)/deltas.length,interval:{lower:boot[9],upper:boot[389],method:'Paired percentile bootstrap, 400 replicates, 95%',seed},improved,worsened,mcnemarExactP:n?Math.min(1,2*tail):1,direction:'right minus left',clinicalClaim:false};
 }
+// Content digests a projected record still carries over its own payload, so a parsed copy can prove them by
+// recomputation. Digests over stripped payloads (references, predictions, issued bytes) or over command shapes are
+// not verifiable from the projection and are not counted.
+const selfDigests:Partial<Record<string,(body:RecordItem['body'])=>[stored:unknown,payload:unknown][]>>={
+ dataset:body=>[[body.sha256,body.rows]],
+ analysis:body=>body.partitions?[[body.partitionHash,body.partitions]]:[],
+ lab_run:body=>body.freeze?[[body.freeze.modelHash,body.freeze.model]]:[],
+ lab_report:body=>[[body.draftDigest,{summary:body.summary,result:body.result}]],
+};
+export async function metadataDrill(records:RecordItem[],serialized:string){
+ const restored:RecordItem[]=JSON.parse(serialized);
+ const failedDigests:string[]=[];
+ let verifiedDigests=0;
+ for(const record of restored){
+  for(const [stored,payload] of selfDigests[record.kind]?.(record.body)??[]){
+   if(typeof stored!=='string')continue;
+   verifiedDigests++;
+   if(await digest(payload)!==stored)failedDigests.push(record.id);
+  }
+ }
+ const passed=restored.length===records.length&&failedDigests.length===0;
+ return {passed,records:records.length,restored:restored.length,verifiedDigests,failedDigests};
+}
 export async function executeSuite(action:SuiteAction,d:any,actor:Profile,items:RecordItem[],now:string):Promise<RecordItem[]>{
  suiteCurrent(action,d,items);const get=(key:string,kind:string)=>{const r=items.find(r=>r.id===key&&r.kind===kind);check(r,'Record unavailable.','UNAVAILABLE',404);return r};
  const create=(kind:RecordItem['kind'],title:string,status:string,body:any):RecordItem=>({id:crypto.randomUUID(),kind,title,status,version:1,body:{...body,synthetic:true},createdBy:actor.person,createdAt:now,updatedAt:now});
@@ -101,7 +124,19 @@ export async function executeSuite(action:SuiteAction,d:any,actor:Profile,items:
  if(action==='suite.identity.create')return[create('service_identity',d.name,'simulated',{...d,mode:'simulated',credential:'DUMMY-'+crypto.randomUUID(),expiresAt:new Date(Date.parse(now)+d.hours*3600000).toISOString(),limitation:'Fixture identity only. This dummy credential is rejected by hosted authentication.'})];
  if(action==='suite.identity.revoke'){const r=get(d.id,'service_identity');return[update(r,'revoked',{...r.body,note:d.note})]}
  if(action==='suite.evidence.correct'){const previous=get(d.id,'lab_report');check(previous.status==='issued','Correction requires issued evidence.');check(!items.some(r=>r.kind==='lab_report'&&r.status==='draft'&&r.body.correctionOf===previous.id),'A correction draft already exists.');const reports=await executeLab('lab.report.create',{runId:previous.body.runId,summary:d.summary},actor,items,now);reports[0].body={...reports[0].body,correctionOf:previous.id,correctionReason:d.note};return reports;}
- if(action==='suite.exercise.run'){const safe=items.filter(r=>!['media_session'].includes(r.kind)).map(r=>suiteProjection(r)),serialized=canonical(safe),restored=JSON.parse(serialized),before=await digest(serialized),after=await digest(restored),working=d.kind==='backup_restore';return[create('exercise',d.kind.replaceAll('_',' '),working&&before!==after?'failed':working?'passed':'simulated',{mode:working?'working':'simulated',kind:d.kind,note:d.note,checks:working?[{name:'In-process metadata serialisation roundtrip',passed:before===after,records:safe.length,sha256:before}]:[{name:'Tabletop fixture',passed:null,exampleOutcome:'Recovery acknowledged (dummy)'}],limitation:working?'Real metadata roundtrip only. No database/R2 restore, failover or recovery-time guarantee.':'Dummy operational exercise; no infrastructure action or measured production result.'})]}
+ if(action==='suite.exercise.run'){
+  const safe=items.filter(r=>!['media_session'].includes(r.kind)).map(r=>suiteProjection(r)),serialized=canonical(safe);
+  // #2: nothing in-process can back up or restore this workspace, so every exercise is recorded as simulated; real
+  // capture, verification and isolated restore run only through the checkpoint API and the operator recovery command.
+  // The backup/restore drill still records a falsifiable check instead of comparing a digest with itself: the
+  // serialised metadata must parse back to the same number of records and every content digest a record carries
+  // over its own payload must recompute from the parsed copy.
+  if(d.kind==='backup_restore'){
+   const drill=await metadataDrill(safe,serialized);
+   return[create('exercise','backup restore',drill.passed?'simulated':'failed',{mode:'simulated',kind:d.kind,note:d.note,checks:[{name:'Serialised metadata parses back to the same records and their content digests recompute',...drill,sha256:await digest(serialized)}],limitation:'In-process check of projected metadata only; no database or object-store backup, restore, failover or recovery-time result is measured. Real encrypted checkpoint capture, verification and isolated restore are exercised only through the checkpoint API and the operator recovery command.'})];
+  }
+  return[create('exercise',d.kind.replaceAll('_',' '),'simulated',{mode:'simulated',kind:d.kind,note:d.note,checks:[{name:'Tabletop fixture',passed:null,exampleOutcome:'Recovery acknowledged (dummy)'}],limitation:'Dummy operational exercise; no infrastructure action or measured production result.'})];
+ }
  throw new AppError(422,'VALIDATION','Unknown suite command.');
 }
 export function suiteProjection(r:RecordItem){const body={...r.body};for(const key of ['issuedBytes','references','subjects','predictions','resources','plan','effects','referredIds']){if(key==='effects'&&typeof body[key]==='number')continue;delete body[key]}return {...r,body}}

@@ -182,14 +182,18 @@ def update(c, actor, rid, body, key, etag, correlation):
                 rid,
             ),
         )
+        # Retire only the active countries that leave the set; rows that stay keep their history untouched,
+        # and a country that returns is reactivated instead of duplicated (one row per country).
         c.execute(
-            "UPDATE programme_countries SET retired_at=now() WHERE tenant_id=%s AND programme_id=%s",
-            (actor.tenant, rid),
+            """UPDATE programme_countries SET retired_at=now() WHERE tenant_id=%s AND programme_id=%s
+            AND retired_at IS NULL AND country_code<>ALL(%s)""",
+            (actor.tenant, rid, list(data["country_codes"])),
         )
         for country in data["country_codes"]:
             c.execute(
                 """INSERT INTO programme_countries(tenant_id,programme_id,country_code) VALUES(%s,%s,%s)
-                ON CONFLICT(tenant_id,programme_id,country_code) DO UPDATE SET retired_at=NULL""",
+                ON CONFLICT(tenant_id,programme_id,country_code) DO UPDATE SET retired_at=NULL
+                WHERE programme_countries.retired_at IS NOT NULL""",
                 (actor.tenant, rid, country),
             )
     c.execute(

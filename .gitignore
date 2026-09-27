@@ -51,3 +51,4 @@ verification/*.log
 *.tsbuildinfo
 
 !.env.example
+/.delivery/
