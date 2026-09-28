@@ -4,6 +4,28 @@ from dataclasses import dataclass
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[3]
+# Only SANDBOX_<FIELD> variables override the JSON configuration. These earlier names from the
+# environment template are refused so that a stale .env file fails loudly instead of being ignored.
+LEGACY_NAMES = {
+    "APP_ENV": "app_env",
+    "REGION": "region",
+    "DATABASE_URL": "database_url",
+    "POLICY_DATABASE_URL": "policy_database_url",
+    "WORKER_DATABASE_URL": "worker_database_url",
+    "OIDC_ISSUER": "issuer",
+    "OIDC_AUDIENCE": "audience",
+    "ALLOW_DEV_AUTH": "allow_dev_auth",
+    "CURSOR_SIGNING_KEY": "cursor_key",
+}
+
+
+def as_bool(value):
+    """Accept only a JSON boolean or the strings true/false (any case); never truthiness of a string."""
+    if isinstance(value, bool):
+        return value
+    if isinstance(value, str) and value.lower() in {"true", "false"}:
+        return value.lower() == "true"
+    raise ValueError("allow_dev_auth must be exactly true or false")
 
 
 @dataclass(frozen=True)
@@ -25,17 +47,28 @@ class Settings:
 
     @classmethod
     def load(cls):
+        legacy = sorted(name for name in LEGACY_NAMES if name in os.environ)
+        if legacy:
+            raise ValueError(
+                "Unsupported environment variables "
+                + ", ".join(legacy)
+                + "; the application reads only SANDBOX_<FIELD> overrides, here "
+                + ", ".join("SANDBOX_" + LEGACY_NAMES[name].upper() for name in legacy)
+            )
         path = Path(os.getenv("SANDBOX_CONFIG", ROOT / ".local/config.json"))
         values = json.loads(path.read_text()) if path.exists() else {}
         for key in cls.__dataclass_fields__:
             if "SANDBOX_" + key.upper() in os.environ:
-                value = os.environ["SANDBOX_" + key.upper()]
-                values[key] = value == "true" if key == "allow_dev_auth" else value
+                values[key] = os.environ["SANDBOX_" + key.upper()]
+        if "allow_dev_auth" in values:
+            values["allow_dev_auth"] = as_bool(values["allow_dev_auth"])
         settings = cls(**values)
         settings.validate()
         return settings
 
     def validate(self):
+        if not isinstance(self.allow_dev_auth, bool):
+            raise ValueError("allow_dev_auth must be exactly true or false")
         if self.app_env not in {"development", "test", "staging", "production"}:
             raise ValueError("Unknown application environment")
         if self.db_engine not in {"postgres", "pglite"}:

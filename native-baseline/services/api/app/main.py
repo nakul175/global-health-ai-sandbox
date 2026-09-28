@@ -9,7 +9,13 @@ from fastapi import FastAPI, Request
 from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from psycopg import Error as DatabaseError
-from psycopg.errors import UniqueViolation
+from psycopg.errors import (
+    CheckViolation,
+    ForeignKeyViolation,
+    InsufficientPrivilege,
+    NotNullViolation,
+    UniqueViolation,
+)
 from starlette.concurrency import run_in_threadpool
 from starlette.exceptions import HTTPException
 
@@ -22,6 +28,34 @@ from .dev_auth import PROFILES, login
 from .errors import Fault
 
 log = logging.getLogger("sandbox")
+# Unique constraints whose violation is a client-visible business rule, by PostgreSQL constraint name.
+PROGRAMME_CODE_UNIQUE = "programmes_tenant_id_code_key"  # UNIQUE(tenant_id,code) in 001_foundation.sql
+
+
+def database_fault(exc):
+    """Translate a database error into the controlled Fault; only transient failures invite a retry."""
+    if isinstance(exc, UniqueViolation):
+        if exc.diag.constraint_name == PROGRAMME_CODE_UNIQUE:
+            return Fault(
+                422,
+                "E_SEMANTIC",
+                "This programme code is already in use in your institution.",
+                [{"path": "/payload/data/code", "code": "unique"}],
+            )
+        return Fault(409, "E_GATE_BLOCKED", "A conflicting record already exists. Reload and review it.")
+    if isinstance(exc, (CheckViolation, NotNullViolation, ForeignKeyViolation)):
+        # The database rejected the row itself; the same request will fail again, so no retry advice.
+        return Fault(422, "E_SEMANTIC", "The request conflicts with a data rule and was not saved.")
+    if isinstance(exc, InsufficientPrivilege):
+        # Privilege or row-security denial means the application boundary let something through
+        # that the database refused. Fail without retry advice and leave the audit trail to the logs.
+        return Fault(500, "E_DEPENDENCY", "The request could not be completed.")
+    return Fault(
+        503,
+        "E_DEPENDENCY",
+        "The service could not complete the request. Retry the same action.",
+        retryable=True,
+    )
 
 
 class RequestGuard:
@@ -182,16 +216,15 @@ def create_app(settings=None):
 
     @app.exception_handler(DatabaseError)
     async def database_handler(request, exc):
-        if isinstance(exc, UniqueViolation):
-            fault = Fault(422, "E_SEMANTIC", "This programme code is already in use in your institution.")
-        else:
-            log.error("database_failure correlation=%s sqlstate=%s", request.state.correlation, exc.sqlstate)
-            fault = Fault(
-                503,
-                "E_DEPENDENCY",
-                "The service could not complete the request. Retry the same action.",
-                retryable=True,
-            )
+        fault = database_fault(exc)
+        log.log(
+            logging.ERROR if fault.status >= 500 else logging.WARNING,
+            "database_failure correlation=%s sqlstate=%s constraint=%s status=%s",
+            request.state.correlation,
+            exc.sqlstate,
+            exc.diag.constraint_name,
+            fault.status,
+        )
         return await fault_handler(request, fault)
 
     @app.exception_handler(HTTPException)

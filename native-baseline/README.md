@@ -60,6 +60,8 @@ export SANDBOX_CONFIG=.local/native-config.json
 
 `provision_native.py` checks for PostgreSQL 18.6 and creates separate restricted API, policy and worker logins. It refuses a non-loopback host. Keep administrative credentials out of application processes. The CI workflow in `.github/workflows/ci.yml` provisions an ephemeral native database and runs these gates, including concurrent request tests; there is no deployment step.
 
+Configuration comes from the JSON file named by `SANDBOX_CONFIG`. Any field can be overridden with an environment variable named `SANDBOX_<FIELD>` (for example `SANDBOX_ALLOW_DEV_AUTH=false`, which accepts only `true` or `false`); `environment/.env.example` lists every accepted name. Unprefixed names from older templates such as `APP_ENV`, `DATABASE_URL` or `ALLOW_DEV_AUTH` are not read and make startup fail rather than being silently ignored. Hosting platforms that inject generic variables such as `DATABASE_URL` or `REGION` therefore refuse to start until those are removed or renamed; this is deliberate, so that a misnamed setting is never mistaken for an applied one.
+
 For interactive native development, first run `scripts/bootstrap_local.py` with the same configuration and administrative migration DSN, build with `npm run build`, then start:
 
 ```bash
@@ -95,7 +97,7 @@ With the application database running and the same configuration loaded, run the
   --principal d8f54081-9c11-5c55-8d31-d8d48e40320b
 ```
 
-This processes a bounded batch into the assurance index. It does not send messages or perform external clinical effects. A production assignment scheduler, retry/dead-letter operations and independently verified workload identity are pending.
+This processes a bounded batch into the assurance index. It does not send messages or perform external clinical effects. An event with an invalid schema is dead-lettered. An event whose predecessor has not reached the inbox (a sequence gap, for example behind a dead-lettered event) is parked with the contract retry schedule of 1, 5, 30, 120 and 600 seconds and then dead-lettered, so it neither blocks the batch nor is retried forever; parked and dead-lettered deliveries are logged with identifiers only. A production assignment scheduler, alerting, dead-letter replay and independently verified workload identity are pending.
 
 ## Next delivery slice
 

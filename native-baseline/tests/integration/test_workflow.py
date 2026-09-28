@@ -363,6 +363,111 @@ def test_worker_processes_durable_events_once(api, create, draft, db, manifest):
     )
 
 
+def test_worker_parks_sequence_gaps_and_dead_letters_exhausted_deliveries(api, create, draft, db, manifest):
+    r, headers = create(draft)
+    rid = r.json()["id"]
+    patch = api.patch(
+        "/v1/resources/ORG/" + rid,
+        json={"title": "Second event"},
+        headers=changed_headers(headers, **{"If-Match": '"v1"'}),
+    )
+    assert patch.status_code == 200, patch.text
+    a = manifest["tenants"]["A"]
+    events = db.execute(
+        "SELECT event_id,sequence FROM outbox WHERE aggregate_id=%s ORDER BY sequence", (rid,)
+    ).fetchall()
+    assert [e["sequence"] for e in events] == [1, 2]
+    first, second = events[0]["event_id"], events[1]["event_id"]
+
+    def delivery(event_id):
+        return db.execute(
+            """SELECT state,attempt,next_attempt_at>now() AS deferred,
+            next_attempt_at-now() AS wait FROM outbox_delivery WHERE event_id=%s""",
+            (event_id,),
+        ).fetchone()
+
+    # An event that never reaches the inbox (quarantined schema) leaves a permanent gap behind it.
+    db.execute("UPDATE outbox_delivery SET state='dead_letter' WHERE event_id=%s", (first,))
+    drain(Settings.load(), a["id"], a["principals"]["SV"])
+    parked = delivery(second)
+    assert (parked["state"], parked["attempt"]) == ("pending", 1)
+    assert parked["wait"].total_seconds() <= 1
+    assert (
+        db.execute("SELECT count(*) AS n FROM assurance_index WHERE resource_id=%s", (rid,)).fetchone()["n"]
+        == 0
+    )
+    # Not due: a deferred delivery no longer occupies every batch.
+    db.execute("UPDATE outbox_delivery SET attempt=4,next_attempt_at=now() WHERE event_id=%s", (second,))
+    drain(Settings.load(), a["id"], a["principals"]["SV"])
+    parked = delivery(second)
+    assert (parked["state"], parked["attempt"], parked["deferred"]) == ("pending", 5, True)
+    assert 590 < parked["wait"].total_seconds() <= 600
+    drain(Settings.load(), a["id"], a["principals"]["SV"])
+    assert delivery(second)["attempt"] == 5
+    # The contract schedule is exhausted after 1, 5, 30, 120 and 600 seconds: durable dead-letter.
+    db.execute("UPDATE outbox_delivery SET next_attempt_at=now() WHERE event_id=%s", (second,))
+    drain(Settings.load(), a["id"], a["principals"]["SV"])
+    assert (delivery(second)["state"], delivery(second)["attempt"]) == ("dead_letter", 6)
+    assert db.execute("SELECT count(*) AS n FROM inbox WHERE event_id=%s", (second,)).fetchone()["n"] == 0
+
+
+def test_country_history_is_retired_once_and_kept_for_unchanged_rows(api, create, draft, db):
+    r, headers = create(draft)
+    rid = r.json()["id"]
+    body = {"payload": copy.deepcopy(draft["payload"])}
+
+    def replace_countries(version, codes):
+        body["payload"]["data"]["country_codes"] = codes
+        update = api.patch(
+            "/v1/resources/ORG/" + rid,
+            json=body,
+            headers=changed_headers(headers, **{"If-Match": f'"v{version}"'}),
+        )
+        assert update.status_code == 200, update.text
+        assert update.json()["payload"]["data"]["country_codes"] == sorted(codes)
+        return {
+            row["country_code"]: row["retired_at"]
+            for row in db.execute(
+                "SELECT country_code,retired_at FROM programme_countries WHERE programme_id=%s", (rid,)
+            ).fetchall()
+        }
+
+    assert replace_countries(1, ["ZZ", "US"]) == {"ZZ": None, "US": None}
+    retired = replace_countries(2, ["US"])
+    assert retired["US"] is None and retired["ZZ"] is not None
+    kept = replace_countries(3, ["US", "GB"])
+    assert kept == {"ZZ": retired["ZZ"], "US": None, "GB": None}  # ZZ is not retired a second time
+    back = replace_countries(4, ["ZZ"])
+    assert back["ZZ"] is None and back["US"] is not None and back["GB"] is not None
+    assert len(back) == 3
+
+
+def test_duplicate_programme_code_is_a_field_error(api, sessions, create, draft):
+    create(draft)
+    draft["title"] = "Same code again"
+    r = api.post("/v1/resources/ORG", json=draft, headers=changed_headers(sessions["A_PM"]["headers"]))
+    assert r.status_code == 422, r.text
+    error = r.json()["error"]
+    assert error["code"] == "E_SEMANTIC" and error["retryable"] is False
+    assert error["fields"] == [{"path": "/payload/data/code", "code": "unique"}]
+    assert "retry-after" not in r.headers
+    validate("Error", r.json())
+
+
+@pytest.mark.parametrize("value", ["2026-01-01T00:00:00", "2026-01-01", "2026-02-30T00:00:00Z", "soon"])
+def test_programme_dates_without_offset_are_validation_errors(api, sessions, draft, value):
+    # Previously a naive or malformed timestamp reached datetime comparison and became a 500.
+    # With rfc3339-validator installed the schema reports the closed payload (oneOf) as a whole;
+    # without it, parse_timestamp reports the exact field. Both are 422 E_VALIDATION.
+    draft["payload"]["data"]["starts_at"] = value
+    r = api.post("/v1/resources/ORG", json=draft, headers=changed_headers(sessions["A_PM"]["headers"]))
+    assert r.status_code == 422, r.text
+    error = r.json()["error"]
+    assert error["code"] == "E_VALIDATION" and error["retryable"] is False
+    assert error["fields"] and all(f["path"].startswith("/payload") for f in error["fields"])
+    validate("Error", r.json())
+
+
 def test_rls_no_context_no_cross_tenant_and_no_elevation(settings, db, manifest):
     import psycopg
 

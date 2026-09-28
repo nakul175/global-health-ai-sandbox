@@ -29,8 +29,13 @@ export async function seed(db:Database,owner:string,tenant:string){
  statements.push(db.prepare('INSERT OR IGNORE INTO audit (id,space_id,sequence,actor,action,record_id,at,digest) VALUES (?,?,1,?,?,?,?,?)').bind(`${sid}-seed`,sid,'fixture-system','workspace.initialized',null,now,await digest(items)));
  await db.batch(statements);return sid;
 }
-export async function load(db:Database,owner:string,tenant:string):Promise<Space>{
- const sid=await seed(db,owner,tenant);
+export type LoadOptions={create?:boolean};
+// Decision (#6): a workspace is created only when it is first opened through `GET /api/workspace`, the one read the
+// browser must make before anything else can render; that route and the test fixtures keep the default. Every other
+// route and every command passes `{create:false}` and gets 404 UNAVAILABLE for an owner/institution that was never
+// opened, so plain reads (registry, timeline, exports, diagnostics, media, checkpoints, connections) insert nothing.
+export async function load(db:Database,owner:string,tenant:string,{create=true}:LoadOptions={}):Promise<Space>{
+ const sid=create?await seed(db,owner,tenant):await spaceId(owner,tenant);
  const results=await db.batch([
  db.prepare('SELECT id,revision FROM spaces WHERE id = ? AND owner = ?').bind(sid,owner),
  db.prepare('SELECT id,kind,title,status,version,body,created_by AS createdBy,created_at AS createdAt,updated_at AS updatedAt FROM records WHERE space_id = ? UNION ALL SELECT id,kind,title,status,version,body,created_by AS createdBy,created_at AS createdAt,updated_at AS updatedAt FROM lab_records WHERE space_id = ? UNION ALL SELECT id,kind,title,status,version,body,created_by AS createdBy,created_at AS createdAt,updated_at AS updatedAt FROM suite_records WHERE space_id = ? ORDER BY createdAt DESC,id').bind(sid,sid,sid),
@@ -57,7 +62,7 @@ function currentRights(command:Command,space:Space){
  }
 }
 export async function mutate(db:Database,owner:string,tenant:string,profileId:string,command:Command,key:string,expected:number){
- const space=await load(db,owner,tenant),actor=actorFor(space,profileId);authorize(command.action,actor,space.records);currentRights(command,space);assertLabCurrent(command.action,command.data,space.records);suiteCurrent(command.action,command.data,space.records);
+ const space=await load(db,owner,tenant,{create:false}),actor=actorFor(space,profileId);authorize(command.action,actor,space.records);currentRights(command,space);assertLabCurrent(command.action,command.data,space.records);suiteCurrent(command.action,command.data,space.records);
  const hash=await digest(command);const existing=await db.prepare('SELECT request_hash,response FROM receipts WHERE space_id = ? AND actor = ? AND key = ?').bind(space.id,actor.id,key).first();
  if(existing){if(existing.request_hash!==hash)throw new AppError(409,'IDEMPOTENCY_CONFLICT','This retry key was used for a different request.');return {...JSON.parse(existing.response),replayed:true}}
  if(space.revision!==expected)throw new AppError(409,'VERSION_CONFLICT','This institution changed in another tab or role. Refresh and review before retrying.');

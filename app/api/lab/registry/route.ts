@@ -4,7 +4,7 @@ import { AppError,digest } from '@/lib/domain';
 import { registryResources } from '@/lib/lab';
 export const dynamic='force-dynamic';
 export async function GET(request:Request){try{
- const user=await identity(),c=context(request),url=new URL(request.url),space=await load(database(),user.userId,c.tenant),actor=actorFor(space,c.profile);
+ const user=await identity(),c=context(request),url=new URL(request.url),space=await load(database(),user.userId,c.tenant,{create:false}),actor=actorFor(space,c.profile);
  const environmentId=url.searchParams.get('environment')||'',generation=Number(url.searchParams.get('generation')),type=url.searchParams.get('type')||'Patient',search=(url.searchParams.get('search')||'').trim().toLowerCase(),runId=url.searchParams.get('run')||undefined;
  const limit=Number(url.searchParams.get('limit')||25);if(!Number.isInteger(limit)||limit<1||limit>100||!Number.isInteger(generation)||generation<1||search.length>100)throw new AppError(422,'VALIDATION','Use a current generation, search up to 100 characters and a limit from 1 to 100.');
  if(!['Patient','Organization','Practitioner','Encounter','Observation','ServiceRequest','DiagnosticReport'].includes(type))throw new AppError(422,'PROFILE_UNSUPPORTED','Resource type is not part of this registry profile.');
