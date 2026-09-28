@@ -1,5 +1,13 @@
 # Documentation changelog
 
+## 2026-09-28 — Reconciled documentation and development handover edition 1.1
+
+- Added full BRD/FSD reading editions from the preserved 456-requirement model, current HLD/LLD, ten engineering reading editions, guides, data governance and release acceptance.
+- Reconciled v0.6, later PR #13 fixes, native development profile and proposed R3 without promoting requirement or test status.
+- Preserved 1,066 original case definitions and supporting scenarios/scripts in CSV, separated historical execution identities, and added three-catalogue traceability, exact API/schema inventories and an illustrative screen atlas.
+- Archived 137 available earlier documentation/contract/fixture/catalogue/evidence files with exact hashes. Missing original Word/standalone documents remain explicit.
+- Added deterministic generation and a current-edition validator to documentation CI. No runtime code, active migration, historical verification report or deployment changed.
+
 ## 2026-09-27 — Hosted alpha code-review fixes (issues #2–#7)
 
 - `canonical()` now matches `JSON.stringify` for unrepresentable values: object keys holding `undefined` are omitted and undefined array items become `null`, so canonical output is always valid JSON (#7; unit test added).

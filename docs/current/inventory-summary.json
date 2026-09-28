@@ -1,0 +1,30 @@
+{
+  "edition": "1.1",
+  "baseline": "870b49a343f1207b8cefbecdbfb0c5c5d10c955a",
+  "original_requirements": 456,
+  "synthetic_r2_requirements": 81,
+  "government_r3_requirements": 63,
+  "original_case_suites": 1066,
+  "catalogue_rows": {
+    "Scenarios": 456,
+    "Functional": 738,
+    "Quality": 87,
+    "Critical": 40,
+    "Unit": 117,
+    "Integration": 60,
+    "Smoke": 24,
+    "HTTP Scripts": 47,
+    "Fixtures": 6,
+    "Traceability": 456
+  },
+  "historical_execution_rows": 204,
+  "http_operations": 20,
+  "command_definitions": 68,
+  "public_commands": 65,
+  "internal_media_commands": 3,
+  "hosted_tables": 11,
+  "active_migrations": 4,
+  "original_target_screens": 113,
+  "alpha_views_and_tabs": 28,
+  "atlas_screens": 141
+}

@@ -1,0 +1,2139 @@
+[
+  {
+    "id": "TC-GOV-IAM-01-P",
+    "requirement_id": "GOV-IAM-01",
+    "scenario": "positive",
+    "level": "integration",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision the versioned synthetic fixture and assigned identities.",
+      "Perform: Verify stable institutional identities and derive active membership server-side.",
+      "Read persisted state, authorised projection and audit."
+    ],
+    "expected": "Two verified principals access the same assigned organisation; caller-supplied roles confer no rights.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-IAM-01-N",
+    "requirement_id": "GOV-IAM-01",
+    "scenario": "negative",
+    "level": "integration",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision two organisations and relevant current/expired identities.",
+      "Submit a valid session with a forged role and an unassigned org ID.",
+      "Check HTTP/error state, stored records, emitted effects and disclosure."
+    ],
+    "expected": "Return 404 or 403 without organisation data or a new membership.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-IAM-02-P",
+    "requirement_id": "GOV-IAM-02",
+    "scenario": "positive",
+    "level": "integration",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision the versioned synthetic fixture and assigned identities.",
+      "Perform: Keep organisation boundaries in reads, writes, search, jobs and artifacts.",
+      "Read persisted state, authorised projection and audit."
+    ],
+    "expected": "A scoped user can retrieve its own records and all cross-org routes deny access.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-IAM-02-N",
+    "requirement_id": "GOV-IAM-02",
+    "scenario": "negative",
+    "level": "integration",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision two organisations and relevant current/expired identities.",
+      "Use Institution A credentials with each Institution B record and cursor.",
+      "Check HTTP/error state, stored records, emitted effects and disclosure."
+    ],
+    "expected": "No titles, counts, artifacts or side effects from Institution B.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-IAM-03-P",
+    "requirement_id": "GOV-IAM-03",
+    "scenario": "positive",
+    "level": "integration",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision the versioned synthetic fixture and assigned identities.",
+      "Perform: Use recipient-bound single-use invitations expiring after 72 hours.",
+      "Read persisted state, authorised projection and audit."
+    ],
+    "expected": "The intended verified recipient accepts once and receives only the granted role.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-IAM-03-N",
+    "requirement_id": "GOV-IAM-03",
+    "scenario": "negative",
+    "level": "integration",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision two organisations and relevant current/expired identities.",
+      "Accept with another recipient, after expiry, or a second time.",
+      "Check HTTP/error state, stored records, emitted effects and disclosure."
+    ],
+    "expected": "Reject mismatches/expiry; replay cannot create extra membership.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-IAM-04-P",
+    "requirement_id": "GOV-IAM-04",
+    "scenario": "positive",
+    "level": "integration",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision the versioned synthetic fixture and assigned identities.",
+      "Perform: Enforce independent review using stable person and conflict history.",
+      "Read persisted state, authorised projection and audit."
+    ],
+    "expected": "A distinct conflict-free reviewer can approve the exact reviewed version.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-IAM-04-N",
+    "requirement_id": "GOV-IAM-04",
+    "scenario": "negative",
+    "level": "integration",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision two organisations and relevant current/expired identities.",
+      "Author changes role/alias and attempts to approve its own pack.",
+      "Check HTTP/error state, stored records, emitted effects and disclosure."
+    ],
+    "expected": "Reject approval and retain the original contribution history.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-IAM-05-P",
+    "requirement_id": "GOV-IAM-05",
+    "scenario": "positive",
+    "level": "integration",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision the versioned synthetic fixture and assigned identities.",
+      "Perform: Revoke membership on the next protected action and prevent last-admin removal.",
+      "Read persisted state, authorised projection and audit."
+    ],
+    "expected": "Suspension denies subsequent requests and job dispatch; another active admin can manage recovery.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-IAM-05-N",
+    "requirement_id": "GOV-IAM-05",
+    "scenario": "negative",
+    "level": "integration",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision two organisations and relevant current/expired identities.",
+      "Revoke the last admin or replay an earlier authorised intent after suspension.",
+      "Check HTTP/error state, stored records, emitted effects and disclosure."
+    ],
+    "expected": "Last-admin removal conflicts; revoked replay exposes no protected outcome.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-IAM-06-P",
+    "requirement_id": "GOV-IAM-06",
+    "scenario": "positive",
+    "level": "integration",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision the versioned synthetic fixture and assigned identities.",
+      "Perform: Limit service and support identities to explicit scope, purpose and expiry.",
+      "Read persisted state, authorised projection and audit."
+    ],
+    "expected": "A diagnostic grant exposes only redacted metadata for at most four hours.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-IAM-06-N",
+    "requirement_id": "GOV-IAM-06",
+    "scenario": "negative",
+    "level": "integration",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision two organisations and relevant current/expired identities.",
+      "Use expired support scope or service identity to approve/issue evidence.",
+      "Check HTTP/error state, stored records, emitted effects and disclosure."
+    ],
+    "expected": "Deny action and never return credentials, labels or raw media.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-CTX-01-P",
+    "requirement_id": "GOV-CTX-01",
+    "scenario": "positive",
+    "level": "integration",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision the versioned synthetic fixture and assigned identities.",
+      "Perform: Create organisation-owned programmes with objective, country, currency, timezone and dates.",
+      "Read persisted state, authorised projection and audit."
+    ],
+    "expected": "Valid programmes persist for a second assigned user with the same values.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-CTX-01-N",
+    "requirement_id": "GOV-CTX-01",
+    "scenario": "negative",
+    "level": "integration",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision two organisations and relevant current/expired identities.",
+      "Submit end date before start or an invalid currency/timezone.",
+      "Check HTTP/error state, stored records, emitted effects and disclosure."
+    ],
+    "expected": "Return field errors and write no programme.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-CTX-02-P",
+    "requirement_id": "GOV-CTX-02",
+    "scenario": "positive",
+    "level": "integration",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision the versioned synthetic fixture and assigned identities.",
+      "Perform: Version local context and retain value-level provenance and unknowns.",
+      "Read persisted state, authorised projection and audit."
+    ],
+    "expected": "Each required assumption has source/classification; prior snapshots remain unchanged.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-CTX-02-N",
+    "requirement_id": "GOV-CTX-02",
+    "scenario": "negative",
+    "level": "integration",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision two organisations and relevant current/expired identities.",
+      "Remove a required capacity/source field or change a frozen snapshot.",
+      "Check HTTP/error state, stored records, emitted effects and disclosure."
+    ],
+    "expected": "Block the dependent calculation or mutation; never substitute zero.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-CTX-03-P",
+    "requirement_id": "GOV-CTX-03",
+    "scenario": "positive",
+    "level": "integration",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision the versioned synthetic fixture and assigned identities.",
+      "Perform: Import bounded CSV atomically with preview and row errors.",
+      "Read persisted state, authorised projection and audit."
+    ],
+    "expected": "Valid preview imports exactly once within 5 MiB/10000-row bounds.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-CTX-03-N",
+    "requirement_id": "GOV-CTX-03",
+    "scenario": "negative",
+    "level": "integration",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision two organisations and relevant current/expired identities.",
+      "Include duplicate district IDs, invalid rows or an oversized file.",
+      "Check HTTP/error state, stored records, emitted effects and disclosure."
+    ],
+    "expected": "Show specific errors; previous context remains unchanged.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-CTX-04-P",
+    "requirement_id": "GOV-CTX-04",
+    "scenario": "positive",
+    "level": "integration",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision the versioned synthetic fixture and assigned identities.",
+      "Perform: Generate clearly labelled deterministic synthetic ecosystem substitutes.",
+      "Read persisted state, authorised projection and audit."
+    ],
+    "expected": "Same recipe/version/seed gives identical logical records and hashes.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-CTX-04-N",
+    "requirement_id": "GOV-CTX-04",
+    "scenario": "negative",
+    "level": "integration",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision two organisations and relevant current/expired identities.",
+      "Attempt to mark generated waveform evidence as prospective clinical.",
+      "Check HTTP/error state, stored records, emitted effects and disclosure."
+    ],
+    "expected": "Reject class promotion; synthetic labels persist in exports.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-CTX-05-P",
+    "requirement_id": "GOV-CTX-05",
+    "scenario": "positive",
+    "level": "integration",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision the versioned synthetic fixture and assigned identities.",
+      "Perform: Archive programmes without erasing evidence or active responsibilities.",
+      "Read persisted state, authorised projection and audit."
+    ],
+    "expected": "An idle programme archives and retains authorised history.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-CTX-05-N",
+    "requirement_id": "GOV-CTX-05",
+    "scenario": "negative",
+    "level": "integration",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision two organisations and relevant current/expired identities.",
+      "Archive a programme with a running evaluation or unresolved pilot incident.",
+      "Check HTTP/error state, stored records, emitted effects and disclosure."
+    ],
+    "expected": "Return state conflict and leave programme active.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-SUP-01-P",
+    "requirement_id": "GOV-SUP-01",
+    "scenario": "positive",
+    "level": "integration",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision the versioned synthetic fixture and assigned identities.",
+      "Perform: Isolate suppliers to assigned submissions and released feedback.",
+      "Read persisted state, authorised projection and audit."
+    ],
+    "expected": "Supplier A reads/edits its draft and sees approved feedback only.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-SUP-01-N",
+    "requirement_id": "GOV-SUP-01",
+    "scenario": "negative",
+    "level": "integration",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision two organisations and relevant current/expired identities.",
+      "Query competitor IDs, prices, labels, search counts and exports.",
+      "Check HTTP/error state, stored records, emitted effects and disclosure."
+    ],
+    "expected": "Deny or omit all competitor/protected fields.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-SUP-02-P",
+    "requirement_id": "GOV-SUP-02",
+    "scenario": "positive",
+    "level": "integration",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision the versioned synthetic fixture and assigned identities.",
+      "Perform: Record immutable model identity, declared limitations and version assurance.",
+      "Read persisted state, authorised projection and audit."
+    ],
+    "expected": "Verified artifact digest is distinct from supplier-declared remote version.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-SUP-02-N",
+    "requirement_id": "GOV-SUP-02",
+    "scenario": "negative",
+    "level": "integration",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision two organisations and relevant current/expired identities.",
+      "Submit a mutable remote version as independently verified without evidence.",
+      "Check HTTP/error state, stored records, emitted effects and disclosure."
+    ],
+    "expected": "Reject assurance claim or mark it supplier_declared/unverifiable.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-SUP-03-P",
+    "requirement_id": "GOV-SUP-03",
+    "scenario": "positive",
+    "level": "integration",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision the versioned synthetic fixture and assigned identities.",
+      "Perform: Keep submitted versions immutable and preserve withdrawal history.",
+      "Read persisted state, authorised projection and audit."
+    ],
+    "expected": "Return creates a revision; withdrawal retains prior evaluated bytes.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-SUP-03-N",
+    "requirement_id": "GOV-SUP-03",
+    "scenario": "negative",
+    "level": "integration",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision two organisations and relevant current/expired identities.",
+      "Edit submitted payload directly or delete a referenced submission.",
+      "Check HTTP/error state, stored records, emitted effects and disclosure."
+    ],
+    "expected": "Reject overwrite/delete and preserve provenance.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-SUP-04-P",
+    "requirement_id": "GOV-SUP-04",
+    "scenario": "positive",
+    "level": "integration",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision the versioned synthetic fixture and assigned identities.",
+      "Perform: Record price currency, period, source and intended use.",
+      "Read persisted state, authorised projection and audit."
+    ],
+    "expected": "Comparable quotes retain source/date and fixed/per-screening components.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-SUP-04-N",
+    "requirement_id": "GOV-SUP-04",
+    "scenario": "negative",
+    "level": "integration",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision two organisations and relevant current/expired identities.",
+      "Combine quotes in different currencies without approved conversion inputs.",
+      "Check HTTP/error state, stored records, emitted effects and disclosure."
+    ],
+    "expected": "Block monetary comparison and explain the mismatch.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-EVA-01-P",
+    "requirement_id": "GOV-EVA-01",
+    "scenario": "positive",
+    "level": "integration",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision the versioned synthetic fixture and assigned identities.",
+      "Perform: Freeze protocol and all model/cohort/context/method dependencies before evaluation.",
+      "Read persisted state, authorised projection and audit."
+    ],
+    "expected": "Run manifest contains verified hashes and a reviewed protocol version.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-EVA-01-N",
+    "requirement_id": "GOV-EVA-01",
+    "scenario": "negative",
+    "level": "integration",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision two organisations and relevant current/expired identities.",
+      "Alter a source after freeze and reuse the old current comparison claim.",
+      "Check HTTP/error state, stored records, emitted effects and disclosure."
+    ],
+    "expected": "Old run retains old hashes and is labelled stale for the new draft.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-EVA-02-P",
+    "requirement_id": "GOV-EVA-02",
+    "scenario": "positive",
+    "level": "integration",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision the versioned synthetic fixture and assigned identities.",
+      "Perform: Compare suppliers on the same declared cohort and eligibility rules.",
+      "Read persisted state, authorised projection and audit."
+    ],
+    "expected": "Comparisons show paired cohort and inclusion/exclusion counts.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-EVA-02-N",
+    "requirement_id": "GOV-EVA-02",
+    "scenario": "negative",
+    "level": "integration",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision two organisations and relevant current/expired identities.",
+      "Attempt to rank incompatible protocols or different undeclared cohorts.",
+      "Check HTTP/error state, stored records, emitted effects and disclosure."
+    ],
+    "expected": "Reject unqualified ranking and identify incompatible dependencies.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-EVA-03-P",
+    "requirement_id": "GOV-EVA-03",
+    "scenario": "positive",
+    "level": "integration",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision the versioned synthetic fixture and assigned identities.",
+      "Perform: Protect reference labels from supplier execution and responses.",
+      "Read persisted state, authorised projection and audit."
+    ],
+    "expected": "Trusted scorer joins labels only after predictions are received.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-EVA-03-N",
+    "requirement_id": "GOV-EVA-03",
+    "scenario": "negative",
+    "level": "integration",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision two organisations and relevant current/expired identities.",
+      "Inspect outbound request, provider logs and vendor result projection for labels.",
+      "Check HTTP/error state, stored records, emitted effects and disclosure."
+    ],
+    "expected": "No reference labels or hidden outcomes are disclosed.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-EVA-04-P",
+    "requirement_id": "GOV-EVA-04",
+    "scenario": "positive",
+    "level": "integration",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision the versioned synthetic fixture and assigned identities.",
+      "Perform: Use durable runs with leases, fencing, cancellation and explicit unknown outcomes.",
+      "Read persisted state, authorised projection and audit."
+    ],
+    "expected": "A current worker publishes once; expired/cancelled workers cannot overwrite.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-EVA-04-N",
+    "requirement_id": "GOV-EVA-04",
+    "scenario": "negative",
+    "level": "integration",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision two organisations and relevant current/expired identities.",
+      "Expire a lease or cancel while an external request is in flight.",
+      "Check HTTP/error state, stored records, emitted effects and disclosure."
+    ],
+    "expected": "Fence late results; retain unknown outcome without automatic resend.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-EVA-05-P",
+    "requirement_id": "GOV-EVA-05",
+    "scenario": "positive",
+    "level": "integration",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision the versioned synthetic fixture and assigned identities.",
+      "Perform: Report coverage, failure counts and metric denominators.",
+      "Read persisted state, authorised projection and audit."
+    ],
+    "expected": "Partial run reports completed/eligible and does not pass complete-cohort acceptance.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-EVA-05-N",
+    "requirement_id": "GOV-EVA-05",
+    "scenario": "negative",
+    "level": "integration",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision two organisations and relevant current/expired identities.",
+      "Drop failed predictions and calculate an apparently complete ranking.",
+      "Check HTTP/error state, stored records, emitted effects and disclosure."
+    ],
+    "expected": "Reject completion claim and show omitted/error counts.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-EVA-06-P",
+    "requirement_id": "GOV-EVA-06",
+    "scenario": "positive",
+    "level": "integration",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision the versioned synthetic fixture and assigned identities.",
+      "Perform: Compute pinned metrics and uncertainty with explicit non-estimable values.",
+      "Read persisted state, authorised projection and audit."
+    ],
+    "expected": "Known confusion matrix gives expected metrics and Wilson bounds.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-EVA-06-N",
+    "requirement_id": "GOV-EVA-06",
+    "scenario": "negative",
+    "level": "integration",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision two organisations and relevant current/expired identities.",
+      "Use a zero denominator, nonfinite probability or out-of-range probability.",
+      "Check HTTP/error state, stored records, emitted effects and disclosure."
+    ],
+    "expected": "Metric is not_estimable or validation fails; no fabricated zero/one.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-EVA-07-P",
+    "requirement_id": "GOV-EVA-07",
+    "scenario": "positive",
+    "level": "integration",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision the versioned synthetic fixture and assigned identities.",
+      "Perform: Pre-specify subgroups and suppress insufficient group detail.",
+      "Read persisted state, authorised projection and audit."
+    ],
+    "expected": "Groups below approved disclosure threshold show insufficient_evidence.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-EVA-07-N",
+    "requirement_id": "GOV-EVA-07",
+    "scenario": "negative",
+    "level": "integration",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision two organisations and relevant current/expired identities.",
+      "Request an unapproved subgroup or infer suppressed counts from totals.",
+      "Check HTTP/error state, stored records, emitted effects and disclosure."
+    ],
+    "expected": "Reject subgroup change after freeze and suppress identifying breakdowns.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-EVA-08-P",
+    "requirement_id": "GOV-EVA-08",
+    "scenario": "positive",
+    "level": "integration",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision the versioned synthetic fixture and assigned identities.",
+      "Perform: Expose evidence classes separately and retain a no-AI comparator where specified.",
+      "Read persisted state, authorised projection and audit."
+    ],
+    "expected": "Every result/export shows evidence class and source of baseline comparison.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-EVA-08-N",
+    "requirement_id": "GOV-EVA-08",
+    "scenario": "negative",
+    "level": "integration",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision two organisations and relevant current/expired identities.",
+      "Mix synthetic and clinical evidence into an unqualified clinical score.",
+      "Check HTTP/error state, stored records, emitted effects and disclosure."
+    ],
+    "expected": "Reject mixed claim; separate tables and limitations remain visible.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-BUD-01-P",
+    "requirement_id": "GOV-BUD-01",
+    "scenario": "positive",
+    "level": "integration",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision the versioned synthetic fixture and assigned identities.",
+      "Perform: Calculate costs with explicit versioned decimal assumptions and minor-unit money.",
+      "Read persisted state, authorised projection and audit."
+    ],
+    "expected": "Reference scenario yields annual totals 34000000,29000000,29000000 INR minor units.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-BUD-01-N",
+    "requirement_id": "GOV-BUD-01",
+    "scenario": "negative",
+    "level": "integration",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision two organisations and relevant current/expired identities.",
+      "Use floating nonfinite money, negative cost or mixed currency inputs.",
+      "Check HTTP/error state, stored records, emitted effects and disclosure."
+    ],
+    "expected": "Return validation error and no apparently valid cost total.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-BUD-02-P",
+    "requirement_id": "GOV-BUD-02",
+    "scenario": "positive",
+    "level": "integration",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision the versioned synthetic fixture and assigned identities.",
+      "Perform: Calculate referral demand and capacity gaps without inventing queue delays.",
+      "Read persisted state, authorised projection and audit."
+    ],
+    "expected": "Reference scenario yields demand 1700 and capacity gap 200.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-BUD-02-N",
+    "requirement_id": "GOV-BUD-02",
+    "scenario": "negative",
+    "level": "integration",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision two organisations and relevant current/expired identities.",
+      "Ask for waiting-time estimate with only annual volume and capacity.",
+      "Check HTTP/error state, stored records, emitted effects and disclosure."
+    ],
+    "expected": "Return unsupported/insufficient model, not an invented delay.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-BUD-03-P",
+    "requirement_id": "GOV-BUD-03",
+    "scenario": "positive",
+    "level": "integration",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision the versioned synthetic fixture and assigned identities.",
+      "Perform: Track committed/received funding once and show post-grant gaps.",
+      "Read persisted state, authorised projection and audit."
+    ],
+    "expected": "Reference funding yields gaps 0,9000000,29000000.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-BUD-03-N",
+    "requirement_id": "GOV-BUD-03",
+    "scenario": "negative",
+    "level": "integration",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision two organisations and relevant current/expired identities.",
+      "Count one commitment twice when changing committed to received.",
+      "Check HTTP/error state, stored records, emitted effects and disclosure."
+    ],
+    "expected": "Prevent double count and keep unfunded years visible.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-BUD-04-P",
+    "requirement_id": "GOV-BUD-04",
+    "scenario": "positive",
+    "level": "integration",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision the versioned synthetic fixture and assigned identities.",
+      "Perform: Compare explicit low/base/high and current-service scenarios with provenance.",
+      "Read persisted state, authorised projection and audit."
+    ],
+    "expected": "Each result identifies inputs, currency, horizon, price date and calculation version.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-BUD-04-N",
+    "requirement_id": "GOV-BUD-04",
+    "scenario": "negative",
+    "level": "integration",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision two organisations and relevant current/expired identities.",
+      "Compare different horizons or missing baseline assumptions as equivalent.",
+      "Check HTTP/error state, stored records, emitted effects and disclosure."
+    ],
+    "expected": "Block equivalent-cost claim and identify missing/mismatched inputs.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-BUD-05-P",
+    "requirement_id": "GOV-BUD-05",
+    "scenario": "positive",
+    "level": "integration",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision the versioned synthetic fixture and assigned identities.",
+      "Perform: Keep revised budgets separate from approved evidence snapshots.",
+      "Read persisted state, authorised projection and audit."
+    ],
+    "expected": "Changing a price creates a new calculation/version and leaves issued pack unchanged.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-BUD-05-N",
+    "requirement_id": "GOV-BUD-05",
+    "scenario": "negative",
+    "level": "integration",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision two organisations and relevant current/expired identities.",
+      "Update a cost row used by an issued pack in place.",
+      "Check HTTP/error state, stored records, emitted effects and disclosure."
+    ],
+    "expected": "Preserve issued bytes and require a successor pack for new figures.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-EVD-01-P",
+    "requirement_id": "GOV-EVD-01",
+    "scenario": "positive",
+    "level": "integration",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision the versioned synthetic fixture and assigned identities.",
+      "Perform: Snapshot comparison, budget and limitations into a traceable committee pack.",
+      "Read persisted state, authorised projection and audit."
+    ],
+    "expected": "Pack links every finding to version/hash and exposes missing evidence.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-EVD-01-N",
+    "requirement_id": "GOV-EVD-01",
+    "scenario": "negative",
+    "level": "integration",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision two organisations and relevant current/expired identities.",
+      "Create a finding without a source or silently hide a failed run.",
+      "Check HTTP/error state, stored records, emitted effects and disclosure."
+    ],
+    "expected": "Reject unsupported claim or mark it explicitly as author interpretation/gap.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-EVD-02-P",
+    "requirement_id": "GOV-EVD-02",
+    "scenario": "positive",
+    "level": "integration",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision the versioned synthetic fixture and assigned identities.",
+      "Perform: Review and issue only exact independently approved pack bytes.",
+      "Read persisted state, authorised projection and audit."
+    ],
+    "expected": "Issuer obtains approval for the current digest from an eligible distinct person.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-EVD-02-N",
+    "requirement_id": "GOV-EVD-02",
+    "scenario": "negative",
+    "level": "integration",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision two organisations and relevant current/expired identities.",
+      "Modify pack after approval or reuse approval for another digest.",
+      "Check HTTP/error state, stored records, emitted effects and disclosure."
+    ],
+    "expected": "Invalidate approval and block issuance.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-EVD-03-P",
+    "requirement_id": "GOV-EVD-03",
+    "scenario": "positive",
+    "level": "integration",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision the versioned synthetic fixture and assigned identities.",
+      "Perform: Correct or withdraw issued evidence without overwriting history.",
+      "Read persisted state, authorised projection and audit."
+    ],
+    "expected": "Successor links predecessor; old issued bytes remain verifiable with status.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-EVD-03-N",
+    "requirement_id": "GOV-EVD-03",
+    "scenario": "negative",
+    "level": "integration",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision two organisations and relevant current/expired identities.",
+      "Replace issued artifact contents or remove a correction reason.",
+      "Check HTTP/error state, stored records, emitted effects and disclosure."
+    ],
+    "expected": "Reject replacement and require an explicit correction record.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-EVD-04-P",
+    "requirement_id": "GOV-EVD-04",
+    "scenario": "positive",
+    "level": "integration",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision the versioned synthetic fixture and assigned identities.",
+      "Perform: Export PDF, DOCX, XLSX and canonical JSON with evidence labels and provenance.",
+      "Read persisted state, authorised projection and audit."
+    ],
+    "expected": "Exports reconcile figures and state editable copies are uncontrolled after modification.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-EVD-04-N",
+    "requirement_id": "GOV-EVD-04",
+    "scenario": "negative",
+    "level": "integration",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision two organisations and relevant current/expired identities.",
+      "Place spreadsheet formula payloads or hidden vendor fields in export inputs.",
+      "Check HTTP/error state, stored records, emitted effects and disclosure."
+    ],
+    "expected": "Escape dangerous cells and omit unauthorised fields.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-EVD-05-P",
+    "requirement_id": "GOV-EVD-05",
+    "scenario": "positive",
+    "level": "integration",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision the versioned synthetic fixture and assigned identities.",
+      "Perform: Authorise every export and bind expiring artifact grants.",
+      "Read persisted state, authorised projection and audit."
+    ],
+    "expected": "Eligible user downloads the exact artifact hash via <=300-second grant.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-EVD-05-N",
+    "requirement_id": "GOV-EVD-05",
+    "scenario": "negative",
+    "level": "integration",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision two organisations and relevant current/expired identities.",
+      "Use expired/revoked/cross-org grant or replay after membership revocation.",
+      "Check HTTP/error state, stored records, emitted effects and disclosure."
+    ],
+    "expected": "Deny new access without leaking artifact bytes.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-INT-01-P",
+    "requirement_id": "GOV-INT-01",
+    "scenario": "positive",
+    "level": "integration",
+    "stage": "R3B",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision the versioned synthetic fixture and assigned identities.",
+      "Perform: Distinguish mock, official sandbox and live adapter modes.",
+      "Read persisted state, authorised projection and audit."
+    ],
+    "expected": "Mode and profile version persist in UI, results and reports.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-INT-01-N",
+    "requirement_id": "GOV-INT-01",
+    "scenario": "negative",
+    "level": "integration",
+    "stage": "R3B",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision two organisations and relevant current/expired identities.",
+      "Treat a mock or GET health check as passed transaction conformance.",
+      "Check HTTP/error state, stored records, emitted effects and disclosure."
+    ],
+    "expected": "Reject conformance claim and retain mock/health-check label.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-INT-02-P",
+    "requirement_id": "GOV-INT-02",
+    "scenario": "positive",
+    "level": "integration",
+    "stage": "R3B",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision the versioned synthetic fixture and assigned identities.",
+      "Perform: Require destination, data-transfer authority and version-matched tests before activation.",
+      "Read persisted state, authorised projection and audit."
+    ],
+    "expected": "Approved configuration activates only after exact-version required tests pass.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-INT-02-N",
+    "requirement_id": "GOV-INT-02",
+    "scenario": "negative",
+    "level": "integration",
+    "stage": "R3B",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision two organisations and relevant current/expired identities.",
+      "Change endpoint/credential/profile after test or omit transfer authority.",
+      "Check HTTP/error state, stored records, emitted effects and disclosure."
+    ],
+    "expected": "Invalidate activation and block outbound work.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-INT-03-P",
+    "requirement_id": "GOV-INT-03",
+    "scenario": "positive",
+    "level": "integration",
+    "stage": "R3B",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision the versioned synthetic fixture and assigned identities.",
+      "Perform: Constrain egress, secrets, redirects, body size and timeouts.",
+      "Read persisted state, authorised projection and audit."
+    ],
+    "expected": "Only approved destination receives mapped authorised data and scoped credential.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-INT-03-N",
+    "requirement_id": "GOV-INT-03",
+    "scenario": "negative",
+    "level": "integration",
+    "stage": "R3B",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision two organisations and relevant current/expired identities.",
+      "Try private IP/DNS rebinding/redirect or inspect errors for secret values.",
+      "Check HTTP/error state, stored records, emitted effects and disclosure."
+    ],
+    "expected": "Block unsafe traffic and redact secrets/provider bodies.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-INT-04-P",
+    "requirement_id": "GOV-INT-04",
+    "scenario": "positive",
+    "level": "integration",
+    "stage": "R3B",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision the versioned synthetic fixture and assigned identities.",
+      "Perform: Test selected national transactions including consent and recovery failures.",
+      "Read persisted state, authorised projection and audit."
+    ],
+    "expected": "Actual provisioned sandbox passes declared positive and negative cases.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-INT-04-N",
+    "requirement_id": "GOV-INT-04",
+    "scenario": "negative",
+    "level": "integration",
+    "stage": "R3B",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision two organisations and relevant current/expired identities.",
+      "No endpoint or credential is configured for the selected adapter.",
+      "Check HTTP/error state, stored records, emitted effects and disclosure."
+    ],
+    "expected": "Report blocked_external_dependency, never a dummy success.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-INT-05-P",
+    "requirement_id": "GOV-INT-05",
+    "scenario": "positive",
+    "level": "integration",
+    "stage": "R3B",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision the versioned synthetic fixture and assigned identities.",
+      "Perform: Reconcile ambiguous external operations before retries.",
+      "Read persisted state, authorised projection and audit."
+    ],
+    "expected": "Provider operation ID/status resolves safe retry or unknown outcome.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-INT-05-N",
+    "requirement_id": "GOV-INT-05",
+    "scenario": "negative",
+    "level": "integration",
+    "stage": "R3B",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision two organisations and relevant current/expired identities.",
+      "Timeout after provider acceptance and trigger a generic automatic replay.",
+      "Check HTTP/error state, stored records, emitted effects and disclosure."
+    ],
+    "expected": "Prevent replay unless adapter proves idempotence; retain unknown state.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-PIL-01-P",
+    "requirement_id": "GOV-PIL-01",
+    "scenario": "positive",
+    "level": "integration",
+    "stage": "R3B",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision the versioned synthetic fixture and assigned identities.",
+      "Perform: Approve pilot sites, model versions, measures and stopping criteria before activation.",
+      "Read persisted state, authorised projection and audit."
+    ],
+    "expected": "Different eligible reviewer approves the exact pilot-plan version.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-PIL-01-N",
+    "requirement_id": "GOV-PIL-01",
+    "scenario": "negative",
+    "level": "integration",
+    "stage": "R3B",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision two organisations and relevant current/expired identities.",
+      "Activate a changed or unapproved plan.",
+      "Check HTTP/error state, stored records, emitted effects and disclosure."
+    ],
+    "expected": "Reject activation and require review.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-PIL-02-P",
+    "requirement_id": "GOV-PIL-02",
+    "scenario": "positive",
+    "level": "integration",
+    "stage": "R3B",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision the versioned synthetic fixture and assigned identities.",
+      "Perform: Ingest scoped observations with source IDs and event/receive timestamps.",
+      "Read persisted state, authorised projection and audit."
+    ],
+    "expected": "Identical source event replay does not duplicate observations.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-PIL-02-N",
+    "requirement_id": "GOV-PIL-02",
+    "scenario": "negative",
+    "level": "integration",
+    "stage": "R3B",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision two organisations and relevant current/expired identities.",
+      "Send same event ID with changed payload or a different organisation.",
+      "Check HTTP/error state, stored records, emitted effects and disclosure."
+    ],
+    "expected": "Return duplicate conflict/cross-org denial with no overwrite.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-PIL-03-P",
+    "requirement_id": "GOV-PIL-03",
+    "scenario": "positive",
+    "level": "integration",
+    "stage": "R3B",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision the versioned synthetic fixture and assigned identities.",
+      "Perform: Show freshness, completeness and revised late-data windows.",
+      "Read persisted state, authorised projection and audit."
+    ],
+    "expected": "Late event updates event-time window and marks it revised.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-PIL-03-N",
+    "requirement_id": "GOV-PIL-03",
+    "scenario": "negative",
+    "level": "integration",
+    "stage": "R3B",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision two organisations and relevant current/expired identities.",
+      "Stop feed beyond its freshness interval or omit expected sites.",
+      "Check HTTP/error state, stored records, emitted effects and disclosure."
+    ],
+    "expected": "Show stale/incomplete state; do not imply zero incidents.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-PIL-04-P",
+    "requirement_id": "GOV-PIL-04",
+    "scenario": "positive",
+    "level": "integration",
+    "stage": "R3B",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision the versioned synthetic fixture and assigned identities.",
+      "Perform: Track alerts with responsible owner and reasoned resolution.",
+      "Read persisted state, authorised projection and audit."
+    ],
+    "expected": "Assigned user acknowledges/investigates/resolves with an audit trail.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-PIL-04-N",
+    "requirement_id": "GOV-PIL-04",
+    "scenario": "negative",
+    "level": "integration",
+    "stage": "R3B",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision two organisations and relevant current/expired identities.",
+      "Resolve without reason or send through an unconfigured external notification channel.",
+      "Check HTTP/error state, stored records, emitted effects and disclosure."
+    ],
+    "expected": "Reject resolution or show delivery unavailable, never delivered.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-PIL-05-P",
+    "requirement_id": "GOV-PIL-05",
+    "scenario": "positive",
+    "level": "integration",
+    "stage": "R3B",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision the versioned synthetic fixture and assigned identities.",
+      "Perform: Pause platform dispatch and require independent revalidation/resumption.",
+      "Read persisted state, authorised projection and audit."
+    ],
+    "expected": "Pause blocks new work; distinct safety reviewer can resume approved unchanged scope.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-PIL-05-N",
+    "requirement_id": "GOV-PIL-05",
+    "scenario": "negative",
+    "level": "integration",
+    "stage": "R3B",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision two organisations and relevant current/expired identities.",
+      "Claim external clinical shutdown without a control adapter or self-resume after material change.",
+      "Check HTTP/error state, stored records, emitted effects and disclosure."
+    ],
+    "expected": "Reject claim/resume and require revalidation.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-REG-01-P",
+    "requirement_id": "GOV-REG-01",
+    "scenario": "positive",
+    "level": "integration",
+    "stage": "R3C",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision the versioned synthetic fixture and assigned identities.",
+      "Perform: Share only approved redacted evidence with named recipient institutions.",
+      "Read persisted state, authorised projection and audit."
+    ],
+    "expected": "Recipient sees the approved projection and exact version.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-REG-01-N",
+    "requirement_id": "GOV-REG-01",
+    "scenario": "negative",
+    "level": "integration",
+    "stage": "R3C",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision two organisations and relevant current/expired identities.",
+      "Include restricted price, raw cohort or private notes in shared projection.",
+      "Check HTTP/error state, stored records, emitted effects and disclosure."
+    ],
+    "expected": "Block disclosure until redaction/review passes.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-REG-02-P",
+    "requirement_id": "GOV-REG-02",
+    "scenario": "positive",
+    "level": "integration",
+    "stage": "R3C",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision the versioned synthetic fixture and assigned identities.",
+      "Perform: Require local transferability assessment before reuse claims.",
+      "Read persisted state, authorised projection and audit."
+    ],
+    "expected": "Population/setting/device/language/pathway differences produce explicit assessment.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-REG-02-N",
+    "requirement_id": "GOV-REG-02",
+    "scenario": "negative",
+    "level": "integration",
+    "stage": "R3C",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision two organisations and relevant current/expired identities.",
+      "Mark evidence universally valid because another country used it.",
+      "Check HTTP/error state, stored records, emitted effects and disclosure."
+    ],
+    "expected": "Reject equivalence claim; record local_tests_required or not_applicable.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-REG-03-P",
+    "requirement_id": "GOV-REG-03",
+    "scenario": "positive",
+    "level": "integration",
+    "stage": "R3C",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision the versioned synthetic fixture and assigned identities.",
+      "Perform: Revoke future registry access and disclose limits of download recall.",
+      "Read persisted state, authorised projection and audit."
+    ],
+    "expected": "Revoked recipient cannot open new records or generate new download grants.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-REG-03-N",
+    "requirement_id": "GOV-REG-03",
+    "scenario": "negative",
+    "level": "integration",
+    "stage": "R3C",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision two organisations and relevant current/expired identities.",
+      "Assume already downloaded files have been erased remotely.",
+      "Check HTTP/error state, stored records, emitted effects and disclosure."
+    ],
+    "expected": "UI/report states recall is not guaranteed; no false deletion claim.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-REG-04-P",
+    "requirement_id": "GOV-REG-04",
+    "scenario": "positive",
+    "level": "integration",
+    "stage": "R3C",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision the versioned synthetic fixture and assigned identities.",
+      "Perform: Track model/evidence age and material changes in reused records.",
+      "Read persisted state, authorised projection and audit."
+    ],
+    "expected": "Updated model makes prior evidence applicability visibly stale.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-REG-04-N",
+    "requirement_id": "GOV-REG-04",
+    "scenario": "negative",
+    "level": "integration",
+    "stage": "R3C",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision two organisations and relevant current/expired identities.",
+      "Reuse old assessment under a new model digest without review.",
+      "Check HTTP/error state, stored records, emitted effects and disclosure."
+    ],
+    "expected": "Require reassessment and retain old version context.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-POR-01-P",
+    "requirement_id": "GOV-POR-01",
+    "scenario": "positive",
+    "level": "integration",
+    "stage": "R3C",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision the versioned synthetic fixture and assigned identities.",
+      "Perform: Aggregate only authorised programmes with provenance and freshness.",
+      "Read persisted state, authorised projection and audit."
+    ],
+    "expected": "Portfolio totals reconcile accessible records and expose stale sources.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-POR-01-N",
+    "requirement_id": "GOV-POR-01",
+    "scenario": "negative",
+    "level": "integration",
+    "stage": "R3C",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision two organisations and relevant current/expired identities.",
+      "Use totals/filter facets to infer restricted organisations or suppliers.",
+      "Check HTTP/error state, stored records, emitted effects and disclosure."
+    ],
+    "expected": "Exclude hidden records and metadata.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-POR-02-P",
+    "requirement_id": "GOV-POR-02",
+    "scenario": "positive",
+    "level": "integration",
+    "stage": "R3C",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision the versioned synthetic fixture and assigned identities.",
+      "Perform: Publish only separately approved public transparency fields.",
+      "Read persisted state, authorised projection and audit."
+    ],
+    "expected": "Public preview exactly matches approved redacted projection.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-POR-02-N",
+    "requirement_id": "GOV-POR-02",
+    "scenario": "negative",
+    "level": "integration",
+    "stage": "R3C",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision two organisations and relevant current/expired identities.",
+      "Expose internal API serialisation directly as public registry response.",
+      "Check HTTP/error state, stored records, emitted effects and disclosure."
+    ],
+    "expected": "Deny publication until approved projection is used.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-POR-03-P",
+    "requirement_id": "GOV-POR-03",
+    "scenario": "positive",
+    "level": "integration",
+    "stage": "R3C",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision the versioned synthetic fixture and assigned identities.",
+      "Perform: Preserve institutional ownership and staff handover.",
+      "Read persisted state, authorised projection and audit."
+    ],
+    "expected": "Successor finds decisions, sources, funding commitments and outstanding actions.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-POR-03-N",
+    "requirement_id": "GOV-POR-03",
+    "scenario": "negative",
+    "level": "integration",
+    "stage": "R3C",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision two organisations and relevant current/expired identities.",
+      "Departing staff account tries to delete institution evidence or retain access.",
+      "Check HTTP/error state, stored records, emitted effects and disclosure."
+    ],
+    "expected": "Deny deletion/access and preserve organisation records.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-DEP-01-P",
+    "requirement_id": "GOV-DEP-01",
+    "scenario": "positive",
+    "level": "integration",
+    "stage": "R3C",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision the versioned synthetic fixture and assigned identities.",
+      "Perform: Define a verifiable deployment profile for selected government infrastructure.",
+      "Read persisted state, authorised projection and audit."
+    ],
+    "expected": "Profile identifies region, services, identity, key custody and operational owners.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-DEP-01-N",
+    "requirement_id": "GOV-DEP-01",
+    "scenario": "negative",
+    "level": "integration",
+    "stage": "R3C",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision two organisations and relevant current/expired identities.",
+      "Claim regional residency/private hosting before provisioning and verification.",
+      "Check HTTP/error state, stored records, emitted effects and disclosure."
+    ],
+    "expected": "Keep profile proposed/blocked and exclude the claim.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-DEP-02-P",
+    "requirement_id": "GOV-DEP-02",
+    "scenario": "positive",
+    "level": "integration",
+    "stage": "R3C",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision the versioned synthetic fixture and assigned identities.",
+      "Perform: Use a genuine identity boundary outside the trusted hosted dispatcher.",
+      "Read persisted state, authorised projection and audit."
+    ],
+    "expected": "Alternative deployment verifies tokens and rejects forged identity headers.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-DEP-02-N",
+    "requirement_id": "GOV-DEP-02",
+    "scenario": "negative",
+    "level": "integration",
+    "stage": "R3C",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision two organisations and relevant current/expired identities.",
+      "Copy alpha header trust to an internet-facing untrusted proxy.",
+      "Check HTTP/error state, stored records, emitted effects and disclosure."
+    ],
+    "expected": "Reject unauthenticated caller regardless of spoofed headers.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-DEP-03-P",
+    "requirement_id": "GOV-DEP-03",
+    "scenario": "positive",
+    "level": "integration",
+    "stage": "R3C",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision the versioned synthetic fixture and assigned identities.",
+      "Perform: Provide complete documented institution export and exit.",
+      "Read persisted state, authorised projection and audit."
+    ],
+    "expected": "Export/import drill preserves records, artifacts, relationships and evidence hashes.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-DEP-03-N",
+    "requirement_id": "GOV-DEP-03",
+    "scenario": "negative",
+    "level": "integration",
+    "stage": "R3C",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision two organisations and relevant current/expired identities.",
+      "Omit audit/provenance or leave credentials in export.",
+      "Check HTTP/error state, stored records, emitted effects and disclosure."
+    ],
+    "expected": "Fail completeness/security checks; no exit-success claim.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-DEP-04-P",
+    "requirement_id": "GOV-DEP-04",
+    "scenario": "positive",
+    "level": "integration",
+    "stage": "R3C",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision the versioned synthetic fixture and assigned identities.",
+      "Perform: Exercise encrypted recovery with separately recoverable keys.",
+      "Read persisted state, authorised projection and audit."
+    ],
+    "expected": "Isolated restore verifies hashes and meets measured RPO/RTO targets.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-DEP-04-N",
+    "requirement_id": "GOV-DEP-04",
+    "scenario": "negative",
+    "level": "integration",
+    "stage": "R3C",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision two organisations and relevant current/expired identities.",
+      "Restore running provider jobs and automatically resend them.",
+      "Check HTTP/error state, stored records, emitted effects and disclosure."
+    ],
+    "expected": "Reconcile unknown operations; prevent unsolicited replay.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-NFR-01-P",
+    "requirement_id": "GOV-NFR-01",
+    "scenario": "positive",
+    "level": "nonfunctional",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision the versioned synthetic fixture and assigned identities.",
+      "Perform: Meet explicit measured interactive latency and concurrency targets.",
+      "Read persisted state, authorised projection and audit."
+    ],
+    "expected": "At HLD envelope p95 reads <1s and writes <2s in 30-minute test, with zero isolation failures.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-NFR-01-N",
+    "requirement_id": "GOV-NFR-01",
+    "scenario": "negative",
+    "level": "nonfunctional",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision two organisations and relevant current/expired identities.",
+      "Overload one organisation while another performs ordinary work.",
+      "Check HTTP/error state, stored records, emitted effects and disclosure."
+    ],
+    "expected": "Backpressure/rate limits protect peers and preserve state.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-NFR-02-P",
+    "requirement_id": "GOV-NFR-02",
+    "scenario": "positive",
+    "level": "nonfunctional",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision the versioned synthetic fixture and assigned identities.",
+      "Perform: Target WCAG 2.2 AA with automated and manual accessibility evidence.",
+      "Read persisted state, authorised projection and audit."
+    ],
+    "expected": "Keyboard/screen-reader/reflow users complete priority journeys.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-NFR-02-N",
+    "requirement_id": "GOV-NFR-02",
+    "scenario": "negative",
+    "level": "nonfunctional",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision two organisations and relevant current/expired identities.",
+      "Use colour-only state, inaccessible validation or trapped focus.",
+      "Check HTTP/error state, stored records, emitted effects and disclosure."
+    ],
+    "expected": "Fail acceptance until equivalent accessible interaction exists.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-NFR-03-P",
+    "requirement_id": "GOV-NFR-03",
+    "scenario": "positive",
+    "level": "nonfunctional",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision the versioned synthetic fixture and assigned identities.",
+      "Perform: Support externalised language strings and low-bandwidth presentation.",
+      "Read persisted state, authorised projection and audit."
+    ],
+    "expected": "Locale formatting is consistent and essential tables remain usable without optional charts.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-NFR-03-N",
+    "requirement_id": "GOV-NFR-03",
+    "scenario": "negative",
+    "level": "nonfunctional",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision two organisations and relevant current/expired identities.",
+      "Assume offline actions can transfer data without fresh authority.",
+      "Check HTTP/error state, stored records, emitted effects and disclosure."
+    ],
+    "expected": "Block protected offline writes and explain reconnection requirement.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-NFR-04-P",
+    "requirement_id": "GOV-NFR-04",
+    "scenario": "positive",
+    "level": "nonfunctional",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision the versioned synthetic fixture and assigned identities.",
+      "Perform: Minimise sensitive data and implement configurable retention/legal hold.",
+      "Read persisted state, authorised projection and audit."
+    ],
+    "expected": "Approved retention deletes eligible data while preserving held/dependent evidence.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-NFR-04-N",
+    "requirement_id": "GOV-NFR-04",
+    "scenario": "negative",
+    "level": "nonfunctional",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision two organisations and relevant current/expired identities.",
+      "Delete held records or commit secrets/patient fixtures to Git.",
+      "Check HTTP/error state, stored records, emitted effects and disclosure."
+    ],
+    "expected": "Block operation and fail release review.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-NFR-05-P",
+    "requirement_id": "GOV-NFR-05",
+    "scenario": "positive",
+    "level": "nonfunctional",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision the versioned synthetic fixture and assigned identities.",
+      "Perform: Record auditable mutations without secrets or raw protected payloads.",
+      "Read persisted state, authorised projection and audit."
+    ],
+    "expected": "Actor, org, action, version, time and digest correlate with actual write.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-NFR-05-N",
+    "requirement_id": "GOV-NFR-05",
+    "scenario": "negative",
+    "level": "nonfunctional",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision two organisations and relevant current/expired identities.",
+      "Force write failure or inject a token into an error path.",
+      "Check HTTP/error state, stored records, emitted effects and disclosure."
+    ],
+    "expected": "No successful audit for rolled-back write and no token leakage.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-NFR-06-P",
+    "requirement_id": "GOV-NFR-06",
+    "scenario": "positive",
+    "level": "nonfunctional",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision the versioned synthetic fixture and assigned identities.",
+      "Perform: Maintain API compatibility, idempotency and optimistic conflict control.",
+      "Read persisted state, authorised projection and audit."
+    ],
+    "expected": "Retries return same authorised logical outcome and stale writes return 412.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-NFR-06-N",
+    "requirement_id": "GOV-NFR-06",
+    "scenario": "negative",
+    "level": "nonfunctional",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision two organisations and relevant current/expired identities.",
+      "Reuse key with changed body or omit If-Match on mutation.",
+      "Check HTTP/error state, stored records, emitted effects and disclosure."
+    ],
+    "expected": "Return 409 or 428 without side effects.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-NFR-07-P",
+    "requirement_id": "GOV-NFR-07",
+    "scenario": "positive",
+    "level": "nonfunctional",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision the versioned synthetic fixture and assigned identities.",
+      "Perform: Keep documentation traceability and honest implementation/test status current.",
+      "Read persisted state, authorised projection and audit."
+    ],
+    "expected": "Every requirement maps to design, package and planned/executed case; CI checks pass.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-NFR-07-N",
+    "requirement_id": "GOV-NFR-07",
+    "scenario": "negative",
+    "level": "nonfunctional",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision two organisations and relevant current/expired identities.",
+      "Mark a test passed without evidence or change application behaviour without a documentation note.",
+      "Check HTTP/error state, stored records, emitted effects and disclosure."
+    ],
+    "expected": "Documentation gate fails and requests evidence/update.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-NFR-08-P",
+    "requirement_id": "GOV-NFR-08",
+    "scenario": "positive",
+    "level": "nonfunctional",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision the versioned synthetic fixture and assigned identities.",
+      "Perform: Operate observable jobs, incidents, backups and support ownership.",
+      "Read persisted state, authorised projection and audit."
+    ],
+    "expected": "Synthetic failure triggers visible incident/freshness state and an assigned runbook.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-NFR-08-N",
+    "requirement_id": "GOV-NFR-08",
+    "scenario": "negative",
+    "level": "nonfunctional",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision two organisations and relevant current/expired identities.",
+      "Assume an in-app alert proves external notification delivery.",
+      "Check HTTP/error state, stored records, emitted effects and disclosure."
+    ],
+    "expected": "Show actual delivery state and missing channel dependency.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-NFR-09-P",
+    "requirement_id": "GOV-NFR-09",
+    "scenario": "positive",
+    "level": "nonfunctional",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision the versioned synthetic fixture and assigned identities.",
+      "Perform: Test recovery objectives and release scopes rather than claiming unmeasured SLAs.",
+      "Read persisted state, authorised projection and audit."
+    ],
+    "expected": "Selected deployment demonstrates proposed RPO <=24h and RTO <=8h in a recorded exercise.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-NFR-09-N",
+    "requirement_id": "GOV-NFR-09",
+    "scenario": "negative",
+    "level": "nonfunctional",
+    "stage": "R3A",
+    "preconditions": "Running R3 application for the specified stage, provisioned synthetic fixture v1, required real sandbox dependency when testing an adapter.",
+    "steps": [
+      "Provision two organisations and relevant current/expired identities.",
+      "Quote availability or recovery guarantee from local fixture success.",
+      "Check HTTP/error state, stored records, emitted effects and disclosure."
+    ],
+    "expected": "Block unsupported operational claim and retain pending gate.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-UNIT-METRICS",
+    "requirement_id": "GOV-EVA-06",
+    "scenario": "unit-metrics",
+    "level": "unit",
+    "stage": "R3A",
+    "preconditions": "Provisioned isolated synthetic environment; actual application required except pure unit/reference tests.",
+    "steps": [
+      "Calculate fixture confusion matrix metrics and Wilson intervals.",
+      "Repeat with denominator zero."
+    ],
+    "expected": "Exact fixture point estimates; finite ordered bounds; zero denominator not_estimable.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-UNIT-MONEY",
+    "requirement_id": "GOV-BUD-01",
+    "scenario": "unit-money",
+    "level": "unit",
+    "stage": "R3A",
+    "preconditions": "Provisioned isolated synthetic environment; actual application required except pure unit/reference tests.",
+    "steps": [
+      "Calculate acceptance fixture with decimal arithmetic.",
+      "Check half-up rounding at .5 minor units and no intermediate count rounding."
+    ],
+    "expected": "Known annual/total costs exactly match; no binary-float accumulation.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-UNIT-POLICY",
+    "requirement_id": "GOV-IAM-04",
+    "scenario": "unit-policy",
+    "level": "unit",
+    "stage": "R3A",
+    "preconditions": "Provisioned isolated synthetic environment; actual application required except pure unit/reference tests.",
+    "steps": [
+      "Evaluate author/reviewer aliases, revoked membership and expired support predicate."
+    ],
+    "expected": "Same person never independently approves; expired/revoked scope denies.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-UNIT-STATE",
+    "requirement_id": "GOV-EVD-02",
+    "scenario": "unit-state",
+    "level": "unit",
+    "stage": "R3A",
+    "preconditions": "Provisioned isolated synthetic environment; actual application required except pure unit/reference tests.",
+    "steps": [
+      "Enumerate allowed evidence transitions.",
+      "Attempt issue after a digest-changing edit."
+    ],
+    "expected": "Only allow-listed transitions; stale approval blocks issue.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-DB-ISOLATION",
+    "requirement_id": "GOV-IAM-02",
+    "scenario": "db-isolation",
+    "level": "database",
+    "stage": "R3A",
+    "preconditions": "Provisioned isolated synthetic environment; actual application required except pure unit/reference tests.",
+    "steps": [
+      "Apply candidate migrations and seed to empty SQLite.",
+      "Attempt wrong-org and wrong-type parent links."
+    ],
+    "expected": "Foreign-key/type checks reject both; valid scoped relationship succeeds.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-SMOKE-DECISION",
+    "requirement_id": "GOV-EVD-01",
+    "scenario": "smoke-decision",
+    "level": "smoke",
+    "stage": "R3A",
+    "preconditions": "Provisioned isolated synthetic environment; actual application required except pure unit/reference tests.",
+    "steps": [
+      "Authenticate two distinct users.",
+      "Create synthetic programme/context/suppliers and freeze protocol.",
+      "Run reference comparison, calculate budget, review and issue.",
+      "Download and hash pack; attempt cross-org access."
+    ],
+    "expected": "Known figures and artifact hash match; independent issue succeeds; cross-org read denies.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-SMOKE-CONNECTOR",
+    "requirement_id": "GOV-INT-04",
+    "scenario": "smoke-connector",
+    "level": "smoke",
+    "stage": "R3B",
+    "preconditions": "Provisioned isolated synthetic environment; actual application required except pure unit/reference tests.",
+    "steps": [
+      "Select provisioned official sandbox adapter.",
+      "Run synthetic positive/negative/timeout transaction set."
+    ],
+    "expected": "Actual transaction assertions pass; absent endpoint means blocked, never passed.",
+    "status": "planned",
+    "evidence": null
+  },
+  {
+    "id": "TC-GOV-SMOKE-PILOT",
+    "requirement_id": "GOV-PIL-02",
+    "scenario": "smoke-pilot",
+    "level": "smoke",
+    "stage": "R3B",
+    "preconditions": "Provisioned isolated synthetic environment; actual application required except pure unit/reference tests.",
+    "steps": [
+      "Activate approved synthetic pilot.",
+      "Ingest duplicate/late observation and pause dispatch."
+    ],
+    "expected": "Dedupe and revised window visible; new work blocked by pause.",
+    "status": "planned",
+    "evidence": null
+  }
+]

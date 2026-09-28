@@ -1,0 +1,457 @@
+Requirement,Title,Priority,Release,FSD control,Screen,Primary cases,Critical cases,Other suite cases,Coverage state
+FR-ORG-001,Organisation hierarchy,P0,R1,FS-ORG-001,S-ORG-02,TC-ORG-001 EX-ORG-001,,,Designed; application execution pending
+FR-ORG-002,Verified organisation onboarding,P0,R1,FS-ORG-002,S-ORG-03,TC-ORG-002 EX-ORG-002,,,Designed; application execution pending
+FR-ORG-003,Tenant boundaries,P0,R1,FS-ORG-003,S-ORG-01,TC-ORG-003 EX-ORG-003,AC01,IT042 SM04,Designed; application execution pending
+FR-ORG-004,Programme configuration,P1,R1,FS-ORG-004,S-ORG-02,TC-ORG-004 EX-ORG-004,,,Designed; application execution pending
+FR-ORG-005,Cross organisation collaboration,P1,R1,FS-ORG-005,S-ORG-02,TC-ORG-005 EX-ORG-005,,,Designed; application execution pending
+FR-ORG-006,Accountability register,P0,R1,FS-ORG-006,S-ORG-02,TC-ORG-006 EX-ORG-006,,,Designed; application execution pending
+FR-ORG-007,Lifecycle management,P1,R1,FS-ORG-007,S-ORG-03,TC-ORG-007 EX-ORG-007,,,Designed; application execution pending
+FR-ORG-008,Delegated network administration,P1,R2,FS-ORG-008,S-ORG-03,TC-ORG-008 EX-ORG-008,,,Designed; application execution pending
+FR-ORG-009,Institutional ownership changes,P1,R1,FS-ORG-009,S-ORG-03,TC-ORG-009 EX-ORG-009,,,Designed; application execution pending
+FR-ORG-010,Demonstration environment,P1,R1,FS-ORG-010,S-ORG-02,TC-ORG-010 EX-ORG-010,,,Designed; application execution pending
+FR-IAM-001,User invitations,P0,R1,FS-IAM-001,S-IAM-01,TC-IAM-001 EX-IAM-001,,,Designed; application execution pending
+FR-IAM-002,Authentication,P0,R1,FS-IAM-002,S-IAM-02,TC-IAM-002 EX-IAM-002,,,Designed; application execution pending
+FR-IAM-003,Multifactor authentication,P0,R1,FS-IAM-003,S-IAM-02,TC-IAM-003 EX-IAM-003,,,Designed; application execution pending
+FR-IAM-004,Enterprise federation,P1,R1,FS-IAM-004,S-IAM-03,TC-IAM-004 EX-IAM-004,,,Designed; application execution pending
+FR-IAM-005,Provisioning and deprovisioning,P1,R2,FS-IAM-005,S-IAM-03,TC-IAM-005 EX-IAM-005,,,Designed; application execution pending
+FR-IAM-006,Account recovery,P0,R1,FS-IAM-006,S-IAM-03,TC-IAM-006 EX-IAM-006,,,Designed; application execution pending
+FR-IAM-007,Session management,P0,R1,FS-IAM-007,S-IAM-02,TC-IAM-007 EX-IAM-007,AC03,,Designed; application execution pending
+FR-IAM-008,Membership changes,P0,R1,FS-IAM-008,S-IAM-02,TC-IAM-008 EX-IAM-008,AC02 AC03,,Designed; application execution pending
+FR-IAM-009,Temporary access,P0,R1,FS-IAM-009,S-IAM-02,TC-IAM-009 EX-IAM-009,,,Designed; application execution pending
+FR-IAM-010,Service identities,P0,R1,FS-IAM-010,S-IAM-03,TC-IAM-010 EX-IAM-010,,,Designed; application execution pending
+FR-IAM-011,User preferences,P1,R1,FS-IAM-011,S-IAM-02,TC-IAM-011 EX-IAM-011,,,Designed; application execution pending
+FR-IAM-012,Professional verification,P0,R1,FS-IAM-012,S-IAM-02,TC-IAM-012 EX-IAM-012,,,Designed; application execution pending
+FR-IAM-013,Identity reconciliation,P1,R1,FS-IAM-013,S-IAM-03,TC-IAM-013 EX-IAM-013,,,Designed; application execution pending
+FR-IAM-014,Access recertification,P0,R1,FS-IAM-014,S-IAM-03,TC-IAM-014 EX-IAM-014,,,Designed; application execution pending
+FR-ACC-001,Permission model,P0,R1,FS-ACC-001,S-ACC-02,TC-ACC-001 EX-ACC-001,,SM03,Designed; application execution pending
+FR-ACC-002,Granular actions,P0,R1,FS-ACC-002,S-ACC-02,TC-ACC-002 EX-ACC-002,,,Designed; application execution pending
+FR-ACC-003,Independent approval,P0,R1,FS-ACC-003,S-ACC-03,TC-ACC-003 EX-ACC-003,AC04,UT015 UT016 UT017 UT018 UT019 UT020 UT021 UT022 UT024 IT048 SM17,Designed; application execution pending
+FR-ACC-004,Privileged administration,P0,R1,FS-ACC-004,S-ACC-02,TC-ACC-004 EX-ACC-004,,,Designed; application execution pending
+FR-ACC-005,Exceptional access,P0,R1,FS-ACC-005,S-ACC-03,TC-ACC-005 EX-ACC-005,,,Designed; application execution pending
+FR-ACC-006,Permission inheritance,P0,R1,FS-ACC-006,S-ACC-02,TC-ACC-006 EX-ACC-006,AC02,,Designed; application execution pending
+FR-ACC-007,Uniform enforcement,P0,R1,FS-ACC-007,S-ACC-01,TC-ACC-007 EX-ACC-007,AC01 AC12,UT102 UT103 UT104 UT105 IT001 IT002 IT003 IT004 IT005 IT006 IT007 IT008 IT009 IT010 IT011 IT012 IT013 IT014 IT015 IT016 IT017 IT018 IT019 IT020 IT021 IT022 IT023 IT024 IT025 IT026 IT027 IT028 IT029 IT030 IT031 IT032 IT033 IT034 IT035 IT036 IT037 IT038 IT039 IT040 IT042 IT057 SM02 SM05 SM06 SM11 SM18 SM19 SM23,Designed; application execution pending
+FR-ACC-008,Access request workflow,P0,R1,FS-ACC-008,S-ACC-01,TC-ACC-008 EX-ACC-008,,,Designed; application execution pending
+FR-ACC-009,Dual control,P0,R1,FS-ACC-009,S-ACC-03,TC-ACC-009 EX-ACC-009,AC02,UT016 UT017 UT018 UT019 UT020 UT021 UT022 UT023 IT048,Designed; application execution pending
+FR-ACC-010,Permission changes during work,P0,R1,FS-ACC-010,S-ACC-02,TC-ACC-010 EX-ACC-010,AC03,IT041 IT057 SM10,Designed; application execution pending
+FR-ACC-011,Permission explanations,P1,R1,FS-ACC-011,S-ACC-02,TC-ACC-011 EX-ACC-011,,,Designed; application execution pending
+FR-ACC-012,Conflict aware assignment,P0,R1,FS-ACC-012,S-ACC-03,TC-ACC-012 EX-ACC-012,AC04,,Designed; application execution pending
+FR-CTR-001,Country profiles,P0,R1,FS-CTR-001,S-CTR-02,TC-CTR-001 EX-CTR-001,,,Designed; application execution pending
+FR-CTR-002,Applicability assessment,P0,R1,FS-CTR-002,S-CTR-02,TC-CTR-002 EX-CTR-002,,,Designed; application execution pending
+FR-CTR-003,Rule provenance,P0,R1,FS-CTR-003,S-CTR-02,TC-CTR-003 EX-CTR-003,,,Designed; application execution pending
+FR-CTR-004,Residency and transfer rules,P0,R1,FS-CTR-004,S-CTR-02,TC-CTR-004 EX-CTR-004,AC07,,Designed; application execution pending
+FR-CTR-005,Restriction precedence,P0,R1,FS-CTR-005,S-CTR-03,TC-CTR-005 EX-CTR-005,,,Designed; application execution pending
+FR-CTR-006,Local terminology and language,P1,R1,FS-CTR-006,S-CTR-02,TC-CTR-006 EX-CTR-006,,,Designed; application execution pending
+FR-CTR-007,Rule change impact,P0,R1,FS-CTR-007,S-CTR-03,TC-CTR-007 EX-CTR-007,,,Designed; application execution pending
+FR-CTR-008,Authority boundaries,P0,R1,FS-CTR-008,S-CTR-02,TC-CTR-008 EX-CTR-008,AC25,,Designed; application execution pending
+FR-CTR-009,Regulatory collaboration,P1,R2,FS-CTR-009,S-CTR-02,TC-CTR-009 EX-CTR-009,,,Designed; application execution pending
+FR-CTR-010,Profile activation,P0,R1,FS-CTR-010,S-CTR-03,TC-CTR-010 EX-CTR-010,AC34,,Designed; application execution pending
+FR-DEM-001,Problem statements,P1,R1,FS-DEM-001,S-DEM-02,TC-DEM-001 EX-DEM-001,,,Designed; application execution pending
+FR-DEM-002,Calls for solutions,P1,R1,FS-DEM-002,S-DEM-02,TC-DEM-002 EX-DEM-002,,,Designed; application execution pending
+FR-DEM-003,Applicant screening,P1,R1,FS-DEM-003,S-DEM-03,TC-DEM-003 EX-DEM-003,,,Designed; application execution pending
+FR-DEM-004,Portfolio prioritisation,P1,R1,FS-DEM-004,S-DEM-03,TC-DEM-004 EX-DEM-004,,,Designed; application execution pending
+FR-DEM-005,Budget and buyer identification,P1,R1,FS-DEM-005,S-DEM-02,TC-DEM-005 EX-DEM-005,,,Designed; application execution pending
+FR-DEM-006,Feasibility review,P1,R1,FS-DEM-006,S-DEM-03,TC-DEM-006 EX-DEM-006,,,Designed; application execution pending
+FR-DEM-007,Demand aggregation,P1,R2,FS-DEM-007,S-DEM-02,TC-DEM-007 EX-DEM-007,,,Designed; application execution pending
+FR-DEM-008,Pipeline management,P1,R1,FS-DEM-008,S-DEM-01,TC-DEM-008 EX-DEM-008,,,Designed; application execution pending
+FR-NET-001,Site registry,P0,R1,FS-NET-001,S-NET-02,TC-NET-001 EX-NET-001,,,Designed; application execution pending
+FR-NET-002,Qualification and renewal,P0,R1,FS-NET-002,S-NET-03,TC-NET-002 EX-NET-002,,,Designed; application execution pending
+FR-NET-003,Capacity planning,P1,R1,FS-NET-003,S-NET-03,TC-NET-003 EX-NET-003,,,Designed; application execution pending
+FR-NET-004,Local accountability,P0,R1,FS-NET-004,S-NET-02,TC-NET-004 EX-NET-004,,,Designed; application execution pending
+FR-NET-005,Partner agreements,P1,R1,FS-NET-005,S-NET-02,TC-NET-005 EX-NET-005,,,Designed; application execution pending
+FR-NET-006,Expert matching,P1,R2,FS-NET-006,S-NET-01,TC-NET-006 EX-NET-006,,,Designed; application execution pending
+FR-NET-007,Site performance,P1,R1,FS-NET-007,S-NET-01,TC-NET-007 EX-NET-007,,,Designed; application execution pending
+FR-NET-008,Partner suspension,P0,R1,FS-NET-008,S-NET-03,TC-NET-008 EX-NET-008,,,Designed; application execution pending
+FR-NET-009,Community participation,P1,R2,FS-NET-009,S-NET-02,TC-NET-009 EX-NET-009,,,Designed; application execution pending
+FR-SOL-001,Product identity,P0,R1,FS-SOL-001,S-SOL-02,TC-SOL-001 EX-SOL-001,,,Designed; application execution pending
+FR-SOL-002,Version identity,P0,R1,FS-SOL-002,S-SOL-02,TC-SOL-002 EX-SOL-002,AC17,,Designed; application execution pending
+FR-SOL-003,Submission package,P1,R1,FS-SOL-003,S-SOL-02,TC-SOL-003 EX-SOL-003,,,Designed; application execution pending
+FR-SOL-004,Claims register,P0,R1,FS-SOL-004,S-SOL-02,TC-SOL-004 EX-SOL-004,,,Designed; application execution pending
+FR-SOL-005,Regulatory status,P0,R1,FS-SOL-005,S-SOL-03,TC-SOL-005 EX-SOL-005,,,Designed; application execution pending
+FR-SOL-006,Deployment modes,P1,R1,FS-SOL-006,S-SOL-03,TC-SOL-006 EX-SOL-006,,,Designed; application execution pending
+FR-SOL-007,Dependency disclosure,P0,R1,FS-SOL-007,S-SOL-02,TC-SOL-007 EX-SOL-007,,,Designed; application execution pending
+FR-SOL-008,Commercial readiness,P1,R1,FS-SOL-008,S-SOL-02,TC-SOL-008 EX-SOL-008,,,Designed; application execution pending
+FR-SOL-009,Confidentiality controls,P1,R1,FS-SOL-009,S-SOL-02,TC-SOL-009 EX-SOL-009,,,Designed; application execution pending
+FR-SOL-010,Withdrawal and recall,P0,R1,FS-SOL-010,S-SOL-03,TC-SOL-010 EX-SOL-010,AC29,,Designed; application execution pending
+FR-SOL-011,Comparable profiles,P1,R2,FS-SOL-011,S-SOL-01,TC-SOL-011 EX-SOL-011,,,Designed; application execution pending
+FR-SOL-012,Ownership disputes,P0,R1,FS-SOL-012,S-SOL-03,TC-SOL-012 EX-SOL-012,,,Designed; application execution pending
+FR-AGR-001,Agreement register,P0,R1,FS-AGR-001,S-AGR-02,TC-AGR-001 EX-AGR-001,,,Designed; application execution pending
+FR-AGR-002,Rights by activity,P0,R1,FS-AGR-002,S-AGR-02,TC-AGR-002 EX-AGR-002,AC06,,Designed; application execution pending
+FR-AGR-003,Evidence ownership,P0,R1,FS-AGR-003,S-AGR-02,TC-AGR-003 EX-AGR-003,,,Designed; application execution pending
+FR-AGR-004,Term and expiry,P0,R1,FS-AGR-004,S-AGR-01,TC-AGR-004 EX-AGR-004,AC05,,Designed; application execution pending
+FR-AGR-005,Subprocessors and providers,P0,R1,FS-AGR-005,S-AGR-02,TC-AGR-005 EX-AGR-005,,,Designed; application execution pending
+FR-AGR-006,Funding restrictions,P1,R1,FS-AGR-006,S-AGR-02,TC-AGR-006 EX-AGR-006,,,Designed; application execution pending
+FR-AGR-007,Independence terms,P0,R1,FS-AGR-007,S-AGR-02,TC-AGR-007 EX-AGR-007,,,Designed; application execution pending
+FR-AGR-008,Contract exceptions,P1,R1,FS-AGR-008,S-AGR-03,TC-AGR-008 EX-AGR-008,,,Designed; application execution pending
+FR-AGR-009,Signature integration,P1,R2,FS-AGR-009,S-AGR-03,TC-AGR-009 EX-AGR-009,,,Designed; application execution pending
+FR-AGR-010,Liability allocation,P0,R1,FS-AGR-010,S-AGR-03,TC-AGR-010 EX-AGR-010,,,Designed; application execution pending
+FR-WFL-001,Configurable gates,P0,R1,FS-WFL-001,S-WFL-02,TC-WFL-001 EX-WFL-001,,,Designed; application execution pending
+FR-WFL-002,Task orchestration,P1,R1,FS-WFL-002,S-WFL-02,TC-WFL-002 EX-WFL-002,,,Designed; application execution pending
+FR-WFL-003,Decision records,P0,R1,FS-WFL-003,S-WFL-03,TC-WFL-003 EX-WFL-003,,,Designed; application execution pending
+FR-WFL-004,Parallel review,P0,R1,FS-WFL-004,S-WFL-03,TC-WFL-004 EX-WFL-004,,,Designed; application execution pending
+FR-WFL-005,Conditional decisions,P0,R1,FS-WFL-005,S-WFL-03,TC-WFL-005 EX-WFL-005,,,Designed; application execution pending
+FR-WFL-006,Rework and resubmission,P0,R1,FS-WFL-006,S-WFL-02,TC-WFL-006 EX-WFL-006,,,Designed; application execution pending
+FR-WFL-007,Appeals,P1,R1,FS-WFL-007,S-WFL-03,TC-WFL-007 EX-WFL-007,,,Designed; application execution pending
+FR-WFL-008,Suspension and resumption,P0,R1,FS-WFL-008,S-WFL-03,TC-WFL-008 EX-WFL-008,,,Designed; application execution pending
+FR-WFL-009,Amendments,P0,R1,FS-WFL-009,S-WFL-02,TC-WFL-009 EX-WFL-009,,,Designed; application execution pending
+FR-WFL-010,Service clocks,P1,R1,FS-WFL-010,S-WFL-01,TC-WFL-010 EX-WFL-010,,,Designed; application execution pending
+FR-ETH-001,Ethics applicability,P0,R1,FS-ETH-001,S-ETH-02,TC-ETH-001 EX-ETH-001,,,Designed; application execution pending
+FR-ETH-002,Approval records,P0,R1,FS-ETH-002,S-ETH-02,TC-ETH-002 EX-ETH-002,AC21,,Designed; application execution pending
+FR-ETH-003,Consent and notices,P0,R2,FS-ETH-003,S-ETH-02,TC-ETH-003 EX-ETH-003,AC21,,Designed; application execution pending
+FR-ETH-004,Vulnerable populations,P0,R2,FS-ETH-004,S-ETH-02,TC-ETH-004 EX-ETH-004,,,Designed; application execution pending
+FR-ETH-005,Secondary use,P0,R1,FS-ETH-005,S-ETH-02,TC-ETH-005 EX-ETH-005,,,Designed; application execution pending
+FR-ETH-006,Participant withdrawal,P0,R2,FS-ETH-006,S-ETH-03,TC-ETH-006 EX-ETH-006,,,Designed; application execution pending
+FR-ETH-007,Clinical oversight,P0,R2,FS-ETH-007,S-ETH-02,TC-ETH-007 EX-ETH-007,,,Designed; application execution pending
+FR-ETH-008,Ethics renewal,P0,R1,FS-ETH-008,S-ETH-01,TC-ETH-008 EX-ETH-008,,,Designed; application execution pending
+FR-ETH-009,Participant communication,P1,R2,FS-ETH-009,S-ETH-03,TC-ETH-009 EX-ETH-009,,,Designed; application execution pending
+FR-ETH-010,Ethical complaints,P0,R1,FS-ETH-010,S-ETH-03,TC-ETH-010 EX-ETH-010,,,Designed; application execution pending
+FR-DAC-001,Dataset catalogue,P0,R1,FS-DAC-001,S-DAC-02,TC-DAC-001 EX-DAC-001,,,Designed; application execution pending
+FR-DAC-002,Data access applications,P0,R1,FS-DAC-002,S-DAC-02,TC-DAC-002 EX-DAC-002,,,Designed; application execution pending
+FR-DAC-003,Purpose bound grants,P0,R1,FS-DAC-003,S-DAC-03,TC-DAC-003 EX-DAC-003,AC05 AC06,UT001 UT002 UT003 UT004 UT005 UT006 UT007 UT008 UT009 UT010 UT011 UT012 UT013 SM13,Designed; application execution pending
+FR-DAC-004,Consent and legal basis metadata,P0,R1,FS-DAC-004,S-DAC-02,TC-DAC-004 EX-DAC-004,,,Designed; application execution pending
+FR-DAC-005,Data minimisation,P0,R1,FS-DAC-005,S-DAC-03,TC-DAC-005 EX-DAC-005,,,Designed; application execution pending
+FR-DAC-006,Data residence,P0,R1,FS-DAC-006,S-DAC-02,TC-DAC-006 EX-DAC-006,AC07,,Designed; application execution pending
+FR-DAC-007,Pseudonymisation,P0,R1,FS-DAC-007,S-DAC-02,TC-DAC-007 EX-DAC-007,,,Designed; application execution pending
+FR-DAC-008,Revocation and downstream impact,P0,R1,FS-DAC-008,S-DAC-03,TC-DAC-008 EX-DAC-008,,UT014 IT041 IT046 IT051,Designed; application execution pending
+FR-DAC-009,Controlled exports,P0,R1,FS-DAC-009,S-DAC-03,TC-DAC-009 EX-DAC-009,AC27,UT106 UT107 UT108 UT109 UT110 UT111 IT046 IT047,Designed; application execution pending
+FR-DAC-010,Federated access,P1,R2,FS-DAC-010,S-DAC-03,TC-DAC-010 EX-DAC-010,,,Designed; application execution pending
+FR-DAC-011,Benchmark secrecy,P0,R1,FS-DAC-011,S-DAC-03,TC-DAC-011 EX-DAC-011,AC12,IT050,Designed; application execution pending
+FR-DAC-012,Data rights requests,P0,R1,FS-DAC-012,S-DAC-03,TC-DAC-012 EX-DAC-012,,,Designed; application execution pending
+FR-ING-001,Import methods,P0,R1,FS-ING-001,S-ING-02,TC-ING-001 EX-ING-001,,,Designed; application execution pending
+FR-ING-002,Quarantine and scanning,P0,R1,FS-ING-002,S-ING-01,TC-ING-002 EX-ING-002,AC08,,Designed; application execution pending
+FR-ING-003,Schema and semantic validation,P0,R1,FS-ING-003,S-ING-02,TC-ING-003 EX-ING-003,AC10,,Designed; application execution pending
+FR-ING-004,Identity and deduplication,P0,R1,FS-ING-004,S-ING-02,TC-ING-004 EX-ING-004,,,Designed; application execution pending
+FR-ING-005,Import reconciliation,P0,R1,FS-ING-005,S-ING-03,TC-ING-005 EX-ING-005,AC09,UT049 UT050 UT051 UT052 UT053 UT054 UT055 UT056 UT057,Designed; application execution pending
+FR-ING-006,Resumable transfer,P0,R1,FS-ING-006,S-ING-01,TC-ING-006 EX-ING-006,,,Designed; application execution pending
+FR-ING-007,Provenance lineage,P0,R1,FS-ING-007,S-ING-02,TC-ING-007 EX-ING-007,,,Designed; application execution pending
+FR-ING-008,Data correction,P1,R1,FS-ING-008,S-ING-03,TC-ING-008 EX-ING-008,,,Designed; application execution pending
+FR-ING-009,Deidentification review,P0,R1,FS-ING-009,S-ING-03,TC-ING-009 EX-ING-009,,,Designed; application execution pending
+FR-ING-010,Scheduled ingestion,P1,R2,FS-ING-010,S-ING-01,TC-ING-010 EX-ING-010,,,Designed; application execution pending
+FR-CUR-001,Reference standard definition,P0,R1,FS-CUR-001,S-CUR-02,TC-CUR-001 EX-CUR-001,,,Designed; application execution pending
+FR-CUR-002,Annotation work allocation,P1,R1,FS-CUR-002,S-CUR-01,TC-CUR-002 EX-CUR-002,,,Designed; application execution pending
+FR-CUR-003,Annotation guidelines,P0,R1,FS-CUR-003,S-CUR-02,TC-CUR-003 EX-CUR-003,,,Designed; application execution pending
+FR-CUR-004,Independent labelling,P0,R1,FS-CUR-004,S-CUR-03,TC-CUR-004 EX-CUR-004,,,Designed; application execution pending
+FR-CUR-005,Agreement and quality checks,P1,R1,FS-CUR-005,S-CUR-03,TC-CUR-005 EX-CUR-005,,,Designed; application execution pending
+FR-CUR-006,Uncertain and unavailable labels,P0,R1,FS-CUR-006,S-CUR-02,TC-CUR-006 EX-CUR-006,,,Designed; application execution pending
+FR-CUR-007,Blinding controls,P0,R1,FS-CUR-007,S-CUR-02,TC-CUR-007 EX-CUR-007,,,Designed; application execution pending
+FR-CUR-008,Dataset partitions,P0,R1,FS-CUR-008,S-CUR-03,TC-CUR-008 EX-CUR-008,AC11,,Designed; application execution pending
+FR-CUR-009,Curation release,P0,R1,FS-CUR-009,S-CUR-03,TC-CUR-009 EX-CUR-009,,,Designed; application execution pending
+FR-CUR-010,Specialist annotation integrations,P1,R2,FS-CUR-010,S-CUR-02,TC-CUR-010 EX-CUR-010,,,Designed; application execution pending
+FR-RUN-001,Workspace request,P0,R1,FS-RUN-001,S-RUN-02,TC-RUN-001 EX-RUN-001,AC05,UT025 UT026 UT027 UT028 UT029 UT030 UT031 UT032 UT033 UT034 UT035,Designed; application execution pending
+FR-RUN-002,Execution isolation,P0,R1,FS-RUN-002,S-RUN-03,TC-RUN-002 EX-RUN-002,AC08,IT050,Designed; application execution pending
+FR-RUN-003,Network controls,P0,R1,FS-RUN-003,S-RUN-02,TC-RUN-003 EX-RUN-003,,IT049,Designed; application execution pending
+FR-RUN-004,Resource quotas,P0,R1,FS-RUN-004,S-RUN-01,TC-RUN-004 EX-RUN-004,AC33,IT043,Designed; application execution pending
+FR-RUN-005,Reproducible run manifest,P0,R1,FS-RUN-005,S-RUN-02,TC-RUN-005 EX-RUN-005,,SM12 SM24,Designed; application execution pending
+FR-RUN-006,Execution lifecycle,P1,R1,FS-RUN-006,S-RUN-01,TC-RUN-006 EX-RUN-006,,UT094 UT095 UT096 UT097 UT098 UT099 UT100 UT101,Designed; application execution pending
+FR-RUN-007,Idempotent retries,P0,R1,FS-RUN-007,S-RUN-03,TC-RUN-007 EX-RUN-007,AC32,UT082 UT083 UT084 UT085 UT086 UT087,Designed; application execution pending
+FR-RUN-008,External API evaluation,P0,R1,FS-RUN-008,S-RUN-02,TC-RUN-008 EX-RUN-008,AC17,,Designed; application execution pending
+FR-RUN-009,Output handling,P0,R1,FS-RUN-009,S-RUN-03,TC-RUN-009 EX-RUN-009,,IT047 SM16,Designed; application execution pending
+FR-RUN-010,Expiry and shutdown,P0,R1,FS-RUN-010,S-RUN-03,TC-RUN-010 EX-RUN-010,,,Designed; application execution pending
+FR-RUN-011,Remote execution nodes,P1,R2,FS-RUN-011,S-RUN-03,TC-RUN-011 EX-RUN-011,AC23,IT056,Designed; application execution pending
+FR-RUN-012,Emergency termination,P0,R1,FS-RUN-012,S-RUN-03,TC-RUN-012 EX-RUN-012,,UT036 UT094 UT095 UT096 UT097 UT098 UT099 UT100 UT101 IT056,Designed; application execution pending
+FR-PRO-001,Protocol templates,P0,R1,FS-PRO-001,S-PRO-02,TC-PRO-001 EX-PRO-001,,,Designed; application execution pending
+FR-PRO-002,Study type,P0,R1,FS-PRO-002,S-PRO-02,TC-PRO-002 EX-PRO-002,,,Designed; application execution pending
+FR-PRO-003,Sample justification,P0,R1,FS-PRO-003,S-PRO-02,TC-PRO-003 EX-PRO-003,,,Designed; application execution pending
+FR-PRO-004,Prespecified thresholds,P0,R1,FS-PRO-004,S-PRO-03,TC-PRO-004 EX-PRO-004,AC13 AC40,,Designed; application execution pending
+FR-PRO-005,Analysis plan,P0,R1,FS-PRO-005,S-PRO-02,TC-PRO-005 EX-PRO-005,AC14,,Designed; application execution pending
+FR-PRO-006,Comparator definition,P0,R1,FS-PRO-006,S-PRO-02,TC-PRO-006 EX-PRO-006,,,Designed; application execution pending
+FR-PRO-007,Subgroup plan,P0,R1,FS-PRO-007,S-PRO-02,TC-PRO-007 EX-PRO-007,,,Designed; application execution pending
+FR-PRO-008,Freeze and amendment,P0,R1,FS-PRO-008,S-PRO-03,TC-PRO-008 EX-PRO-008,AC13,,Designed; application execution pending
+FR-PRO-009,Stopping rules,P0,R1,FS-PRO-009,S-PRO-02,TC-PRO-009 EX-PRO-009,,,Designed; application execution pending
+FR-PRO-010,Protocol reuse,P1,R1,FS-PRO-010,S-PRO-01,TC-PRO-010 EX-PRO-010,,,Designed; application execution pending
+FR-PRO-011,Risk proportional review,P0,R1,FS-PRO-011,S-PRO-03,TC-PRO-011 EX-PRO-011,,,Designed; application execution pending
+FR-PRO-012,Study registration,P1,R2,FS-PRO-012,S-PRO-02,TC-PRO-012 EX-PRO-012,,,Designed; application execution pending
+FR-VAL-001,Task appropriate metrics,P0,R1,FS-VAL-001,S-VAL-02,TC-VAL-001 EX-VAL-001,,,Designed; application execution pending
+FR-VAL-002,Diagnostic performance,P0,R1,FS-VAL-002,S-VAL-02,TC-VAL-002 EX-VAL-002,,UT058 UT059 UT060 UT061,Designed; application execution pending
+FR-VAL-003,Uncertainty estimates,P0,R1,FS-VAL-003,S-VAL-02,TC-VAL-003 EX-VAL-003,,,Designed; application execution pending
+FR-VAL-004,Calibration and utility,P0,R1,FS-VAL-004,S-VAL-02,TC-VAL-004 EX-VAL-004,,,Designed; application execution pending
+FR-VAL-005,Missing and rejected inputs,P0,R1,FS-VAL-005,S-VAL-02,TC-VAL-005 EX-VAL-005,AC14,UT058 UT059 UT060 UT062 UT063 UT064 UT065 UT066 UT067 UT068 UT069 UT070 UT071 UT072 UT073 UT074 UT075 IT058,Designed; application execution pending
+FR-VAL-006,External validation,P0,R1,FS-VAL-006,S-VAL-02,TC-VAL-006 EX-VAL-006,AC11,,Designed; application execution pending
+FR-VAL-007,Robustness testing,P0,R1,FS-VAL-007,S-VAL-02,TC-VAL-007 EX-VAL-007,,,Designed; application execution pending
+FR-VAL-008,Subgroup results,P0,R1,FS-VAL-008,S-VAL-02,TC-VAL-008 EX-VAL-008,AC15,,Designed; application execution pending
+FR-VAL-009,Baseline comparison,P0,R1,FS-VAL-009,S-VAL-02,TC-VAL-009 EX-VAL-009,,,Designed; application execution pending
+FR-VAL-010,Independent reproduction,P0,R1,FS-VAL-010,S-VAL-03,TC-VAL-010 EX-VAL-010,AC16,,Designed; application execution pending
+FR-VAL-011,Custom metric governance,P1,R2,FS-VAL-011,S-VAL-03,TC-VAL-011 EX-VAL-011,,,Designed; application execution pending
+FR-VAL-012,Evidence interpretation,P0,R1,FS-VAL-012,S-VAL-03,TC-VAL-012 EX-VAL-012,AC40,,Designed; application execution pending
+FR-GEN-001,Generative configuration identity,P0,R2,FS-GEN-001,S-GEN-02,TC-GEN-001 EX-GEN-001,,,Designed; application execution pending
+FR-GEN-002,Clinical answer assessment,P0,R2,FS-GEN-002,S-GEN-02,TC-GEN-002 EX-GEN-002,,,Designed; application execution pending
+FR-GEN-003,Grounding and citations,P0,R2,FS-GEN-003,S-GEN-02,TC-GEN-003 EX-GEN-003,AC18,,Designed; application execution pending
+FR-GEN-004,Interaction testing,P0,R2,FS-GEN-004,S-GEN-02,TC-GEN-004 EX-GEN-004,,,Designed; application execution pending
+FR-GEN-005,Language and population coverage,P0,R2,FS-GEN-005,S-GEN-02,TC-GEN-005 EX-GEN-005,,,Designed; application execution pending
+FR-GEN-006,Adversarial safety,P0,R2,FS-GEN-006,S-GEN-03,TC-GEN-006 EX-GEN-006,,,Designed; application execution pending
+FR-GEN-007,Agent permissions,P0,R2,FS-GEN-007,S-GEN-02,TC-GEN-007 EX-GEN-007,,,Designed; application execution pending
+FR-GEN-008,Judge validation,P0,R2,FS-GEN-008,S-GEN-03,TC-GEN-008 EX-GEN-008,,,Designed; application execution pending
+FR-GEN-009,Stochastic variation,P0,R2,FS-GEN-009,S-GEN-02,TC-GEN-009 EX-GEN-009,,,Designed; application execution pending
+FR-GEN-010,Privacy and memorisation,P0,R2,FS-GEN-010,S-GEN-03,TC-GEN-010 EX-GEN-010,,,Designed; application execution pending
+FR-GEN-011,Cost and latency tradeoffs,P1,R2,FS-GEN-011,S-GEN-02,TC-GEN-011 EX-GEN-011,,,Designed; application execution pending
+FR-GEN-012,Synthetic evaluation limits,P0,R2,FS-GEN-012,S-GEN-02,TC-GEN-012 EX-GEN-012,,,Designed; application execution pending
+FR-MOD-001,Tabular prediction,P1,R1,FS-MOD-001,S-MOD-02,TC-MOD-001 EX-MOD-001,,,Designed; application execution pending
+FR-MOD-002,Imaging evaluation,P1,R1,FS-MOD-002,S-MOD-02,TC-MOD-002 EX-MOD-002,,,Designed; application execution pending
+FR-MOD-003,Clinical text,P1,R2,FS-MOD-003,S-MOD-02,TC-MOD-003 EX-MOD-003,,,Designed; application execution pending
+FR-MOD-004,Speech and audio,P1,R2,FS-MOD-004,S-MOD-02,TC-MOD-004 EX-MOD-004,,,Designed; application execution pending
+FR-MOD-005,Signals and devices,P1,R3,FS-MOD-005,S-MOD-02,TC-MOD-005 EX-MOD-005,,,Designed; application execution pending
+FR-MOD-006,Multimodal systems,P1,R2,FS-MOD-006,S-MOD-02,TC-MOD-006 EX-MOD-006,,,Designed; application execution pending
+FR-MOD-007,Administrative and public health AI,P1,R2,FS-MOD-007,S-MOD-02,TC-MOD-007 EX-MOD-007,,,Designed; application execution pending
+FR-MOD-008,Capability admission,P0,R1,FS-MOD-008,S-MOD-03,TC-MOD-008 EX-MOD-008,AC34,,Designed; application execution pending
+FR-HUM-001,Workflow definition,P0,R1,FS-HUM-001,S-HUM-02,TC-HUM-001 EX-HUM-001,,,Designed; application execution pending
+FR-HUM-002,Usability studies,P1,R2,FS-HUM-002,S-HUM-02,TC-HUM-002 EX-HUM-002,,,Designed; application execution pending
+FR-HUM-003,Human AI interaction,P0,R2,FS-HUM-003,S-HUM-02,TC-HUM-003 EX-HUM-003,,,Designed; application execution pending
+FR-HUM-004,Accessibility and inclusion,P1,R2,FS-HUM-004,S-HUM-02,TC-HUM-004 EX-HUM-004,,,Designed; application execution pending
+FR-HUM-005,Clinical workflow outcomes,P0,R2,FS-HUM-005,S-HUM-02,TC-HUM-005 EX-HUM-005,,,Designed; application execution pending
+FR-HUM-006,Training effectiveness,P1,R2,FS-HUM-006,S-HUM-03,TC-HUM-006 EX-HUM-006,,,Designed; application execution pending
+FR-HUM-007,Equity interpretation,P0,R1,FS-HUM-007,S-HUM-03,TC-HUM-007 EX-HUM-007,AC15,,Designed; application execution pending
+FR-HUM-008,Patient and staff feedback,P1,R2,FS-HUM-008,S-HUM-02,TC-HUM-008 EX-HUM-008,,,Designed; application execution pending
+FR-HUM-009,Economic measurement,P1,R2,FS-HUM-009,S-HUM-02,TC-HUM-009 EX-HUM-009,,,Designed; application execution pending
+FR-STU-001,Site activation,P0,R2,FS-STU-001,S-STU-03,TC-STU-001 EX-STU-001,,,Designed; application execution pending
+FR-STU-002,Eligibility and enrolment,P0,R2,FS-STU-002,S-STU-02,TC-STU-002 EX-STU-002,AC21,,Designed; application execution pending
+FR-STU-003,Participant identifiers,P0,R2,FS-STU-003,S-STU-02,TC-STU-003 EX-STU-003,,,Designed; application execution pending
+FR-STU-004,Case report forms,P0,R2,FS-STU-004,S-STU-02,TC-STU-004 EX-STU-004,,,Designed; application execution pending
+FR-STU-005,Allocation and blinding,P1,R2,FS-STU-005,S-STU-03,TC-STU-005 EX-STU-005,,,Designed; application execution pending
+FR-STU-006,Silent prospective mode,P0,R2,FS-STU-006,S-STU-02,TC-STU-006 EX-STU-006,AC20,IT055,Designed; application execution pending
+FR-STU-007,Interventional controls,P0,R2,FS-STU-007,S-STU-02,TC-STU-007 EX-STU-007,,,Designed; application execution pending
+FR-STU-008,Deviations and queries,P0,R2,FS-STU-008,S-STU-02,TC-STU-008 EX-STU-008,,,Designed; application execution pending
+FR-STU-009,Monitoring and verification,P0,R2,FS-STU-009,S-STU-03,TC-STU-009 EX-STU-009,,,Designed; application execution pending
+FR-STU-010,Safety reporting,P0,R2,FS-STU-010,S-STU-02,TC-STU-010 EX-STU-010,,,Designed; application execution pending
+FR-STU-011,Study closeout,P0,R2,FS-STU-011,S-STU-03,TC-STU-011 EX-STU-011,,,Designed; application execution pending
+FR-STU-012,External study systems,P1,R2,FS-STU-012,S-STU-02,TC-STU-012 EX-STU-012,,,Designed; application execution pending
+FR-SAF-001,Safety case,P0,R1,FS-SAF-001,S-SAF-02,TC-SAF-001 EX-SAF-001,,,Designed; application execution pending
+FR-SAF-002,Incident intake,P0,R1,FS-SAF-002,S-SAF-01,TC-SAF-002 EX-SAF-002,AC22,SM15 SM20,Designed; application execution pending
+FR-SAF-003,Severity and triage,P0,R1,FS-SAF-003,S-SAF-02,TC-SAF-003 EX-SAF-003,AC22,,Designed; application execution pending
+FR-SAF-004,Containment,P0,R1,FS-SAF-004,S-SAF-02,TC-SAF-004 EX-SAF-004,AC20,,Designed; application execution pending
+FR-SAF-005,Deployment stop coordination,P0,R2,FS-SAF-005,S-SAF-02,TC-SAF-005 EX-SAF-005,AC23,,Designed; application execution pending
+FR-SAF-006,Investigation,P0,R1,FS-SAF-006,S-SAF-02,TC-SAF-006 EX-SAF-006,,,Designed; application execution pending
+FR-SAF-007,Corrective and preventive action,P0,R1,FS-SAF-007,S-SAF-02,TC-SAF-007 EX-SAF-007,,,Designed; application execution pending
+FR-SAF-008,Reportability assessment,P0,R1,FS-SAF-008,S-SAF-03,TC-SAF-008 EX-SAF-008,,,Designed; application execution pending
+FR-SAF-009,Cross study impact,P0,R1,FS-SAF-009,S-SAF-02,TC-SAF-009 EX-SAF-009,AC29,,Designed; application execution pending
+FR-SAF-010,Resumption decision,P0,R1,FS-SAF-010,S-SAF-03,TC-SAF-010 EX-SAF-010,AC24,,Designed; application execution pending
+FR-SAF-011,External warning exchange,P1,R2,FS-SAF-011,S-SAF-03,TC-SAF-011 EX-SAF-011,,,Designed; application execution pending
+FR-SAF-012,Learning and trend review,P0,R1,FS-SAF-012,S-SAF-01,TC-SAF-012 EX-SAF-012,,,Designed; application execution pending
+FR-EVD-001,Evidence dossier,P0,R1,FS-EVD-001,S-EVD-02,TC-EVD-001 EX-EVD-001,,,Designed; application execution pending
+FR-EVD-002,Claim level provenance,P0,R1,FS-EVD-002,S-EVD-02,TC-EVD-002 EX-EVD-002,,IT054,Designed; application execution pending
+FR-EVD-003,Evidence status,P0,R1,FS-EVD-003,S-EVD-01,TC-EVD-003 EX-EVD-003,AC25,,Designed; application execution pending
+FR-EVD-004,Independent review,P0,R1,FS-EVD-004,S-EVD-03,TC-EVD-004 EX-EVD-004,AC04,UT037,Designed; application execution pending
+FR-EVD-005,Report generation,P0,R1,FS-EVD-005,S-EVD-02,TC-EVD-005 EX-EVD-005,,,Designed; application execution pending
+FR-EVD-006,Scope and limitations,P0,R1,FS-EVD-006,S-EVD-02,TC-EVD-006 EX-EVD-006,AC15,,Designed; application execution pending
+FR-EVD-007,Publication permissions,P0,R1,FS-EVD-007,S-EVD-03,TC-EVD-007 EX-EVD-007,AC27,,Designed; application execution pending
+FR-EVD-008,Signed release and integrity,P0,R1,FS-EVD-008,S-EVD-03,TC-EVD-008 EX-EVD-008,AC28,,Designed; application execution pending
+FR-EVD-009,Corrections and retractions,P0,R1,FS-EVD-009,S-EVD-03,TC-EVD-009 EX-EVD-009,AC24 AC28,IT054 SM14,Designed; application execution pending
+FR-EVD-010,Evidence portability,P1,R2,FS-EVD-010,S-EVD-02,TC-EVD-010 EX-EVD-010,,IT060,Designed; application execution pending
+FR-EVD-011,Results completeness,P0,R1,FS-EVD-011,S-EVD-03,TC-EVD-011 EX-EVD-011,AC13,,Designed; application execution pending
+FR-EVD-012,Public evidence catalogue,P1,R2,FS-EVD-012,S-EVD-01,TC-EVD-012 EX-EVD-012,,,Designed; application execution pending
+FR-REG-001,Requirements checklist,P1,R1,FS-REG-001,S-REG-02,TC-REG-001 EX-REG-001,,,Designed; application execution pending
+FR-REG-002,Submission packages,P1,R2,FS-REG-002,S-REG-02,TC-REG-002 EX-REG-002,,,Designed; application execution pending
+FR-REG-003,External decision verification,P0,R1,FS-REG-003,S-REG-03,TC-REG-003 EX-REG-003,,,Designed; application execution pending
+FR-REG-004,Authority questions,P1,R2,FS-REG-004,S-REG-02,TC-REG-004 EX-REG-004,,,Designed; application execution pending
+FR-REG-005,Decision separation,P0,R1,FS-REG-005,S-REG-01,TC-REG-005 EX-REG-005,AC25,,Designed; application execution pending
+FR-REG-006,Change submissions,P1,R2,FS-REG-006,S-REG-03,TC-REG-006 EX-REG-006,,,Designed; application execution pending
+FR-REG-007,Permission expiry,P0,R1,FS-REG-007,S-REG-01,TC-REG-007 EX-REG-007,,,Designed; application execution pending
+FR-REG-008,Submission channel control,P1,R2,FS-REG-008,S-REG-03,TC-REG-008 EX-REG-008,,,Designed; application execution pending
+FR-TRN-001,Transfer request,P1,R2,FS-TRN-001,S-TRN-02,TC-TRN-001 EX-TRN-001,,,Designed; application execution pending
+FR-TRN-002,Gap assessment,P0,R2,FS-TRN-002,S-TRN-02,TC-TRN-002 EX-TRN-002,AC26,,Designed; application execution pending
+FR-TRN-003,Local validation plan,P0,R2,FS-TRN-003,S-TRN-03,TC-TRN-003 EX-TRN-003,AC26,,Designed; application execution pending
+FR-TRN-004,Adaptation tracking,P1,R2,FS-TRN-004,S-TRN-02,TC-TRN-004 EX-TRN-004,,,Designed; application execution pending
+FR-TRN-005,Evidence reliance decisions,P0,R2,FS-TRN-005,S-TRN-03,TC-TRN-005 EX-TRN-005,AC26,,Designed; application execution pending
+FR-TRN-006,Shared studies,P1,R2,FS-TRN-006,S-TRN-02,TC-TRN-006 EX-TRN-006,,,Designed; application execution pending
+FR-TRN-007,Reuse measurement,P1,R2,FS-TRN-007,S-TRN-02,TC-TRN-007 EX-TRN-007,,,Designed; application execution pending
+FR-TRN-008,Country withdrawal,P0,R2,FS-TRN-008,S-TRN-03,TC-TRN-008 EX-TRN-008,,,Designed; application execution pending
+FR-DEP-001,Adoption readiness,P1,R1,FS-DEP-001,S-DEP-02,TC-DEP-001 EX-DEP-001,,,Designed; application execution pending
+FR-DEP-002,Business case,P1,R2,FS-DEP-002,S-DEP-02,TC-DEP-002 EX-DEP-002,,,Designed; application execution pending
+FR-DEP-003,Procurement support,P1,R2,FS-DEP-003,S-DEP-02,TC-DEP-003 EX-DEP-003,,,Designed; application execution pending
+FR-DEP-004,Deployment authorisation,P0,R2,FS-DEP-004,S-DEP-03,TC-DEP-004 EX-DEP-004,,,Designed; application execution pending
+FR-DEP-005,Implementation plan,P1,R2,FS-DEP-005,S-DEP-02,TC-DEP-005 EX-DEP-005,,,Designed; application execution pending
+FR-DEP-006,Acceptance and fallback,P0,R2,FS-DEP-006,S-DEP-03,TC-DEP-006 EX-DEP-006,,,Designed; application execution pending
+FR-DEP-007,Training and competency,P1,R2,FS-DEP-007,S-DEP-02,TC-DEP-007 EX-DEP-007,,,Designed; application execution pending
+FR-DEP-008,Production boundary,P0,R2,FS-DEP-008,S-DEP-02,TC-DEP-008 EX-DEP-008,AC20,,Designed; application execution pending
+FR-DEP-009,Contract and budget transition,P1,R2,FS-DEP-009,S-DEP-02,TC-DEP-009 EX-DEP-009,,,Designed; application execution pending
+FR-DEP-010,Deployment register,P0,R2,FS-DEP-010,S-DEP-01,TC-DEP-010 EX-DEP-010,AC29,,Designed; application execution pending
+FR-DEP-011,Benefits realisation,P1,R2,FS-DEP-011,S-DEP-02,TC-DEP-011 EX-DEP-011,,,Designed; application execution pending
+FR-DEP-012,Safe termination,P0,R2,FS-DEP-012,S-DEP-03,TC-DEP-012 EX-DEP-012,,,Designed; application execution pending
+FR-MON-001,Monitoring plan,P0,R2,FS-MON-001,S-MON-02,TC-MON-001 EX-MON-001,,,Designed; application execution pending
+FR-MON-002,Operational telemetry,P1,R2,FS-MON-002,S-MON-01,TC-MON-002 EX-MON-002,,UT062 UT063 UT064 UT065 UT066 UT067 UT068 UT069 UT070 UT071 UT072 UT073 UT074 UT075 UT076 UT077 UT078 UT079 UT080 UT081 IT058,Designed; application execution pending
+FR-MON-003,Clinical performance follow up,P0,R2,FS-MON-003,S-MON-02,TC-MON-003 EX-MON-003,,,Designed; application execution pending
+FR-MON-004,Drift detection,P0,R2,FS-MON-004,S-MON-03,TC-MON-004 EX-MON-004,,,Designed; application execution pending
+FR-MON-005,Version change intake,P0,R2,FS-MON-005,S-MON-02,TC-MON-005 EX-MON-005,AC17,,Designed; application execution pending
+FR-MON-006,Change classification,P0,R2,FS-MON-006,S-MON-03,TC-MON-006 EX-MON-006,,,Designed; application execution pending
+FR-MON-007,Revalidation scheduling,P0,R2,FS-MON-007,S-MON-01,TC-MON-007 EX-MON-007,,,Designed; application execution pending
+FR-MON-008,Alert routing,P0,R2,FS-MON-008,S-MON-03,TC-MON-008 EX-MON-008,,,Designed; application execution pending
+FR-MON-009,Rollback tracking,P0,R2,FS-MON-009,S-MON-03,TC-MON-009 EX-MON-009,,,Designed; application execution pending
+FR-MON-010,Comparative surveillance,P1,R2,FS-MON-010,S-MON-01,TC-MON-010 EX-MON-010,,,Designed; application execution pending
+FR-MON-011,Monitoring handover,P0,R2,FS-MON-011,S-MON-03,TC-MON-011 EX-MON-011,AC39,,Designed; application execution pending
+FR-MON-012,Evidence freshness,P0,R2,FS-MON-012,S-MON-01,TC-MON-012 EX-MON-012,,,Designed; application execution pending
+FR-ANA-001,Role specific dashboards,P1,R1,FS-ANA-001,S-ANA-01,TC-ANA-001 EX-ANA-001,,,Designed; application execution pending
+FR-ANA-002,Portfolio funnel,P1,R1,FS-ANA-002,S-ANA-01,TC-ANA-002 EX-ANA-002,,,Designed; application execution pending
+FR-ANA-003,Time and bottlenecks,P1,R1,FS-ANA-003,S-ANA-02,TC-ANA-003 EX-ANA-003,,,Designed; application execution pending
+FR-ANA-004,Evidence quality reporting,P1,R1,FS-ANA-004,S-ANA-01,TC-ANA-004 EX-ANA-004,,,Designed; application execution pending
+FR-ANA-005,Outcome reporting,P1,R2,FS-ANA-005,S-ANA-02,TC-ANA-005 EX-ANA-005,,,Designed; application execution pending
+FR-ANA-006,Resource and financial reporting,P1,R1,FS-ANA-006,S-ANA-01,TC-ANA-006 EX-ANA-006,,,Designed; application execution pending
+FR-ANA-007,Governed metrics,P1,R1,FS-ANA-007,S-ANA-03,TC-ANA-007 EX-ANA-007,,,Designed; application execution pending
+FR-ANA-008,Privacy preserving reporting,P0,R1,FS-ANA-008,S-ANA-03,TC-ANA-008 EX-ANA-008,,,Designed; application execution pending
+FR-ANA-009,Report exports,P1,R1,FS-ANA-009,S-ANA-02,TC-ANA-009 EX-ANA-009,,,Designed; application execution pending
+FR-ANA-010,Scheduled reporting,P1,R2,FS-ANA-010,S-ANA-03,TC-ANA-010 EX-ANA-010,,,Designed; application execution pending
+FR-COL-001,Contextual discussions,P1,R1,FS-COL-001,S-COL-02,TC-COL-001 EX-COL-001,,,Designed; application execution pending
+FR-COL-002,Assignments and reminders,P1,R1,FS-COL-002,S-COL-01,TC-COL-002 EX-COL-002,,,Designed; application execution pending
+FR-COL-003,Notifications,P1,R1,FS-COL-003,S-COL-01,TC-COL-003 EX-COL-003,,,Designed; application execution pending
+FR-COL-004,Consequential communications,P0,R1,FS-COL-004,S-COL-03,TC-COL-004 EX-COL-004,,,Designed; application execution pending
+FR-COL-005,Meeting decisions,P1,R1,FS-COL-005,S-COL-02,TC-COL-005 EX-COL-005,,,Designed; application execution pending
+FR-COL-006,Document collaboration,P1,R1,FS-COL-006,S-COL-02,TC-COL-006 EX-COL-006,,,Designed; application execution pending
+FR-COL-007,Translation review,P1,R2,FS-COL-007,S-COL-03,TC-COL-007 EX-COL-007,,,Designed; application execution pending
+FR-COL-008,Communication audit,P1,R1,FS-COL-008,S-COL-03,TC-COL-008 EX-COL-008,AC28,,Designed; application execution pending
+FR-LRN-001,Knowledge library,P1,R1,FS-LRN-001,S-LRN-02,TC-LRN-001 EX-LRN-001,,,Designed; application execution pending
+FR-LRN-002,Learning from failure,P1,R2,FS-LRN-002,S-LRN-02,TC-LRN-002 EX-LRN-002,,,Designed; application execution pending
+FR-LRN-003,Role based onboarding,P1,R1,FS-LRN-003,S-LRN-01,TC-LRN-003 EX-LRN-003,,,Designed; application execution pending
+FR-LRN-004,Training records,P1,R2,FS-LRN-004,S-LRN-02,TC-LRN-004 EX-LRN-004,,,Designed; application execution pending
+FR-LRN-005,Community exchange,P1,R2,FS-LRN-005,S-LRN-03,TC-LRN-005 EX-LRN-005,,,Designed; application execution pending
+FR-LRN-006,Method governance,P1,R2,FS-LRN-006,S-LRN-03,TC-LRN-006 EX-LRN-006,,,Designed; application execution pending
+FR-LRN-007,Network learning reports,P1,R3,FS-LRN-007,S-LRN-03,TC-LRN-007 EX-LRN-007,,,Designed; application execution pending
+FR-COP-001,Assisted drafting,P1,R2,FS-COP-001,S-COP-02,TC-COP-001 EX-COP-001,,,Designed; application execution pending
+FR-COP-002,Permission aware retrieval,P0,R2,FS-COP-002,S-COP-01,TC-COP-002 EX-COP-002,AC12 AC19,,Designed; application execution pending
+FR-COP-003,Source attribution,P0,R2,FS-COP-003,S-COP-02,TC-COP-003 EX-COP-003,AC18,,Designed; application execution pending
+FR-COP-004,Consequential action control,P0,R2,FS-COP-004,S-COP-02,TC-COP-004 EX-COP-004,AC19,,Designed; application execution pending
+FR-COP-005,Provider governance,P0,R2,FS-COP-005,S-COP-03,TC-COP-005 EX-COP-005,,,Designed; application execution pending
+FR-COP-006,Untrusted content handling,P0,R2,FS-COP-006,S-COP-01,TC-COP-006 EX-COP-006,AC08 AC19,,Designed; application execution pending
+FR-COP-007,User correction,P1,R2,FS-COP-007,S-COP-02,TC-COP-007 EX-COP-007,,,Designed; application execution pending
+FR-COP-008,Assistant evaluation,P0,R2,FS-COP-008,S-COP-03,TC-COP-008 EX-COP-008,,,Designed; application execution pending
+FR-COP-009,Administrative controls,P1,R2,FS-COP-009,S-COP-03,TC-COP-009 EX-COP-009,,,Designed; application execution pending
+FR-COP-010,Fallback and abstention,P0,R2,FS-COP-010,S-COP-01,TC-COP-010 EX-COP-010,AC38,,Designed; application execution pending
+FR-API-001,Versioned interfaces,P1,R1,FS-API-001,S-API-02,TC-API-001 EX-API-001,,IT001 IT002 IT003 IT004 IT005 IT006 IT007 IT008 IT009 IT010 IT011 IT012 IT013 IT014 IT015 IT016 IT017 IT018 IT019 IT020 IT021 IT022 IT023 IT024 IT025 IT026 IT027 IT028 IT029 IT030 IT031 IT032 IT033 IT034 IT035 IT036 IT037 IT038 IT039 IT040 SM07 SM08 SM09,Designed; application execution pending
+FR-API-002,Scoped integration access,P0,R1,FS-API-002,S-API-02,TC-API-002 EX-API-002,,,Designed; application execution pending
+FR-API-003,Health record exchange,P1,R2,FS-API-003,S-API-02,TC-API-003 EX-API-003,,,Designed; application execution pending
+FR-API-004,Medical imaging exchange,P1,R1,FS-API-004,S-API-02,TC-API-004 EX-API-004,,,Designed; application execution pending
+FR-API-005,Research and health information systems,P1,R2,FS-API-005,S-API-02,TC-API-005 EX-API-005,,,Designed; application execution pending
+FR-API-006,Import and export portability,P0,R1,FS-API-006,S-API-02,TC-API-006 EX-API-006,,IT060,Designed; application execution pending
+FR-API-007,Reliable events,P0,R1,FS-API-007,S-API-03,TC-API-007 EX-API-007,AC32,UT088 UT089 UT090 UT091 UT092 UT093 IT001 IT002 IT003 IT004 IT005 IT006 IT007 IT008 IT009 IT010 IT011 IT012 IT013 IT014 IT015 IT016 IT017 IT018 IT019 IT020 IT021 IT022 IT023 IT024 IT025 IT026 IT027 IT028 IT029 IT030 IT031 IT032 IT033 IT034 IT035 IT036 IT037 IT038 IT039 IT040 IT044 IT045 IT053 SM22,Designed; application execution pending
+FR-API-008,Connector failures,P0,R1,FS-API-008,S-API-01,TC-API-008 EX-API-008,,UT112 UT113 UT114 UT115 UT116 UT117 IT053 SM21,Designed; application execution pending
+FR-API-009,Mapping governance,P0,R1,FS-API-009,S-API-03,TC-API-009 EX-API-009,AC10,,Designed; application execution pending
+FR-API-010,Identity and finance integrations,P1,R2,FS-API-010,S-API-02,TC-API-010 EX-API-010,,,Designed; application execution pending
+FR-API-011,Connector lifecycle,P0,R1,FS-API-011,S-API-03,TC-API-011 EX-API-011,,,Designed; application execution pending
+FR-API-012,External evidence exchange,P1,R3,FS-API-012,S-API-02,TC-API-012 EX-API-012,,,Designed; application execution pending
+FR-BIL-001,Service catalogue,P1,R1,FS-BIL-001,S-BIL-02,TC-BIL-001 EX-BIL-001,,,Designed; application execution pending
+FR-BIL-002,Cost estimation,P1,R1,FS-BIL-002,S-BIL-02,TC-BIL-002 EX-BIL-002,,,Designed; application execution pending
+FR-BIL-003,Quotes and approvals,P1,R1,FS-BIL-003,S-BIL-03,TC-BIL-003 EX-BIL-003,,,Designed; application execution pending
+FR-BIL-004,Budget controls,P1,R1,FS-BIL-004,S-BIL-02,TC-BIL-004 EX-BIL-004,AC33,UT038 UT039 UT040 UT041 UT042 UT043 UT044 UT045 UT046 UT047 UT048 IT043,Designed; application execution pending
+FR-BIL-005,Usage metering,P1,R1,FS-BIL-005,S-BIL-02,TC-BIL-005 EX-BIL-005,AC32,UT048,Designed; application execution pending
+FR-BIL-006,Invoices and payments,P1,R2,FS-BIL-006,S-BIL-03,TC-BIL-006 EX-BIL-006,,,Designed; application execution pending
+FR-BIL-007,Grant and subsidy management,P1,R1,FS-BIL-007,S-BIL-02,TC-BIL-007 EX-BIL-007,,,Designed; application execution pending
+FR-BIL-008,Commercial independence,P0,R1,FS-BIL-008,S-BIL-03,TC-BIL-008 EX-BIL-008,AC24,IT052,Designed; application execution pending
+FR-BIL-009,Financial disputes,P1,R2,FS-BIL-009,S-BIL-03,TC-BIL-009 EX-BIL-009,,,Designed; application execution pending
+FR-BIL-010,Renewal and exit,P1,R2,FS-BIL-010,S-BIL-03,TC-BIL-010 EX-BIL-010,,,Designed; application execution pending
+FR-AUD-001,Audit coverage,P0,R1,FS-AUD-001,S-AUD-01,TC-AUD-001 EX-AUD-001,,,Designed; application execution pending
+FR-AUD-002,Audit integrity,P0,R1,FS-AUD-002,S-AUD-02,TC-AUD-002 EX-AUD-002,,,Designed; application execution pending
+FR-AUD-003,Before and after changes,P0,R1,FS-AUD-003,S-AUD-02,TC-AUD-003 EX-AUD-003,,,Designed; application execution pending
+FR-AUD-004,Audit access,P0,R1,FS-AUD-004,S-AUD-01,TC-AUD-004 EX-AUD-004,,,Designed; application execution pending
+FR-AUD-005,Control evidence library,P1,R1,FS-AUD-005,S-AUD-02,TC-AUD-005 EX-AUD-005,,,Designed; application execution pending
+FR-AUD-006,Compliance mapping,P0,R1,FS-AUD-006,S-AUD-02,TC-AUD-006 EX-AUD-006,,,Designed; application execution pending
+FR-AUD-007,Inspection support,P0,R1,FS-AUD-007,S-AUD-02,TC-AUD-007 EX-AUD-007,,,Designed; application execution pending
+FR-AUD-008,Legal holds,P0,R1,FS-AUD-008,S-AUD-03,TC-AUD-008 EX-AUD-008,AC30,,Designed; application execution pending
+FR-AUD-009,Exceptions and expiry,P0,R1,FS-AUD-009,S-AUD-03,TC-AUD-009 EX-AUD-009,,,Designed; application execution pending
+FR-AUD-010,Periodic assurance review,P1,R1,FS-AUD-010,S-AUD-01,TC-AUD-010 EX-AUD-010,,,Designed; application execution pending
+FR-AUD-011,Certification claims,P0,R1,FS-AUD-011,S-AUD-03,TC-AUD-011 EX-AUD-011,,,Designed; application execution pending
+FR-AUD-012,Audit retention,P0,R1,FS-AUD-012,S-AUD-03,TC-AUD-012 EX-AUD-012,,,Designed; application execution pending
+FR-OPS-001,Operational console,P1,R1,FS-OPS-001,S-OPS-01,TC-OPS-001 EX-OPS-001,,,Designed; application execution pending
+FR-OPS-002,Support access,P0,R1,FS-OPS-002,S-OPS-02,TC-OPS-002 EX-OPS-002,,,Designed; application execution pending
+FR-OPS-003,Incident management,P1,R1,FS-OPS-003,S-OPS-02,TC-OPS-003 EX-OPS-003,,,Designed; application execution pending
+FR-OPS-004,Configuration control,P0,R1,FS-OPS-004,S-OPS-03,TC-OPS-004 EX-OPS-004,,,Designed; application execution pending
+FR-OPS-005,Feature activation,P0,R1,FS-OPS-005,S-OPS-03,TC-OPS-005 EX-OPS-005,AC34,,Designed; application execution pending
+FR-OPS-006,Service notices,P1,R1,FS-OPS-006,S-OPS-02,TC-OPS-006 EX-OPS-006,,,Designed; application execution pending
+FR-OPS-007,Capacity and quota management,P1,R1,FS-OPS-007,S-OPS-03,TC-OPS-007 EX-OPS-007,,,Designed; application execution pending
+FR-OPS-008,Backup and restore operations,P0,R1,FS-OPS-008,S-OPS-03,TC-OPS-008 EX-OPS-008,AC31,,Designed; application execution pending
+FR-OPS-009,Release management,P0,R1,FS-OPS-009,S-OPS-03,TC-OPS-009 EX-OPS-009,,,Designed; application execution pending
+FR-OPS-010,Support service catalogue,P1,R1,FS-OPS-010,S-OPS-02,TC-OPS-010 EX-OPS-010,,,Designed; application execution pending
+FR-OPS-011,Supplier continuity,P0,R1,FS-OPS-011,S-OPS-02,TC-OPS-011 EX-OPS-011,,,Designed; application execution pending
+FR-OPS-012,Institutional service reviews,P1,R2,FS-OPS-012,S-OPS-02,TC-OPS-012 EX-OPS-012,,,Designed; application execution pending
+FR-EXT-001,Retention schedules,P0,R1,FS-EXT-001,S-EXT-02,TC-EXT-001 EX-EXT-001,,,Designed; application execution pending
+FR-EXT-002,Study closure,P0,R1,FS-EXT-002,S-EXT-02,TC-EXT-002 EX-EXT-002,,,Designed; application execution pending
+FR-EXT-003,Data disposal,P0,R1,FS-EXT-003,S-EXT-03,TC-EXT-003 EX-EXT-003,AC30,IT059,Designed; application execution pending
+FR-EXT-004,Backup deletion handling,P0,R1,FS-EXT-004,S-EXT-03,TC-EXT-004 EX-EXT-004,AC31,IT059,Designed; application execution pending
+FR-EXT-005,Institutional export,P1,R1,FS-EXT-005,S-EXT-02,TC-EXT-005 EX-EXT-005,AC39,,Designed; application execution pending
+FR-EXT-006,Rights aware portability,P0,R1,FS-EXT-006,S-EXT-03,TC-EXT-006 EX-EXT-006,AC39,,Designed; application execution pending
+FR-EXT-007,User and tenant offboarding,P0,R1,FS-EXT-007,S-EXT-02,TC-EXT-007 EX-EXT-007,,,Designed; application execution pending
+FR-EXT-008,Operator succession,P1,R2,FS-EXT-008,S-EXT-03,TC-EXT-008 EX-EXT-008,,,Designed; application execution pending
+FR-EXT-009,Closure attestation,P0,R1,FS-EXT-009,S-EXT-03,TC-EXT-009 EX-EXT-009,,,Designed; application execution pending
+FR-EXT-010,Residual obligations,P0,R1,FS-EXT-010,S-EXT-01,TC-EXT-010 EX-EXT-010,AC39,,Designed; application execution pending
+NFR-SEC-001,Security verification baseline,P0,R1,QC-SEC-001,Cross-cutting,QT-SEC-001,,,Designed; application execution pending
+NFR-SEC-002,Transport protection,P0,R1,QC-SEC-002,Cross-cutting,QT-SEC-002,,,Designed; application execution pending
+NFR-SEC-003,Stored data protection,P0,R1,QC-SEC-003,Cross-cutting,QT-SEC-003,,,Designed; application execution pending
+NFR-SEC-004,Authentication coverage,P0,R1,QC-SEC-004,Cross-cutting,QT-SEC-004,,,Designed; application execution pending
+NFR-SEC-005,Local credential policy,P0,R1,QC-SEC-005,Cross-cutting,QT-SEC-005,,,Designed; application execution pending
+NFR-SEC-006,Session expiry,P0,R1,QC-SEC-006,Cross-cutting,QT-SEC-006,,,Designed; application execution pending
+NFR-SEC-007,Revocation latency,P0,R1,QC-SEC-007,Cross-cutting,QT-SEC-007,AC03,,Designed; application execution pending
+NFR-SEC-008,Isolation assurance,P0,R1,QC-SEC-008,Cross-cutting,QT-SEC-008,AC01 AC08,IT051,Designed; application execution pending
+NFR-SEC-009,Secret handling,P0,R1,QC-SEC-009,Cross-cutting,QT-SEC-009,,,Designed; application execution pending
+NFR-SEC-010,Abuse protection,P0,R1,QC-SEC-010,Cross-cutting,QT-SEC-010,,,Designed; application execution pending
+NFR-SEC-011,Vulnerability response,P0,R1,QC-SEC-011,Cross-cutting,QT-SEC-011,,,Designed; application execution pending
+NFR-SEC-012,Independent testing,P0,R1,QC-SEC-012,Cross-cutting,QT-SEC-012,,,Designed; application execution pending
+NFR-PRI-001,Residency coverage,P0,R1,QC-PRI-001,Cross-cutting,QT-PRI-001,AC07 AC37,,Designed; application execution pending
+NFR-PRI-002,Purpose enforcement,P0,R1,QC-PRI-002,Cross-cutting,QT-PRI-002,AC06,,Designed; application execution pending
+NFR-PRI-003,Minimised telemetry,P0,R1,QC-PRI-003,Cross-cutting,QT-PRI-003,,,Designed; application execution pending
+NFR-PRI-004,Disclosure control,P0,R1,QC-PRI-004,Cross-cutting,QT-PRI-004,AC27,,Designed; application execution pending
+NFR-PRI-005,Privacy impact review,P0,R1,QC-PRI-005,Cross-cutting,QT-PRI-005,,,Designed; application execution pending
+NFR-PRI-006,Data rights service,P0,R1,QC-PRI-006,Cross-cutting,QT-PRI-006,,,Designed; application execution pending
+NFR-PRI-007,Deletion execution,P0,R1,QC-PRI-007,Cross-cutting,QT-PRI-007,AC30,,Designed; application execution pending
+NFR-PRI-008,Provider data use,P0,R1,QC-PRI-008,Cross-cutting,QT-PRI-008,,,Designed; application execution pending
+NFR-AVL-001,Core availability,P0,R1,QC-AVL-001,Cross-cutting,QT-AVL-001,,SM01,Designed; application execution pending
+NFR-AVL-002,Emergency reporting continuity,P0,R1,QC-AVL-002,Cross-cutting,QT-AVL-002,AC22,,Designed; application execution pending
+NFR-AVL-003,Recovery time,P0,R1,QC-AVL-003,Cross-cutting,QT-AVL-003,AC37,,Designed; application execution pending
+NFR-AVL-004,Recovery point,P0,R1,QC-AVL-004,Cross-cutting,QT-AVL-004,AC31 AC37,,Designed; application execution pending
+NFR-AVL-005,Source data recovery,P0,R1,QC-AVL-005,Cross-cutting,QT-AVL-005,AC37,,Designed; application execution pending
+NFR-AVL-006,Backup verification,P0,R1,QC-AVL-006,Cross-cutting,QT-AVL-006,,,Designed; application execution pending
+NFR-AVL-007,Failure isolation,P0,R1,QC-AVL-007,Cross-cutting,QT-AVL-007,,,Designed; application execution pending
+NFR-AVL-008,Safe degraded operation,P0,R1,QC-AVL-008,Cross-cutting,QT-AVL-008,,,Designed; application execution pending
+NFR-AVL-009,Disconnected sites,P0,R2,QC-AVL-009,Cross-cutting,QT-AVL-009,AC23,,Designed; application execution pending
+NFR-PER-001,Interactive navigation,P1,R1,QC-PER-001,Cross-cutting,QT-PER-001,,,Designed; application execution pending
+NFR-PER-002,Transactional response,P1,R1,QC-PER-002,Cross-cutting,QT-PER-002,,,Designed; application execution pending
+NFR-PER-003,Search response,P1,R1,QC-PER-003,Cross-cutting,QT-PER-003,,,Designed; application execution pending
+NFR-PER-004,Dashboard response,P1,R1,QC-PER-004,Cross-cutting,QT-PER-004,,,Designed; application execution pending
+NFR-PER-005,Large ingestion,P1,R1,QC-PER-005,Cross-cutting,QT-PER-005,,,Designed; application execution pending
+NFR-PER-006,Queue responsiveness,P1,R1,QC-PER-006,Cross-cutting,QT-PER-006,,,Designed; application execution pending
+NFR-PER-007,Large exports,P1,R1,QC-PER-007,Cross-cutting,QT-PER-007,,,Designed; application execution pending
+NFR-PER-008,Low bandwidth use,P1,R1,QC-PER-008,Cross-cutting,QT-PER-008,AC36,,Designed; application execution pending
+NFR-PER-009,Inference budgets,P1,R1,QC-PER-009,Cross-cutting,QT-PER-009,,,Designed; application execution pending
+NFR-PER-010,Capacity expansion,P1,R2,QC-PER-010,Cross-cutting,QT-PER-010,,,Designed; application execution pending
+NFR-INTG-001,Acknowledged transactions,P0,R1,QC-INTG-001,Cross-cutting,QT-INTG-001,,,Designed; application execution pending
+NFR-INTG-002,Artefact integrity,P0,R1,QC-INTG-002,Cross-cutting,QT-INTG-002,,,Designed; application execution pending
+NFR-INTG-003,Provenance completeness,P0,R1,QC-INTG-003,Cross-cutting,QT-INTG-003,AC09,,Designed; application execution pending
+NFR-INTG-004,Deterministic reproducibility,P0,R1,QC-INTG-004,Cross-cutting,QT-INTG-004,AC16,,Designed; application execution pending
+NFR-INTG-005,Stochastic reproducibility,P0,R2,QC-INTG-005,Cross-cutting,QT-INTG-005,,,Designed; application execution pending
+NFR-INTG-006,Clock consistency,P0,R1,QC-INTG-006,Cross-cutting,QT-INTG-006,,,Designed; application execution pending
+NFR-INTG-007,Numerical semantics,P0,R1,QC-INTG-007,Cross-cutting,QT-INTG-007,AC10 AC14,,Designed; application execution pending
+NFR-INTG-008,Concurrent edits,P0,R1,QC-INTG-008,Cross-cutting,QT-INTG-008,,,Designed; application execution pending
+NFR-USA-001,Accessibility baseline,P1,R1,QC-USA-001,Cross-cutting,QT-USA-001,AC35,,Designed; application execution pending
+NFR-USA-002,Task success,P1,R1,QC-USA-002,Cross-cutting,QT-USA-002,,,Designed; application execution pending
+NFR-USA-003,Navigation and status clarity,P1,R1,QC-USA-003,Cross-cutting,QT-USA-003,,,Designed; application execution pending
+NFR-USA-004,Error prevention,P1,R1,QC-USA-004,Cross-cutting,QT-USA-004,AC35,,Designed; application execution pending
+NFR-USA-005,Responsive support,P1,R1,QC-USA-005,Cross-cutting,QT-USA-005,AC35 AC36,,Designed; application execution pending
+NFR-USA-006,Browser support,P1,R1,QC-USA-006,Cross-cutting,QT-USA-006,,,Designed; application execution pending
+NFR-USA-007,Language readiness,P1,R1,QC-USA-007,Cross-cutting,QT-USA-007,,,Designed; application execution pending
+NFR-USA-008,Translation integrity,P0,R2,QC-USA-008,Cross-cutting,QT-USA-008,,,Designed; application execution pending
+NFR-USA-009,Assisted accessibility,P1,R2,QC-USA-009,Cross-cutting,QT-USA-009,,,Designed; application execution pending
+NFR-OBS-001,Critical monitoring,P0,R1,QC-OBS-001,Cross-cutting,QT-OBS-001,,,Designed; application execution pending
+NFR-OBS-002,Incident acknowledgement,P0,R1,QC-OBS-002,Cross-cutting,QT-OBS-002,,,Designed; application execution pending
+NFR-OBS-003,User communications,P1,R1,QC-OBS-003,Cross-cutting,QT-OBS-003,,,Designed; application execution pending
+NFR-OBS-004,Traceability,P0,R1,QC-OBS-004,Cross-cutting,QT-OBS-004,,,Designed; application execution pending
+NFR-OBS-005,Operational history,P1,R1,QC-OBS-005,Cross-cutting,QT-OBS-005,,,Designed; application execution pending
+NFR-OBS-006,Runbook coverage,P1,R1,QC-OBS-006,Cross-cutting,QT-OBS-006,,,Designed; application execution pending
+NFR-OBS-007,Post incident review,P1,R1,QC-OBS-007,Cross-cutting,QT-OBS-007,,,Designed; application execution pending
+NFR-MNT-001,Release traceability,P0,R1,QC-MNT-001,Cross-cutting,QT-MNT-001,,,Designed; application execution pending
+NFR-MNT-002,Regression gates,P0,R1,QC-MNT-002,Cross-cutting,QT-MNT-002,,,Designed; application execution pending
+NFR-MNT-003,Rollback readiness,P1,R1,QC-MNT-003,Cross-cutting,QT-MNT-003,,,Designed; application execution pending
+NFR-MNT-004,Migration assurance,P0,R1,QC-MNT-004,Cross-cutting,QT-MNT-004,,,Designed; application execution pending
+NFR-MNT-005,Interface stability,P1,R1,QC-MNT-005,Cross-cutting,QT-MNT-005,,,Designed; application execution pending
+NFR-MNT-006,Dependency governance,P1,R1,QC-MNT-006,Cross-cutting,QT-MNT-006,,,Designed; application execution pending
+NFR-MNT-007,Portability,P1,R1,QC-MNT-007,Cross-cutting,QT-MNT-007,,,Designed; application execution pending
+NFR-MNT-008,Environment flexibility,P1,R2,QC-MNT-008,Cross-cutting,QT-MNT-008,,,Designed; application execution pending
+NFR-AQL-001,No universal clinical score,P0,R1,QC-AQL-001,Cross-cutting,QT-AQL-001,AC40,,Designed; application execution pending
+NFR-AQL-002,Platform assistant safety,P0,R2,QC-AQL-002,Cross-cutting,QT-AQL-002,,,Designed; application execution pending
+NFR-AQL-003,Generated factual grounding,P0,R2,QC-AQL-003,Cross-cutting,QT-AQL-003,AC18,,Designed; application execution pending
+NFR-AQL-004,Model change regression,P0,R2,QC-AQL-004,Cross-cutting,QT-AQL-004,,,Designed; application execution pending
+NFR-AQL-005,Human review independence,P0,R2,QC-AQL-005,Cross-cutting,QT-AQL-005,,,Designed; application execution pending
+NFR-AQL-006,AI service continuity,P1,R2,QC-AQL-006,Cross-cutting,QT-AQL-006,AC38,,Designed; application execution pending
+NFR-CST-001,Cost attribution,P1,R1,QC-CST-001,Cross-cutting,QT-CST-001,,,Designed; application execution pending
+NFR-CST-002,Spending limits,P0,R1,QC-CST-002,Cross-cutting,QT-CST-002,AC33,,Designed; application execution pending
+NFR-CST-003,Idle resource control,P1,R1,QC-CST-003,Cross-cutting,QT-CST-003,,,Designed; application execution pending
+NFR-CST-004,Resource reporting,P1,R2,QC-CST-004,Cross-cutting,QT-CST-004,,,Designed; application execution pending
+NFR-SUP-001,Operational ownership,P0,R1,QC-SUP-001,Cross-cutting,QT-SUP-001,,,Designed; application execution pending
+NFR-SUP-002,Documentation completeness,P1,R1,QC-SUP-002,Cross-cutting,QT-SUP-002,,,Designed; application execution pending
+NFR-SUP-003,Country launch readiness,P0,R1,QC-SUP-003,Cross-cutting,QT-SUP-003,,,Designed; application execution pending
+NFR-SUP-004,Service request response,P1,R1,QC-SUP-004,Cross-cutting,QT-SUP-004,,,Designed; application execution pending
+NFR-SUP-005,Continuity responsibilities,P0,R1,QC-SUP-005,Cross-cutting,QT-SUP-005,,,Designed; application execution pending
+NFR-SUP-006,Exit readiness,P1,R2,QC-SUP-006,Cross-cutting,QT-SUP-006,,,Designed; application execution pending

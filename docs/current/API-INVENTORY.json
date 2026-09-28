@@ -1,0 +1,773 @@
+{
+  "baseline": "870b49a343f1207b8cefbecdbfb0c5c5d10c955a",
+  "http_operations": [
+    {
+      "method": "POST",
+      "path": "/api/commands",
+      "source": "app/api/commands/route.ts"
+    },
+    {
+      "method": "GET",
+      "path": "/api/connections",
+      "source": "app/api/connections/route.ts"
+    },
+    {
+      "method": "POST",
+      "path": "/api/connections",
+      "source": "app/api/connections/route.ts"
+    },
+    {
+      "method": "GET",
+      "path": "/api/export",
+      "source": "app/api/export/route.ts"
+    },
+    {
+      "method": "GET",
+      "path": "/api/health",
+      "source": "app/api/health/route.ts"
+    },
+    {
+      "method": "GET",
+      "path": "/api/lab/audio",
+      "source": "app/api/lab/audio/route.ts"
+    },
+    {
+      "method": "GET",
+      "path": "/api/lab/export",
+      "source": "app/api/lab/export/route.ts"
+    },
+    {
+      "method": "GET",
+      "path": "/api/lab/registry",
+      "source": "app/api/lab/registry/route.ts"
+    },
+    {
+      "method": "GET",
+      "path": "/api/lab/timeline",
+      "source": "app/api/lab/timeline/route.ts"
+    },
+    {
+      "method": "GET",
+      "path": "/api/suite/checkpoint",
+      "source": "app/api/suite/checkpoint/route.ts"
+    },
+    {
+      "method": "POST",
+      "path": "/api/suite/checkpoint",
+      "source": "app/api/suite/checkpoint/route.ts"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/suite/checkpoint",
+      "source": "app/api/suite/checkpoint/route.ts"
+    },
+    {
+      "method": "GET",
+      "path": "/api/suite/diagnostics",
+      "source": "app/api/suite/diagnostics/route.ts"
+    },
+    {
+      "method": "GET",
+      "path": "/api/suite/export",
+      "source": "app/api/suite/export/route.ts"
+    },
+    {
+      "method": "PUT",
+      "path": "/api/suite/media",
+      "source": "app/api/suite/media/route.ts"
+    },
+    {
+      "method": "POST",
+      "path": "/api/suite/media",
+      "source": "app/api/suite/media/route.ts"
+    },
+    {
+      "method": "GET",
+      "path": "/api/suite/media",
+      "source": "app/api/suite/media/route.ts"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/suite/media",
+      "source": "app/api/suite/media/route.ts"
+    },
+    {
+      "method": "GET",
+      "path": "/api/suite/signing",
+      "source": "app/api/suite/signing/route.ts"
+    },
+    {
+      "method": "GET",
+      "path": "/api/workspace",
+      "source": "app/api/workspace/route.ts"
+    }
+  ],
+  "commands": [
+    {
+      "action": "programme.create",
+      "definition": "pData",
+      "source": "lib/domain.ts",
+      "roles": [
+        "manager"
+      ],
+      "entry": "POST /api/commands"
+    },
+    {
+      "action": "programme.update",
+      "definition": "z.object({id,changes:pData}).strict()",
+      "source": "lib/domain.ts",
+      "roles": [
+        "manager"
+      ],
+      "entry": "POST /api/commands"
+    },
+    {
+      "action": "programme.archive",
+      "definition": "z.object({id,note}).strict()",
+      "source": "lib/domain.ts",
+      "roles": [
+        "manager"
+      ],
+      "entry": "POST /api/commands"
+    },
+    {
+      "action": "study.create",
+      "definition": "study",
+      "source": "lib/domain.ts",
+      "roles": [
+        "manager"
+      ],
+      "entry": "POST /api/commands"
+    },
+    {
+      "action": "study.update",
+      "definition": "z.object({id,changes:study}).strict()",
+      "source": "lib/domain.ts",
+      "roles": [
+        "manager"
+      ],
+      "entry": "POST /api/commands"
+    },
+    {
+      "action": "study.submit",
+      "definition": "z.object({id}).strict()",
+      "source": "lib/domain.ts",
+      "roles": [
+        "manager"
+      ],
+      "entry": "POST /api/commands"
+    },
+    {
+      "action": "study.review",
+      "definition": "z.object({id,decision:z.enum(['approve','return','reject']),note}).strict()",
+      "source": "lib/domain.ts",
+      "roles": [
+        "reviewer"
+      ],
+      "entry": "POST /api/commands"
+    },
+    {
+      "action": "dataset.import",
+      "definition": "z.object({title:str(160),csv:z.string().min(1).max(150000),synthetic:z.literal(true)}).strict()",
+      "source": "lib/domain.ts",
+      "roles": [
+        "custodian",
+        "manager"
+      ],
+      "entry": "POST /api/commands"
+    },
+    {
+      "action": "dataset.release",
+      "definition": "z.object({id,note}).strict()",
+      "source": "lib/domain.ts",
+      "roles": [
+        "custodian"
+      ],
+      "entry": "POST /api/commands"
+    },
+    {
+      "action": "dataset.reject",
+      "definition": "z.object({id,note}).strict()",
+      "source": "lib/domain.ts",
+      "roles": [
+        "custodian"
+      ],
+      "entry": "POST /api/commands"
+    },
+    {
+      "action": "grant.request",
+      "definition": "z.object({datasetId:id,studyId:id,purpose:str(1000),expiresAt:z.string().datetime()}).strict()",
+      "source": "lib/domain.ts",
+      "roles": [
+        "manager",
+        "developer"
+      ],
+      "entry": "POST /api/commands"
+    },
+    {
+      "action": "grant.decide",
+      "definition": "z.object({id,decision:z.enum(['approve','reject']),note}).strict()",
+      "source": "lib/domain.ts",
+      "roles": [
+        "custodian"
+      ],
+      "entry": "POST /api/commands"
+    },
+    {
+      "action": "grant.revoke",
+      "definition": "z.object({id,note}).strict()",
+      "source": "lib/domain.ts",
+      "roles": [
+        "custodian"
+      ],
+      "entry": "POST /api/commands"
+    },
+    {
+      "action": "model.register",
+      "definition": "z.object({title:str(160),version:str(40),description:str(1000),weight:z.number().min(-20).max(20),intercept:z.number().min(-20).max(20),threshold:z.number().min(0.01).max(.99)}).strict()",
+      "source": "lib/domain.ts",
+      "roles": [
+        "developer"
+      ],
+      "entry": "POST /api/commands"
+    },
+    {
+      "action": "run.execute",
+      "definition": "z.object({studyId:id,datasetId:id,modelId:id}).strict()",
+      "source": "lib/domain.ts",
+      "roles": [
+        "developer"
+      ],
+      "entry": "POST /api/commands"
+    },
+    {
+      "action": "report.create",
+      "definition": "z.object({runId:id,summary:str(2000)}).strict()",
+      "source": "lib/domain.ts",
+      "roles": [
+        "manager"
+      ],
+      "entry": "POST /api/commands"
+    },
+    {
+      "action": "report.issue",
+      "definition": "z.object({id,note}).strict()",
+      "source": "lib/domain.ts",
+      "roles": [
+        "reviewer"
+      ],
+      "entry": "POST /api/commands"
+    },
+    {
+      "action": "report.withdraw",
+      "definition": "z.object({id,note}).strict()",
+      "source": "lib/domain.ts",
+      "roles": [
+        "safety"
+      ],
+      "entry": "POST /api/commands"
+    },
+    {
+      "action": "concern.record",
+      "definition": "z.object({title:str(160),description:str(2000),severity:z.enum(['low','moderate','high','critical']),recordId:z.union([id,z.literal('')])}).strict()",
+      "source": "lib/domain.ts",
+      "roles": [
+        "manager",
+        "reviewer",
+        "custodian",
+        "developer",
+        "safety",
+        "admin",
+        "auditor",
+        "support"
+      ],
+      "entry": "POST /api/commands"
+    },
+    {
+      "action": "concern.resolve",
+      "definition": "z.object({id,note}).strict()",
+      "source": "lib/domain.ts",
+      "roles": [
+        "safety"
+      ],
+      "entry": "POST /api/commands"
+    },
+    {
+      "action": "hold.apply",
+      "definition": "z.object({note}).strict()",
+      "source": "lib/domain.ts",
+      "roles": [
+        "safety"
+      ],
+      "entry": "POST /api/commands"
+    },
+    {
+      "action": "hold.release",
+      "definition": "z.object({id,note}).strict()",
+      "source": "lib/domain.ts",
+      "roles": [
+        "safety"
+      ],
+      "entry": "POST /api/commands"
+    },
+    {
+      "action": "institution.submit",
+      "definition": "z.object({legalName:str(160),country:z.enum(['GB','KE','IN','US','ZA','BR']),summary:str(2000)}).strict()",
+      "source": "lib/domain.ts",
+      "roles": [
+        "manager"
+      ],
+      "entry": "POST /api/commands"
+    },
+    {
+      "action": "institution.decide",
+      "definition": "z.object({id,decision:z.enum(['approve','return','reject']),note}).strict()",
+      "source": "lib/domain.ts",
+      "roles": [
+        "admin"
+      ],
+      "entry": "POST /api/commands"
+    },
+    {
+      "action": "member.status",
+      "definition": "z.object({id,active:z.boolean(),note}).strict()",
+      "source": "lib/domain.ts",
+      "roles": [
+        "admin"
+      ],
+      "entry": "POST /api/commands"
+    },
+    {
+      "action": "lab.ecosystem.generate",
+      "definition": "recipeSchema",
+      "source": "lib/lab.ts",
+      "roles": [
+        "manager",
+        "developer",
+        "custodian"
+      ],
+      "entry": "POST /api/commands"
+    },
+    {
+      "action": "lab.ecosystem.reset",
+      "definition": "z.object({id,generation:z.number().int().positive(),note}).strict()",
+      "source": "lib/lab.ts",
+      "roles": [
+        "manager"
+      ],
+      "entry": "POST /api/commands"
+    },
+    {
+      "action": "lab.ecosystem.fork",
+      "definition": "z.object({id,generation:z.number().int().positive(),name:z.string().trim().min(3).max(120)}).strict()",
+      "source": "lib/lab.ts",
+      "roles": [
+        "manager",
+        "developer"
+      ],
+      "entry": "POST /api/commands"
+    },
+    {
+      "action": "lab.model.register",
+      "definition": "modelSchema",
+      "source": "lib/lab.ts",
+      "roles": [
+        "developer"
+      ],
+      "entry": "POST /api/commands"
+    },
+    {
+      "action": "lab.run.create",
+      "definition": "z.object({environmentId:id,generation:z.number().int().positive(),modelId:id,scenario:scenarioSchema}).strict()",
+      "source": "lib/lab.ts",
+      "roles": [
+        "manager",
+        "developer"
+      ],
+      "entry": "POST /api/commands"
+    },
+    {
+      "action": "lab.run.import",
+      "definition": "z.object({environmentId:id,generation:z.number().int().positive(),modelName:z.string().trim().min(3).max(120),threshold:z.number().finite().min(.01).max(.99),scenario:scenarioSchema,predictions:z.array(z.object({subjectId:z.string().regex(/^SYN-P-\\d{4}$/),probability:z.number().finite().min(0).max(1)}).strict()).min(10).max(200)}).strict()",
+      "source": "lib/lab.ts",
+      "roles": [
+        "developer"
+      ],
+      "entry": "POST /api/commands"
+    },
+    {
+      "action": "lab.run.advance",
+      "definition": "z.object({id,hours:z.number().int().min(1).max(168)}).strict()",
+      "source": "lib/lab.ts",
+      "roles": [
+        "manager",
+        "developer"
+      ],
+      "entry": "POST /api/commands"
+    },
+    {
+      "action": "lab.run.pause",
+      "definition": "z.object({id}).strict()",
+      "source": "lib/lab.ts",
+      "roles": [
+        "manager",
+        "developer"
+      ],
+      "entry": "POST /api/commands"
+    },
+    {
+      "action": "lab.run.resume",
+      "definition": "z.object({id}).strict()",
+      "source": "lib/lab.ts",
+      "roles": [
+        "manager",
+        "developer"
+      ],
+      "entry": "POST /api/commands"
+    },
+    {
+      "action": "lab.run.cancel",
+      "definition": "z.object({id,note}).strict()",
+      "source": "lib/lab.ts",
+      "roles": [
+        "manager",
+        "developer",
+        "safety"
+      ],
+      "entry": "POST /api/commands"
+    },
+    {
+      "action": "lab.run.replay",
+      "definition": "z.object({id}).strict()",
+      "source": "lib/lab.ts",
+      "roles": [
+        "manager",
+        "developer"
+      ],
+      "entry": "POST /api/commands"
+    },
+    {
+      "action": "lab.report.create",
+      "definition": "z.object({runId:id,summary:note}).strict()",
+      "source": "lib/lab.ts",
+      "roles": [
+        "manager"
+      ],
+      "entry": "POST /api/commands"
+    },
+    {
+      "action": "lab.report.issue",
+      "definition": "z.object({id,note}).strict()",
+      "source": "lib/lab.ts",
+      "roles": [
+        "reviewer"
+      ],
+      "entry": "POST /api/commands"
+    },
+    {
+      "action": "lab.report.withdraw",
+      "definition": "z.object({id,note}).strict()",
+      "source": "lib/lab.ts",
+      "roles": [
+        "safety"
+      ],
+      "entry": "POST /api/commands"
+    },
+    {
+      "action": "suite.demo.seed",
+      "definition": "z.object({}).strict()",
+      "source": "lib/suite.ts",
+      "roles": [
+        "manager",
+        "admin"
+      ],
+      "entry": "POST /api/commands"
+    },
+    {
+      "action": "suite.template.generate",
+      "definition": "z.object({template:z.enum(['respiratory','maternal','rural']),name,count:z.number().int().min(10).max(200),seed:z.number().int().min(1).max(2147483647)}).strict()",
+      "source": "lib/suite.ts",
+      "roles": [
+        "manager",
+        "custodian",
+        "developer"
+      ],
+      "entry": "POST /api/commands"
+    },
+    {
+      "action": "suite.package.register",
+      "definition": "portablePackage",
+      "source": "lib/suite.ts",
+      "roles": [
+        "developer"
+      ],
+      "entry": "POST /api/commands"
+    },
+    {
+      "action": "suite.connector.create",
+      "definition": "z.object({name,kind:z.enum(['remote_model','ehr','laboratory','callback']),endpoint:z.string().max(300),response:z.enum(['success','timeout','error','duplicate']),synthetic:z.literal(true)}).strict()",
+      "source": "lib/suite.ts",
+      "roles": [
+        "developer"
+      ],
+      "entry": "POST /api/commands"
+    },
+    {
+      "action": "suite.connector.test",
+      "definition": "z.object({id,response:z.enum(['success','timeout','error','duplicate'])}).strict()",
+      "source": "lib/suite.ts",
+      "roles": [
+        "developer",
+        "manager"
+      ],
+      "entry": "POST /api/commands"
+    },
+    {
+      "action": "suite.connector.disable",
+      "definition": "z.object({id,note}).strict()",
+      "source": "lib/suite.ts",
+      "roles": [
+        "developer",
+        "admin"
+      ],
+      "entry": "POST /api/commands"
+    },
+    {
+      "action": "suite.job.enqueue",
+      "definition": "z.object({environmentId:id,generation,modelId:id,scenario:scenarioSchema}).strict()",
+      "source": "lib/suite.ts",
+      "roles": [
+        "developer",
+        "manager"
+      ],
+      "entry": "POST /api/commands"
+    },
+    {
+      "action": "suite.job.claim",
+      "definition": "z.object({id}).strict()",
+      "source": "lib/suite.ts",
+      "roles": [
+        "developer",
+        "manager"
+      ],
+      "entry": "POST /api/commands"
+    },
+    {
+      "action": "suite.job.process",
+      "definition": "z.object({id,epoch:generation,fault:z.enum(['none','timeout'])}).strict()",
+      "source": "lib/suite.ts",
+      "roles": [
+        "developer",
+        "manager"
+      ],
+      "entry": "POST /api/commands"
+    },
+    {
+      "action": "suite.job.retry",
+      "definition": "z.object({id}).strict()",
+      "source": "lib/suite.ts",
+      "roles": [
+        "developer",
+        "manager"
+      ],
+      "entry": "POST /api/commands"
+    },
+    {
+      "action": "suite.job.cancel",
+      "definition": "z.object({id,note}).strict()",
+      "source": "lib/suite.ts",
+      "roles": [
+        "developer",
+        "manager",
+        "safety"
+      ],
+      "entry": "POST /api/commands"
+    },
+    {
+      "action": "suite.upload.create",
+      "definition": "z.object({name,size:z.number().int().min(48).max(500000),sha256:hash,synthetic:z.literal(true)}).strict()",
+      "source": "lib/suite.ts",
+      "roles": [
+        "developer",
+        "custodian"
+      ],
+      "entry": "POST /api/commands"
+    },
+    {
+      "action": "suite.upload.part",
+      "definition": "z.object({id,index:z.number().int().min(0).max(15),size:z.number().int().min(1).max(32768),sha256:hash}).strict()",
+      "source": "lib/suite.ts",
+      "roles": [
+        "developer",
+        "custodian"
+      ],
+      "entry": "internal_media_route_only"
+    },
+    {
+      "action": "suite.upload.finalize",
+      "definition": "z.object({id,sha256:hash,features:z.object({rms:z.number().finite(),zcr:z.number().finite(),sampleRate:z.number().int(),samples:z.number().int(),durationSeconds:z.number().finite()}).strict()}).strict()",
+      "source": "lib/suite.ts",
+      "roles": [
+        "developer",
+        "custodian"
+      ],
+      "entry": "internal_media_route_only"
+    },
+    {
+      "action": "suite.upload.release",
+      "definition": "z.object({id,note}).strict()",
+      "source": "lib/suite.ts",
+      "roles": [
+        "custodian"
+      ],
+      "entry": "POST /api/commands"
+    },
+    {
+      "action": "suite.upload.revoke",
+      "definition": "z.object({id,note}).strict()",
+      "source": "lib/suite.ts",
+      "roles": [
+        "custodian",
+        "safety"
+      ],
+      "entry": "POST /api/commands"
+    },
+    {
+      "action": "suite.media.result",
+      "definition": "z.object({id,modelId:id,modelHash:hash,probability:z.number().finite().min(0).max(1),threshold:z.number().finite().min(.01).max(.99)}).strict()",
+      "source": "lib/suite.ts",
+      "roles": [
+        "developer"
+      ],
+      "entry": "internal_media_route_only"
+    },
+    {
+      "action": "suite.registry.patch",
+      "definition": "z.object({environmentId:id,generation,resourceType:z.enum(['Patient','Organization','Practitioner']),resourceId:id,name,active:z.boolean()}).strict()",
+      "source": "lib/suite.ts",
+      "roles": [
+        "custodian",
+        "manager"
+      ],
+      "entry": "POST /api/commands"
+    },
+    {
+      "action": "suite.registry.merge",
+      "definition": "z.object({environmentId:id,generation,sourceId:id,targetId:id,note}).strict()",
+      "source": "lib/suite.ts",
+      "roles": [
+        "custodian"
+      ],
+      "entry": "POST /api/commands"
+    },
+    {
+      "action": "suite.analysis.compare",
+      "definition": "z.object({leftId:id,rightId:id,seed:z.number().int().min(1).max(2147483647)}).strict()",
+      "source": "lib/suite.ts",
+      "roles": [
+        "developer",
+        "reviewer",
+        "manager"
+      ],
+      "entry": "POST /api/commands"
+    },
+    {
+      "action": "suite.analysis.partition",
+      "definition": "z.object({environmentId:id,generation,seed:z.number().int().min(1).max(2147483647)}).strict()",
+      "source": "lib/suite.ts",
+      "roles": [
+        "developer",
+        "custodian",
+        "manager"
+      ],
+      "entry": "POST /api/commands"
+    },
+    {
+      "action": "suite.analysis.robustness",
+      "definition": "z.object({runId:id,gain:z.number().finite().min(.25).max(2),noise:z.number().finite().min(0).max(.1),seed:z.number().int().min(1).max(2147483647)}).strict()",
+      "source": "lib/suite.ts",
+      "roles": [
+        "developer",
+        "manager"
+      ],
+      "entry": "POST /api/commands"
+    },
+    {
+      "action": "suite.access.request",
+      "definition": "z.object({name,scope:z.enum(['support_diagnostics','playback','inference','export','organisation_invitation']),reason:note,hours:z.number().int().min(1).max(24)}).strict()",
+      "source": "lib/suite.ts",
+      "roles": [
+        "manager",
+        "developer",
+        "custodian",
+        "support"
+      ],
+      "entry": "POST /api/commands"
+    },
+    {
+      "action": "suite.access.decide",
+      "definition": "z.object({id,decision:z.enum(['approve','reject']),note}).strict()",
+      "source": "lib/suite.ts",
+      "roles": [
+        "admin"
+      ],
+      "entry": "POST /api/commands"
+    },
+    {
+      "action": "suite.access.revoke",
+      "definition": "z.object({id,note}).strict()",
+      "source": "lib/suite.ts",
+      "roles": [
+        "admin",
+        "safety"
+      ],
+      "entry": "POST /api/commands"
+    },
+    {
+      "action": "suite.identity.create",
+      "definition": "z.object({name,scope:z.enum(['registry_read','prediction_submit','callback_receive']),hours:z.number().int().min(1).max(24)}).strict()",
+      "source": "lib/suite.ts",
+      "roles": [
+        "admin"
+      ],
+      "entry": "POST /api/commands"
+    },
+    {
+      "action": "suite.identity.revoke",
+      "definition": "z.object({id,note}).strict()",
+      "source": "lib/suite.ts",
+      "roles": [
+        "admin",
+        "safety"
+      ],
+      "entry": "POST /api/commands"
+    },
+    {
+      "action": "suite.evidence.correct",
+      "definition": "z.object({id,summary:note,note}).strict()",
+      "source": "lib/suite.ts",
+      "roles": [
+        "manager"
+      ],
+      "entry": "POST /api/commands"
+    },
+    {
+      "action": "suite.exercise.run",
+      "definition": "z.object({kind:z.enum(['backup_restore','revocation','worker_crash','regional_failover','key_rotation','load_test']),note}).strict()",
+      "source": "lib/suite.ts",
+      "roles": [
+        "admin",
+        "safety"
+      ],
+      "entry": "POST /api/commands"
+    }
+  ],
+  "live_connection_actions": [
+    "save",
+    "test",
+    "activate",
+    "disable",
+    "abandon",
+    "run"
+  ]
+}
