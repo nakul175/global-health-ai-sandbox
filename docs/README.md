@@ -1,5 +1,7 @@
 # Documentation index
 
+**Current edition 1.1:** start with the [complete reconciled index](current/DOCUMENTATION-INDEX.md), [implementation record](IMPLEMENTATION.md), [qualification](QUALIFICATION.md), [next delivery](NEXT-DELIVERY.md) and [developer handover](current/DEVELOPER-HANDOVER.md). The [history archive](history/README.md) preserves earlier available files. The older navigation and dated baseline below are retained as context; current main additionally includes PR #13's fixes.
+
 This repository is the source of truth for product, engineering and operating documentation. Specifications describe intended behaviour; only versioned implementation and verification records establish delivered behaviour.
 
 ## Start here

@@ -1,0 +1,457 @@
+Scenario ID,Requirement,Title,Domain,Priority,Release,Screen,Acceptance intent,Suite
+TS-F-ORG-001,FR-ORG-001,Organisation hierarchy,ORG,P0,R1,S-ORG-02,"A study can involve three organisations without merging their users, contracts or data permissions.",Functional
+TS-F-ORG-002,FR-ORG-002,Verified organisation onboarding,ORG,P0,R1,S-ORG-03,An unverified applicant can prepare an application but cannot authorise data access or approve studies.,Functional
+TS-F-ORG-003,FR-ORG-003,Tenant boundaries,ORG,P0,R1,S-ORG-01,"Cross organisation searches, direct links, exports and background jobs all reject ungranted access.",Functional
+TS-F-ORG-004,FR-ORG-004,Programme configuration,ORG,P1,R1,S-ORG-02,Two programmes can apply different eligibility and funding rules to the same product.,Functional
+TS-F-ORG-005,FR-ORG-005,Cross organisation collaboration,ORG,P1,R1,S-ORG-02,Accepting a study invitation grants only the study permissions specified in the approved agreement.,Functional
+TS-F-ORG-006,FR-ORG-006,Accountability register,ORG,P0,R1,S-ORG-02,Removing the last accountable owner is blocked until an authorised successor accepts responsibility.,Functional
+TS-F-ORG-007,FR-ORG-007,Lifecycle management,ORG,P1,R1,S-ORG-03,Suspension blocks new activity while preserving authorised incident response and required evidence access.,Functional
+TS-F-ORG-008,FR-ORG-008,Delegated network administration,ORG,P1,R2,S-ORG-03,A country administrator cannot change another country's rules or weaken mandatory operator controls.,Functional
+TS-F-ORG-009,FR-ORG-009,Institutional ownership changes,ORG,P1,R1,S-ORG-03,Historical reports retain the original legal entity and show the effective transfer date.,Functional
+TS-F-ORG-010,FR-ORG-010,Demonstration environment,ORG,P1,R1,S-ORG-02,A demo administrator cannot connect a production dataset or issue a production evidence report.,Functional
+TS-F-IAM-001,FR-IAM-001,User invitations,IAM,P0,R1,S-IAM-01,An expired or already accepted invitation cannot create another membership.,Functional
+TS-F-IAM-002,FR-IAM-002,Authentication,IAM,P0,R1,S-IAM-02,Each accepted write and approval is attributable to one uniquely identified human or service principal.,Functional
+TS-F-IAM-003,FR-IAM-003,Multifactor authentication,IAM,P0,R1,S-IAM-02,A restricted dataset remains inaccessible after password only authentication.,Functional
+TS-F-IAM-004,FR-IAM-004,Enterprise federation,IAM,P1,R1,S-IAM-03,A federated identity cannot claim an organisation or administrator role using an untrusted attribute.,Functional
+TS-F-IAM-005,FR-IAM-005,Provisioning and deprovisioning,IAM,P1,R2,S-IAM-03,A directory removal revokes mapped memberships within the agreed revocation objective and creates an audit event.,Functional
+TS-F-IAM-006,FR-IAM-006,Account recovery,IAM,P0,R1,S-IAM-03,A recovery attempt cannot replace a privileged authentication factor through email access alone.,Functional
+TS-F-IAM-007,FR-IAM-007,Session management,IAM,P0,R1,S-IAM-02,A revoked session fails its next protected action within the specified revocation limit.,Functional
+TS-F-IAM-008,FR-IAM-008,Membership changes,IAM,P0,R1,S-IAM-02,A departing reviewer loses active access without losing attribution on signed historical decisions.,Functional
+TS-F-IAM-009,FR-IAM-009,Temporary access,IAM,P0,R1,S-IAM-02,Expired access is denied by both the user interface and the API without manual cleanup.,Functional
+TS-F-IAM-010,FR-IAM-010,Service identities,IAM,P0,R1,S-IAM-03,A service credential cannot perform a human clinical signoff or inherit its owner's unrelated privileges.,Functional
+TS-F-IAM-011,FR-IAM-011,User preferences,IAM,P1,R1,S-IAM-02,Changing a display name does not alter the verified signer identity on an issued report.,Functional
+TS-F-IAM-012,FR-IAM-012,Professional verification,IAM,P0,R1,S-IAM-02,Expired credentials block new restricted decisions while preserving historical decisions for review.,Functional
+TS-F-IAM-013,FR-IAM-013,Identity reconciliation,IAM,P1,R1,S-IAM-03,Two accounts cannot be merged in a way that removes an existing conflict of interest declaration.,Functional
+TS-F-IAM-014,FR-IAM-014,Access recertification,IAM,P0,R1,S-IAM-03,"The review lists actual effective privileges and records retain, reduce or revoke decisions.",Functional
+TS-F-ACC-001,FR-ACC-001,Permission model,ACC,P0,R1,S-ACC-02,A user with an evaluator role cannot read an unassigned study merely because both share a country.,Functional
+TS-F-ACC-002,FR-ACC-002,Granular actions,ACC,P0,R1,S-ACC-02,Permission to view a result does not automatically permit downloading its underlying records.,Functional
+TS-F-ACC-003,FR-ACC-003,Independent approval,ACC,P0,R1,S-ACC-03,A developer attempting to approve its own product's final report receives a recorded denial.,Functional
+TS-F-ACC-004,FR-ACC-004,Privileged administration,ACC,P0,R1,S-ACC-02,An administrator can manage an account without opening that account's restricted study files.,Functional
+TS-F-ACC-005,FR-ACC-005,Exceptional access,ACC,P0,R1,S-ACC-03,The access session expires automatically and generates a reviewable record of every protected action.,Functional
+TS-F-ACC-006,FR-ACC-006,Permission inheritance,ACC,P0,R1,S-ACC-02,An explicit dataset restriction remains effective when a user receives a broader programme role.,Functional
+TS-F-ACC-007,FR-ACC-007,Uniform enforcement,ACC,P0,R1,S-ACC-01,A denied user's search counts and file previews do not disclose hidden objects.,Functional
+TS-F-ACC-008,FR-ACC-008,Access request workflow,ACC,P0,R1,S-ACC-01,Approval for one purpose cannot be reused for an unrelated study or training activity.,Functional
+TS-F-ACC-009,FR-ACC-009,Dual control,ACC,P0,R1,S-ACC-03,One actor cannot satisfy two required approval roles on the same action.,Functional
+TS-F-ACC-010,FR-ACC-010,Permission changes during work,ACC,P0,R1,S-ACC-02,A queued export is cancelled when its grant expires before delivery.,Functional
+TS-F-ACC-011,FR-ACC-011,Permission explanations,ACC,P1,R1,S-ACC-02,A support explanation identifies the missing grant and responsible approver rather than revealing protected data.,Functional
+TS-F-ACC-012,FR-ACC-012,Conflict aware assignment,ACC,P0,R1,S-ACC-03,A reviewer with a declared material conflict is excluded until an independent decision is recorded.,Functional
+TS-F-CTR-001,FR-CTR-001,Country profiles,CTR,P0,R1,S-CTR-02,A study records the exact country profile version used at each gate.,Functional
+TS-F-CTR-002,FR-CTR-002,Applicability assessment,CTR,P0,R1,S-CTR-02,No study becomes active with an unanswered mandatory applicability item.,Functional
+TS-F-CTR-003,FR-CTR-003,Rule provenance,CTR,P0,R1,S-CTR-02,A source change creates a review task rather than silently changing a previously approved study.,Functional
+TS-F-CTR-004,FR-CTR-004,Residency and transfer rules,CTR,P0,R1,S-CTR-02,An otherwise valid workspace request is blocked when its region conflicts with the dataset policy.,Functional
+TS-F-CTR-005,FR-CTR-005,Restriction precedence,CTR,P0,R1,S-CTR-03,A permissive programme template cannot override a stricter data use agreement.,Functional
+TS-F-CTR-006,FR-CTR-006,Local terminology and language,CTR,P1,R1,S-CTR-02,A measurement is not interpreted in a different unit because a user changes display language.,Functional
+TS-F-CTR-007,FR-CTR-007,Rule change impact,CTR,P0,R1,S-CTR-03,"Affected owners receive an actionable list with suspend, remediate or retain decisions and reasons.",Functional
+TS-F-CTR-008,FR-CTR-008,Authority boundaries,CTR,P0,R1,S-CTR-02,An internal successful evaluation cannot populate a market authorisation field.,Functional
+TS-F-CTR-009,FR-CTR-009,Regulatory collaboration,CTR,P1,R2,S-CTR-02,Two authorities reviewing the same solution see only the evidence explicitly shared with each.,Functional
+TS-F-CTR-010,FR-CTR-010,Profile activation,CTR,P0,R1,S-CTR-03,Marketing cannot advertise an active clinical sandbox in a country whose profile is still draft.,Functional
+TS-F-DEM-001,FR-DEM-001,Problem statements,DEM,P1,R1,S-DEM-02,An opportunity cannot advance to funded evaluation without a defined decision and accountable institution.,Functional
+TS-F-DEM-002,FR-DEM-002,Calls for solutions,DEM,P1,R1,S-DEM-02,Applicants retain the call version under which they submitted.,Functional
+TS-F-DEM-003,FR-DEM-003,Applicant screening,DEM,P1,R1,S-DEM-03,Rejected applicants receive authorised reasons and an available reconsideration route.,Functional
+TS-F-DEM-004,FR-DEM-004,Portfolio prioritisation,DEM,P1,R1,S-DEM-03,A ranking can be reproduced from its inputs and declared weights.,Functional
+TS-F-DEM-005,FR-DEM-005,Budget and buyer identification,DEM,P1,R1,S-DEM-02,A study lacking an adoption buyer is explicitly labelled exploratory and excluded from adoption readiness claims.,Functional
+TS-F-DEM-006,FR-DEM-006,Feasibility review,DEM,P1,R1,S-DEM-03,A feasibility decision records unresolved gaps and their cost and schedule consequences.,Functional
+TS-F-DEM-007,FR-DEM-007,Demand aggregation,DEM,P1,R2,S-DEM-02,A shared call produces distinct country decision records rather than one universal approval.,Functional
+TS-F-DEM-008,FR-DEM-008,Pipeline management,DEM,P1,R1,S-DEM-01,A pipeline report separates incomplete applications from scientifically unsuccessful evaluations.,Functional
+TS-F-NET-001,FR-NET-001,Site registry,NET,P0,R1,S-NET-02,A study can filter suitable sites using verified capabilities and current availability.,Functional
+TS-F-NET-002,FR-NET-002,Qualification and renewal,NET,P0,R1,S-NET-03,An expired qualification blocks new study allocation until reviewed.,Functional
+TS-F-NET-003,FR-NET-003,Capacity planning,NET,P1,R1,S-NET-03,Two programme managers cannot unknowingly allocate the same unavailable clinical capacity.,Functional
+TS-F-NET-004,FR-NET-004,Local accountability,NET,P0,R1,S-NET-02,A live study cannot open a site without all required local accountable roles.,Functional
+TS-F-NET-005,FR-NET-005,Partner agreements,NET,P1,R1,S-NET-02,An agreement expiry is visible before a new study or renewal is approved.,Functional
+TS-F-NET-006,FR-NET-006,Expert matching,NET,P1,R2,S-NET-01,A match explains its eligibility and never reveals a private competing application.,Functional
+TS-F-NET-007,FR-NET-007,Site performance,NET,P1,R1,S-NET-01,Performance comparisons disclose case mix and data completeness limitations.,Functional
+TS-F-NET-008,FR-NET-008,Partner suspension,NET,P0,R1,S-NET-03,Affected studies receive a documented reassignment or safe closure plan.,Functional
+TS-F-NET-009,FR-NET-009,Community participation,NET,P1,R2,S-NET-02,Community feedback has an accountable response and can influence the approved protocol.,Functional
+TS-F-SOL-001,FR-SOL-001,Product identity,SOL,P0,R1,S-SOL-02,A solution cannot enter evaluation with an undefined intended population or user.,Functional
+TS-F-SOL-002,FR-SOL-002,Version identity,SOL,P0,R1,S-SOL-02,Changing a decision threshold creates a new evaluated configuration rather than overwriting the old one.,Functional
+TS-F-SOL-003,FR-SOL-003,Submission package,SOL,P1,R1,S-SOL-02,Submission validation identifies missing mandatory materials before scientific review begins.,Functional
+TS-F-SOL-004,FR-SOL-004,Claims register,SOL,P0,R1,S-SOL-02,A developer supplied claim remains visibly distinct from a sandbox finding.,Functional
+TS-F-SOL-005,FR-SOL-005,Regulatory status,SOL,P0,R1,S-SOL-03,An authorisation for one use and jurisdiction is not displayed as unrestricted global clearance.,Functional
+TS-F-SOL-006,FR-SOL-006,Deployment modes,SOL,P1,R1,S-SOL-03,A black box API submission identifies reproducibility and inspection limits before acceptance.,Functional
+TS-F-SOL-007,FR-SOL-007,Dependency disclosure,SOL,P0,R1,S-SOL-02,An undeclared external model provider prevents activation of a restricted data evaluation.,Functional
+TS-F-SOL-008,FR-SOL-008,Commercial readiness,SOL,P1,R1,S-SOL-02,A procurement reviewer can distinguish evaluation access from production licensing rights.,Functional
+TS-F-SOL-009,FR-SOL-009,Confidentiality controls,SOL,P1,R1,S-SOL-02,Publishing a public solution profile does not expose its proprietary model files.,Functional
+TS-F-SOL-010,FR-SOL-010,Withdrawal and recall,SOL,P0,R1,S-SOL-03,A withdrawn version is unavailable for new studies while its historical evidence remains traceable.,Functional
+TS-F-SOL-011,FR-SOL-011,Comparable profiles,SOL,P1,R2,S-SOL-01,Search results do not rank unlike clinical tasks by a single undifferentiated accuracy score.,Functional
+TS-F-SOL-012,FR-SOL-012,Ownership disputes,SOL,P0,R1,S-SOL-03,A disputed uploader cannot transfer or delete the challenged asset during a hold.,Functional
+TS-F-AGR-001,FR-AGR-001,Agreement register,AGR,P0,R1,S-AGR-02,A study gate evaluates the active signed agreement rather than an unsigned draft.,Functional
+TS-F-AGR-002,FR-AGR-002,Rights by activity,AGR,P0,R1,S-AGR-02,Permission to run inference does not authorise training or model weight redistribution.,Functional
+TS-F-AGR-003,FR-AGR-003,Evidence ownership,AGR,P0,R1,S-AGR-02,A report export checks the rights of all contributing assets.,Functional
+TS-F-AGR-004,FR-AGR-004,Term and expiry,AGR,P0,R1,S-AGR-01,An expired data licence blocks new runs even if a study remains administratively open.,Functional
+TS-F-AGR-005,FR-AGR-005,Subprocessors and providers,AGR,P0,R1,S-AGR-02,A new provider cannot receive study data before its approval becomes effective.,Functional
+TS-F-AGR-006,FR-AGR-006,Funding restrictions,AGR,P1,R1,S-AGR-02,A charge outside the award period is flagged before invoicing or drawdown.,Functional
+TS-F-AGR-007,FR-AGR-007,Independence terms,AGR,P0,R1,S-AGR-02,A payer cannot remove an unfavourable finding from the signed scientific record.,Functional
+TS-F-AGR-008,FR-AGR-008,Contract exceptions,AGR,P1,R1,S-AGR-03,A commercial discount does not modify clinical safety or data protection requirements.,Functional
+TS-F-AGR-009,FR-AGR-009,Signature integration,AGR,P1,R2,S-AGR-03,Replacing an agreement file invalidates its prior signature association.,Functional
+TS-F-AGR-010,FR-AGR-010,Liability allocation,AGR,P0,R1,S-AGR-03,Activation is blocked where a required responsibility or coverage obligation is unresolved.,Functional
+TS-F-WFL-001,FR-WFL-001,Configurable gates,WFL,P0,R1,S-WFL-02,Users cannot skip an applicable ethics or data gate by changing a display status.,Functional
+TS-F-WFL-002,FR-WFL-002,Task orchestration,WFL,P1,R1,S-WFL-02,A blocked task shows the dependency and accountable party rather than an unexplained delay.,Functional
+TS-F-WFL-003,FR-WFL-003,Decision records,WFL,P0,R1,S-WFL-03,A report can reconstruct precisely which documents supported the decision.,Functional
+TS-F-WFL-004,FR-WFL-004,Parallel review,WFL,P0,R1,S-WFL-03,A blinded reviewer cannot see another review before its permitted unblinding point.,Functional
+TS-F-WFL-005,FR-WFL-005,Conditional decisions,WFL,P0,R1,S-WFL-03,An unmet prerequisite condition prevents the dependent activity from starting.,Functional
+TS-F-WFL-006,FR-WFL-006,Rework and resubmission,WFL,P0,R1,S-WFL-02,Reviewers can compare the changed material and distinguish new evidence from unchanged claims.,Functional
+TS-F-WFL-007,FR-WFL-007,Appeals,WFL,P1,R1,S-WFL-03,The original decision maker cannot be the sole adjudicator of the appeal.,Functional
+TS-F-WFL-008,FR-WFL-008,Suspension and resumption,WFL,P0,R1,S-WFL-03,A commercial manager cannot resume a clinical suspension independently.,Functional
+TS-F-WFL-009,FR-WFL-009,Amendments,WFL,P0,R1,S-WFL-02,An added site cannot recruit under another site's approval unless explicitly covered.,Functional
+TS-F-WFL-010,FR-WFL-010,Service clocks,WFL,P1,R1,S-WFL-01,Turnaround reporting cannot improve by silently resetting an application's start date.,Functional
+TS-F-ETH-001,FR-ETH-001,Ethics applicability,ETH,P0,R1,S-ETH-02,An evaluator cannot self declare exemption without the required institutional authority.,Functional
+TS-F-ETH-002,FR-ETH-002,Approval records,ETH,P0,R1,S-ETH-02,A study cannot use an approval that covers a different protocol or excluded population.,Functional
+TS-F-ETH-003,FR-ETH-003,Consent and notices,ETH,P0,R2,S-ETH-02,A participant's record identifies the exact consent materials and basis that apply.,Functional
+TS-F-ETH-004,FR-ETH-004,Vulnerable populations,ETH,P0,R2,S-ETH-02,Recruitment blocks when the required authorised consent pathway is missing.,Functional
+TS-F-ETH-005,FR-ETH-005,Secondary use,ETH,P0,R1,S-ETH-02,A deidentified dataset is rejected for a purpose excluded by its data use agreement.,Functional
+TS-F-ETH-006,FR-ETH-006,Participant withdrawal,ETH,P0,R2,S-ETH-03,The participant and study owner receive an outcome showing what ceased and what must remain.,Functional
+TS-F-ETH-007,FR-ETH-007,Clinical oversight,ETH,P0,R2,S-ETH-02,The study cannot start until a local accountable clinician accepts the oversight plan.,Functional
+TS-F-ETH-008,FR-ETH-008,Ethics renewal,ETH,P0,R1,S-ETH-01,New affected activity stops at expiry unless a valid extension is recorded.,Functional
+TS-F-ETH-009,FR-ETH-009,Participant communication,ETH,P1,R2,S-ETH-03,"Messages are checked for language, confidentiality and approved content before release.",Functional
+TS-F-ETH-010,FR-ETH-010,Ethical complaints,ETH,P0,R1,S-ETH-03,A complaint receives an independent owner and cannot be deleted by the subject of the complaint.,Functional
+TS-F-DAC-001,FR-DAC-001,Dataset catalogue,DAC,P0,R1,S-DAC-02,A catalogue entry can be discoverable without exposing records or sensitive sample counts.,Functional
+TS-F-DAC-002,FR-DAC-002,Data access applications,DAC,P0,R1,S-DAC-02,The custodian can approve a restricted subset or deny with reasons.,Functional
+TS-F-DAC-003,FR-DAC-003,Purpose bound grants,DAC,P0,R1,S-DAC-03,A valid grant for evaluation cannot be used by a training job.,Functional
+TS-F-DAC-004,FR-DAC-004,Consent and legal basis metadata,DAC,P0,R1,S-DAC-02,A mixed dataset can exclude records that are not authorised for the requested purpose.,Functional
+TS-F-DAC-005,FR-DAC-005,Data minimisation,DAC,P0,R1,S-DAC-03,An evaluator using age bands cannot request dates of birth without a new approved need.,Functional
+TS-F-DAC-006,FR-DAC-006,Data residence,DAC,P0,R1,S-DAC-02,A cross border support session is evaluated under the same applicable restrictions as processing.,Functional
+TS-F-DAC-007,FR-DAC-007,Pseudonymisation,DAC,P0,R1,S-DAC-02,Evaluation users cannot recover identities using the linkage key store.,Functional
+TS-F-DAC-008,FR-DAC-008,Revocation and downstream impact,DAC,P0,R1,S-DAC-03,New access stops promptly and each affected asset receives an accountable remediation decision.,Functional
+TS-F-DAC-009,FR-DAC-009,Controlled exports,DAC,P0,R1,S-DAC-03,A result containing disallowed patient rows is withheld even when its aggregate score is releasable.,Functional
+TS-F-DAC-010,FR-DAC-010,Federated access,DAC,P1,R2,S-DAC-03,A local custodian can refuse a run or an output release independently of central scheduling.,Functional
+TS-F-DAC-011,FR-DAC-011,Benchmark secrecy,DAC,P0,R1,S-DAC-03,A developer cannot download sealed labels or bypass its submission limit with a duplicate identity.,Functional
+TS-F-DAC-012,FR-DAC-012,Data rights requests,DAC,P0,R1,S-DAC-03,A request is not automatically fulfilled in a way that destroys a lawful clinical record or legal hold.,Functional
+TS-F-ING-001,FR-ING-001,Import methods,ING,P0,R1,S-ING-02,An import without an authorised source and active access grant cannot enter a study workspace.,Functional
+TS-F-ING-002,FR-ING-002,Quarantine and scanning,ING,P0,R1,S-ING-01,"A failed scan prevents previews, execution and downstream indexing.",Functional
+TS-F-ING-003,FR-ING-003,Schema and semantic validation,ING,P0,R1,S-ING-02,A plausible numeric value with an incompatible unit is flagged rather than silently accepted.,Functional
+TS-F-ING-004,FR-ING-004,Identity and deduplication,ING,P0,R1,S-ING-02,Repeated encounters remain distinguishable from accidental duplicate records.,Functional
+TS-F-ING-005,FR-ING-005,Import reconciliation,ING,P0,R1,S-ING-03,An import cannot report complete while unaccounted records remain.,Functional
+TS-F-ING-006,FR-ING-006,Resumable transfer,ING,P0,R1,S-ING-01,A resumed upload produces one verified asset with the expected checksum.,Functional
+TS-F-ING-007,FR-ING-007,Provenance lineage,ING,P0,R1,S-ING-02,A reported metric can be traced back through every material transformation.,Functional
+TS-F-ING-008,FR-ING-008,Data correction,ING,P1,R1,S-ING-03,Correcting a label creates a new dataset version and marks dependent reports for assessment.,Functional
+TS-F-ING-009,FR-ING-009,Deidentification review,ING,P0,R1,S-ING-03,Removing structured identifiers alone does not mark an imaging dataset safe to release.,Functional
+TS-F-ING-010,FR-ING-010,Scheduled ingestion,ING,P1,R2,S-ING-01,An incompatible source change pauses affected processing and identifies the responsible integration owner.,Functional
+TS-F-CUR-001,FR-CUR-001,Reference standard definition,CUR,P0,R1,S-CUR-02,A protocol cannot label an unverified model prediction as clinical ground truth.,Functional
+TS-F-CUR-002,FR-CUR-002,Annotation work allocation,CUR,P1,R1,S-CUR-01,An annotator cannot open an unassigned task or access a disallowed patient identifier.,Functional
+TS-F-CUR-003,FR-CUR-003,Annotation guidelines,CUR,P0,R1,S-CUR-02,Every label records the applicable guideline version and annotator identity.,Functional
+TS-F-CUR-004,FR-CUR-004,Independent labelling,CUR,P0,R1,S-CUR-03,Initial independent labels remain recoverable after adjudication.,Functional
+TS-F-CUR-005,FR-CUR-005,Agreement and quality checks,CUR,P1,R1,S-CUR-03,"A quality report distinguishes consensus, disagreement and missing labels.",Functional
+TS-F-CUR-006,FR-CUR-006,Uncertain and unavailable labels,CUR,P0,R1,S-CUR-02,An indeterminate outcome is handled according to the prespecified analysis plan.,Functional
+TS-F-CUR-007,FR-CUR-007,Blinding controls,CUR,P0,R1,S-CUR-02,A blinded reviewer cannot see the evaluated model's prediction through exports or task history.,Functional
+TS-F-CUR-008,FR-CUR-008,Dataset partitions,CUR,P0,R1,S-CUR-03,Patient overlap across partitions is detected before an evaluation is accepted.,Functional
+TS-F-CUR-009,FR-CUR-009,Curation release,CUR,P0,R1,S-CUR-03,A released dataset cannot change its membership without a new version.,Functional
+TS-F-CUR-010,FR-CUR-010,Specialist annotation integrations,CUR,P1,R2,S-CUR-02,Imported annotations reconcile to the original task and retain reviewer attribution.,Functional
+TS-F-RUN-001,FR-RUN-001,Workspace request,RUN,P0,R1,S-RUN-02,Provisioning fails when any required grant or prerequisite is expired.,Functional
+TS-F-RUN-002,FR-RUN-002,Execution isolation,RUN,P0,R1,S-RUN-03,"A workload cannot read another study's files, secrets or residual CPU or GPU memory.",Functional
+TS-F-RUN-003,FR-RUN-003,Network controls,RUN,P0,R1,S-RUN-02,A model attempting an undeclared external API call is blocked and flagged.,Functional
+TS-F-RUN-004,FR-RUN-004,Resource quotas,RUN,P0,R1,S-RUN-01,A runaway job stops at its approved limit and cannot exhaust another study's allocation.,Functional
+TS-F-RUN-005,FR-RUN-005,Reproducible run manifest,RUN,P0,R1,S-RUN-02,An authorised reviewer can reconstruct the exact configuration used for a reported result.,Functional
+TS-F-RUN-006,FR-RUN-006,Execution lifecycle,RUN,P1,R1,S-RUN-01,A failed job cannot be represented as a completed successful evaluation.,Functional
+TS-F-RUN-007,FR-RUN-007,Idempotent retries,RUN,P0,R1,S-RUN-03,A network retry creates no second charge or duplicate final result for the same logical request.,Functional
+TS-F-RUN-008,FR-RUN-008,External API evaluation,RUN,P0,R1,S-RUN-02,An unpinned provider change marks comparability uncertain and triggers review.,Functional
+TS-F-RUN-009,FR-RUN-009,Output handling,RUN,P0,R1,S-RUN-03,Logs containing patient data cannot be automatically attached to a public support ticket.,Functional
+TS-F-RUN-010,FR-RUN-010,Expiry and shutdown,RUN,P0,R1,S-RUN-03,A scheduled job cannot restart a closed workspace using an old credential.,Functional
+TS-F-RUN-011,FR-RUN-011,Remote execution nodes,RUN,P1,R2,S-RUN-03,A disconnected node cannot be assumed to have received a stop instruction.,Functional
+TS-F-RUN-012,FR-RUN-012,Emergency termination,RUN,P0,R1,S-RUN-03,"Termination prevents new affected execution and records the scope, requester and observed completion status.",Functional
+TS-F-PRO-001,FR-PRO-001,Protocol templates,PRO,P0,R1,S-PRO-02,A protocol with an undefined primary endpoint cannot be frozen for formal evaluation.,Functional
+TS-F-PRO-002,FR-PRO-002,Study type,PRO,P0,R1,S-PRO-02,Study type determines required gates and allowable exposure of outputs to clinical users.,Functional
+TS-F-PRO-003,FR-PRO-003,Sample justification,PRO,P0,R1,S-PRO-02,An underpowered subgroup is labelled inconclusive rather than represented as proven safe.,Functional
+TS-F-PRO-004,FR-PRO-004,Prespecified thresholds,PRO,P0,R1,S-PRO-03,Threshold changes after results are viewed create a protocol amendment and disclosed exploratory analysis.,Functional
+TS-F-PRO-005,FR-PRO-005,Analysis plan,PRO,P0,R1,S-PRO-02,An evaluator cannot silently remove model failures from the primary denominator.,Functional
+TS-F-PRO-006,FR-PRO-006,Comparator definition,PRO,P0,R1,S-PRO-02,A comparison using different populations must disclose the limitation and cannot imply a controlled head to head result.,Functional
+TS-F-PRO-007,FR-PRO-007,Subgroup plan,PRO,P0,R1,S-PRO-02,A missing protected attribute is shown as unassessed rather than interpreted as absence of bias.,Functional
+TS-F-PRO-008,FR-PRO-008,Freeze and amendment,PRO,P0,R1,S-PRO-03,Final results link to the frozen plan and identify all departures from it.,Functional
+TS-F-PRO-009,FR-PRO-009,Stopping rules,PRO,P0,R1,S-PRO-02,A trigger crossing creates the configured hold and requires the designated independent decision.,Functional
+TS-F-PRO-010,FR-PRO-010,Protocol reuse,PRO,P1,R1,S-PRO-01,Reusing a template does not copy another country's ethics approval or clinical thresholds automatically.,Functional
+TS-F-PRO-011,FR-PRO-011,Risk proportional review,PRO,P0,R1,S-PRO-03,A high risk clinical use cannot enter through a low risk administrative template.,Functional
+TS-F-PRO-012,FR-PRO-012,Study registration,PRO,P1,R2,S-PRO-02,A claimed registered study includes a verifiable registration reference and matching scope.,Functional
+TS-F-VAL-001,FR-VAL-001,Task appropriate metrics,VAL,P0,R1,S-VAL-02,"Every reported metric identifies its definition, implementation version and denominator.",Functional
+TS-F-VAL-002,FR-VAL-002,Diagnostic performance,VAL,P0,R1,S-VAL-02,Predictive values state the observed or assumed prevalence and are not transferred without qualification.,Functional
+TS-F-VAL-003,FR-VAL-003,Uncertainty estimates,VAL,P0,R1,S-VAL-02,Repeated observations from one patient are not treated as independent without justification.,Functional
+TS-F-VAL-004,FR-VAL-004,Calibration and utility,VAL,P0,R1,S-VAL-02,A high discrimination score alone cannot satisfy a protocol requiring calibration or clinical utility.,Functional
+TS-F-VAL-005,FR-VAL-005,Missing and rejected inputs,VAL,P0,R1,S-VAL-02,"All attempted cases reconcile across scored, abstained, rejected and failed categories.",Functional
+TS-F-VAL-006,FR-VAL-006,External validation,VAL,P0,R1,S-VAL-02,A developer's tuning set cannot be labelled an independent external test set.,Functional
+TS-F-VAL-007,FR-VAL-007,Robustness testing,VAL,P0,R1,S-VAL-02,Reports distinguish tested conditions from unsupported assumptions about robustness.,Functional
+TS-F-VAL-008,FR-VAL-008,Subgroup results,VAL,P0,R1,S-VAL-02,A suppressed small cell remains marked as suppressed rather than displayed as zero.,Functional
+TS-F-VAL-009,FR-VAL-009,Baseline comparison,VAL,P0,R1,S-VAL-02,A benefit claim identifies both absolute and relative differences where relevant.,Functional
+TS-F-VAL-010,FR-VAL-010,Independent reproduction,VAL,P0,R1,S-VAL-03,A reproduced result outside the declared tolerance triggers an investigation before report issue.,Functional
+TS-F-VAL-011,FR-VAL-011,Custom metric governance,VAL,P1,R2,S-VAL-03,A custom metric cannot replace a primary endpoint without an approved protocol change.,Functional
+TS-F-VAL-012,FR-VAL-012,Evidence interpretation,VAL,P0,R1,S-VAL-03,A benchmark score cannot automatically issue a clinical suitability decision.,Functional
+TS-F-GEN-001,FR-GEN-001,Generative configuration identity,GEN,P0,R2,S-GEN-02,A prompt or retrieval update invalidates claims of an unchanged evaluated configuration.,Functional
+TS-F-GEN-002,FR-GEN-002,Clinical answer assessment,GEN,P0,R2,S-GEN-02,A fluent but clinically unsafe answer is treated as a safety failure under the approved rubric.,Functional
+TS-F-GEN-003,FR-GEN-003,Grounding and citations,GEN,P0,R2,S-GEN-02,A plausible fabricated citation is counted as an error rather than credited for formatting.,Functional
+TS-F-GEN-004,FR-GEN-004,Interaction testing,GEN,P0,R2,S-GEN-02,Performance reporting identifies failures that appear only across multiple turns.,Functional
+TS-F-GEN-005,FR-GEN-005,Language and population coverage,GEN,P0,R2,S-GEN-02,English performance cannot substitute for evidence in another advertised clinical language.,Functional
+TS-F-GEN-006,FR-GEN-006,Adversarial safety,GEN,P0,R2,S-GEN-03,Successful bypasses are recorded with impact and remediation evidence without releasing sensitive attack artefacts publicly.,Functional
+TS-F-GEN-007,FR-GEN-007,Agent permissions,GEN,P0,R2,S-GEN-02,"A test agent cannot issue a real prescription, contact a patient or modify a live record without the separately authorised workflow.",Functional
+TS-F-GEN-008,FR-GEN-008,Judge validation,GEN,P0,R2,S-GEN-03,An unvalidated model judge cannot be the sole basis for a final clinical safety decision.,Functional
+TS-F-GEN-009,FR-GEN-009,Stochastic variation,GEN,P0,R2,S-GEN-02,Reporting one favourable run while excluding unsuccessful repetitions is prevented or explicitly disclosed.,Functional
+TS-F-GEN-010,FR-GEN-010,Privacy and memorisation,GEN,P0,R2,S-GEN-03,A model that exposes another participant's information triggers the incident and hold workflow.,Functional
+TS-F-GEN-011,FR-GEN-011,Cost and latency tradeoffs,GEN,P1,R2,S-GEN-02,A low per token price cannot be reported as total workflow cost.,Functional
+TS-F-GEN-012,FR-GEN-012,Synthetic evaluation limits,GEN,P0,R2,S-GEN-02,Passing synthetic scenarios cannot automatically satisfy a requirement for prospective clinical evidence.,Functional
+TS-F-MOD-001,FR-MOD-001,Tabular prediction,MOD,P1,R1,S-MOD-02,Post outcome variables are identified before a prediction evaluation is accepted.,Functional
+TS-F-MOD-002,FR-MOD-002,Imaging evaluation,MOD,P1,R1,S-MOD-02,Results retain linkage to the correct examination and evaluated image series.,Functional
+TS-F-MOD-003,FR-MOD-003,Clinical text,MOD,P1,R2,S-MOD-02,A summary evaluation can identify clinically material omissions from the authorised source record.,Functional
+TS-F-MOD-004,FR-MOD-004,Speech and audio,MOD,P1,R2,S-MOD-02,Medical term errors and consequential negation errors remain distinguishable from ordinary word errors.,Functional
+TS-F-MOD-005,FR-MOD-005,Signals and devices,MOD,P1,R3,S-MOD-02,Misaligned sensor timestamps cannot be silently compared to clinical event labels.,Functional
+TS-F-MOD-006,FR-MOD-006,Multimodal systems,MOD,P1,R2,S-MOD-02,A solution's advertised fallback behaviour is tested when one required modality is absent.,Functional
+TS-F-MOD-007,FR-MOD-007,Administrative and public health AI,MOD,P1,R2,S-MOD-02,A scheduling model is not assigned diagnostic metrics solely because it operates in a hospital.,Functional
+TS-F-MOD-008,FR-MOD-008,Capability admission,MOD,P0,R1,S-MOD-03,Unsupported tasks remain in discovery status and cannot receive a formal validated result.,Functional
+TS-F-HUM-001,FR-HUM-001,Workflow definition,HUM,P0,R1,S-HUM-02,A model result cannot be interpreted without its intended position in the clinical workflow.,Functional
+TS-F-HUM-002,FR-HUM-002,Usability studies,HUM,P1,R2,S-HUM-02,A usability report identifies participant roles and includes observed failures as well as satisfaction.,Functional
+TS-F-HUM-003,FR-HUM-003,Human AI interaction,HUM,P0,R2,S-HUM-02,An apparent time saving is qualified when required verification work is omitted.,Functional
+TS-F-HUM-004,FR-HUM-004,Accessibility and inclusion,HUM,P1,R2,S-HUM-02,A deployment plan includes mitigations for material exclusion risks identified during evaluation.,Functional
+TS-F-HUM-005,FR-HUM-005,Clinical workflow outcomes,HUM,P0,R2,S-HUM-02,A high detection rate alone cannot establish benefit when the protocol requires completed referral.,Functional
+TS-F-HUM-006,FR-HUM-006,Training effectiveness,HUM,P1,R2,S-HUM-03,An untrained user cannot be enabled for a function requiring verified competence.,Functional
+TS-F-HUM-007,FR-HUM-007,Equity interpretation,HUM,P0,R1,S-HUM-03,The report identifies who may lose access or bear additional costs under the proposed workflow.,Functional
+TS-F-HUM-008,FR-HUM-008,Patient and staff feedback,HUM,P1,R2,S-HUM-02,Negative feedback remains visible to reviewers even when a site or developer disputes it.,Functional
+TS-F-HUM-009,FR-HUM-009,Economic measurement,HUM,P1,R2,S-HUM-02,"A cost effectiveness calculation states perspective, currency, price year, assumptions and uncertainty.",Functional
+TS-F-STU-001,FR-STU-001,Site activation,STU,P0,R2,S-STU-03,No recruitment or care affecting evaluation can begin at an inactive site.,Functional
+TS-F-STU-002,FR-STU-002,Eligibility and enrolment,STU,P0,R2,S-STU-02,An ineligible enrolment creates a deviation and cannot be silently corrected out of the record.,Functional
+TS-F-STU-003,FR-STU-003,Participant identifiers,STU,P0,R2,S-STU-02,Central evaluators receive only the participant information authorised by their study role.,Functional
+TS-F-STU-004,FR-STU-004,Case report forms,STU,P0,R2,S-STU-02,"A corrected clinical observation retains its original value, reason, actor and timestamp.",Functional
+TS-F-STU-005,FR-STU-005,Allocation and blinding,STU,P1,R2,S-STU-03,"Only authorised staff can unblind, with reason and downstream impact recorded.",Functional
+TS-F-STU-006,FR-STU-006,Silent prospective mode,STU,P0,R2,S-STU-02,A silent mode prediction cannot appear in a clinician's production worklist.,Functional
+TS-F-STU-007,FR-STU-007,Interventional controls,STU,P0,R2,S-STU-02,A changed clinical configuration requires the defined amendment process before use.,Functional
+TS-F-STU-008,FR-STU-008,Deviations and queries,STU,P0,R2,S-STU-02,A deviation affecting participant safety triggers escalation independently of ordinary data cleaning.,Functional
+TS-F-STU-009,FR-STU-009,Monitoring and verification,STU,P0,R2,S-STU-03,Monitoring findings have accountable corrective actions and verifiable closure evidence.,Functional
+TS-F-STU-010,FR-STU-010,Safety reporting,STU,P0,R2,S-STU-02,A report initiates safety review without waiting for causality to be proven.,Functional
+TS-F-STU-011,FR-STU-011,Study closeout,STU,P0,R2,S-STU-03,A study cannot be marked fully closed while mandatory follow up obligations remain unassigned.,Functional
+TS-F-STU-012,FR-STU-012,External study systems,STU,P1,R2,S-STU-02,An imported record retains source identity and does not create an inconsistent competing master record.,Functional
+TS-F-SAF-001,FR-SAF-001,Safety case,SAF,P0,R1,S-SAF-02,No clinical use proceeds with an unaccepted material residual risk.,Functional
+TS-F-SAF-002,FR-SAF-002,Incident intake,SAF,P0,R1,S-SAF-01,A reporter can raise a concern without needing permission from the implicated developer.,Functional
+TS-F-SAF-003,FR-SAF-003,Severity and triage,SAF,P0,R1,S-SAF-02,An incomplete but potentially serious report enters urgent review rather than being rejected by form validation.,Functional
+TS-F-SAF-004,FR-SAF-004,Containment,SAF,P0,R1,S-SAF-02,A targeted suspension prevents affected new activity without concealing historical evidence.,Functional
+TS-F-SAF-005,FR-SAF-005,Deployment stop coordination,SAF,P0,R2,S-SAF-02,An unacknowledged instruction remains visibly unresolved and escalates to local contacts.,Functional
+TS-F-SAF-006,FR-SAF-006,Investigation,SAF,P0,R1,S-SAF-02,An implicated party cannot alter retained evidence or close its own independent investigation.,Functional
+TS-F-SAF-007,FR-SAF-007,Corrective and preventive action,SAF,P0,R1,S-SAF-02,Closing an action requires verification evidence rather than a completion checkbox alone.,Functional
+TS-F-SAF-008,FR-SAF-008,Reportability assessment,SAF,P0,R1,S-SAF-03,The platform records proof of submission or an explicit failure; an internal alert is not treated as statutory reporting.,Functional
+TS-F-SAF-009,FR-SAF-009,Cross study impact,SAF,P0,R1,S-SAF-02,A recalled model component produces an actionable list of impacted evaluations and deployments.,Functional
+TS-F-SAF-010,FR-SAF-010,Resumption decision,SAF,P0,R1,S-SAF-03,Commercial pressure or payment status cannot override an active safety hold.,Functional
+TS-F-SAF-011,FR-SAF-011,External warning exchange,SAF,P1,R2,S-SAF-03,A shared warning excludes unauthorised patient data and clearly states unresolved causality.,Functional
+TS-F-SAF-012,FR-SAF-012,Learning and trend review,SAF,P0,R1,S-SAF-01,Repeated low severity incidents can trigger a systemic risk review.,Functional
+TS-F-EVD-001,FR-EVD-001,Evidence dossier,EVD,P0,R1,S-EVD-02,A reviewer can trace each headline finding to the underlying approved evidence.,Functional
+TS-F-EVD-002,FR-EVD-002,Claim level provenance,EVD,P0,R1,S-EVD-02,A new product version does not inherit an unsupported claim from an earlier version.,Functional
+TS-F-EVD-003,FR-EVD-003,Evidence status,EVD,P0,R1,S-EVD-01,Insufficient evidence cannot be displayed as a positive outcome or averaged into a pass.,Functional
+TS-F-EVD-004,FR-EVD-004,Independent review,EVD,P0,R1,S-EVD-03,A developer response is retained but cannot replace the independent conclusion.,Functional
+TS-F-EVD-005,FR-EVD-005,Report generation,EVD,P0,R1,S-EVD-02,Regenerated reports preserve the same approved findings and identify the generator version.,Functional
+TS-F-EVD-006,FR-EVD-006,Scope and limitations,EVD,P0,R1,S-EVD-02,A report cannot omit a material failed subgroup that was included in the approved analysis plan.,Functional
+TS-F-EVD-007,FR-EVD-007,Publication permissions,EVD,P0,R1,S-EVD-03,"A public report does not reveal protected small cells, patient details or proprietary artefacts.",Functional
+TS-F-EVD-008,FR-EVD-008,Signed release and integrity,EVD,P0,R1,S-EVD-03,Altering a released report creates a new version and invalidates the altered copy's integrity check.,Functional
+TS-F-EVD-009,FR-EVD-009,Corrections and retractions,EVD,P0,R1,S-EVD-03,Opening a superseded report displays its current status and link to the authoritative successor.,Functional
+TS-F-EVD-010,FR-EVD-010,Evidence portability,EVD,P1,R2,S-EVD-02,A receiving institution can identify what may be reused and what needs local validation.,Functional
+TS-F-EVD-011,FR-EVD-011,Results completeness,EVD,P0,R1,S-EVD-03,Unreported endpoints block issue or require an explicit approved explanation.,Functional
+TS-F-EVD-012,FR-EVD-012,Public evidence catalogue,EVD,P1,R2,S-EVD-01,Catalogue presence is not presented as an endorsement or universal approval.,Functional
+TS-F-REG-001,FR-REG-001,Requirements checklist,REG,P1,R1,S-REG-02,Each required item identifies its evidence location or a documented gap.,Functional
+TS-F-REG-002,FR-REG-002,Submission packages,REG,P1,R2,S-REG-02,A package can contain different evidence and forms for two jurisdictions without changing the underlying findings.,Functional
+TS-F-REG-003,FR-REG-003,External decision verification,REG,P0,R1,S-REG-03,A developer assertion remains unverified until the designated verification process completes.,Functional
+TS-F-REG-004,FR-REG-004,Authority questions,REG,P1,R2,S-REG-02,A response can be linked to the exact question and submitted file version.,Functional
+TS-F-REG-005,FR-REG-005,Decision separation,REG,P0,R1,S-REG-01,Completing an internal checklist cannot mark a product legally authorised.,Functional
+TS-F-REG-006,FR-REG-006,Change submissions,REG,P1,R2,S-REG-03,A changed intended use triggers a regulatory impact task before clinical continuation.,Functional
+TS-F-REG-007,FR-REG-007,Permission expiry,REG,P0,R1,S-REG-01,A withdrawn permission blocks affected new activity and initiates impact review.,Functional
+TS-F-REG-008,FR-REG-008,Submission channel control,REG,P1,R2,S-REG-03,Preparing a package never automatically transmits it to an authority.,Functional
+TS-F-TRN-001,FR-TRN-001,Transfer request,TRN,P1,R2,S-TRN-02,The request references a specific product and dossier version.,Functional
+TS-F-TRN-002,FR-TRN-002,Gap assessment,TRN,P0,R2,S-TRN-02,"The assessment identifies evidence that is reusable, uncertain or inapplicable with reasons.",Functional
+TS-F-TRN-003,FR-TRN-003,Local validation plan,TRN,P0,R2,S-TRN-03,A foreign positive report cannot bypass an unresolved local safety or applicability requirement.,Functional
+TS-F-TRN-004,FR-TRN-004,Adaptation tracking,TRN,P1,R2,S-TRN-02,Local modifications remain distinguishable from the original evaluated product.,Functional
+TS-F-TRN-005,FR-TRN-005,Evidence reliance decisions,TRN,P0,R2,S-TRN-03,No automated evidence passport grants mutual recognition between countries.,Functional
+TS-F-TRN-006,FR-TRN-006,Shared studies,TRN,P1,R2,S-TRN-02,A pooled result preserves country level findings and cannot conceal a material local failure.,Functional
+TS-F-TRN-007,FR-TRN-007,Reuse measurement,TRN,P1,R2,S-TRN-02,Estimated savings remain labelled estimates and do not double count shared work.,Functional
+TS-F-TRN-008,FR-TRN-008,Country withdrawal,TRN,P0,R2,S-TRN-03,Withdrawal blocks new sharing without erasing lawful historical evidence or incident responsibilities.,Functional
+TS-F-DEP-001,FR-DEP-001,Adoption readiness,DEP,P1,R1,S-DEP-02,A scientifically successful evaluation can remain operationally unready with explicit blockers.,Functional
+TS-F-DEP-002,FR-DEP-002,Business case,DEP,P1,R2,S-DEP-02,The case includes integration and recurring operating costs as well as licence fees.,Functional
+TS-F-DEP-003,FR-DEP-003,Procurement support,DEP,P1,R2,S-DEP-02,Paid participation cannot silently change procurement ranking or evaluation criteria.,Functional
+TS-F-DEP-004,FR-DEP-004,Deployment authorisation,DEP,P0,R2,S-DEP-03,A sandbox completion status alone cannot authorise production deployment.,Functional
+TS-F-DEP-005,FR-DEP-005,Implementation plan,DEP,P1,R2,S-DEP-02,Go live requires evidence that applicable readiness tasks are complete.,Functional
+TS-F-DEP-006,FR-DEP-006,Acceptance and fallback,DEP,P0,R2,S-DEP-03,A failed integration acceptance test blocks the affected go live.,Functional
+TS-F-DEP-007,FR-DEP-007,Training and competency,DEP,P1,R2,S-DEP-02,A user can be restricted from a clinical feature after required training expires.,Functional
+TS-F-DEP-008,FR-DEP-008,Production boundary,DEP,P0,R2,S-DEP-02,An evaluation credential cannot write to a production patient record.,Functional
+TS-F-DEP-009,FR-DEP-009,Contract and budget transition,DEP,P1,R2,S-DEP-02,A pilot nearing funding expiry shows an accountable continuation or closure decision.,Functional
+TS-F-DEP-010,FR-DEP-010,Deployment register,DEP,P0,R2,S-DEP-01,A recall can locate all registered deployments of an affected version.,Functional
+TS-F-DEP-011,FR-DEP-011,Benefits realisation,DEP,P1,R2,S-DEP-02,"An adoption report identifies baseline, attribution limits and incomplete follow up.",Functional
+TS-F-DEP-012,FR-DEP-012,Safe termination,DEP,P0,R2,S-DEP-03,A vendor exit leaves the institution with a documented transition and retained lawful records.,Functional
+TS-F-MON-001,FR-MON-001,Monitoring plan,MON,P0,R2,S-MON-02,A deployment cannot be labelled monitored without an active plan and functioning data source.,Functional
+TS-F-MON-002,FR-MON-002,Operational telemetry,MON,P1,R2,S-MON-01,A missing telemetry feed is reported as unavailable rather than interpreted as zero incidents.,Functional
+TS-F-MON-003,FR-MON-003,Clinical performance follow up,MON,P0,R2,S-MON-02,Recent unlabelled cases cannot be counted as successful outcomes.,Functional
+TS-F-MON-004,FR-MON-004,Drift detection,MON,P0,R2,S-MON-03,A statistical drift signal creates a review rather than an unsupported conclusion of patient harm.,Functional
+TS-F-MON-005,FR-MON-005,Version change intake,MON,P0,R2,S-MON-02,A changed component identifies the associated evidence and monitoring plans for reassessment.,Functional
+TS-F-MON-006,FR-MON-006,Change classification,MON,P0,R2,S-MON-03,A developer cannot unilaterally declare a material clinical change insignificant.,Functional
+TS-F-MON-007,FR-MON-007,Revalidation scheduling,MON,P0,R2,S-MON-01,An overdue required revalidation produces an explicit restricted or expired evidence status.,Functional
+TS-F-MON-008,FR-MON-008,Alert routing,MON,P0,R2,S-MON-03,Unacknowledged urgent alerts reach the backup contact within the configured escalation period.,Functional
+TS-F-MON-009,FR-MON-009,Rollback tracking,MON,P0,R2,S-MON-03,Central issuance does not imply a site completed rollback without positive confirmation.,Functional
+TS-F-MON-010,FR-MON-010,Comparative surveillance,MON,P1,R2,S-MON-01,A dashboard discloses incomparable denominators and cannot imply a global product ranking.,Functional
+TS-F-MON-011,FR-MON-011,Monitoring handover,MON,P0,R2,S-MON-03,No deployment remains represented as actively monitored after its responsible service has stopped.,Functional
+TS-F-MON-012,FR-MON-012,Evidence freshness,MON,P0,R2,S-MON-01,A buyer can identify that installed software differs from the version supporting a published claim.,Functional
+TS-F-ANA-001,FR-ANA-001,Role specific dashboards,ANA,P1,R1,S-ANA-01,A funder sees approved programme outcomes without receiving patient records by default.,Functional
+TS-F-ANA-002,FR-ANA-002,Portfolio funnel,ANA,P1,R1,S-ANA-01,A failed scientific evaluation is distinguishable from an unfunded otherwise suitable solution.,Functional
+TS-F-ANA-003,FR-ANA-003,Time and bottlenecks,ANA,P1,R1,S-ANA-02,Reported turnaround includes a published rule for paused and abandoned studies.,Functional
+TS-F-ANA-004,FR-ANA-004,Evidence quality reporting,ANA,P1,R1,S-ANA-01,A large number of tests cannot substitute for missing independent clinical validation.,Functional
+TS-F-ANA-005,FR-ANA-005,Outcome reporting,ANA,P1,R2,S-ANA-02,Patient reach is not displayed as demonstrated health benefit.,Functional
+TS-F-ANA-006,FR-ANA-006,Resource and financial reporting,ANA,P1,R1,S-ANA-01,"Study cost reconciles with approved compute, personnel and external service charges.",Functional
+TS-F-ANA-007,FR-ANA-007,Governed metrics,ANA,P1,R1,S-ANA-03,A changed definition is visible in longitudinal comparisons.,Functional
+TS-F-ANA-008,FR-ANA-008,Privacy preserving reporting,ANA,P0,R1,S-ANA-03,Repeated small group queries cannot trivially reconstruct a protected individual's result.,Functional
+TS-F-ANA-009,FR-ANA-009,Report exports,ANA,P1,R1,S-ANA-02,An exported chart retains qualifications that materially affect its interpretation.,Functional
+TS-F-ANA-010,FR-ANA-010,Scheduled reporting,ANA,P1,R2,S-ANA-03,A recipient removed before delivery does not receive the scheduled restricted report.,Functional
+TS-F-COL-001,FR-COL-001,Contextual discussions,COL,P1,R1,S-COL-02,A comment mentioning a restricted study does not expose it to an unauthorised tagged user.,Functional
+TS-F-COL-002,FR-COL-002,Assignments and reminders,COL,P1,R1,S-COL-01,A task cannot disappear when its assigned user leaves the organisation.,Functional
+TS-F-COL-003,FR-COL-003,Notifications,COL,P1,R1,S-COL-01,Email subject lines and push previews do not include patient identifiers or confidential findings.,Functional
+TS-F-COL-004,FR-COL-004,Consequential communications,COL,P0,R1,S-COL-03,Drafting a message or report does not send or publish it automatically.,Functional
+TS-F-COL-005,FR-COL-005,Meeting decisions,COL,P1,R1,S-COL-02,A discussion summary cannot silently substitute for a required formal gate decision.,Functional
+TS-F-COL-006,FR-COL-006,Document collaboration,COL,P1,R1,S-COL-02,One reviewer's edit cannot overwrite another reviewer's change without resolution.,Functional
+TS-F-COL-007,FR-COL-007,Translation review,COL,P1,R2,S-COL-03,An unreviewed machine translation is marked draft and cannot serve as approved consent material.,Functional
+TS-F-COL-008,FR-COL-008,Communication audit,COL,P1,R1,S-COL-03,A failed delivery is not counted as successful notification.,Functional
+TS-F-LRN-001,FR-LRN-001,Knowledge library,LRN,P1,R1,S-LRN-02,Outdated guidance is labelled and excluded from default new study templates.,Functional
+TS-F-LRN-002,FR-LRN-002,Learning from failure,LRN,P1,R2,S-LRN-02,A case study can describe failure without exposing a protected developer or participant.,Functional
+TS-F-LRN-003,FR-LRN-003,Role based onboarding,LRN,P1,R1,S-LRN-01,Completion of mandatory onboarding is checked before restricted access is activated.,Functional
+TS-F-LRN-004,FR-LRN-004,Training records,LRN,P1,R2,S-LRN-02,Changing a material procedure identifies users requiring refresher training.,Functional
+TS-F-LRN-005,FR-LRN-005,Community exchange,LRN,P1,R2,S-LRN-03,A community post cannot reveal sealed test data or private review materials.,Functional
+TS-F-LRN-006,FR-LRN-006,Method governance,LRN,P1,R2,S-LRN-03,An experimental metric remains clearly identified until its review is complete.,Functional
+TS-F-LRN-007,FR-LRN-007,Network learning reports,LRN,P1,R3,S-LRN-03,Published lessons distinguish observed findings from hypotheses and cannot imply universal applicability.,Functional
+TS-F-COP-001,FR-COP-001,Assisted drafting,COP,P1,R2,S-COP-02,Drafts are labelled as AI assisted and cannot become signed decisions without human review.,Functional
+TS-F-COP-002,FR-COP-002,Permission aware retrieval,COP,P0,R2,S-COP-01,"A prompt cannot expose another tenant's document, hidden review or sealed benchmark.",Functional
+TS-F-COP-003,FR-COP-003,Source attribution,COP,P0,R2,S-COP-02,Unsupported findings are flagged and are not inserted as verified study results.,Functional
+TS-F-COP-004,FR-COP-004,Consequential action control,COP,P0,R2,S-COP-02,Every consequential action requires the specified authorised human confirmation and gate checks.,Functional
+TS-F-COP-005,FR-COP-005,Provider governance,COP,P0,R2,S-COP-03,Restricted study content is not sent to a provider lacking applicable approval.,Functional
+TS-F-COP-006,FR-COP-006,Untrusted content handling,COP,P0,R2,S-COP-01,Embedded instructions in a document cannot trigger an export or disable a review gate.,Functional
+TS-F-COP-007,FR-COP-007,User correction,COP,P1,R2,S-COP-02,Correcting a draft does not erase the fact that AI assistance was used.,Functional
+TS-F-COP-008,FR-COP-008,Assistant evaluation,COP,P0,R2,S-COP-03,A failed critical safety or permission test prevents release of the feature.,Functional
+TS-F-COP-009,FR-COP-009,Administrative controls,COP,P1,R2,S-COP-03,A disabled feature cannot be invoked through an API or background task.,Functional
+TS-F-COP-010,FR-COP-010,Fallback and abstention,COP,P0,R2,S-COP-01,A failed AI service cannot prevent an authorised user from filing a safety incident.,Functional
+TS-F-API-001,FR-API-001,Versioned interfaces,API,P1,R1,S-API-02,A published integration can identify the API version and supported deprecation period.,Functional
+TS-F-API-002,FR-API-002,Scoped integration access,API,P0,R1,S-API-02,A reporting connector cannot inherit permission to export raw clinical data.,Functional
+TS-F-API-003,FR-API-003,Health record exchange,API,P1,R2,S-API-02,Profile validation and unit or terminology mapping pass agreed conformance examples before activation.,Functional
+TS-F-API-004,FR-API-004,Medical imaging exchange,API,P1,R1,S-API-02,Transferred images retain clinically necessary metadata while prohibited identifiers are handled as approved.,Functional
+TS-F-API-005,FR-API-005,Research and health information systems,API,P1,R2,S-API-02,Each connected field has an identified authoritative source and reconciliation rule.,Functional
+TS-F-API-006,FR-API-006,Import and export portability,API,P0,R1,S-API-02,A receiving tool can reconstruct object relationships from an approved export.,Functional
+TS-F-API-007,FR-API-007,Reliable events,API,P0,R1,S-API-03,"Repeated delivery does not duplicate a clinical decision, invoice or approval.",Functional
+TS-F-API-008,FR-API-008,Connector failures,API,P0,R1,S-API-01,An unavailable external system cannot cause silent loss of an acknowledged source record.,Functional
+TS-F-API-009,FR-API-009,Mapping governance,API,P0,R1,S-API-03,An unrecognised clinical code is quarantined or explicitly represented rather than silently replaced.,Functional
+TS-F-API-010,FR-API-010,Identity and finance integrations,API,P1,R2,S-API-02,An accounting integration receives billing data without gaining clinical evidence access.,Functional
+TS-F-API-011,FR-API-011,Connector lifecycle,API,P0,R1,S-API-03,Disabling a connector stops new transfers and preserves the record of past exchanges.,Functional
+TS-F-API-012,FR-API-012,External evidence exchange,API,P1,R3,S-API-02,An external directory receives only the authorised metadata and current evidence status.,Functional
+TS-F-BIL-001,FR-BIL-001,Service catalogue,BIL,P1,R1,S-BIL-02,A buyer can identify which activities and deliverables are included before contracting.,Functional
+TS-F-BIL-002,FR-BIL-002,Cost estimation,BIL,P1,R1,S-BIL-02,Estimate changes identify the driver and require the applicable budget approval.,Functional
+TS-F-BIL-003,FR-BIL-003,Quotes and approvals,BIL,P1,R1,S-BIL-03,A change in scope cannot silently increase an institution's financial commitment.,Functional
+TS-F-BIL-004,FR-BIL-004,Budget controls,BIL,P1,R1,S-BIL-02,A study cannot exceed its approved hard spending limit through automatic retries.,Functional
+TS-F-BIL-005,FR-BIL-005,Usage metering,BIL,P1,R1,S-BIL-02,A failed retry is charged only according to the declared billing policy.,Functional
+TS-F-BIL-006,FR-BIL-006,Invoices and payments,BIL,P1,R2,S-BIL-03,An issued credit links to the original invoice and preserves audit history.,Functional
+TS-F-BIL-007,FR-BIL-007,Grant and subsidy management,BIL,P1,R1,S-BIL-02,A subsidised evaluation shows the payer without changing the scientific scoring rules.,Functional
+TS-F-BIL-008,FR-BIL-008,Commercial independence,BIL,P0,R1,S-BIL-03,An overdue invoice cannot delete unfavourable evidence or prevent an urgent safety report.,Functional
+TS-F-BIL-009,FR-BIL-009,Financial disputes,BIL,P1,R2,S-BIL-03,A scientific appeal remains available under its own policy despite an unrelated invoice dispute.,Functional
+TS-F-BIL-010,FR-BIL-010,Renewal and exit,BIL,P1,R2,S-BIL-03,Service expiry triggers a documented handover and removes unsupported active monitoring claims.,Functional
+TS-F-AUD-001,FR-AUD-001,Audit coverage,AUD,P0,R1,S-AUD-01,"A sampled sensitive action can be traced to actor, scope, object version, time and outcome.",Functional
+TS-F-AUD-002,FR-AUD-002,Audit integrity,AUD,P0,R1,S-AUD-02,An administrator cannot alter an event without detection and a separately retained record.,Functional
+TS-F-AUD-003,FR-AUD-003,Before and after changes,AUD,P0,R1,S-AUD-02,An investigator can reconstruct a permission change without exposing authentication credentials.,Functional
+TS-F-AUD-004,FR-AUD-004,Audit access,AUD,P0,R1,S-AUD-01,An auditor cannot approve the report being audited.,Functional
+TS-F-AUD-005,FR-AUD-005,Control evidence library,AUD,P1,R1,S-AUD-02,A requested control can be linked to its latest verification and unresolved findings.,Functional
+TS-F-AUD-006,FR-AUD-006,Compliance mapping,AUD,P0,R1,S-AUD-02,The platform cannot advertise compliance solely because a checklist template exists.,Functional
+TS-F-AUD-007,FR-AUD-007,Inspection support,AUD,P0,R1,S-AUD-02,The exported inspection package reconciles to the selected source versions.,Functional
+TS-F-AUD-008,FR-AUD-008,Legal holds,AUD,P0,R1,S-AUD-03,A scheduled deletion cannot remove a held record or its required supporting evidence.,Functional
+TS-F-AUD-009,FR-AUD-009,Exceptions and expiry,AUD,P0,R1,S-AUD-03,An expired exception cannot silently remain active.,Functional
+TS-F-AUD-010,FR-AUD-010,Periodic assurance review,AUD,P1,R1,S-AUD-01,A recurring critical finding triggers escalation to the appropriate governance body.,Functional
+TS-F-AUD-011,FR-AUD-011,Certification claims,AUD,P0,R1,S-AUD-03,An assessment in progress is never displayed as a completed certification.,Functional
+TS-F-AUD-012,FR-AUD-012,Audit retention,AUD,P0,R1,S-AUD-03,Audit logs cannot be retained indefinitely solely because storage is available.,Functional
+TS-F-OPS-001,FR-OPS-001,Operational console,OPS,P1,R1,S-OPS-01,Support can identify a failed job using metadata and approved diagnostics.,Functional
+TS-F-OPS-002,FR-OPS-002,Support access,OPS,P0,R1,S-OPS-02,A user filing a ticket does not grant blanket access to all institutional data.,Functional
+TS-F-OPS-003,FR-OPS-003,Incident management,OPS,P1,R1,S-OPS-02,Major incidents preserve a timeline and tracked corrective actions.,Functional
+TS-F-OPS-004,FR-OPS-004,Configuration control,OPS,P0,R1,S-OPS-03,Changing an access rule records who approved it and what affected scopes were assessed.,Functional
+TS-F-OPS-005,FR-OPS-005,Feature activation,OPS,P0,R1,S-OPS-03,Enabling a user interface feature cannot bypass a missing clinical capability approval.,Functional
+TS-F-OPS-006,FR-OPS-006,Service notices,OPS,P1,R1,S-OPS-02,Users can distinguish a planned outage from failure of their own study.,Functional
+TS-F-OPS-007,FR-OPS-007,Capacity and quota management,OPS,P1,R1,S-OPS-03,A large commercial customer cannot consume protected capacity assigned to an active safety investigation.,Functional
+TS-F-OPS-008,FR-OPS-008,Backup and restore operations,OPS,P0,R1,S-OPS-03,A restored environment does not reactivate revoked users or deleted data without reconciliation.,Functional
+TS-F-OPS-009,FR-OPS-009,Release management,OPS,P0,R1,S-OPS-03,A metric implementation update cannot silently alter previously issued results.,Functional
+TS-F-OPS-010,FR-OPS-010,Support service catalogue,OPS,P1,R1,S-OPS-02,Clinical sites have a local urgent route even when ordinary technical support is unavailable.,Functional
+TS-F-OPS-011,FR-OPS-011,Supplier continuity,OPS,P0,R1,S-OPS-02,A supplier outage can be linked to affected studies and recovery options.,Functional
+TS-F-OPS-012,FR-OPS-012,Institutional service reviews,OPS,P1,R2,S-OPS-02,Actions from the review have owners and due dates visible to both parties.,Functional
+TS-F-EXT-001,FR-EXT-001,Retention schedules,EXT,P0,R1,S-EXT-02,A newly created asset inherits an explicit retention policy rather than an indefinite default.,Functional
+TS-F-EXT-002,FR-EXT-002,Study closure,EXT,P0,R1,S-EXT-02,A study cannot close its safety obligations by changing its administrative status.,Functional
+TS-F-EXT-003,FR-EXT-003,Data disposal,EXT,P0,R1,S-EXT-03,"A disposal record identifies completed actions, retained exceptions and backup expiry treatment.",Functional
+TS-F-EXT-004,FR-EXT-004,Backup deletion handling,EXT,P0,R1,S-EXT-03,A restore applies the current deletion and revocation ledger before user access resumes.,Functional
+TS-F-EXT-005,FR-EXT-005,Institutional export,EXT,P1,R1,S-EXT-02,An export includes relationship keys and definitions needed to interpret the files.,Functional
+TS-F-EXT-006,FR-EXT-006,Rights aware portability,EXT,P0,R1,S-EXT-03,A departing partner cannot take another institution's raw data merely because both joined a study.,Functional
+TS-F-EXT-007,FR-EXT-007,User and tenant offboarding,EXT,P0,R1,S-EXT-02,Deleting a user profile does not destroy the attribution of a clinical signoff.,Functional
+TS-F-EXT-008,FR-EXT-008,Operator succession,EXT,P1,R2,S-EXT-03,A tabletop exercise identifies who would receive evidence and incident responsibilities.,Functional
+TS-F-EXT-009,FR-EXT-009,Closure attestation,EXT,P0,R1,S-EXT-03,An attestation never claims deletion of data still retained under a documented hold.,Functional
+TS-F-EXT-010,FR-EXT-010,Residual obligations,EXT,P0,R1,S-EXT-01,An expired commercial agreement does not remove a required safety follow up task.,Functional
+TS-N-SEC-001,NFR-SEC-001,Security verification baseline,SEC,P0,R1,Cross-cutting,An independent assessment records applicability and evidence; no unresolved exploitable critical or high finding remains at launch.,Quality
+TS-N-SEC-002,NFR-SEC-002,Transport protection,SEC,P0,R1,Cross-cutting,Scanning finds no accepted plaintext protected endpoint or obsolete protocol; certificate failure blocks connection.,Quality
+TS-N-SEC-003,NFR-SEC-003,Stored data protection,SEC,P0,R1,Cross-cutting,Storage and backup inspection finds no unencrypted restricted payload or plaintext secret.,Quality
+TS-N-SEC-004,NFR-SEC-004,Authentication coverage,SEC,P0,R1,Cross-cutting,Attempts to enter these scopes without the required assurance are denied in all supported clients.,Quality
+TS-N-SEC-005,NFR-SEC-005,Local credential policy,SEC,P0,R1,Cross-cutting,Password managers and paste work; recovery and change tests invalidate compromised sessions as specified.,Quality
+TS-N-SEC-006,NFR-SEC-006,Session expiry,SEC,P0,R1,Cross-cutting,Boundary tests confirm expiry and step up checks without losing safely saved drafts.,Quality
+TS-N-SEC-007,NFR-SEC-007,Revocation latency,SEC,P0,R1,Cross-cutting,A distributed revocation test has no successful new protected action after the deadline; offline limits are documented separately.,Quality
+TS-N-SEC-008,NFR-SEC-008,Isolation assurance,SEC,P0,R1,Cross-cutting,No unauthorised access succeeds in the release suite or independent penetration test.,Quality
+TS-N-SEC-009,NFR-SEC-009,Secret handling,SEC,P0,R1,Cross-cutting,Automated scans and sampled runtime inspection find no exposed active secret; rotation does not broaden access.,Quality
+TS-N-SEC-010,NFR-SEC-010,Abuse protection,SEC,P0,R1,Cross-cutting,Load and brute force tests are contained without preventing the approved emergency reporting route.,Quality
+TS-N-SEC-011,NFR-SEC-011,Vulnerability response,SEC,P0,R1,Cross-cutting,"The vulnerability register measures discovery to containment and remediation, with overdue escalation.",Quality
+TS-N-SEC-012,NFR-SEC-012,Independent testing,SEC,P0,R1,Cross-cutting,Evidence includes remediation and retest of affected controls rather than only the original report.,Quality
+TS-N-PRI-001,NFR-PRI-001,Residency coverage,PRI,P0,R1,Cross-cutting,A residency inventory and technical validation show no unapproved processing or copy location.,Quality
+TS-N-PRI-002,NFR-PRI-002,Purpose enforcement,PRI,P0,R1,Cross-cutting,A sampled audit and negative tests find no run or export without the required grant.,Quality
+TS-N-PRI-003,NFR-PRI-003,Minimised telemetry,PRI,P0,R1,Cross-cutting,Synthetic sensitive markers inserted into test workflows do not appear in general telemetry.,Quality
+TS-N-PRI-004,NFR-PRI-004,Disclosure control,PRI,P0,R1,Cross-cutting,A disclosure test pack verifies suppression and complementary cell handling for all supported filters and exports.,Quality
+TS-N-PRI-005,NFR-PRI-005,Privacy impact review,PRI,P0,R1,Cross-cutting,A release cannot enable the affected processing while a mandatory assessment is incomplete.,Quality
+TS-N-PRI-006,NFR-PRI-006,Data rights service,PRI,P0,R1,Cross-cutting,"The case register tracks deadlines, identity checks, holds and reasoned outcomes without assuming one global deadline.",Quality
+TS-N-PRI-007,NFR-PRI-007,Deletion execution,PRI,P0,R1,Cross-cutting,Verification confirms active deletion and prevents restoration from reintroducing disposed records.,Quality
+TS-N-PRI-008,NFR-PRI-008,Provider data use,PRI,P0,R1,Cross-cutting,Provider configuration and terms are verified before use; an unapproved change stops affected transmission.,Quality
+TS-N-AVL-001,NFR-AVL-001,Core availability,AVL,P0,R1,Cross-cutting,Independent probes and incident records reconcile successful available minutes; third party failures affecting the journey count.,Quality
+TS-N-AVL-002,NFR-AVL-002,Emergency reporting continuity,AVL,P0,R1,Cross-cutting,A quarterly outage exercise reaches an accountable operator and the relevant local site contact.,Quality
+TS-N-AVL-003,NFR-AVL-003,Recovery time,AVL,P0,R1,Cross-cutting,A twice yearly recovery exercise meets the target within permitted residency locations.,Quality
+TS-N-AVL-004,NFR-AVL-004,Recovery point,AVL,P0,R1,Cross-cutting,A recovery test demonstrates bounded loss and reconciles any missing authoritative actions before reopening access.,Quality
+TS-N-AVL-005,NFR-AVL-005,Source data recovery,AVL,P0,R1,Cross-cutting,Restored inputs reconcile to the frozen manifest; a missing unique input blocks dependent evidence claims.,Quality
+TS-N-AVL-006,NFR-AVL-006,Backup verification,AVL,P0,R1,Cross-cutting,A completed backup job without successful restore evidence is not reported as proven recoverability.,Quality
+TS-N-AVL-007,NFR-AVL-007,Failure isolation,AVL,P0,R1,Cross-cutting,Injected workload and dependency failures leave unrelated critical journeys functional.,Quality
+TS-N-AVL-008,NFR-AVL-008,Safe degraded operation,AVL,P0,R1,Cross-cutting,"Dependency failure cannot cause unrestricted access, silent approval or fabricated successful results.",Quality
+TS-N-AVL-009,NFR-AVL-009,Disconnected sites,AVL,P0,R2,Cross-cutting,An offline node is never displayed as stopped or updated without evidence; its local owner receives the escalation.,Quality
+TS-N-PER-001,NFR-PER-001,Interactive navigation,PER,P1,R1,Cross-cutting,"A 60 minute representative load test covers login landing, study list, task queue and record view.",Quality
+TS-N-PER-002,NFR-PER-002,Transactional response,PER,P1,R1,Cross-cutting,Measured server response includes authentication and policy checks; error rate is below 0.5 percent excluding valid client errors.,Quality
+TS-N-PER-003,NFR-PER-003,Search response,PER,P1,R1,Cross-cutting,The test includes complex filters and confirms that faster results do not omit access controls.,Quality
+TS-N-PER-004,NFR-PER-004,Dashboard response,PER,P1,R1,Cross-cutting,Heavy custom analyses are asynchronous with progress rather than blocking the application.,Quality
+TS-N-PER-005,NFR-PER-005,Large ingestion,PER,P1,R1,Cross-cutting,Results account for every input row; imaging and custom transforms use separately approved budgets.,Quality
+TS-N-PER-006,NFR-PER-006,Queue responsiveness,PER,P1,R1,Cross-cutting,"Queue metrics distinguish unavailable resources, policy holds and scheduler delay.",Quality
+TS-N-PER-007,NFR-PER-007,Large exports,PER,P1,R1,Cross-cutting,The user sees progress and expiry; authorisation is rechecked before download.,Quality
+TS-N-PER-008,NFR-PER-008,Low bandwidth use,PER,P1,R1,Cross-cutting,"Users can save an application, review a task and report an incident under the constrained profile.",Quality
+TS-N-PER-009,NFR-PER-009,Inference budgets,PER,P1,R1,Cross-cutting,Out of budget runs terminate or queue according to policy with clear evidence and billing treatment.,Quality
+TS-N-PER-010,NFR-PER-010,Capacity expansion,PER,P1,R2,Cross-cutting,Capacity approval is supported by load test evidence and estimated operating cost.,Quality
+TS-N-INTG-001,NFR-INTG-001,Acknowledged transactions,INTG,P0,R1,Cross-cutting,"Failure injection yields either one complete recorded action or an explicit failure, never a partial approval.",Quality
+TS-N-INTG-002,NFR-INTG-002,Artefact integrity,INTG,P0,R1,Cross-cutting,Changing bytes changes the integrity result and cannot preserve the original verified status.,Quality
+TS-N-INTG-003,NFR-INTG-003,Provenance completeness,INTG,P0,R1,Cross-cutting,An automated completeness check blocks formal issue when any required link is missing.,Quality
+TS-N-INTG-004,NFR-INTG-004,Deterministic reproducibility,INTG,P0,R1,Cross-cutting,Results outside tolerance are investigated and cannot be released as reproduced.,Quality
+TS-N-INTG-005,NFR-INTG-005,Stochastic reproducibility,INTG,P0,R2,Cross-cutting,A result's reproducibility statement does not promise identical output from a nondeterministic external model.,Quality
+TS-N-INTG-006,NFR-INTG-006,Clock consistency,INTG,P0,R1,Cross-cutting,A trace reconstruction preserves event order; unsynchronised external timestamps are explicitly identified.,Quality
+TS-N-INTG-007,NFR-INTG-007,Numerical semantics,INTG,P0,R1,Cross-cutting,Round trip tests preserve each state and do not convert missing clinical values to zero.,Quality
+TS-N-INTG-008,NFR-INTG-008,Concurrent edits,INTG,P0,R1,Cross-cutting,Two simultaneous protocol edits produce an explicit conflict or preserved merge history.,Quality
+TS-N-USA-001,NFR-USA-001,Accessibility baseline,USA,P1,R1,Cross-cutting,"Automated checks plus manual keyboard, screen reader, focus and zoom testing find no unresolved critical barrier.",Quality
+TS-N-USA-002,NFR-USA-002,Task success,USA,P1,R1,Cross-cutting,Usability sessions include at least 5 participants per priority role and document failures and remediation.,Quality
+TS-N-USA-003,NFR-USA-003,Navigation and status clarity,USA,P1,R1,Cross-cutting,Users correctly identify the next action in at least 90 percent of sampled task scenarios.,Quality
+TS-N-USA-004,NFR-USA-004,Error prevention,USA,P1,R1,Cross-cutting,"Tests prevent accidental publication, deletion and role escalation through one unintended ordinary click.",Quality
+TS-N-USA-005,NFR-USA-005,Responsive support,USA,P1,R1,Cross-cutting,Testing at agreed mobile and desktop sizes finds no blocked critical workflow or inaccessible control.,Quality
+TS-N-USA-006,NFR-USA-006,Browser support,USA,P1,R1,Cross-cutting,The release matrix records tested versions and known limitations; specialised viewers declare separate support.,Quality
+TS-N-USA-007,NFR-USA-007,Language readiness,USA,P1,R1,Cross-cutting,Pseudo localisation does not clip critical controls or corrupt exported clinical terminology.,Quality
+TS-N-USA-008,NFR-USA-008,Translation integrity,USA,P0,R2,Cross-cutting,Unapproved translations cannot appear as final participant or authority documents.,Quality
+TS-N-USA-009,NFR-USA-009,Assisted accessibility,USA,P1,R2,Cross-cutting,A user unable to use the primary media format can complete the same required training outcome.,Quality
+TS-N-OBS-001,NFR-OBS-001,Critical monitoring,OBS,P0,R1,Cross-cutting,A controlled critical failure generates an operational alert within 5 minutes.,Quality
+TS-N-OBS-002,NFR-OBS-002,Incident acknowledgement,OBS,P0,R1,Cross-cutting,Quarterly drills demonstrate contactability and backup escalation; ordinary support hours are separately published.,Quality
+TS-N-OBS-003,NFR-OBS-003,User communications,OBS,P1,R1,Cross-cutting,The communication log records delivery failures and contains no unauthorised sensitive data.,Quality
+TS-N-OBS-004,NFR-OBS-004,Traceability,OBS,P0,R1,Cross-cutting,An incident investigation can connect the initiating request with all material outcomes.,Quality
+TS-N-OBS-005,NFR-OBS-005,Operational history,OBS,P1,R1,Cross-cutting,Operators can investigate a sampled 60 day old incident without accessing raw patient data.,Quality
+TS-N-OBS-006,NFR-OBS-006,Runbook coverage,OBS,P1,R1,Cross-cutting,A new on call operator can execute sampled runbooks during a supervised readiness exercise.,Quality
+TS-N-OBS-007,NFR-OBS-007,Post incident review,OBS,P1,R1,Cross-cutting,Repeat causes and overdue actions appear in the service governance review.,Quality
+TS-N-MNT-001,NFR-MNT-001,Release traceability,MNT,P0,R1,Cross-cutting,A sampled release can be traced to its business reason and rollback or recovery plan.,Quality
+TS-N-MNT-002,NFR-MNT-002,Regression gates,MNT,P0,R1,Cross-cutting,"A failing critical permission, safety, provenance or metric test blocks deployment.",Quality
+TS-N-MNT-003,NFR-MNT-003,Rollback readiness,MNT,P1,R1,Cross-cutting,A rehearsal restores service without discarding acknowledged records or reviving revoked access.,Quality
+TS-N-MNT-004,NFR-MNT-004,Migration assurance,MNT,P0,R1,Cross-cutting,A failed reconciliation prevents the migrated environment from serving affected production records.,Quality
+TS-N-MNT-005,NFR-MNT-005,Interface stability,MNT,P1,R1,Cross-cutting,A breaking change cannot silently invalidate an agreed institutional connector.,Quality
+TS-N-MNT-006,NFR-MNT-006,Dependency governance,MNT,P1,R1,Cross-cutting,Unsupported critical dependencies have a funded replacement or approved time limited exception.,Quality
+TS-N-MNT-007,NFR-MNT-007,Portability,MNT,P1,R1,Cross-cutting,A clean environment reconstructs a sampled exported study and verifies its evidence references.,Quality
+TS-N-MNT-008,NFR-MNT-008,Environment flexibility,MNT,P1,R2,Cross-cutting,"Each offered profile passes equivalent access, provenance, safety and operational gates before sale.",Quality
+TS-N-AQL-001,NFR-AQL-001,No universal clinical score,AQL,P0,R1,Cross-cutting,An undefined threshold or unsupported population blocks a suitability conclusion.,Quality
+TS-N-AQL-002,NFR-AQL-002,Platform assistant safety,AQL,P0,R2,Cross-cutting,The report discloses sample size and residual uncertainty; zero observed failures is not claimed as zero real world risk.,Quality
+TS-N-AQL-003,NFR-AQL-003,Generated factual grounding,AQL,P0,R2,Cross-cutting,A random audit of released reports finds no unreviewed material generated claim.,Quality
+TS-N-AQL-004,NFR-AQL-004,Model change regression,AQL,P0,R2,Cross-cutting,Changes cannot enter production based solely on improved average response quality.,Quality
+TS-N-AQL-005,NFR-AQL-005,Human review independence,AQL,P0,R2,Cross-cutting,Workflow tests require the appropriate eligible human decision for each protected outcome.,Quality
+TS-N-AQL-006,NFR-AQL-006,AI service continuity,AQL,P1,R2,Cross-cutting,A simulated provider outage leaves manual authorised completion possible without data loss.,Quality
+TS-N-CST-001,NFR-CST-001,Cost attribution,CST,P1,R1,Cross-cutting,Monthly financial reconciliation explains the remaining unattributed amount.,Quality
+TS-N-CST-002,NFR-CST-002,Spending limits,CST,P0,R1,Cross-cutting,The hard limit prevents further unauthorised spending while preserving evidence and safe termination.,Quality
+TS-N-CST-003,NFR-CST-003,Idle resource control,CST,P1,R1,Cross-cutting,An idle workspace stops compute charges without deleting retained assets or disrupting a declared long job.,Quality
+TS-N-CST-004,NFR-CST-004,Resource reporting,CST,P1,R2,Cross-cutting,Estimates do not imply measured carbon emissions when only proxy data are available.,Quality
+TS-N-SUP-001,NFR-SUP-001,Operational ownership,SUP,P0,R1,Cross-cutting,No feature is released with an unassigned safety or maintenance responsibility.,Quality
+TS-N-SUP-002,NFR-SUP-002,Documentation completeness,SUP,P1,R1,Cross-cutting,Representative users complete the documented core journeys without undocumented internal assistance.,Quality
+TS-N-SUP-003,NFR-SUP-003,Country launch readiness,SUP,P0,R1,Cross-cutting,A country cannot be marked active through marketing configuration alone.,Quality
+TS-N-SUP-004,NFR-SUP-004,Service request response,SUP,P1,R1,Cross-cutting,Reports measure compliance from receipt and distinguish acknowledgement from resolution.,Quality
+TS-N-SUP-005,NFR-SUP-005,Continuity responsibilities,SUP,P0,R1,Cross-cutting,A tabletop exercise shows safe local action during a platform or network outage.,Quality
+TS-N-SUP-006,NFR-SUP-006,Exit readiness,SUP,P1,R2,Cross-cutting,"The exercise records gaps, assigned remedies and lawful retained obligations.",Quality

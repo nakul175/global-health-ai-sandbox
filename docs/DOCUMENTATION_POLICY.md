@@ -36,6 +36,8 @@ The automated check runs on pushes and pull requests, checks references/traceabi
 
 ## Canonical format and publication
 
+The reconciled current edition is indexed at [docs/current/DOCUMENTATION-INDEX.md](current/DOCUMENTATION-INDEX.md). Preserve historical snapshots and their manifests. When source changes, review the implementation/handover/guides and deliberately update the edition baseline in scripts/build-current-docs.py before regenerating derived requirement, API, schema, test and screen records. Run scripts/check-current-docs.py in addition to the existing R3/documentation validator. Regeneration never establishes application or institutional acceptance.
+
 Markdown, JSON, CSV, SQL and SVG in Git are canonical. PDFs and presentations are snapshots and must name the source revision. Sensitive customer data, patient records, live credentials, private incident details and supplier-confidential datasets must never be committed. Use synthetic fixtures and controlled external evidence storage.
 
 Maintain documentation during each future development change. No unattended periodic writing or automatic approval is implied. The CI gate checks the repository whenever a change is pushed; it does not silently invent or update product decisions.

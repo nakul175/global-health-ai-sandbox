@@ -2,7 +2,7 @@
 
 Version 0.6.0 · 26 September 2026
 
-**Documentation:** [Complete index](docs/README.md) · [Government adoption R3 specification](docs/releases/r3/README.md) · [Contribution and maintenance rules](CONTRIBUTING.md). R3 is a proposed design baseline, not a deployed feature release.
+**Documentation edition 1.1:** [Current complete index](docs/current/DOCUMENTATION-INDEX.md) · [Developer handover](docs/current/DEVELOPER-HANDOVER.md) · [Implementation](docs/IMPLEMENTATION.md) · [Qualification](docs/QUALIFICATION.md) · [Next delivery](docs/NEXT-DELIVERY.md) · [Preserved history](docs/history/README.md). Reconciled to repository commit 870b49a (v0.6.0 plus PR #13); publication does not deploy the Site. [Government adoption R3](docs/releases/r3/README.md) remains a proposed design baseline.
 
 **Self-service live connections:** In Release 2 workbench → Integrations, configure a public HTTPS JSON endpoint, encrypted credentials and field mappings, run a real test, activate it, and evaluate synthetic audio through your model. JSON service checks are also supported. See [supported contracts, setup and limits](docs/SELF_SERVICE_CONNECTIONS.md). No customer endpoint is preconfigured; full EHR write workflows, OAuth and private-network adapters remain unsupported.
 
@@ -39,7 +39,7 @@ Role switching uses synthetic people controlled by one signed-in owner. It tests
 - `tests/`: domain, SQLite integration and live built-Worker HTTP tests.
 - `verification/`: executed evidence and testing limits.
 - `docs/`: hosted architecture decision, API contract, operations, implementation status and preserved requirement backlog.
-- `native-baseline/`: unchanged FastAPI/PostgreSQL programme slice from v0.1.
+- `native-baseline/`: separate FastAPI/PostgreSQL programme slice from v0.1, with the explicit fixes recorded in PR #13; earlier revisions remain preserved in Git.
 
 ## Commands
 

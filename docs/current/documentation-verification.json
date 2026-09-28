@@ -1,0 +1,52 @@
+{
+  "edition": "1.1",
+  "date": "2026-09-28",
+  "source_revision": "870b49a343f1207b8cefbecdbfb0c5c5d10c955a",
+  "scope": "documentation_and_reference_inventory_only",
+  "checks": [
+    {
+      "command": "python3 scripts/check-docs.py",
+      "exit_code": 0,
+      "result": {
+        "scope": "documentation_structure_and_reference_fixtures_only",
+        "requirements": 63,
+        "planned_application_tests": 134,
+        "work_packages": 12,
+        "schema_definitions": 129,
+        "api_operations": 86,
+        "event_types": 9,
+        "valid_examples": 16,
+        "economic_fixture": "passed",
+        "clinical_validation": "not_performed",
+        "candidate_tables": 15,
+        "negative_database_cases": 9,
+        "hosted_database_changed": false,
+        "local_links": 143,
+        "documentation_change_gate": "not_requested",
+        "application_tests_executed": 0
+      },
+      "script_sha256": "ff8c514044f2ca8da1e2957c7f83da661173ab8092c6839079577047266d3dde"
+    },
+    {
+      "command": "python3 scripts/check-current-docs.py",
+      "exit_code": 0,
+      "result": {
+        "scope": "documentation_and_reference_inventory_only",
+        "current_files_checked": 49,
+        "relative_links": 318,
+        "requirement_entries": 600,
+        "history_files": 137,
+        "screen_entries": 141,
+        "application_tests_run": 0
+      },
+      "script_sha256": "d3d60c1a75c1e5d42377c1548478ed9daf21db0195be5b3f301fc6a589cd2d2a"
+    }
+  ],
+  "visual_review": {
+    "status": "blocked",
+    "reason": "Administrator-enforced browser security policy could not be verified; access was denied. No browser appearance or interaction validation completed."
+  },
+  "application_tests_executed": 0,
+  "deployment_performed": false,
+  "original_document_binaries_recovered": false
+}

@@ -16,6 +16,8 @@ jobs:
           persist-credentials: false
       - name: Validate documentation and reference fixtures
         run: python3 scripts/check-docs.py
+      - name: Validate current edition, inventories and preserved history
+        run: python3 scripts/check-current-docs.py
       - name: Require accompanying documentation for application changes
         env:
           DOCS_DIFF_BASE: ${{ github.event.pull_request.base.sha || github.event.before }}
