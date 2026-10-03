@@ -1,10 +1,11 @@
 # Documentation changelog
 
-## 2026-10-03 — Hosted source audit and prepared main deployment (pending)
+## 2026-10-03 — Hosted main deployment
 
-- Confirmed the live Site is version 5, deployed successfully on 2026-09-26 from Site source `8a08831be002da80b0cdf6e4ec43d8fadcb02310`. It predates and omits PR #13's fixes. The owner was informed before preparing a redeployment.
-- Verified GitHub `main` at `8b4b4b5a4b223773f9b91b7e21b1a0f9f3f295d3`: `pnpm verify` passed typecheck, 114 application tests, the Worker build and 43 HTTP checks. Saved the exact source tree through the existing Sites workflow as version 6, Site source `542ae40320d1c4bea19c64799cf9128210242225`; migrations, bindings and access policy are unchanged.
-- **Deployment is pending, not completed.** The required capture/verification of an authenticated hosted workspace checkpoint is blocked on the owner's Site sign-in. Version 6 has no deployment ID; the live Site remains version 5. [Audit, candidate provenance and rollback record](../verification/deploy-main-2026-10-03/README.md) identifies the remaining gate. No lint cleanup or CODA data/model integration is included in this candidate.
+- Confirmed the previous live Site was version 5, deployed on 2026-09-26 from Site source `8a08831be002da80b0cdf6e4ec43d8fadcb02310`, which predates and omits PR #13's fixes. The owner was informed before redeployment.
+- Verified GitHub `main` at `8b4b4b5a4b223773f9b91b7e21b1a0f9f3f295d3`: `pnpm verify` passed typecheck, 114 application tests, the Worker build and 43 HTTP checks. The exact tree was saved through the existing Sites workflow as version 6, Site source `542ae40320d1c4bea19c64799cf9128210242225`.
+- Captured and verified an encrypted hosted checkpoint for the signed-in owner's workspace before deployment; decryption and integrity passed across all eleven table categories. Migrations, bindings, protected configuration and public audience are unchanged; version 5 is the rollback target.
+- Deployed version 6 successfully at `2026-10-03T06:44:41.207882+00:00`, deployment `appgdep_6ac0a4437cdc8191849a66130a842f3b`. [Deployment, checkpoint and rollback record](../verification/deploy-main-2026-10-03/README.md) contains provenance and the bounded authenticated post-deployment observations. The lint and CODA terms branches are not included in this deployment.
 
 ## 2026-10-03 — Cough-screening demo walkthrough
 
