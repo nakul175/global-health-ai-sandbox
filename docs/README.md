@@ -10,6 +10,7 @@ This repository is the source of truth for product, engineering and operating do
 |---|---|
 | Government adoption release: business case through implementation | [R3 documentation pack](releases/r3/README.md) |
 | What the live alpha does | [Release 2 workbench](RELEASE_2_WORKBENCH.md) and [self-service connections](SELF_SERVICE_CONNECTIONS.md) |
+| Recorded cough-screening demo, its limits and open TB cough models | [Cough demo walkthrough](COUGH_DEMO_WALKTHROUGH.md) (3 October 2026) |
 | Current application test evidence | [0.6.0 verification](../verification/CONNECTIONS_0_6_VERIFICATION.md) |
 | API currently implemented | [Core](API_CONTRACT.md), [lab](RELEASE_2_API.md), [workbench](WORKBENCH_API.md), [connections](SELF_SERVICE_CONNECTIONS.md) |
 | Current architecture decisions | [Hosted adapter](ADR_010_Hosted_Test_Adapter.md), [R2 adapter](ADR_011_Release_2_Hosted_Adapter.md) |
