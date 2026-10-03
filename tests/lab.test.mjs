@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { DatabaseSync } from 'node:sqlite';
 import { readFileSync,readdirSync } from 'node:fs';
-import { parseCommand,digest,visible,profiles,execute } from '../.test-build/domain.mjs';
+import { parseCommand,digest,visible } from '../.test-build/domain.mjs';
 import { load,mutate,actorFor } from '../.test-build/store.mjs';
 import { generateEcosystem,audioFeatures,syntheticWav,inferAudio,referenceModels,scorePredictions,registryResources,labExport } from '../.test-build/lab.mjs';
 const recipe={name:'Acceptance ecosystem',count:40,seed:240925,positiveCount:12,facilityCount:3,clinicianCount:6,synthetic:true};
@@ -10,7 +10,7 @@ const scenario={mode:'normal',labDelayHours:24,outageStartHour:24,outageDuration
 const err=code=>e=>e.code===code;
 class D1 {
  constructor(){this.raw=new DatabaseSync(':memory:');this.raw.exec('PRAGMA foreign_keys=ON');for(const f of readdirSync('drizzle').filter(f=>f.endsWith('.sql')).sort())this.raw.exec(readFileSync('drizzle/'+f,'utf8'))}
- prepare(sql){const db=this;return {sql,args:[],bind(...args){this.args=args;return this},async first(){return db.raw.prepare(sql).get(...this.args)||null},async all(){return {results:db.raw.prepare(sql).all(...this.args)}}}}
+ prepare(sql){const statement=()=>this.raw.prepare(sql);return {sql,args:[],bind(...args){this.args=args;return this},async first(){return statement().get(...this.args)||null},async all(){return {results:statement().all(...this.args)}}}}
  async batch(stmts){this.raw.exec('BEGIN');try{const r=stmts.map(s=>{const st=this.raw.prepare(s.sql);return /^SELECT/i.test(s.sql)?{results:st.all(...s.args),meta:{changes:0}}:{results:[],meta:{changes:Number(st.run(...s.args).changes)}}});this.raw.exec('COMMIT');return r}catch(e){this.raw.exec('ROLLBACK');throw e}}
 }
 async function context(){const db=new D1(),get=()=>load(db,'acceptance-owner','aster');await get();return {db,get,run:async(action,data,profile='maya',options={})=>{const s=await get();return mutate(db,'acceptance-owner','aster',profile,parseCommand({action,data}),options.key||crypto.randomUUID(),options.revision??s.revision)}}}

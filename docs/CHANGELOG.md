@@ -1,5 +1,11 @@
 # Documentation changelog
 
+## 2026-10-03 — Behaviour-preserving lint cleanup
+
+- Resolved the existing 165 ESLint findings (151 errors, 14 warnings); `pnpm lint` now exits successfully with zero findings. Added type-only transport, database and media projections, removed unused bindings, and retained event timing with narrowly explained React lint exceptions. Two legacy heterogeneous command/record envelopes retain explicit, documented `any` exceptions; this is not a full envelope contract migration.
+- `pnpm verify` passed before and after: type checking, 114 application tests, the Worker build and 43 HTTP checks, using disposable local D1/R2 and synthetic fixtures. [Separate before/after evidence](../verification/lint-cleanup-2026-10-03/README.md) preserves existing historical reports.
+- No API, schema, migration, dependency, requirement/test acceptance status or deployment changed. The native web change preserves its existing initialization lifecycle; native end-to-end qualification was not repeated.
+
 ## 2026-10-03 — Cough-screening demo walkthrough
 
 - Added [the cough demo walkthrough](COUGH_DEMO_WALKTHROUGH.md): six screens of the README "Try it" flow on a disposable local copy of `main` at a4b3458, the limits to state in any demonstration (capability register 0/67/13/1 of 81, simulated independent review, per-owner hosted workspaces, deployment of the PR #13 fixes not checked) and a dated, sourced survey of open tuberculosis cough models.

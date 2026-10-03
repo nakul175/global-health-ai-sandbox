@@ -1,15 +1,21 @@
+import type {AuditEntry} from './view-types';
 import { AppError, authorize, canonical, digest, execute, parseCSV, profiles, sampleCSV, tenants, visible, type Command, type Profile, type RecordItem } from './domain';
 import { assertLabCurrent, isLabKind } from './lab';
 import {suiteCurrent,isSuiteKind} from './suite';
-export type Database={prepare:(sql:string)=>any;batch:(statements:any[])=>Promise<any[]>};
-export type Space={id:string;revision:number;records:RecordItem[];audit:any[]};
+type StoredRecord=Omit<RecordItem,'body'> & {body:string};
+// Column projection of the fixed queries below and in the connection/checkpoint adapters.
+export type SqlRow=StoredRecord & {owner:string;space_id:string;revision:number;sequence:number;record_id:string;actor:string;action:string;at:string;digest:string;config:string;credential:string;config_hash:string;test_at:string|null;test_passed:number;request_hash:string;response:string;result:string;connector_id:string;name:string;created_at:string;updated_at:string;finished_at:string|null;created_by:string;n:number;recordId:string|null};
+type Statement={bind:(...values:unknown[])=>Statement;first:()=>Promise<SqlRow|null>};
+type DatabaseResult={results:SqlRow[];meta:{changes:number}};
+export type Database={prepare:(sql:string)=>Statement;batch:(statements:Statement[])=>Promise<DatabaseResult[]>};
+export type Space={id:string;revision:number;records:RecordItem[];audit:AuditEntry[]};
 export async function spaceId(owner:string,tenant:string){return (await digest(`workspace:${owner}:${tenant}`)).slice(0,40)}
 export async function seed(db:Database,owner:string,tenant:string){
  const t=tenants.find(t=>t.id===tenant);if(!t)throw new AppError(404,'UNAVAILABLE','Institution unavailable.');
  const sid=await spaceId(owner,tenant);
  if(await db.prepare('SELECT id FROM spaces WHERE id = ? AND owner = ?').bind(sid,owner).first())return sid;
  const now=new Date().toISOString();const rid=(key:string)=>`${sid}-${key}`;
- const record=(key:string,kind:RecordItem['kind'],title:string,status:string,body:any,person='fixture-author'):RecordItem=>({id:rid(key),kind,title,status,version:1,body,createdBy:person,createdAt:now,updatedAt:now});
+ const record=(key:string,kind:RecordItem['kind'],title:string,status:string,body:RecordItem["body"],person='fixture-author'):RecordItem=>({id:rid(key),kind,title,status,version:1,body,createdBy:person,createdAt:now,updatedAt:now});
  const items:RecordItem[]=[record('institution','institution',t.name,tenant==='cedar'?'draft':'verified',{legalName:t.name,country:t.country,summary:'Synthetic institution for workflow acceptance testing.',fixture:true},'person-maya'),...profiles.map(p=>record('member-'+p.id,'member',p.name,'active',{profileId:p.id,role:p.role,person:p.person,synthetic:true}))];
  if(tenant!=='cedar'){
  const programme=record('programme','programme','Retrospective AI evaluation','active',{title:'Retrospective AI evaluation',summary:'A controlled programme for synthetic screening benchmarks and evaluation workflow tests.',country:t.country,startDate:'2026-01-01',endDate:'2027-12-31'},'person-maya');
@@ -41,7 +47,7 @@ export async function load(db:Database,owner:string,tenant:string,{create=true}:
  db.prepare('SELECT id,kind,title,status,version,body,created_by AS createdBy,created_at AS createdAt,updated_at AS updatedAt FROM records WHERE space_id = ? UNION ALL SELECT id,kind,title,status,version,body,created_by AS createdBy,created_at AS createdAt,updated_at AS updatedAt FROM lab_records WHERE space_id = ? UNION ALL SELECT id,kind,title,status,version,body,created_by AS createdBy,created_at AS createdAt,updated_at AS updatedAt FROM suite_records WHERE space_id = ? ORDER BY createdAt DESC,id').bind(sid,sid,sid),
  db.prepare('SELECT sequence,actor,action,record_id AS recordId,at,digest FROM audit WHERE space_id = ? ORDER BY sequence DESC LIMIT 100').bind(sid)]);
  const space=results[0].results[0];if(!space)throw new AppError(404,'UNAVAILABLE','Institution unavailable.');
- return {...space,records:results[1].results.map((r:any)=>({...r,body:JSON.parse(r.body)})),audit:results[2].results};
+ return {...space,records:results[1].results.map((r:StoredRecord)=>({...r,body:JSON.parse(r.body)})),audit:results[2].results};
 }
 export function actorFor(space:Space,profileId:string):Profile{
  const actor=profiles.find(p=>p.id===profileId);

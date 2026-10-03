@@ -1,6 +1,9 @@
+import type {MediaPart} from './view-types';
 import {AppError,canonical,digest} from './domain';
 import {base64,unbase64,byteHash} from './attestation';
 import type {Database} from './store';
+type CheckpointRow={id:string;space_id:string;revision:number;sequence:number;kind:string;body:string;digest:string;record_id:string;version:number;title:string;status:string;created_by:string;created_at:string;updated_at:string;[column:string]:unknown};
+type CheckpointEnvelope={format:string;spaceId:string;keyId:string;iv:string;ciphertext:string};
 
 // Fixed table/column lists are shared by capture and isolated recovery. No caller SQL.
 export const checkpointColumns:Record<string,string[]>={
@@ -17,9 +20,9 @@ export const checkpointColumns:Record<string,string[]>={
  receipts:['id','space_id','actor','key','request_hash','response','created_at']
 };
 const maxBytes=16*1024*1024;
-export type Checkpoint={format:'sandbox-checkpoint-v1';spaceId:string;revision:number;createdAt:string;tables:Record<string,any[]>;objects:{key:string;sha256:string;bytes:string}[]};
-type Bucket={get:(key:string)=>Promise<{arrayBuffer:()=>Promise<ArrayBuffer>}|null>;put:(key:string,value:any,options?:any)=>Promise<any>};
-function mediaParts(tables:Record<string,any[]>,sid:string){return tables.suite_records.filter(r=>r.kind==='media_session').flatMap(r=>JSON.parse(r.body).parts.map((p:any)=>({key:`${sid}/media/${r.id}/${p.index}/${p.sha256}`,size:p.size,sha256:p.sha256})))}
+export type Checkpoint={format:'sandbox-checkpoint-v1';spaceId:string;revision:number;createdAt:string;tables:Record<string,CheckpointRow[]>;objects:{key:string;sha256:string;bytes:string}[]};
+type Bucket={get:(key:string)=>Promise<{arrayBuffer:()=>Promise<ArrayBuffer>}|null>;put:(key:string,value:Uint8Array,options?:R2PutOptions)=>Promise<unknown>};
+function mediaParts(tables:Record<string,CheckpointRow[]>,sid:string){return tables.suite_records.filter(r=>r.kind==='media_session').flatMap(r=>JSON.parse(r.body).parts.map((p:MediaPart)=>({key:`${sid}/media/${r.id}/${p.index}/${p.sha256}`,size:p.size,sha256:p.sha256})))}
 export async function captureCheckpoint(db:Database,bucket:Bucket,sid:string):Promise<Checkpoint>{
  const names=Object.keys(checkpointColumns),result=await db.batch(names.map(name=>db.prepare(`SELECT ${checkpointColumns[name].join(',')} FROM ${name} WHERE ${name==='spaces'?'id':'space_id'} = ? ORDER BY id`).bind(sid)));
  const tables=Object.fromEntries(names.map((name,i)=>[name,result[i].results]));if(tables.spaces.length!==1)throw new AppError(404,'UNAVAILABLE','Workspace unavailable.');
@@ -28,14 +31,14 @@ export async function captureCheckpoint(db:Database,bucket:Bucket,sid:string):Pr
  await validateCheckpoint(data,sid);return data;
 }
 export async function validateCheckpoint(data:Checkpoint,sid:string){
- const bad=()=>{throw new AppError(409,'CHECKPOINT_INTEGRITY','Checkpoint integrity or workspace scope failed.')};
+ const bad=():never=>{throw new AppError(409,'CHECKPOINT_INTEGRITY','Checkpoint integrity or workspace scope failed.')};
  if(data.tables && !Object.hasOwn(data.tables,'live_connectors') && !Object.hasOwn(data.tables,'connector_calls')){data.tables.live_connectors=[];data.tables.connector_calls=[];}
  if(data.format!=='sandbox-checkpoint-v1'||data.spaceId!==sid||canonical(Object.keys(data.tables).sort())!==canonical(Object.keys(checkpointColumns).sort()))bad();
  for(const [name,columns] of Object.entries(checkpointColumns)){const rows=data.tables[name];if(!Array.isArray(rows)||new Set(rows.map(r=>r.id)).size!==rows.length)bad();for(const row of rows){if(canonical(Object.keys(row).sort())!==canonical([...columns].sort())||(name==='spaces'?row.id:row.space_id)!==sid)bad();}}
  if(data.tables.spaces.length!==1||data.tables.spaces[0].revision!==data.revision)bad();
  for(const [records,snapshots] of [['records','snapshots'],['lab_records','lab_snapshots'],['suite_records','suite_snapshots']]){
   for(const s of data.tables[snapshots]){if(await digest(JSON.parse(s.body))!==s.digest)bad();}
-  for(const r of data.tables[records]){const snap=data.tables[snapshots].find(s=>s.record_id===r.id&&s.version===r.version);if(!snap)bad();const expected={id:r.id,kind:r.kind,title:r.title,status:r.status,version:r.version,body:JSON.parse(r.body),createdBy:r.created_by,createdAt:r.created_at,updatedAt:r.updated_at};if(canonical(expected)!==canonical(JSON.parse(snap.body)))bad();}
+  for(const r of data.tables[records]){const snap=data.tables[snapshots].find(s=>s.record_id===r.id&&s.version===r.version);if(!snap)bad();const expected={id:r.id,kind:r.kind,title:r.title,status:r.status,version:r.version,body:JSON.parse(r.body),createdBy:r.created_by,createdAt:r.created_at,updatedAt:r.updated_at};if(canonical(expected)!==canonical(JSON.parse(snap!.body)))bad();}
  }
  const sequences=data.tables.audit.map(r=>r.sequence).sort((a,b)=>a-b);if(sequences.length!==data.revision||sequences.some((v,i)=>v!==i+1))bad();
  const parts=mediaParts(data.tables,sid);if(parts.length!==data.objects.length||new Set(data.objects.map(o=>o.key)).size!==parts.length)bad();for(const p of parts){const o=data.objects.find(o=>o.key===p.key);if(!o)bad();const bytes=unbase64(o!.bytes);if(bytes.length!==p.size||o!.sha256!==p.sha256||await byteHash(bytes)!==p.sha256)bad();}
@@ -43,7 +46,7 @@ export async function validateCheckpoint(data:Checkpoint,sid:string){
 }
 async function encryptionKey(raw?:string){if(!raw||!/^[a-f0-9]{64}$/.test(raw))throw new AppError(503,'CHECKPOINT_KEY_UNAVAILABLE','Checkpoint encryption is not configured.');return crypto.subtle.importKey('raw',Uint8Array.from(raw.match(/../g)!,h=>parseInt(h,16)),{name:'AES-GCM'},false,['encrypt','decrypt'])}
 export async function sealCheckpoint(data:Checkpoint,raw?:string){const bytes=new TextEncoder().encode(canonical(data));if(bytes.length>maxBytes)throw new AppError(413,'CHECKPOINT_LIMIT','Checkpoint exceeds the 16 MiB test bound.');const key=await encryptionKey(raw),iv=crypto.getRandomValues(new Uint8Array(12)),cipher=await crypto.subtle.encrypt({name:'AES-GCM',iv,additionalData:new TextEncoder().encode(data.spaceId)},key,bytes);return {format:'sandbox-encrypted-checkpoint-v1',spaceId:data.spaceId,keyId:await digest(raw!),iv:base64(iv),ciphertext:base64(new Uint8Array(cipher))}}
-export async function openCheckpoint(envelope:any,sid:string,raw?:string):Promise<Checkpoint>{
+export async function openCheckpoint(envelope:CheckpointEnvelope,sid:string,raw?:string):Promise<Checkpoint>{
  const key=await encryptionKey(raw);if(envelope.format!=='sandbox-encrypted-checkpoint-v1'||envelope.spaceId!==sid||envelope.keyId!==await digest(raw!))throw new AppError(409,'CHECKPOINT_INTEGRITY','Checkpoint scope or encryption key mismatch.');
  try{const decoded=unbase64(envelope.ciphertext);if(decoded.length>maxBytes+16)throw new Error('bound');const plain=await crypto.subtle.decrypt({name:'AES-GCM',iv:unbase64(envelope.iv) as BufferSource,additionalData:new TextEncoder().encode(sid)},key,decoded as BufferSource);const data=JSON.parse(new TextDecoder().decode(plain));await validateCheckpoint(data,sid);return data}catch{throw new AppError(409,'CHECKPOINT_INTEGRITY','Checkpoint authentication or integrity failed.')}
 }

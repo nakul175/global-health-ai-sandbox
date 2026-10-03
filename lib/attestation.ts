@@ -1,4 +1,5 @@
 import {AppError,canonical,digest} from './domain';
+export type Attestation={statement:{format:string;algorithm:string;keyId:string;sha256:string;[field:string]:unknown};evidence:string;signature:string;publicKey:JsonWebKey};
 
 export const attestationPurpose='Application export signature; not an institutional or clinical certification.';
 export function base64(bytes:Uint8Array){let s='';for(let i=0;i<bytes.length;i+=8192)s+=String.fromCharCode(...bytes.subarray(i,i+8192));return btoa(s)}
@@ -15,7 +16,7 @@ export async function attest(evidence:string,scope:{spaceId:string;recordId:stri
  const result={statement,signature,publicKey,evidence};
  if(!await verifyAttestation(result,publicKey))throw new AppError(503,'SIGNING_CONFIGURATION','Signing key failed its self-check.');return result;
 }
-export async function verifyAttestation(bundle:any,trustedPublicKey:JsonWebKey){try{
+export async function verifyAttestation(bundle:Attestation,trustedPublicKey:JsonWebKey){try{
  if(bundle.statement?.format!=='sandbox-export-attestation-v1'||bundle.statement.algorithm!=='ECDSA-P256-SHA256'||typeof bundle.evidence!=='string')return false;
  const pub=publicJwk(trustedPublicKey);
  if(await digest(pub)!==bundle.statement.keyId||await digest(bundle.evidence)!==bundle.statement.sha256)return false;

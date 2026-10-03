@@ -786,6 +786,7 @@ function Workspace({
     }
   }
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- Initialize the external API while preserving the existing loading lifecycle.
     load();
     api
       .request<{ can_create_programme: boolean }>("/v1/session")
@@ -796,11 +797,13 @@ function Workspace({
     window.addEventListener("online", yes);
     window.addEventListener("offline", no);
     return () => {
+      // eslint-disable-next-line react-hooks/exhaustive-deps -- This mutable request epoch fences late results; it is not a DOM ref.
       generation.current++;
       api.close();
       window.removeEventListener("online", yes);
       window.removeEventListener("offline", no);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- Initialize per memoized API/session; adding the render-created loader changes fetch/reset frequency.
   }, [api]);
   async function open(id: string) {
     setLoading(true);

@@ -2,11 +2,11 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {DatabaseSync} from 'node:sqlite';
 import {readFileSync,readdirSync} from 'node:fs';
-import {AppError,parseCommand,parseCSV,sampleCSV,score,profiles,execute,visible,digest,canonical} from '../.test-build/domain.mjs';
+import {parseCommand,parseCSV,sampleCSV,score,profiles,visible,digest,canonical} from '../.test-build/domain.mjs';
 import {load,mutate,actorFor,exportReport} from '../.test-build/store.mjs';
 class D1 {
  constructor(){this.raw=new DatabaseSync(':memory:');this.raw.exec('PRAGMA foreign_keys = ON');for(const f of readdirSync('drizzle').filter(f=>f.endsWith('.sql')).sort())this.raw.exec(readFileSync('drizzle/'+f,'utf8'))}
- prepare(sql){const db=this;return {args:[],sql,bind(...args){this.args=args;return this},async first(){return db.raw.prepare(sql).get(...this.args)||null},async all(){return {results:db.raw.prepare(sql).all(...this.args)}}}}
+ prepare(sql){const statement=()=>this.raw.prepare(sql);return {args:[],sql,bind(...args){this.args=args;return this},async first(){return statement().get(...this.args)||null},async all(){return {results:statement().all(...this.args)}}}}
  async batch(stmts){this.raw.exec('BEGIN');try{const r=stmts.map(s=>{const st=this.raw.prepare(s.sql);if(/^SELECT/i.test(s.sql))return {results:st.all(...s.args),meta:{changes:0}};return {results:[],meta:{changes:Number(st.run(...s.args).changes)}}});this.raw.exec('COMMIT');return r}catch(e){this.raw.exec('ROLLBACK');throw e}}
 }
 const actor=(id)=>profiles.find(p=>p.id===id);
