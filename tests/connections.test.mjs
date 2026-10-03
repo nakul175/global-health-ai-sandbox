@@ -14,7 +14,7 @@ const config={name:'Live JSON test',kind:'model',endpoint:'https://model.example
 const wav=syntheticWav({id:'SYN-P-0001',audioSeed:7,amplitude:.2,frequency:400,sex:'female',age:40});
 class D1 {
  constructor(){this.raw=new DatabaseSync(':memory:');this.raw.exec('PRAGMA foreign_keys=ON');for(const f of readdirSync('drizzle').filter(f=>f.endsWith('.sql')).sort())this.raw.exec(readFileSync('drizzle/'+f,'utf8'))}
- prepare(sql){const db=this;return {args:[],sql,bind(...args){this.args=args;return this},async first(){return db.raw.prepare(sql).get(...this.args)||null}}}
+ prepare(sql){const statement=()=>this.raw.prepare(sql);return {args:[],sql,bind(...args){this.args=args;return this},async first(){return statement().get(...this.args)||null}}}
  async batch(stmts){this.raw.exec('BEGIN');try{const out=stmts.map(s=>{const st=this.raw.prepare(s.sql);return /^SELECT/i.test(s.sql)?{results:st.all(...s.args),meta:{changes:0}}:{results:[],meta:{changes:Number(st.run(...s.args).changes)}}});this.raw.exec('COMMIT');return out}catch(e){this.raw.exec('ROLLBACK');throw e}}
 }
 const response=async(_url,init)=>{const body=init.body?JSON.parse(init.body):null;return Response.json(body?{output:{id:body.input.id,probability:.7}}:{status:'ok'})};

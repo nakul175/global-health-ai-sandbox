@@ -3,6 +3,7 @@ import {suiteSchemas,suitePermissions,executeSuite,isSuiteKind,suiteProjection,t
 import { labSchemas, labPermissions, executeLab, isLabKind, labProjection, type LabAction } from './lab';
 export type Kind=SuiteKind|'institution'|'member'|'programme'|'study'|'dataset'|'grant'|'model'|'run'|'report'|'concern'|'hold'|'ecosystem'|'audio_model'|'lab_run'|'lab_report';
 export type Role='manager'|'reviewer'|'custodian'|'developer'|'safety'|'admin'|'auditor'|'support';
+// eslint-disable-next-line @typescript-eslint/no-explicit-any -- Legacy heterogeneous JSON bodies are validated by kind-specific runtime schemas; changing that envelope is a separate contract migration.
 export type RecordItem={id:string;kind:Kind;title:string;status:string;version:number;body:Record<string,any>;createdBy:string;createdAt:string;updatedAt:string};
 export type Profile={id:string;name:string;role:Role;person:string};
 export const profiles:Profile[]=[
@@ -53,6 +54,7 @@ export const schemas={
  'member.status':z.object({id,active:z.boolean(),note}).strict(),
 } as const;
 export type Action=keyof typeof schemas;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any -- parseCommand validates the action-specific schema; retain the existing executor envelope without changing dispatch contracts.
 export type Command={action:Action;data:any};
 export function parseCommand(raw:unknown):Command{
  const envelope=z.object({action:z.string(),data:z.unknown()}).strict().safeParse(raw);
@@ -92,7 +94,7 @@ export function canonical(value:unknown):string{
  const keys=Object.keys(record).filter(k=>representable(record[k])).sort();
  return '{'+keys.map(k=>JSON.stringify(k)+':'+canonical(record[k])).join(',')+'}';
 }
-export async function digest(value:any){const bytes=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(typeof value==='string'?value:canonical(value)));return [...new Uint8Array(bytes)].map(x=>x.toString(16).padStart(2,'0')).join('')}
+export async function digest(value:unknown){const bytes=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(typeof value==='string'?value:canonical(value)));return [...new Uint8Array(bytes)].map(x=>x.toString(16).padStart(2,'0')).join('')}
 export type Row={sample_id:string;signal:number;label:0|1;group:string};
 export const sampleCSV='sample_id,signal,label,group\n'+Array.from({length:40},(_,i)=>`SYN-${String(i+1).padStart(3,'0')},${((i%20)/19).toFixed(4)},${(i%20)>=10?1:0},${i<20?'cohort_a':'cohort_b'}`).join('\n')+'\n';
 export function parseCSV(csv:string):Row[]{
@@ -118,8 +120,8 @@ export async function execute(command:Command,actor:Profile,items:RecordItem[],n
  if(action.startsWith('lab.'))return executeLab(action as LabAction,d,actor,items,now);
  const get=(id:string,kind?:Kind)=>{const r=items.find(x=>x.id===id&&(!kind||x.kind===kind));if(!r)throw new AppError(404,'UNAVAILABLE','Record unavailable.');return r};
  const check=(ok:unknown,msg:string)=>{if(!ok)throw new AppError(409,'GATE_BLOCKED',msg)};
- const create=(kind:Kind,title:string,status:string,body:any):RecordItem=>({id:crypto.randomUUID(),kind,title,status,version:1,body,createdBy:actor.person,createdAt:now,updatedAt:now});
- const update=(r:RecordItem,status:string,body:any=r.body,title=r.title)=>({...r,title,status,body,version:r.version+1,updatedAt:now});
+ const create=(kind:Kind,title:string,status:string,body:RecordItem["body"]):RecordItem=>({id:crypto.randomUUID(),kind,title,status,version:1,body,createdBy:actor.person,createdAt:now,updatedAt:now});
+ const update=(r:RecordItem,status:string,body:RecordItem["body"]=r.body,title=r.title)=>({...r,title,status,body,version:r.version+1,updatedAt:now});
  const independent=(r:RecordItem)=>check(r.createdBy!==actor.person,'A different synthetic person must make this decision. Alias accounts do not qualify.');
  const own=(r:RecordItem)=>check(r.createdBy===actor.person,'Only the author can change this draft.');
  switch(action){
@@ -136,7 +138,7 @@ export async function execute(command:Command,actor:Profile,items:RecordItem[],n
  case 'grant.decide':{const r=get(d.id,'grant');independent(r);check(r.status==='pending','Grant must be pending.');check(Date.parse(r.body.expiresAt)>Date.parse(now),'Grant has expired.');check(get(r.body.datasetId,'dataset').status==='released'&&get(r.body.studyId,'study').status==='approved','Dataset and study must remain available.');return[update(r,d.decision==='approve'?'active':'rejected',{...r.body,decision:{person:actor.person,note:d.note,at:now}})]}
  case 'grant.revoke':{const r=get(d.id,'grant');check(r.status==='active','Only active grants can be revoked.');return[update(r,'revoked',{...r.body,revokedAt:now,revocationNote:d.note})]}
  case 'model.register':return[create('model',d.title,'registered',{...d,algorithm:'fixed-logistic-v1',sha256:await digest(d)})];
- case 'run.execute':{const study=get(d.studyId,'study'),dataset=get(d.datasetId,'dataset'),model=get(d.modelId,'model');check(study.status==='approved'&&dataset.status==='released','Approved study and released dataset required.');const grant=items.find(x=>x.kind==='grant'&&x.status==='active'&&x.body.studyId===study.id&&x.body.datasetId===dataset.id&&Date.parse(x.body.expiresAt)>Date.parse(now));check(grant,'An active, unexpired study-to-dataset grant is required.');const metrics=score(dataset.body.rows,model.body as any);const groups=dataset.body.groups.map((group:string)=>{const rows=dataset.body.rows.filter((r:Row)=>r.group===group);return {group,n:rows.length,suppressed:rows.length<5,metrics:rows.length<5?null:score(rows,model.body as any)}});const measured=(metrics as any)[study.body.primaryMetric];return[create('run',`${model.title} · ${study.title}`,'completed',{...d,grantId:grant!.id,metrics,groups,primaryMetric:study.body.primaryMetric,minimum:study.body.minimum,passed:measured===null?null:measured>=study.body.minimum,modelHash:model.body.sha256,datasetHash:dataset.body.sha256,protocolHash:study.body.protocolHash,algorithm:'fixed-logistic-v1',executedAt:now,synthetic:true})]}
+ case 'run.execute':{const study=get(d.studyId,'study'),dataset=get(d.datasetId,'dataset'),model=get(d.modelId,'model');check(study.status==='approved'&&dataset.status==='released','Approved study and released dataset required.');const grant=items.find(x=>x.kind==='grant'&&x.status==='active'&&x.body.studyId===study.id&&x.body.datasetId===dataset.id&&Date.parse(x.body.expiresAt)>Date.parse(now));check(grant,'An active, unexpired study-to-dataset grant is required.');const metrics=score(dataset.body.rows,model.body as Parameters<typeof score>[1]);const groups=dataset.body.groups.map((group:string)=>{const rows=dataset.body.rows.filter((r:Row)=>r.group===group);return {group,n:rows.length,suppressed:rows.length<5,metrics:rows.length<5?null:score(rows,model.body as Parameters<typeof score>[1])}});const measured=(metrics as Record<keyof ReturnType<typeof score>,number | null>)[study.body.primaryMetric as keyof ReturnType<typeof score>];return[create('run',`${model.title} · ${study.title}`,'completed',{...d,grantId:grant!.id,metrics,groups,primaryMetric:study.body.primaryMetric,minimum:study.body.minimum,passed:measured===null?null:measured>=study.body.minimum,modelHash:model.body.sha256,datasetHash:dataset.body.sha256,protocolHash:study.body.protocolHash,algorithm:'fixed-logistic-v1',executedAt:now,synthetic:true})]}
  case 'report.create':{const run=get(d.runId,'run');check(run.status==='completed','A completed run is required.');return[create('report',`Evidence · ${run.title}`,'draft',{runId:run.id,summary:d.summary,result:run.body,disclaimer:'Synthetic test evidence. Not clinical validation or regulatory approval.',draftDigest:await digest({runId:run.id,summary:d.summary,result:run.body})})]}
  case 'report.issue':{const r=get(d.id,'report');independent(r);check(r.status==='draft','Only draft evidence can be issued.');const run=get(r.body.runId,'run'),grant=get(run.body.grantId,'grant');check(grant.status==='active'&&Date.parse(grant.body.expiresAt)>Date.parse(now),'An active grant is required at issue time.');const body={...r.body,issuedBy:actor.person,issuedAt:now,issueNote:d.note};const bytes=canonical({...body,title:r.title,evidenceId:r.id});return[update(r,'issued',{...body,issuedBytes:bytes,sha256:await digest(bytes)})]}
  case 'report.withdraw':{const r=get(d.id,'report');check(r.status==='issued','Only issued evidence can be withdrawn.');return[update(r,'withdrawn',{...r.body,withdrawnAt:now,withdrawalNote:d.note})]}

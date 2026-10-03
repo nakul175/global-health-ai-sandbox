@@ -10,7 +10,7 @@ import {load,mutate} from '../.test-build/store.mjs';
 import {parseCommand,canonical} from '../.test-build/domain.mjs';
 class D1 {
  constructor(){this.raw=new DatabaseSync(':memory:');this.raw.exec('PRAGMA foreign_keys=ON');for(const f of readdirSync('drizzle').filter(f=>f.endsWith('.sql')).sort())this.raw.exec(readFileSync('drizzle/'+f,'utf8'))}
- prepare(sql){const db=this;return {args:[],sql,bind(...args){this.args=args;return this},async first(){return db.raw.prepare(sql).get(...this.args)||null}}}
+ prepare(sql){const statement=()=>this.raw.prepare(sql);return {args:[],sql,bind(...args){this.args=args;return this},async first(){return statement().get(...this.args)||null}}}
  async batch(stmts){this.raw.exec('BEGIN');try{const results=stmts.map(s=>{const st=this.raw.prepare(s.sql);return /^SELECT/i.test(s.sql)?{results:st.all(...s.args),meta:{changes:0}}:{results:[],meta:{changes:Number(st.run(...s.args).changes)}}});this.raw.exec('COMMIT');return results}catch(e){this.raw.exec('ROLLBACK');throw e}}
 }
 class Bucket {objects=new Map();async get(key){const b=this.objects.get(key);return b?{arrayBuffer:async()=>new Uint8Array(b).buffer}:null}async put(key,bytes){this.objects.set(key,new Uint8Array(bytes))}}
