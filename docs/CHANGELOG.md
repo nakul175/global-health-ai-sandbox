@@ -1,5 +1,11 @@
 # Documentation changelog
 
+## 2026-10-03 — Cough-screening demo walkthrough
+
+- Added [the cough demo walkthrough](COUGH_DEMO_WALKTHROUGH.md): six screens of the README "Try it" flow on a disposable local copy of `main` at a4b3458, the limits to state in any demonstration (capability register 0/67/13/1 of 81, simulated independent review, per-owner hosted workspaces, deployment of the PR #13 fixes not checked) and a dated, sourced survey of open tuberculosis cough models.
+- Added `tests/demo-capture.mjs`, a loopback-only harness that recreates the screens with disposable local D1/R2 and throwaway keys, like `tests/http.mjs`. playwright-core and Chromium are supplied outside the repository; it is not part of `pnpm verify`.
+- No runtime code, migration, dependency, requirement status, test status or deployment changed.
+
 ## 2026-09-28 — Reconciled documentation and development handover edition 1.1
 
 - Added full BRD/FSD reading editions from the preserved 456-requirement model, current HLD/LLD, ten engineering reading editions, guides, data governance and release acceptance.
