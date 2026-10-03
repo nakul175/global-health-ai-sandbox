@@ -1,5 +1,11 @@
 # Documentation changelog
 
+## 2026-10-03 — CODA TB hosted-demo data/model permission review
+
+- Updated [the cough demo walkthrough](COUGH_DEMO_WALKTHROUGH.md) after reading the post-challenge wiki, the actual controlled-data access dialog, the original challenge terms, Synapse governance and DREAM model/source-code rules. Recorded that public data playback/download or granting visitors access is prohibited; private hosted research is conditional on approved use and safeguards, and model code/weights require artefact-specific licensing review.
+- The actual access dialog includes a no-redistribution/access-grant clause omitted from the summary wiki. Distinguished current post-challenge access from the original challenge-only/destruction rules and the source-code MIT fallback from any claim about all weights or datasets.
+- Added a project gate for documented clarification of cloud/processor use before importing real data. No account, agreement, access request, data/model download, runtime change, requirement/test promotion or deployment is part of this review. The current demo remains synthetic.
+
 ## 2026-10-03 — Cough-screening demo walkthrough
 
 - Added [the cough demo walkthrough](COUGH_DEMO_WALKTHROUGH.md): six screens of the README "Try it" flow on a disposable local copy of `main` at a4b3458, the limits to state in any demonstration (capability register 0/67/13/1 of 81, simulated independent review, per-owner hosted workspaces, deployment of the PR #13 fixes not checked) and a dated, sourced survey of open tuberculosis cough models.
