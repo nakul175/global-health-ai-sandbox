@@ -1,5 +1,9 @@
 # Developer handover
 
+## Unmerged independent cough provider candidate
+
+Read [the contract and runbook](../INDEPENDENT_COUGH_PROVIDER.md), [ADR 012](../ADR_012_Independent_Cough_Evaluation.md) and [fresh local evidence](../../verification/cough-provider-2026-10-03/README.md). This branch adds a default-disabled generated-signal service and separate Saha consumer integration; it has not been deployed. Applied migrations 0000–0003 and historical evidence are preserved; new migration 0004 adds two checkpointed ledger tables. `pnpm verify` now also executes the independent provider HTTP suite. Main deployment and CODA terms are separate sibling PRs.
+
 Edition 1.1, 28 September 2026. This repository can be picked up for continued development by a developer or coding agent with repository access. No private credential or customer dataset is part of this handover.
 
 ## Read in order

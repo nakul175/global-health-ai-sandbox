@@ -1,5 +1,5 @@
 {
-  "baseline": "870b49a343f1207b8cefbecdbfb0c5c5d10c955a",
+  "baseline": "8b4b4b5a4b223773f9b91b7e21b1a0f9f3f295d3",
   "http_operations": [
     {
       "method": "POST",
@@ -15,6 +15,31 @@
       "method": "POST",
       "path": "/api/connections",
       "source": "app/api/connections/route.ts"
+    },
+    {
+      "method": "GET",
+      "path": "/api/cough/v1/evaluations/[requestId]",
+      "source": "app/api/cough/v1/evaluations/[requestId]/route.ts"
+    },
+    {
+      "method": "POST",
+      "path": "/api/cough/v1/evaluations",
+      "source": "app/api/cough/v1/evaluations/route.ts"
+    },
+    {
+      "method": "GET",
+      "path": "/api/cough/v1/manifest",
+      "source": "app/api/cough/v1/manifest/route.ts"
+    },
+    {
+      "method": "GET",
+      "path": "/api/cough-partners",
+      "source": "app/api/cough-partners/route.ts"
+    },
+    {
+      "method": "POST",
+      "path": "/api/cough-partners",
+      "source": "app/api/cough-partners/route.ts"
     },
     {
       "method": "GET",

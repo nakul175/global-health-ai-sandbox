@@ -1,6 +1,6 @@
 {
   "edition": "1.1",
-  "baseline": "870b49a343f1207b8cefbecdbfb0c5c5d10c955a",
+  "baseline": "8b4b4b5a4b223773f9b91b7e21b1a0f9f3f295d3",
   "original_requirements": 456,
   "synthetic_r2_requirements": 81,
   "government_r3_requirements": 63,
@@ -18,12 +18,12 @@
     "Traceability": 456
   },
   "historical_execution_rows": 204,
-  "http_operations": 20,
+  "http_operations": 25,
   "command_definitions": 68,
   "public_commands": 65,
   "internal_media_commands": 3,
-  "hosted_tables": 11,
-  "active_migrations": 4,
+  "hosted_tables": 13,
+  "active_migrations": 5,
   "original_target_screens": 113,
   "alpha_views_and_tabs": 28,
   "atlas_screens": 141

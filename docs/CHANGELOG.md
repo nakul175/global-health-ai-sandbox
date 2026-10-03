@@ -1,5 +1,12 @@
 # Documentation changelog
 
+## 2026-10-03 — Independent synthetic cough provider candidate
+
+- Added the [independent provider contract/runbook](INDEPENDENT_COUGH_PROVIDER.md) and [ADR 012](ADR_012_Independent_Cough_Evaluation.md): two generated fixtures, existing Audio reference A, customer/owner separation, signed input-bound receipts, an atomic bounded ledger, pause/version fencing and complete encrypted capture/recovery. No trained TB model or real recording input.
+- Added migration 0004 without modifying 0000–0003. Candidate APIs and provider console default disabled. Saha owns care scope, permission, approval and review in its separate consumer change.
+- Local `pnpm verify` passed: typecheck/build, 128 application cases, 43 existing and 14 new Worker HTTP checks; targeted new-service lint passes. [Fresh evidence](../verification/cough-provider-2026-10-03/README.md) preserves historical reports. Both documentation validators run for this candidate.
+- No merge, hosted feature deployment, secret change or provider activation. Main redeployment is recorded separately in [PR #16](https://github.com/nakul175/global-health-ai-sandbox/pull/16); [PR #18](https://github.com/nakul175/global-health-ai-sandbox/pull/18) holds the CODA permissions review. Original requirement acceptance and R3 planned statuses are unchanged.
+
 ## 2026-10-03 — Cough-screening demo walkthrough
 
 - Added [the cough demo walkthrough](COUGH_DEMO_WALKTHROUGH.md): six screens of the README "Try it" flow on a disposable local copy of `main` at a4b3458, the limits to state in any demonstration (capability register 0/67/13/1 of 81, simulated independent review, per-owner hosted workspaces, deployment of the PR #13 fixes not checked) and a dated, sourced survey of open tuberculosis cough models.

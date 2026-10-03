@@ -1,8 +1,8 @@
 # Current data dictionary and migration ledger
 
-Documentation edition **1.1**, 2026-09-28. Reconciled to repository source **870b49a343f1**: hosted alpha package 0.6.0 plus PR #13; deployment not requalified.
+Documentation edition **1.1**, 2026-10-03. Reconciled to repository source **8b4b4b5a4b22** plus the unmerged independent cough provider candidate. Hosted alpha package 0.6.0; this candidate is not deployed.
 
-The four hosted migrations are applied, in order, to disposable SQLite during documentation generation. This validates the inventory, not hosted D1 performance or deployment. JSON body rules remain in the closed TypeScript domain schemas. D1 has application-enforced owner scope, not PostgreSQL RLS.
+The candidate hosted migrations below are applied, in order, to disposable SQLite during documentation generation. This validates the inventory, not hosted D1 performance or deployment. JSON body rules remain in the closed TypeScript domain schemas. D1 has application-enforced owner scope, not PostgreSQL RLS.
 
 | Migration | SHA-256 |
 |---|---|
@@ -10,6 +10,7 @@ The four hosted migrations are applied, in order, to disposable SQLite during do
 | drizzle/0001_long_young_avengers.sql | 0db7df0abe9519ea170234b60fc7af45e23671a8cdcf500cee82e0429e7e24c2 |
 | drizzle/0002_amazing_silhouette.sql | 138b1d5bb5c2199c16473ba2ec93bc6f2fb166b536a0975bb28e2043fb137488 |
 | drizzle/0003_easy_hammerhead.sql | 7069058239efaefbf9d7145ae08028c3bfb50fca96c1b62e4e57ce20ebdc1e1c |
+| drizzle/0004_cough_evaluation.sql | e4823bef2b6b5bbcd1ccb4b2858bbb3b732ef7430d6ea3c60f33ec5244f68051 |
 
 ## audit
 
@@ -71,6 +72,67 @@ CREATE TABLE `connector_calls` (
 	FOREIGN KEY (`connector_id`) REFERENCES `live_connectors`(`id`) ON UPDATE no action ON DELETE no action,
 	CONSTRAINT "connector_call_json" CHECK(json_valid("connector_calls"."result")),
 	CONSTRAINT "connector_call_status" CHECK("connector_calls"."status" IN ('running','passed','failed','unknown','discarded'))
+);
+~~~
+
+## cough_customers
+
+| Ordinal | Column | SQL type | Required | Default | Primary key |
+|---|---|---|---|---|---|
+| 0 | id | TEXT | 1 | None | 1 |
+| 1 | space_id | TEXT | 1 | None | 0 |
+| 2 | customer_id | TEXT | 1 | None | 0 |
+| 3 | active | INTEGER | 1 | None | 0 |
+| 4 | version | INTEGER | 1 | None | 0 |
+| 5 | agreement_ref | TEXT | 1 | None | 0 |
+| 6 | created_at | TEXT | 1 | None | 0 |
+| 7 | updated_at | TEXT | 1 | None | 0 |
+
+~~~sql
+CREATE TABLE cough_customers (
+ id text PRIMARY KEY NOT NULL,
+ space_id text NOT NULL REFERENCES spaces(id),
+ customer_id text NOT NULL CHECK(customer_id='saha-demo'),
+ active integer NOT NULL CHECK(active IN (0,1)),
+ version integer NOT NULL CHECK(version>0),
+ agreement_ref text NOT NULL,
+ created_at text NOT NULL,
+ updated_at text NOT NULL,
+ UNIQUE(space_id,customer_id)
+);
+~~~
+
+## cough_evaluations
+
+| Ordinal | Column | SQL type | Required | Default | Primary key |
+|---|---|---|---|---|---|
+| 0 | id | TEXT | 1 | None | 1 |
+| 1 | space_id | TEXT | 1 | None | 0 |
+| 2 | customer_id | TEXT | 1 | None | 0 |
+| 3 | request_id | TEXT | 1 | None | 0 |
+| 4 | request_hash | TEXT | 1 | None | 0 |
+| 5 | fixture | TEXT | 1 | None | 0 |
+| 6 | agreement_version | INTEGER | 1 | None | 0 |
+| 7 | status | TEXT | 1 | None | 0 |
+| 8 | result | TEXT | 0 | None | 0 |
+| 9 | created_at | TEXT | 1 | None | 0 |
+| 10 | finished_at | TEXT | 0 | None | 0 |
+
+~~~sql
+CREATE TABLE cough_evaluations (
+ id text PRIMARY KEY NOT NULL,
+ space_id text NOT NULL REFERENCES spaces(id),
+ customer_id text NOT NULL REFERENCES cough_customers(id),
+ request_id text NOT NULL,
+ request_hash text NOT NULL,
+ fixture text NOT NULL CHECK(fixture IN ('generated-waveform','silence')),
+ agreement_version integer NOT NULL CHECK(agreement_version>0),
+ status text NOT NULL CHECK(status IN ('reserved','completed','blocked')),
+ result text CHECK(result IS NULL OR json_valid(result)),
+ created_at text NOT NULL,
+ finished_at text,
+ UNIQUE(space_id,customer_id,request_id),
+ CHECK((status='completed' AND result IS NOT NULL) OR (status!='completed' AND result IS NULL))
 );
 ~~~
 
@@ -528,6 +590,42 @@ CREATE TABLE `live_connectors` (
 );
 --> statement-breakpoint
 CREATE INDEX `live_connector_space` ON `live_connectors` (`space_id`);
+~~~
+
+### drizzle/0004_cough_evaluation.sql
+
+~~~sql
+-- Additive synthetic partner ledger. Existing migrations remain immutable.
+CREATE TABLE cough_customers (
+ id text PRIMARY KEY NOT NULL,
+ space_id text NOT NULL REFERENCES spaces(id),
+ customer_id text NOT NULL CHECK(customer_id='saha-demo'),
+ active integer NOT NULL CHECK(active IN (0,1)),
+ version integer NOT NULL CHECK(version>0),
+ agreement_ref text NOT NULL,
+ created_at text NOT NULL,
+ updated_at text NOT NULL,
+ UNIQUE(space_id,customer_id)
+);
+--> statement-breakpoint
+CREATE TABLE cough_evaluations (
+ id text PRIMARY KEY NOT NULL,
+ space_id text NOT NULL REFERENCES spaces(id),
+ customer_id text NOT NULL REFERENCES cough_customers(id),
+ request_id text NOT NULL,
+ request_hash text NOT NULL,
+ fixture text NOT NULL CHECK(fixture IN ('generated-waveform','silence')),
+ agreement_version integer NOT NULL CHECK(agreement_version>0),
+ status text NOT NULL CHECK(status IN ('reserved','completed','blocked')),
+ result text CHECK(result IS NULL OR json_valid(result)),
+ created_at text NOT NULL,
+ finished_at text,
+ UNIQUE(space_id,customer_id,request_id),
+ CHECK((status='completed' AND result IS NOT NULL) OR (status!='completed' AND result IS NULL))
+);
+--> statement-breakpoint
+CREATE INDEX cough_evaluations_customer_time ON cough_evaluations(customer_id,created_at);
+
 ~~~
 
 R3 candidate SQL remains under [releases/r3/database](../releases/r3/database/001-government-foundation.sql), outside active migrations. The original PostgreSQL profile remains under [native-baseline](../../native-baseline/README.md).

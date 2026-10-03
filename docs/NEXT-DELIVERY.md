@@ -1,5 +1,9 @@
 # Next delivery and unresolved work
 
+## Independent Saha integration candidate
+
+Review [the synthetic provider contract](INDEPENDENT_COUGH_PROVIDER.md) and the separate Saha consumer PR. Keep both products independent and default disabled. Merge only with sponsor approval, then plan provider migration/deployment and Saha release together; preserve the existing anaemia candidate. Before activation verify hosted authentication/receipts, encrypted checkpoints and rollback. Real data/weights remain behind the [CODA review](https://github.com/nakul175/global-health-ai-sandbox/pull/18) and artifact-specific licence/validation gates.
+
 Edition 1.1. Starting source: 870b49a343f1207b8cefbecdbfb0c5c5d10c955a. The current product is the v0.6 synthetic alpha with later repository fixes. Proposed government R3 has not started. Development dates, staffing and customer decisions are not assigned here.
 
 ## Prepare the existing alpha for a new candidate

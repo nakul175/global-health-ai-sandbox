@@ -1,6 +1,6 @@
 # Test strategy, scenarios and execution boundaries
 
-Documentation edition **1.1**, 2026-09-28. Reconciled to repository source **870b49a343f1**: hosted alpha package 0.6.0 plus PR #13; deployment not requalified.
+Documentation edition **1.1**, 2026-10-03. Reconciled to repository source **8b4b4b5a4b22** plus the unmerged independent cough provider candidate. Hosted alpha package 0.6.0; this candidate is not deployed.
 
 The current catalogue preserves every original row and original status. Reference-function success is not application success. This documentation change runs document, inventory and reference-fixture checks only; it does not run application or clinical acceptance.
 

@@ -1,0 +1,66 @@
+{
+  "completedAt": "2026-10-03T07:49:49.633Z",
+  "passed": 14,
+  "failed": 0,
+  "profile": "portable Worker with isolated migrated local D1/R2, throwaway server credentials and synthetic owner",
+  "checks": [
+    {
+      "name": "public manifest declares synthetic formula and closed fixtures without secrets",
+      "status": "passed"
+    },
+    {
+      "name": "service cannot implicitly create the provider owner workspace",
+      "status": "passed"
+    },
+    {
+      "name": "partner ledger requires signed-in configured owner and administrator",
+      "status": "passed"
+    },
+    {
+      "name": "customer starts suspended and owner activates exact agreement version",
+      "status": "passed"
+    },
+    {
+      "name": "machine authentication denies missing/wrong credentials and browser origins",
+      "status": "passed"
+    },
+    {
+      "name": "request parser rejects real audio/identifiers, wrong purpose, invalid ids and unknown fields",
+      "status": "passed"
+    },
+    {
+      "name": "transport requires JSON, bounded body bytes and input-bound idempotency",
+      "status": "passed"
+    },
+    {
+      "name": "real Worker computes and signs actual generated-waveform features",
+      "status": "passed"
+    },
+    {
+      "name": "exact POST replay returns same receipt while changed input is denied",
+      "status": "passed"
+    },
+    {
+      "name": "receipt GET preserves original result and never writes the ledger",
+      "status": "passed"
+    },
+    {
+      "name": "concurrent identical POSTs reserve one request and keep the result stable",
+      "status": "passed"
+    },
+    {
+      "name": "provider suspension blocks new calls and reads; reactivation fences old agreement receipts",
+      "status": "passed"
+    },
+    {
+      "name": "real silence fixture returns signed refusal and no model score",
+      "status": "passed"
+    },
+    {
+      "name": "encrypted hosted-shape checkpoint verifies both additive ledger tables",
+      "status": "passed"
+    }
+  ],
+  "clinicalUse": false,
+  "tbScreening": false
+}

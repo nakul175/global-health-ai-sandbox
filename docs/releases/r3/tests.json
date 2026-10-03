@@ -1069,7 +1069,12 @@
     ],
     "expected": "Mode and profile version persist in UI, results and reports.",
     "status": "planned",
-    "evidence": null
+    "evidence": null,
+    "related_technical_subset": {
+      "document": "../../INDEPENDENT_COUGH_PROVIDER.md",
+      "evidence": "../../../verification/cough-provider-2026-10-03/README.md",
+      "scope": "Separate default-disabled synthetic technical subset; does not execute or satisfy this R3 acceptance case."
+    }
   },
   {
     "id": "TC-GOV-INT-01-N",
@@ -1085,7 +1090,12 @@
     ],
     "expected": "Reject conformance claim and retain mock/health-check label.",
     "status": "planned",
-    "evidence": null
+    "evidence": null,
+    "related_technical_subset": {
+      "document": "../../INDEPENDENT_COUGH_PROVIDER.md",
+      "evidence": "../../../verification/cough-provider-2026-10-03/README.md",
+      "scope": "Separate default-disabled synthetic technical subset; does not execute or satisfy this R3 acceptance case."
+    }
   },
   {
     "id": "TC-GOV-INT-02-P",
@@ -1133,7 +1143,12 @@
     ],
     "expected": "Only approved destination receives mapped authorised data and scoped credential.",
     "status": "planned",
-    "evidence": null
+    "evidence": null,
+    "related_technical_subset": {
+      "document": "../../INDEPENDENT_COUGH_PROVIDER.md",
+      "evidence": "../../../verification/cough-provider-2026-10-03/README.md",
+      "scope": "Separate default-disabled synthetic technical subset; does not execute or satisfy this R3 acceptance case."
+    }
   },
   {
     "id": "TC-GOV-INT-03-N",
@@ -1149,7 +1164,12 @@
     ],
     "expected": "Block unsafe traffic and redact secrets/provider bodies.",
     "status": "planned",
-    "evidence": null
+    "evidence": null,
+    "related_technical_subset": {
+      "document": "../../INDEPENDENT_COUGH_PROVIDER.md",
+      "evidence": "../../../verification/cough-provider-2026-10-03/README.md",
+      "scope": "Separate default-disabled synthetic technical subset; does not execute or satisfy this R3 acceptance case."
+    }
   },
   {
     "id": "TC-GOV-INT-04-P",
@@ -1197,7 +1217,12 @@
     ],
     "expected": "Provider operation ID/status resolves safe retry or unknown outcome.",
     "status": "planned",
-    "evidence": null
+    "evidence": null,
+    "related_technical_subset": {
+      "document": "../../INDEPENDENT_COUGH_PROVIDER.md",
+      "evidence": "../../../verification/cough-provider-2026-10-03/README.md",
+      "scope": "Separate default-disabled synthetic technical subset; does not execute or satisfy this R3 acceptance case."
+    }
   },
   {
     "id": "TC-GOV-INT-05-N",
@@ -1213,7 +1238,12 @@
     ],
     "expected": "Prevent replay unless adapter proves idempotence; retain unknown state.",
     "status": "planned",
-    "evidence": null
+    "evidence": null,
+    "related_technical_subset": {
+      "document": "../../INDEPENDENT_COUGH_PROVIDER.md",
+      "evidence": "../../../verification/cough-provider-2026-10-03/README.md",
+      "scope": "Separate default-disabled synthetic technical subset; does not execute or satisfy this R3 acceptance case."
+    }
   },
   {
     "id": "TC-GOV-PIL-01-P",
@@ -1709,7 +1739,12 @@
     ],
     "expected": "Isolated restore verifies hashes and meets measured RPO/RTO targets.",
     "status": "planned",
-    "evidence": null
+    "evidence": null,
+    "related_technical_subset": {
+      "document": "../../INDEPENDENT_COUGH_PROVIDER.md",
+      "evidence": "../../../verification/cough-provider-2026-10-03/README.md",
+      "scope": "Separate default-disabled synthetic technical subset; does not execute or satisfy this R3 acceptance case."
+    }
   },
   {
     "id": "TC-GOV-DEP-04-N",
@@ -1725,7 +1760,12 @@
     ],
     "expected": "Reconcile unknown operations; prevent unsolicited replay.",
     "status": "planned",
-    "evidence": null
+    "evidence": null,
+    "related_technical_subset": {
+      "document": "../../INDEPENDENT_COUGH_PROVIDER.md",
+      "evidence": "../../../verification/cough-provider-2026-10-03/README.md",
+      "scope": "Separate default-disabled synthetic technical subset; does not execute or satisfy this R3 acceptance case."
+    }
   },
   {
     "id": "TC-GOV-NFR-01-P",
@@ -1901,7 +1941,12 @@
     ],
     "expected": "Retries return same authorised logical outcome and stale writes return 412.",
     "status": "planned",
-    "evidence": null
+    "evidence": null,
+    "related_technical_subset": {
+      "document": "../../INDEPENDENT_COUGH_PROVIDER.md",
+      "evidence": "../../../verification/cough-provider-2026-10-03/README.md",
+      "scope": "Separate default-disabled synthetic technical subset; does not execute or satisfy this R3 acceptance case."
+    }
   },
   {
     "id": "TC-GOV-NFR-06-N",
@@ -1917,7 +1962,12 @@
     ],
     "expected": "Return 409 or 428 without side effects.",
     "status": "planned",
-    "evidence": null
+    "evidence": null,
+    "related_technical_subset": {
+      "document": "../../INDEPENDENT_COUGH_PROVIDER.md",
+      "evidence": "../../../verification/cough-provider-2026-10-03/README.md",
+      "scope": "Separate default-disabled synthetic technical subset; does not execute or satisfy this R3 acceptance case."
+    }
   },
   {
     "id": "TC-GOV-NFR-07-P",

@@ -14,7 +14,9 @@ export const checkpointColumns:Record<string,string[]>={
  audit:['id','space_id','sequence','actor','action','record_id','at','digest'],
  live_connectors:['id','space_id','name','status','version','config','credential','config_hash','test_at','test_passed','created_at','updated_at'],
  connector_calls:['id','space_id','connector_id','kind','status','request_hash','config_hash','actor','result','created_at','finished_at'],
- receipts:['id','space_id','actor','key','request_hash','response','created_at']
+ receipts:['id','space_id','actor','key','request_hash','response','created_at'],
+ cough_customers:['id','space_id','customer_id','active','version','agreement_ref','created_at','updated_at'],
+ cough_evaluations:['id','space_id','customer_id','request_id','request_hash','fixture','agreement_version','status','result','created_at','finished_at']
 };
 const maxBytes=16*1024*1024;
 export type Checkpoint={format:'sandbox-checkpoint-v1';spaceId:string;revision:number;createdAt:string;tables:Record<string,any[]>;objects:{key:string;sha256:string;bytes:string}[]};
@@ -30,6 +32,8 @@ export async function captureCheckpoint(db:Database,bucket:Bucket,sid:string):Pr
 export async function validateCheckpoint(data:Checkpoint,sid:string){
  const bad=()=>{throw new AppError(409,'CHECKPOINT_INTEGRITY','Checkpoint integrity or workspace scope failed.')};
  if(data.tables && !Object.hasOwn(data.tables,'live_connectors') && !Object.hasOwn(data.tables,'connector_calls')){data.tables.live_connectors=[];data.tables.connector_calls=[];}
+ // Previously sealed nine/eleven-table archives predate this additive partner ledger.
+ if(data.tables && !Object.hasOwn(data.tables,'cough_customers') && !Object.hasOwn(data.tables,'cough_evaluations')){data.tables.cough_customers=[];data.tables.cough_evaluations=[];}
  if(data.format!=='sandbox-checkpoint-v1'||data.spaceId!==sid||canonical(Object.keys(data.tables).sort())!==canonical(Object.keys(checkpointColumns).sort()))bad();
  for(const [name,columns] of Object.entries(checkpointColumns)){const rows=data.tables[name];if(!Array.isArray(rows)||new Set(rows.map(r=>r.id)).size!==rows.length)bad();for(const row of rows){if(canonical(Object.keys(row).sort())!==canonical([...columns].sort())||(name==='spaces'?row.id:row.space_id)!==sid)bad();}}
  if(data.tables.spaces.length!==1||data.tables.spaces[0].revision!==data.revision)bad();

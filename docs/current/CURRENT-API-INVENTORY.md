@@ -1,6 +1,6 @@
 # Current API and command inventory
 
-Documentation edition **1.1**, 2026-09-28. Reconciled to repository source **870b49a343f1**: hosted alpha package 0.6.0 plus PR #13; deployment not requalified.
+Documentation edition **1.1**, 2026-10-03. Reconciled to repository source **8b4b4b5a4b22** plus the unmerged independent cough provider candidate. Hosted alpha package 0.6.0; this candidate is not deployed.
 
 Inventory is extracted from executable hosted routes and closed command schemas. Dispatcher sign-in/out/callback routes are platform-owned, not additional application route files. Query parameters do not confer authority. The v0.6 connector commands have their own version/idempotency contract; do not assume all routes accept the workspace command envelope.
 
@@ -9,6 +9,11 @@ Inventory is extracted from executable hosted routes and closed command schemas.
 | POST | /api/commands | [source](../../app/api/commands/route.ts) |
 | GET | /api/connections | [source](../../app/api/connections/route.ts) |
 | POST | /api/connections | [source](../../app/api/connections/route.ts) |
+| GET | /api/cough/v1/evaluations/[requestId] | [source](../../app/api/cough/v1/evaluations/[requestId]/route.ts) |
+| POST | /api/cough/v1/evaluations | [source](../../app/api/cough/v1/evaluations/route.ts) |
+| GET | /api/cough/v1/manifest | [source](../../app/api/cough/v1/manifest/route.ts) |
+| GET | /api/cough-partners | [source](../../app/api/cough-partners/route.ts) |
+| POST | /api/cough-partners | [source](../../app/api/cough-partners/route.ts) |
 | GET | /api/export | [source](../../app/api/export/route.ts) |
 | GET | /api/health | [source](../../app/api/health/route.ts) |
 | GET | /api/lab/audio | [source](../../app/api/lab/audio/route.ts) |
@@ -518,4 +523,5 @@ z.object({kind:z.enum(['backup_restore','revocation','worker_crash','regional_fa
 - [Media](../WORKBENCH_API.md): part PUT, finalise POST, protected GET and inference PATCH.
 - [Signatures/checkpoints](../ASSURANCE_0_5.md): P-256 application signatures; encrypted capture, download and verification; no production restore route.
 - [Core](../API_CONTRACT.md), [lab](../RELEASE_2_API.md) and [workbench](../WORKBENCH_API.md) remain the detailed transport references.
+- [Independent cough provider](../INDEPENDENT_COUGH_PROVIDER.md): default-disabled closed synthetic fixtures; separate customer bearer authority and owner console, signed receipts and an additive checkpointed ledger.
 - [R3 API](../releases/r3/06-api-and-events.md) is proposed; its routes do not belong in the implemented inventory.

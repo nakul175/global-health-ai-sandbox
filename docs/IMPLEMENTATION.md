@@ -1,5 +1,9 @@
 # Current implementation and handover record
 
+## Independent cough evaluation candidate (3 October 2026)
+
+The unmerged `codex/independent-cough-provider-20261003` branch adds the [independent synthetic provider](INDEPENDENT_COUGH_PROVIDER.md): a closed generated-waveform/silence API, actual existing reference calculation, customer agreement/ledger and signed receipts. It adds two tables through migration 0004 and includes them in encrypted checkpoints, with compatibility for prior archives. The candidate is not deployed and defaults off. Its local evidence is separate from the historical edition below; no trained cough model, CODA recording import or R3 acceptance is supplied.
+
 Documentation edition **1.1**, 28 September 2026. Source baseline: **870b49a343f1207b8cefbecdbfb0c5c5d10c955a**. Package version remains **0.6.0**. This edition changes documentation and documentation tooling only.
 
 The repository can support continued development with the source, contracts, fixtures, test evidence and next work linked below. Production acceptance and government R3 delivery are not established.

@@ -751,7 +751,12 @@
       "TC-GOV-INT-01-N"
     ],
     "baseline_relationship": "R3 extension; original IDs retained without implying closure",
-    "implementation_evidence": []
+    "implementation_evidence": [],
+    "related_technical_subset": {
+      "document": "../../INDEPENDENT_COUGH_PROVIDER.md",
+      "evidence": "../../../verification/cough-provider-2026-10-03/README.md",
+      "scope": "Separate default-disabled synthetic technical subset; does not execute or satisfy this R3 acceptance case."
+    }
   },
   {
     "id": "GOV-INT-02",
@@ -795,7 +800,12 @@
       "TC-GOV-INT-03-N"
     ],
     "baseline_relationship": "R3 extension; original IDs retained without implying closure",
-    "implementation_evidence": []
+    "implementation_evidence": [],
+    "related_technical_subset": {
+      "document": "../../INDEPENDENT_COUGH_PROVIDER.md",
+      "evidence": "../../../verification/cough-provider-2026-10-03/README.md",
+      "scope": "Separate default-disabled synthetic technical subset; does not execute or satisfy this R3 acceptance case."
+    }
   },
   {
     "id": "GOV-INT-04",
@@ -840,7 +850,12 @@
       "TC-GOV-INT-05-N"
     ],
     "baseline_relationship": "R3 extension; original IDs retained without implying closure",
-    "implementation_evidence": []
+    "implementation_evidence": [],
+    "related_technical_subset": {
+      "document": "../../INDEPENDENT_COUGH_PROVIDER.md",
+      "evidence": "../../../verification/cough-provider-2026-10-03/README.md",
+      "scope": "Separate default-disabled synthetic technical subset; does not execute or satisfy this R3 acceptance case."
+    }
   },
   {
     "id": "GOV-PIL-01",
@@ -1193,7 +1208,12 @@
       "TC-GOV-DEP-04-N"
     ],
     "baseline_relationship": "R3 extension; original IDs retained without implying closure",
-    "implementation_evidence": []
+    "implementation_evidence": [],
+    "related_technical_subset": {
+      "document": "../../INDEPENDENT_COUGH_PROVIDER.md",
+      "evidence": "../../../verification/cough-provider-2026-10-03/README.md",
+      "scope": "Separate default-disabled synthetic technical subset; does not execute or satisfy this R3 acceptance case."
+    }
   },
   {
     "id": "GOV-NFR-01",
@@ -1325,7 +1345,12 @@
       "TC-GOV-NFR-06-N"
     ],
     "baseline_relationship": "R3 extension; original IDs retained without implying closure",
-    "implementation_evidence": []
+    "implementation_evidence": [],
+    "related_technical_subset": {
+      "document": "../../INDEPENDENT_COUGH_PROVIDER.md",
+      "evidence": "../../../verification/cough-provider-2026-10-03/README.md",
+      "scope": "Separate default-disabled synthetic technical subset; does not execute or satisfy this R3 acceptance case."
+    }
   },
   {
     "id": "GOV-NFR-07",
