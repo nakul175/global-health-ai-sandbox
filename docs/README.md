@@ -13,6 +13,7 @@ This repository is the source of truth for product, engineering and operating do
 | Recorded cough-screening demo, its limits and open TB cough models | [Cough demo walkthrough](COUGH_DEMO_WALKTHROUGH.md) (3 October 2026) |
 | Current application test evidence | [0.6.0 verification](../verification/CONNECTIONS_0_6_VERIFICATION.md) |
 | API currently implemented | [Core](API_CONTRACT.md), [lab](RELEASE_2_API.md), [workbench](WORKBENCH_API.md), [connections](SELF_SERVICE_CONNECTIONS.md) |
+| Independent synthetic cough provider candidate | [Contract/runbook](INDEPENDENT_COUGH_PROVIDER.md) and [ADR 012](ADR_012_Independent_Cough_Evaluation.md); disabled, unmerged, not deployed |
 | Current architecture decisions | [Hosted adapter](ADR_010_Hosted_Test_Adapter.md), [R2 adapter](ADR_011_Release_2_Hosted_Adapter.md) |
 | Current operational limits | [Operations](OPERATIONS.md), [assurance](ASSURANCE_0_5.md) |
 | Original implementation specifications | [Native specification catalogue](../native-baseline/specs/01_Engineering_Implementation_Plan.md) and the other nine files in that directory |

@@ -1,6 +1,6 @@
 # Business requirements — full target and current profile
 
-Documentation edition **1.1**, 2026-09-28. Reconciled to repository source **870b49a343f1**: hosted alpha package 0.6.0 plus PR #13; deployment not requalified.
+Documentation edition **1.1**, 2026-10-03. Reconciled to repository source **8b4b4b5a4b22** plus the unmerged independent cough provider candidate. Hosted alpha package 0.6.0; this candidate is not deployed.
 
 The original functional and quality targets remain authoritative for intended outcomes. This reading edition is reconstructed from the preserved, structured BRD/FSD traceability model; it is not a byte-identical recovery of the missing original Word documents. No requirement text or release assignment is replaced by the smaller alpha. Government R3 is a separate additive design catalogue.
 

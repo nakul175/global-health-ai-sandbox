@@ -353,7 +353,12 @@
         "title": "Execute integration/smoke/acceptance and update evidence",
         "status": "planned"
       }
-    ]
+    ],
+    "related_technical_subset": {
+      "document": "../../INDEPENDENT_COUGH_PROVIDER.md",
+      "evidence": "../../../verification/cough-provider-2026-10-03/README.md",
+      "scope": "Separate default-disabled synthetic technical subset; does not execute or satisfy this R3 acceptance case."
+    }
   },
   {
     "id": "WP-GOV-08",
@@ -553,7 +558,12 @@
         "title": "Execute integration/smoke/acceptance and update evidence",
         "status": "planned"
       }
-    ]
+    ],
+    "related_technical_subset": {
+      "document": "../../INDEPENDENT_COUGH_PROVIDER.md",
+      "evidence": "../../../verification/cough-provider-2026-10-03/README.md",
+      "scope": "Separate default-disabled synthetic technical subset; does not execute or satisfy this R3 acceptance case."
+    }
   },
   {
     "id": "WP-GOV-12",
@@ -607,6 +617,11 @@
         "title": "Execute integration/smoke/acceptance and update evidence",
         "status": "planned"
       }
-    ]
+    ],
+    "related_technical_subset": {
+      "document": "../../INDEPENDENT_COUGH_PROVIDER.md",
+      "evidence": "../../../verification/cough-provider-2026-10-03/README.md",
+      "scope": "Separate default-disabled synthetic technical subset; does not execute or satisfy this R3 acceptance case."
+    }
   }
 ]

@@ -12,8 +12,8 @@ import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "docs/current"
-BASE = "870b49a343f1207b8cefbecdbfb0c5c5d10c955a"
-DATE = "2026-09-28"
+BASE = "8b4b4b5a4b223773f9b91b7e21b1a0f9f3f295d3"
+DATE = "2026-10-03"
 
 def read(path):
     return (ROOT / path).read_text()
@@ -47,7 +47,7 @@ def table(headers, rows):
 def header(title):
     return ("# " + title + "\n\nDocumentation edition **1.1**, " + DATE +
             ". Reconciled to repository source **" + BASE[:12] +
-            "**: hosted alpha package 0.6.0 plus PR #13; deployment not requalified.\n\n")
+            "** plus the unmerged independent cough provider candidate. Hosted alpha package 0.6.0; this candidate is not deployed.\n\n")
 
 source = js("docs/source-backlog/source_traceability_model.json")
 backlog = js("docs/source-backlog/backlog.json")
@@ -228,6 +228,7 @@ api += """## Specialised routes
 - [Media](../WORKBENCH_API.md): part PUT, finalise POST, protected GET and inference PATCH.
 - [Signatures/checkpoints](../ASSURANCE_0_5.md): P-256 application signatures; encrypted capture, download and verification; no production restore route.
 - [Core](../API_CONTRACT.md), [lab](../RELEASE_2_API.md) and [workbench](../WORKBENCH_API.md) remain the detailed transport references.
+- [Independent cough provider](../INDEPENDENT_COUGH_PROVIDER.md): default-disabled closed synthetic fixtures; separate customer bearer authority and owner console, signed receipts and an additive checkpointed ledger.
 - [R3 API](../releases/r3/06-api-and-events.md) is proposed; its routes do not belong in the implemented inventory.
 """
 put("CURRENT-API-INVENTORY.md",api)
@@ -245,7 +246,7 @@ assert not db.execute("PRAGMA foreign_key_check").fetchall()
 db.close()
 jput("DATA-DICTIONARY.json",{"baseline":BASE,"migrations":migrations,"tables":tables})
 dd=header("Current data dictionary and migration ledger")
-dd+="The four hosted migrations are applied, in order, to disposable SQLite during documentation generation. This validates the inventory, not hosted D1 performance or deployment. JSON body rules remain in the closed TypeScript domain schemas. D1 has application-enforced owner scope, not PostgreSQL RLS.\n\n"
+dd+="The candidate hosted migrations below are applied, in order, to disposable SQLite during documentation generation. This validates the inventory, not hosted D1 performance or deployment. JSON body rules remain in the closed TypeScript domain schemas. D1 has application-enforced owner scope, not PostgreSQL RLS.\n\n"
 dd+=table(["Migration","SHA-256"], [[m["path"],m["sha256"]] for m in migrations])
 for t in tables:
     dd+="\n## "+t["table"]+"\n\n"+table(["Ordinal","Column","SQL type","Required","Default","Primary key"], t["columns"])

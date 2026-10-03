@@ -1,0 +1,15 @@
+# ADR 012: independent synthetic cough evaluation provider
+
+3 October 2026. Implemented candidate on a feature branch from GitHub main `8b4b4b5a4b223773f9b91b7e21b1a0f9f3f295d3`; not a hosted release or clinical approval.
+
+Saha and Global Health AI Sandbox remain separate products, databases and deployments. Saha owns patient scope, AI permission, approval, the saved request and staff review. This provider owns its customer agreement, reference calculation and service ledger. The pattern follows the independent anaemia adapter being reviewed in [Saha PR #126](https://github.com/nakul175/saha-health/pull/126).
+
+The service accepts only a built-in generated waveform or silence fixture. It computes the existing Audio reference A formula in `lib/lab.ts`; it contains no trained TB model. There is no upload, microphone, person identifier, clinical input, arbitrary endpoint, code execution or automatic model retry. The signed reference score has no clinical interpretation. This makes a useful engineering integration possible while data and model permissions remain unresolved.
+
+The provider is off by default. An explicitly configured provider owner opens their Aster workspace through the normal workspace read. That signed-in owner, using the administrator test profile, manages the separate `saha-demo` customer agreement. Customer bearer authentication does not acquire a user or care identity. The customer credential and HMAC result key are distinct server bindings. Results bind the contract, reference specification, fixture, customer, opaque request ID and input hash. Shared-key HMAC establishes partner integrity, not independent attestation.
+
+An additive migration introduces `cough_customers` and `cough_evaluations`. Reservation, quota, customer revision and workspace safety hold are checked in the same D1 transaction as the request checkpoint and audit. The 200-request workspace quota includes unresolved requests. A duplicate POST returns the original result or pending reservation; GET never calculates again. A changed or suspended agreement withholds old results. Completion repeats the agreement and hold checks, keeping no result if they changed while calculating.
+
+Encrypted workspace checkpoints cover both new tables. Earlier nine/eleven-table archives remain readable with empty partner tables. They cannot recover partner activity that happened after their capture. Active migrations `0000`–`0003`, existing history and signing/encryption keys are preserved. A rollback retains the additive tables and pauses dispatch; restoring an archive remains an isolated operator procedure.
+
+See the [contract and runbook](INDEPENDENT_COUGH_PROVIDER.md) and [local evidence](../verification/cough-provider-2026-10-03/README.md). CODA data and any specific trained model require their own permission and licence clearance; see the [terms review in PR #18](https://github.com/nakul175/global-health-ai-sandbox/pull/18). Real institutional independence, hosted service dispatch, clinical validation and government acceptance remain open.
