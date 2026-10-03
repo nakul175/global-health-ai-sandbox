@@ -1,5 +1,12 @@
 # Documentation changelog
 
+## 2026-10-03 — Hosted main deployment
+
+- Confirmed the previous live Site was version 5, deployed on 2026-09-26 from Site source `8a08831be002da80b0cdf6e4ec43d8fadcb02310`, which predates and omits PR #13's fixes. The owner was informed before redeployment.
+- Verified GitHub `main` at `8b4b4b5a4b223773f9b91b7e21b1a0f9f3f295d3`: `pnpm verify` passed typecheck, 114 application tests, the Worker build and 43 HTTP checks. The exact tree was saved through the existing Sites workflow as version 6, Site source `542ae40320d1c4bea19c64799cf9128210242225`.
+- Captured and verified an encrypted hosted checkpoint for the signed-in owner's workspace before deployment; decryption and integrity passed across all eleven table categories. Migrations, bindings, protected configuration and public audience are unchanged; version 5 is the rollback target.
+- Deployed version 6 successfully at `2026-10-03T06:44:41.207882+00:00`, deployment `appgdep_6ac0a4437cdc8191849a66130a842f3b`. [Deployment, checkpoint and rollback record](../verification/deploy-main-2026-10-03/README.md) contains provenance and the bounded authenticated post-deployment observations. The lint and CODA terms branches are not included in this deployment.
+
 ## 2026-10-03 — Cough-screening demo walkthrough
 
 - Added [the cough demo walkthrough](COUGH_DEMO_WALKTHROUGH.md): six screens of the README "Try it" flow on a disposable local copy of `main` at a4b3458, the limits to state in any demonstration (capability register 0/67/13/1 of 81, simulated independent review, per-owner hosted workspaces, deployment of the PR #13 fixes not checked) and a dated, sourced survey of open tuberculosis cough models.

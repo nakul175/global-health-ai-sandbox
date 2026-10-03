@@ -1,0 +1,11 @@
+{
+  "environment": "local built Worker, synthetic fixtures",
+  "requests": 60,
+  "concurrency": 6,
+  "elapsedMs": 648.4960510000001,
+  "p50Ms": 52.27691899999991,
+  "p95Ms": 100.51873899999919,
+  "maxMs": 104.09827000000041,
+  "errors": 0,
+  "limitation": "Observation only; not a production load, scalability or latency SLA acceptance test."
+}
